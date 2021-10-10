@@ -1,0 +1,5 @@
+package com.shrutislegion.sportify.modules
+
+data class User(val uid: String="",
+                val displayName: String?= "",
+                val imageUrl: String="")

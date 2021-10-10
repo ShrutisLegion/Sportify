@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity">
+
+    <com.royrodriguez.transitionbutton.TransitionButton
+        android:id="@+id/PlayerReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="60dp"
+        android:onClick="onClick1"
+        android:text="Register as Player"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:defaultColor="#CC0E4E"
+        app:layout_constraintBottom_toTopOf="@+id/registration_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:loaderColor="@android:color/white"
+        tools:ignore="MissingConstraints,OnClick" />
+
+    <com.royrodriguez.transitionbutton.TransitionButton
+        android:id="@+id/LenderReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="60dp"
+        android:onClick="onClick2"
+        android:text="Register as Lender"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:defaultColor="#CC0E4E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transition_button"
+        app:loaderColor="@android:color/white"
+        tools:ignore="MissingConstraints,OnClick" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
