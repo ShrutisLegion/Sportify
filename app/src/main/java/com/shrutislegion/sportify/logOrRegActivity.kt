@@ -8,13 +8,13 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.royrodriguez.transitionbutton.TransitionButton
 import com.royrodriguez.transitionbutton.TransitionButton.OnAnimationStopEndListener
-import kotlinx.android.synthetic.main.activity_type_reg.*
+import kotlinx.android.synthetic.main.activity_log_or_reg.*
 
 
-class TypeRegActivity : AppCompatActivity() {
+class logOrRegActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_type_reg)
+        setContentView(R.layout.activity_log_or_reg)
     }
 
     fun onClick1(view: View) {
@@ -25,7 +25,7 @@ class TypeRegActivity : AppCompatActivity() {
             // Choose a stop animation if your call was succesful or not
             if (isSuccessful) {
                 transition_button.stopAnimation(TransitionButton.StopAnimationStyle.EXPAND,
-                    OnAnimationStopEndListener {
+                    OnAnimationStopEndListener{
                         val intent = Intent(baseContext, LoginActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)

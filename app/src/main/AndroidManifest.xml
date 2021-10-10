@@ -13,7 +13,7 @@
         <activity android:name=".LanderRegistrationActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".TypeRegActivity" />
+        <activity android:name=".logOrRegActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

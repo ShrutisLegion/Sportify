@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="60dp"
-        android:onClick="onClick2"
+        android:onClick="landerreg"
         android:text="Register as Lender"
         android:textColor="@android:color/white"
         android:textStyle="bold"

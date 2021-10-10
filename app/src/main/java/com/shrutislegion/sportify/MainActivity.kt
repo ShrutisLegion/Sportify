@@ -3,8 +3,6 @@ package com.shrutislegion.sportify
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import com.cuberto.liquid_swipe.LiquidPager
 
@@ -23,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun intentregtype(view: View) {
-        val intent = Intent(this, TypeRegActivity::class.java)
+        val intent = Intent(this, logOrRegActivity::class.java)
         startActivity(intent)
     }
 }
