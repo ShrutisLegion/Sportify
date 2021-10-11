@@ -4,40 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    tools:context=".RegistrationActivity"
+    android:background="@color/offpink"
+    >
+
+
+    <!--    <com.royrodriguez.transitionbutton.TransitionButton-->
+<!--        android:id="@+id/Continue"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="60dp"-->
+<!--        android:layout_marginBottom="260dp"-->
+<!--        android:onClick="Click"-->
+<!--        android:text="Continue"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textStyle="bold"-->
+<!--        app:defaultColor="#CC0E4E"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/playerButton"-->
+<!--        app:loaderColor="@android:color/white"-->
+<!--        tools:ignore="MissingConstraints,OnClick" />-->
 
     <com.royrodriguez.transitionbutton.TransitionButton
-        android:id="@+id/PlayerReg"
+        android:id="@+id/Continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="60dp"
-        android:onClick="onClick1"
+        android:layout_marginTop="48dp"
+        android:onClick="Click"
         android:text="Register as Player"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:defaultColor="#CC0E4E"
-        app:layout_constraintBottom_toTopOf="@+id/registration_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:loaderColor="@android:color/white"
-        tools:ignore="MissingConstraints,OnClick" />
-
-    <com.royrodriguez.transitionbutton.TransitionButton
-        android:id="@+id/LenderReg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="60dp"
-        android:onClick="landerreg"
-        android:text="Register as Lender"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         app:defaultColor="#CC0E4E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transition_button"
+        app:layout_constraintTop_toBottomOf="@id/playerButton"
         app:loaderColor="@android:color/white"
         tools:ignore="MissingConstraints,OnClick" />
+
+    <RadioButton
+        android:id="@+id/landerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:text="Register as Lander"
+        android:textColor="@color/design_default_color_primary_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <RadioButton
+        android:id="@+id/playerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register as Player"
+        android:textColor="@color/design_default_color_primary_dark"
+        app:layout_constraintBottom_toTopOf="@+id/Continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landerButton"
+        app:layout_constraintVertical_bias="0.091"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

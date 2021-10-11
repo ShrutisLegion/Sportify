@@ -26,7 +26,7 @@ class logOrRegActivity : AppCompatActivity() {
             if (isSuccessful) {
                 transition_button.stopAnimation(TransitionButton.StopAnimationStyle.EXPAND,
                     OnAnimationStopEndListener{
-                        val intent = Intent(baseContext, LoginActivity::class.java)
+                        val intent = Intent(this, LoginActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                     })
