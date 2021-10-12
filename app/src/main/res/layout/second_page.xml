@@ -38,8 +38,8 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="382dp"
+        android:layout_height="218dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="64dp"
         android:src="@drawable/img_2" />
@@ -52,7 +52,7 @@
         android:fontFamily="mo"
         android:includeFontPadding="false"
         android:letterSpacing="-0.01"
-        android:text="Check and BOOK"
+        android:text="@string/find_the_best"
         android:textColor="#99ff5a85"
         android:textSize="41sp" />
 
@@ -70,14 +70,14 @@
         android:textStyle="bold" />
 
     <TextView
-        android:layout_width="301dp"
+        android:layout_width="244dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="sans-serif-light"
         android:letterSpacing="-0.01"
         android:lineSpacingExtra="4sp"
-        android:text="Check Avaibility and Book Courts According To Your Convinience!"
+        android:text="Check Ratings and Reviews to choose the best of all."
         android:textColor="#66ffffff"
         android:textSize="14sp" />
 

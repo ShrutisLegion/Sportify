@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
 
 
         <LinearLayout
@@ -38,56 +39,45 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="64dp"
-            android:src="@drawable/img_01" />
+    <ImageView
+        android:layout_width="373dp"
+        android:layout_height="266dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="64dp"
+        android:src="@drawable/promo" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="500dp"
-            android:fontFamily="sans-serif-light"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.01"
-            android:text="Welcome to"
-            android:textColor="@color/black_30"
-            android:textSize="41sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="400dp"
+        android:fontFamily="sans-serif-condensed"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.01"
+        android:text="Let the World Know"
+        android:textColor="@color/logregbg"
+        android:textSize="56sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="550dp"
-            android:fontFamily="sans-serif-condensed"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.01"
-            android:text="SPORTIFY"
-            android:textColor="@android:color/black"
-            android:textSize="56sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="610dp"
-            android:fontFamily="sans-serif-light"
-            android:letterSpacing="-0.01"
-            android:lineSpacingExtra="4sp"
-            android:text="Let's get Sportified"
-            android:textColor="#b5b5b5"
-            android:textSize="14sp" />
+    <TextView
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="550dp"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="-0.01"
+        android:lineSpacingExtra="4sp"
+        android:text="Showcase Your Complex Facilities and promote among the interested audience!"
+        android:textColor="#3F51B5"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
 
         <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="550dp"
-                android:layout_marginStart="300dp"
+                android:layout_marginTop="600dp"
+                android:layout_marginStart="280dp"
                 android:layout_marginBottom="50dp"
                 android:onClick="intentregtype"
                 android:src="@drawable/ic_baseline_play_circle_filled_24" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity"
-    android:background="@color/offpink"
+    android:background="@color/logregbg"
     >
 
 
@@ -53,7 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="240dp"
         android:text="Register as Lander"
-        android:textColor="@color/design_default_color_primary_dark"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +67,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register as Player"
-        android:textColor="@color/design_default_color_primary_dark"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/Continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#280096"
     android:orientation="vertical">
 
     <LinearLayout
@@ -38,46 +38,35 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="380dp"
+        android:layout_height="212dp"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="64dp"
-        android:src="@drawable/img_01" />
+        android:layout_marginEnd="0dp"
+        android:src="@drawable/sq" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="317dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="80dp"
-        android:fontFamily="sans-serif-light"
-        android:includeFontPadding="false"
-        android:letterSpacing="-0.01"
-        android:text="Welcome to"
-        android:textColor="@color/black_30"
-        android:textSize="41sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="sans-serif-condensed"
         android:includeFontPadding="false"
         android:letterSpacing="-0.01"
-        android:text="SPORTIFY"
+        android:text="Bring Your Squad"
         android:textColor="@android:color/black"
-        android:textSize="56sp"
+        android:textSize="50sp"
         android:textStyle="bold" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="296dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-light"
         android:letterSpacing="-0.01"
         android:lineSpacingExtra="4sp"
-        android:text="Let's get Sportified"
-        android:textColor="#b5b5b5"
+        android:text="Check Slots Avaibility and Book prior to arrival for avoiding last minute hassle!!"
+        android:textColor="#E6020202"
         android:textSize="14sp" />
 
 <!--    <ImageView-->
