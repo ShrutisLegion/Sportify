@@ -5,9 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity"
-    android:background="@color/logregbg"
+    android:background="@color/white"
     >
 
+<!--    <ImageView-->
+<!--        android:id="@+id/logologo"-->
+<!--        android:layout_width="@dimen/_40mdp"-->
+<!--        android:layout_height="@dimen/_40mdp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:src="@drawable/logologo"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/textView"-->
+<!--        app:layout_constraintRight_toLeftOf="@id/textView"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0" />-->
+
+<!--    -->
+
+<!--    <View-->
+<!--        android:id="@+id/view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="3dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="#DA222121"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--        tools:layout_editor_absoluteX="0dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
     <!--    <com.royrodriguez.transitionbutton.TransitionButton-->
 <!--        android:id="@+id/Continue"-->
@@ -28,22 +51,30 @@
 <!--        app:loaderColor="@android:color/white"-->
 <!--        tools:ignore="MissingConstraints,OnClick" />-->
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logorreg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <com.royrodriguez.transitionbutton.TransitionButton
         android:id="@+id/Continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="60dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginBottom="48dp"
         android:onClick="Click"
-        android:text="Register as Player"
+        android:text="Continue"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         app:defaultColor="#CC0E4E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/playerButton"
         app:loaderColor="@android:color/white"
         tools:ignore="MissingConstraints,OnClick" />
 
@@ -51,31 +82,29 @@
         android:id="@+id/landerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
-        android:text="Register as Lander"
+        android:text="Proceed As Complex Owner"
         android:textColor="@color/colorAccent"
-        android:textStyle="bold"
         android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:ignore="MissingConstraints" />
 
     <RadioButton
         android:id="@+id/playerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register as Player"
+        android:text="Proceed as Player"
         android:textColor="@color/colorAccent"
-        android:textStyle="bold"
         android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Continue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/landerButton"
-        app:layout_constraintVertical_bias="0.091"
+        app:layout_constraintVertical_bias="0.432"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

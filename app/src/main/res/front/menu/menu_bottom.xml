@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    app:cnb_unselectedColor="#fff"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        app:cnb_backgroundColor = "#ff785b"
+        app:cnb_iconColor = "#000000"
+        app:cnb_textColor = "#000000"
+        />
+    <item
+        android:id="@+id/booked"
+        android:title="Booked Courts"
+        android:icon="@drawable/ic_booked"
+        app:cnb_backgroundColor = "#ff785b"
+        app:cnb_iconColor = "#000000"
+        app:cnb_textColor = "#000000"
+        />
+    <item
+        android:id="@+id/chats"
+        android:title="Chats"
+        android:icon="@drawable/ic_chats"
+        app:cnb_backgroundColor = "#ff785b"
+        app:cnb_iconColor = "#000000"
+        app:cnb_textColor = "#000000"
+        />
+    <item
+        android:id="@+id/user"
+        android:title="Profile"
+        android:icon="@drawable/ic_account"
+        app:cnb_backgroundColor = "#ff785b"
+        app:cnb_iconColor = "#000000"
+        app:cnb_textColor = "#000000"
+        />
+
+
+
+</menu>

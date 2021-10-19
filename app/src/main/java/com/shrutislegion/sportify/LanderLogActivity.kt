@@ -1,5 +1,6 @@
 package com.shrutislegion.sportify
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,9 +17,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.shrutislegion.sportify.doas.UserDao
-import com.shrutislegion.sportify.modules.User
-import kotlinx.android.synthetic.main.activity_login.*
+import com.shrutislegion.sportify.doas.landerDaos
+import com.shrutislegion.sportify.modules.lander
+import kotlinx.android.synthetic.main.activity_lander_log.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -26,16 +27,17 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 @Suppress("DEPRECATION")
-class LoginActivity : AppCompatActivity() {
+class LanderLogActivity : AppCompatActivity() {
+
     private val RC_SIGN_IN: Int = 123
-    private val TAG = "SignInActivity Tag"
+    private val TAG = "RegActivity Tag"
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
 
+    @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
+        setContentView(R.layout.activity_lander_log)
 
         //google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -51,14 +53,15 @@ class LoginActivity : AppCompatActivity() {
     }
     override fun onStart(){
         super.onStart()
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
+        val currentlander = auth.currentUser
+        updateUI(currentlander)
     }
 
-        private fun signIn() {
-            val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
-        }
+    private fun signIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -97,9 +100,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(firebaseUser: FirebaseUser?) {
         if (firebaseUser!=null){
-            val user = User(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
-            val usersDao = UserDao()
-            usersDao.addUser(user)
+            val lander = lander(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
+            val landersDao = landerDaos()
+            landersDao.addUser(lander)
             val mainActivityIntent = Intent(this, LenderHomeActivity::class.java)
             startActivity(mainActivityIntent)
             finish()
@@ -109,5 +112,4 @@ class LoginActivity : AppCompatActivity() {
 //            Toast.makeText(this, "Try Again!", Toast.LENGTH_LONG).show()
         }
     }
-
 }

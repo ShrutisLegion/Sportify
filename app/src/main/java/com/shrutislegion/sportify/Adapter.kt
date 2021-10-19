@@ -18,7 +18,7 @@ class Adapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentM
         for (i in 0 until total) {
             val fragment = PageFragment()
             val bundle = Bundle()
-            if(i==0){
+            if(i==1){
                 Handler(Looper.getMainLooper()).postDelayed({
                     bundle.putInt("POSITION", i+1)
                     fragment.arguments = bundle

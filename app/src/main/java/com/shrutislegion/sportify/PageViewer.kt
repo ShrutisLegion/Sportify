@@ -2,6 +2,8 @@ package com.shrutislegion.sportify
 
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,11 @@ class PageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         position = arguments?.getInt("POSITION")!!
+        if(position==1){
+            Handler(Looper.getMainLooper()).postDelayed({
+            position=2
+        }, 2000)
+        }
     }
 
     override fun onCreateView(
@@ -22,8 +29,6 @@ class PageFragment : Fragment() {
     ): View? {
         val layoutId = if (position == 1) {
             R.layout.first_page
-        } else if (position == 0) {
-            R.layout.zero_page
         } else if (position == 2) {
             R.layout.second_page
         } else if (position == 3) {

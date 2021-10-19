@@ -18,10 +18,12 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(this, TypeRegActivity::class.java)
 //            startActivity(intent)
 //        }, 2000)
+        getSupportActionBar()?.hide();
     }
 
     fun intentregtype(view: View) {
-        val intent = Intent(this, logOrRegActivity::class.java)
+        val intent = Intent(this, RegistrationActivity::class.java)
         startActivity(intent)
     }
+
 }
