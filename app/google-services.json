@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "749176332690",
+    "firebase_url": "https://sportify-3eea5-default-rtdb.firebaseio.com",
     "project_id": "sportify-3eea5",
     "storage_bucket": "sportify-3eea5.appspot.com"
   },
@@ -19,6 +20,14 @@
           "android_info": {
             "package_name": "com.shrutislegion.sportify",
             "certificate_hash": "d33c0c49a4b6bf3dceda5530ec6d3dd00449ca77"
+          }
+        },
+        {
+          "client_id": "749176332690-s3b7u8h31vvqc56ps1d3kmjn361uuj2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shrutislegion.sportify",
+            "certificate_hash": "9b20271c916e7619e07a792ccecbf213cc09092e"
           }
         },
         {

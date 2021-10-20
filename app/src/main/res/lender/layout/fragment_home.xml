@@ -17,6 +17,7 @@
             android:text="Home Page" />
 
         <ImageView
+            android:id="@+id/addComplexButton"
             android:layout_width="@dimen/_50mdp"
             android:layout_height="@dimen/_50mdp"
             android:src="@drawable/ic_baseline_add_circle_242"

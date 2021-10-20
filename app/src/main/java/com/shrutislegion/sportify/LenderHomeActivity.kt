@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
+@Suppress("DEPRECATION")
 class LenderHomeActivity : AppCompatActivity() {
 
     lateinit var bottomNav: ChipNavigationBar
