@@ -68,7 +68,7 @@
             android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Name"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textStyle="bold" />
@@ -81,7 +81,7 @@
             android:layout_marginTop="90dp"
             android:ems="10"
             android:hint="Type of Sport"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textStyle="bold" />
@@ -148,10 +148,10 @@
 
         <ImageView
             android:id="@+id/uploadedImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="121dp"
+            android:layout_height="113dp"
             android:layout_marginLeft="45dp"
-            android:layout_marginTop="340dp"
+            android:layout_marginTop="380dp"
             android:visibility="gone" />
 
         <com.royrodriguez.transitionbutton.TransitionButton
@@ -162,13 +162,13 @@
             android:layout_marginLeft="70dp"
             android:layout_marginTop="500dp"
             android:layout_marginEnd="@dimen/_20mdp"
+            android:onClick="submitComplexDetails"
             android:text="Submit Details"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             app:defaultColor="#CC0E4E"
             app:loaderColor="@android:color/white"
-            tools:ignore="MissingConstraints,OnClick"
-            android:onClick="submitComplexDetails"/>
+            tools:ignore="MissingClass,MissingConstraints,OnClick" />
 
 
     </androidx.cardview.widget.CardView>

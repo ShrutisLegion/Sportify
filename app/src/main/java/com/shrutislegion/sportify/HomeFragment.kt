@@ -1,12 +1,26 @@
 package com.shrutislegion.sportify
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.AttributeSet
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Recycler
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.shrutislegion.sportify.adapters.homeFragmentAdapter
+import com.shrutislegion.sportify.modules.ComplexInfo
+import java.lang.IndexOutOfBoundsException
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +36,32 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var adapter: homeFragmentAdapter
+//    lateinit var recView:RecyclerView
+
+    // To override LinearLayoutManager by Wrapper, as it crashes the application sometimes
+    inner class LinearLayoutManagerWrapper : LinearLayoutManager {
+        constructor(context: Context?) : super(context) {}
+        constructor(context: Context?, orientation: Int, reverseLayout: Boolean) : super(
+            context,
+            orientation,
+            reverseLayout
+        ) {
+        }
+
+        constructor(
+            context: Context?,
+            attrs: AttributeSet?,
+            defStyleAttr: Int,
+            defStyleRes: Int
+        ) : super(context, attrs, defStyleAttr, defStyleRes) {
+        }
+
+        override fun supportsPredictiveItemAnimations(): Boolean {
+            return false
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +69,8 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(
@@ -37,12 +79,31 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
-
+        view.recView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
         view.addComplexButton.setOnClickListener{
             startActivity(Intent(context, AddComplexActivity::class.java))
         }
 
+        // Firebase recycler view is used here
+        // options contains the collection of the data that has to be inserted in the recyclerVIew
+        val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+            .setQuery(FirebaseDatabase.getInstance().reference.child("Lenders").child(FirebaseAuth.getInstance().getUid().toString()).child("Complexes"), ComplexInfo::class.java)
+            .build()
+
+        adapter = homeFragmentAdapter(options)
+        view.recView.adapter = adapter
+
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+        adapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.stopListening()
     }
 
     companion object {
@@ -65,3 +126,6 @@ class HomeFragment : Fragment() {
             }
     }
 }
+
+
+

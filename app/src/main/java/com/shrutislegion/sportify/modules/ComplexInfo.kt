@@ -6,5 +6,5 @@ data class ComplexInfo(
     var pricePerHour: String? = null,
     var numberOfCourts: String? = null,
     var location: String? = null,
-    var imageUri: String? = null
+    var imageUri: String?=null
 )

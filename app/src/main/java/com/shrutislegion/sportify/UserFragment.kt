@@ -1,5 +1,4 @@
 package com.shrutislegion.sportify
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin.GoogleSignInResult
+import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.OptionalPendingResult
@@ -39,6 +36,8 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
     private var param2: String? = null
     lateinit var googleApiClient: GoogleApiClient
     lateinit var gso: GoogleSignInOptions
+    lateinit var mGoogleSignInClient:GoogleSignInClient
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,21 +54,25 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
         googleApiClient = GoogleApiClient.Builder(requireContext()).enableAutoManage(LenderHomeActivity(), this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build()
+        mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
 
         view.SignOutButton.setOnClickListener(View.OnClickListener() {
-            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(ResultCallback<Status>() {
-                if(it.isSuccess){
-                    startActivity(Intent(context, LoginActivity::class.java))
-                }
-                else Toast.makeText(context, "Log Out Failed !!", Toast.LENGTH_LONG).show()
-            })
+            mGoogleSignInClient.signOut().addOnCompleteListener{
+                startActivity(Intent(context, RegistrationActivity::class.java))
+            }
+//            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(ResultCallback<Status>() {
+//                if(it.isSuccess){
+//                    startActivity(Intent(context, RegistrationActivity::class.java))
+//                }
+//                else Toast.makeText(context, "Log Out Failed !!", Toast.LENGTH_LONG).show()
+//            })
         })
 
         return view
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-
+        Toast.makeText(context,"Connection Failed!", Toast.LENGTH_LONG).show()
     }
 
     private fun handleSignInResult(result: GoogleSignInResult){
@@ -81,7 +84,7 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
             Glide.with(this).load(account.photoUrl).into(UserProfilePicture)
         }
         else{
-            startActivity(Intent(context, LoginActivity::class.java))
+            startActivity(Intent(context, RegistrationActivity::class.java))
         }
     }
 
