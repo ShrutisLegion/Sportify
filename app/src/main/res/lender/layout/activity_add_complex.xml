@@ -48,108 +48,127 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="306dp"
-        android:layout_height="507dp"
+        android:layout_height="560dp"
         android:background="@color/white"
+        android:outlineSpotShadowColor="@color/black"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"
-        android:outlineSpotShadowColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/complexName"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:padding="10dp"
             android:hint="Name"
+            android:inputType="text"
+            android:padding="10dp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/two"
+            android:id="@+id/typeOfSport"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="90dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:padding="10dp"
             android:hint="Type of Sport"
+            android:inputType="text"
+            android:padding="10dp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/three"
+            android:id="@+id/totalCourts"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="150dp"
             android:ems="10"
+            android:hint="Total Courts"
             android:inputType="number"
             android:padding="10dp"
-            android:hint="Total Courts"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/four"
+            android:id="@+id/pricePerHour"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="210dp"
             android:ems="10"
+            android:hint="Price (in rupee) per hour"
             android:inputType="number"
             android:padding="10dp"
-            android:hint="Price (in rupee) per hour"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="270dp"
+            android:ems="10"
+            android:hint="Location"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="180dp"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="330dp"
             android:background="@color/logregbg"
             android:backgroundTint="#123282"
             android:src="@drawable/ic_baseline_add_circle_24" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Image"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:textColor="#FFE91E63"
-            android:layout_marginTop="280dp"
-            android:layout_marginLeft="45dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="340dp"
             android:layout_marginLeft="45dp"
-            android:visibility="gone"
-            />
+            android:layout_marginTop="340dp"
+            android:text="Add Image"
+            android:textColor="#FFE91E63"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/uploadedImage"
+            android:layout_width="121dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="380dp"
+            android:visibility="gone" />
 
         <com.royrodriguez.transitionbutton.TransitionButton
             android:id="@+id/Submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20mdp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="500dp"
+            android:layout_marginEnd="@dimen/_20mdp"
+            android:onClick="submitComplexDetails"
             android:text="Submit Details"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:layout_marginTop="400dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginEnd="@dimen/_20mdp"
-            android:layout_marginStart="@dimen/_20mdp"
             app:defaultColor="#CC0E4E"
             app:loaderColor="@android:color/white"
-            tools:ignore="MissingConstraints,OnClick" />
+            tools:ignore="MissingClass,MissingConstraints,OnClick" />
 
 
     </androidx.cardview.widget.CardView>

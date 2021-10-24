@@ -5,8 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.cuberto.liquid_swipe.LiquidPager
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.GoogleApiClient
+import com.shrutislegion.sportify.adapters.Adapter
+import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.android.synthetic.main.fragment_user.view.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,11 +28,12 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(intent)
 //        }, 2000)
         getSupportActionBar()?.hide();
+
+
     }
 
     fun intentregtype(view: View) {
         val intent = Intent(this, RegistrationActivity::class.java)
         startActivity(intent)
     }
-
 }
