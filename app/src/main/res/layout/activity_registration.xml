@@ -78,33 +78,47 @@
         app:loaderColor="@android:color/white"
         tools:ignore="MissingConstraints,OnClick" />
 
-    <RadioButton
-        android:id="@+id/landerButton"
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Proceed As Complex Owner"
-        android:textColor="@color/colorAccent"
-        android:textSize="24dp"
-        android:textStyle="bold"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/Continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.247">
 
-    <RadioButton
-        android:id="@+id/playerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Proceed as Player"
-        android:textColor="@color/colorAccent"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Continue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/landerButton"
-        app:layout_constraintVertical_bias="0.432"
-        tools:ignore="MissingConstraints" />
+        <RadioButton
+            android:id="@+id/landerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed As Complex Owner"
+            android:textColor="@color/colorAccent"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="5dp"/>
+
+        <RadioButton
+            android:id="@+id/playerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed as Player"
+            android:layout_marginLeft="55dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/Continue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/landerButton"
+            app:layout_constraintVertical_bias="0.432"
+            tools:ignore="MissingConstraints" />
+    </RadioGroup>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.OptionalPendingResult
 import com.google.android.gms.common.api.ResultCallback
 import com.google.android.gms.common.api.Status
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
@@ -58,17 +59,20 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
         googleApiClient = GoogleApiClient.Builder(requireContext()).enableAutoManage(LenderHomeActivity(), this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build()
         mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
 
+        val user = FirebaseAuth.getInstance().currentUser
+        // check if the user is already signed in
+        if (user != null) {
+            view.UserName.setText(user.displayName)
+            view.UserEmailId.setText(user.email)
+            Glide.with(this).load(user.photoUrl).into(view.UserProfilePicture)
+        }
+
+
         view.SignOutButton.setOnClickListener(View.OnClickListener() {
             mGoogleSignInClient.signOut().addOnCompleteListener{
                 Firebase.auth.signOut()
                 startActivity(Intent(context, RegistrationActivity::class.java))
             }
-//            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(ResultCallback<Status>() {
-//                if(it.isSuccess){
-//                    startActivity(Intent(context, RegistrationActivity::class.java))
-//                }
-//                else Toast.makeText(context, "Log Out Failed !!", Toast.LENGTH_LONG).show()
-//            })
         })
 
         return view
@@ -128,3 +132,9 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
     }
 
 }
+//            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(ResultCallback<Status>() {
+//                if(it.isSuccess){
+//                    startActivity(Intent(context, RegistrationActivity::class.java))
+//                }
+//                else Toast.makeText(context, "Log Out Failed !!", Toast.LENGTH_LONG).show()
+//            })
