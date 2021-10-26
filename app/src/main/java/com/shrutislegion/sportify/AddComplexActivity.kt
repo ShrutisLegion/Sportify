@@ -19,6 +19,16 @@ import com.google.firebase.storage.StorageReference
 import com.shrutislegion.sportify.databinding.ActivityMainBinding
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.activity_add_complex.*
+import com.google.firebase.storage.UploadTask
+
+import android.graphics.Bitmap
+
+import android.provider.MediaStore
+import android.widget.ProgressBar
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 @Suppress("DEPRECATION")
@@ -69,6 +79,7 @@ class AddComplexActivity : AppCompatActivity() {
             val reference: StorageReference = storage.getReference().child("complex photo").child(
                 FirebaseAuth.getInstance().getUid().toString()
             ).child(name)
+
             if (uri != null) {
                 reference.putFile(uri!!).addOnSuccessListener(OnSuccessListener {
                     Toast.makeText(this, "Image Uploaded Successfully!", Toast.LENGTH_LONG).show()
@@ -122,6 +133,45 @@ class AddComplexActivity : AppCompatActivity() {
             uploadedImage.setImageURI(uri)
             uploadedImage.visibility = VISIBLE
         }
+
+        // compress the image
+//            var bmp: Bitmap? = null
+//            try {
+//                bmp = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//            }
+//            val baos = ByteArrayOutputStream()
+//
+//            //here you can choose quality factor in third parameter(ex. i choosen 25)
+//
+//            //here you can choose quality factor in third parameter(ex. i choosen 25)
+//            bmp!!.compress(Bitmap.CompressFormat.JPEG, 25, baos)
+//            val fileInBytes: ByteArray = baos.toByteArray()
+//
+//            val photoref: StorageReference =
+//                storage.reference.child(uri!!.getLastPathSegment().toString())
+//
+//            //here i am uploading
+//
+//            //here i am uploading
+//            photoref.putBytes(fileInBytes).addOnSuccessListener(
+//                this
+//            ) { taskSnapshot -> // When the image has successfully uploaded, we get its download URL
+//                val downloadUrl: Uri = taskSnapshot.getDownloadUrl()
+//                val id: String? = databaseref.push().getKey()
+//                val time: String =
+//                    SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime())
+//
+//                // Set the download URL to the message box, so that the user can send it to the database
+//                val friendlyMessage =
+//                    FriendlyMessageModel(id, null, userId, downloadUrl.toString(), time)
+//                if (id != null) {
+//                    databaseref.child(id).setValue(friendlyMessage)
+//                }
+//            }
+        //
+
     }
 
 

@@ -10,6 +10,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FirebaseAuth
 import com.shrutislegion.sportify.adapters.Adapter
 import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.fragment_user.view.*
@@ -27,8 +28,12 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(this, TypeRegActivity::class.java)
 //            startActivity(intent)
 //        }, 2000)
-        getSupportActionBar()?.hide();
+        getSupportActionBar()?.hide()
 
+//        val user = FirebaseAuth.getInstance().currentUser
+//        if(user!=null){
+//            startActivity(Intent(this, LenderHomeActivity::class.java))
+//        }
 
     }
 
