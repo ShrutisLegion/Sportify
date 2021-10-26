@@ -62,7 +62,7 @@ class AddComplexActivity : AppCompatActivity() {
     fun submitComplexDetails(view: android.view.View) {
 
 //        TextUtils.isEmpty(complexName.text.toString())
-        if(TextUtils.isEmpty(complexName.text.toString()) || typeOfSport.text.isEmpty() || totalCourts.text.isEmpty() || pricePerHour.text.isEmpty() || location.text.isEmpty()){
+        if(TextUtils.isEmpty(complexName.text.toString()) || (typeOfSport.text!!.isEmpty()) || (totalCourts.text!!.isEmpty()) || (pricePerHour.text!!.isEmpty()) || (location.text!!.isEmpty())){
             Toast.makeText(this,"Plase enter all the required details!", Toast.LENGTH_LONG).show()
         }
         else if (uri == null){

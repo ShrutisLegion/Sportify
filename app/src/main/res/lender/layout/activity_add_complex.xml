@@ -6,183 +6,249 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".AddComplexActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView4">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/logologo"-->
-<!--        android:layout_width="@dimen/_40mdp"-->
-<!--        android:layout_height="@dimen/_40mdp"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:src="@drawable/logologo"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/textView"-->
-<!--        app:layout_constraintRight_toLeftOf="@id/textView"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="1.0" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="417dp"-->
-<!--        android:layout_height="44dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:text="Add Your Complex "-->
-<!--        android:textColor="@color/colorAccent"-->
-<!--        android:textSize="@dimen/_24mdp"-->
-<!--        android:textStyle="bold|italic"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.153"-->
-<!--        app:layout_constraintStart_toEndOf="@id/logologo"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:ignore="RtlCompat" />-->
-
-<!--    <View-->
-<!--        android:id="@+id/view"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="3dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:background="#DA222121"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
-<!--        tools:layout_editor_absoluteX="0dp"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="306dp"
-        android:layout_height="560dp"
-        android:background="@color/white"
-        android:outlineSpotShadowColor="@color/black"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.198">
-
-        <EditText
-            android:id="@+id/complexName"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="30dp"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/typeOfSport"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="90dp"
-            android:ems="10"
-            android:hint="Type of Sport"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/totalCourts"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="150dp"
-            android:ems="10"
-            android:hint="Total Courts"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/pricePerHour"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="210dp"
-            android:ems="10"
-            android:hint="Price (in rupee) per hour"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="270dp"
-            android:ems="10"
-            android:hint="Location"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"
-            android:layout_marginTop="330dp"
-            android:background="@color/logregbg"
-            android:backgroundTint="#123282"
-            android:src="@drawable/ic_baseline_add_circle_24" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="340dp"
-            android:text="Add Image"
-            android:textColor="#FFE91E63"
-            android:textSize="24dp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/uploadedImage"
-            android:layout_width="121dp"
-            android:layout_height="113dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="380dp"
-            android:visibility="gone" />
-
-        <com.royrodriguez.transitionbutton.TransitionButton
-            android:id="@+id/Submit"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20mdp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="500dp"
-            android:layout_marginEnd="@dimen/_20mdp"
-            android:onClick="submitComplexDetails"
-            android:text="Submit Details"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            app:defaultColor="#CC0E4E"
-            app:loaderColor="@android:color/white"
-            tools:ignore="MissingClass,MissingConstraints,OnClick" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_conversion_absoluteWidth="411dp" >
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageComplex"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250mdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/add_complex1"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/complexNameLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_240mdp"
+                android:layout_height="wrap_content"
+                android:hint="Complex Name"
+                app:startIconDrawable="@drawable/ic_baseline_house_24"
+                app:helperText="Required*"
+                app:helperTextTextColor="#A60606"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageComplex"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/complexName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="InvalidId" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/PhoneNumberLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_240mdp"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                app:prefixText="+91"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:startIconDrawable="@drawable/ic_baseline_phone_24"
+                app:helperText="Required*"
+                app:helperTextTextColor="#A60606"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complexNameLayout"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TypeOfSportLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_240mdp"
+                android:layout_height="wrap_content"
+                android:hint="Sport Name"
+                app:startIconDrawable="@drawable/ic_baseline_sports_volleyball_24"
+                app:helperText="Required*"
+                app:helperTextTextColor="#A60606"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/PhoneNumberLayout"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/typeOfSport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TotalCourtsLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_240mdp"
+                android:layout_height="wrap_content"
+                android:hint="Total Courts"
+                app:startIconDrawable="@drawable/ic_baseline_filter_none_24"
+                app:helperText="Required*"
+                app:helperTextTextColor="#A60606"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TypeOfSportLayout"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/totalCourts"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/PriceLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_240mdp"
+                android:layout_height="wrap_content"
+                android:hint="Price Per Hour"
+                app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24"
+                app:helperText="Required*"
+                app:helperTextTextColor="#A60606"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TotalCourtsLayout"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pricePerHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/LocationLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_240mdp"
+                android:layout_height="wrap_content"
+                android:hint="Location"
+                app:startIconDrawable="@drawable/ic_baseline_house_24"
+                app:helperText="Required*"
+                app:helperTextTextColor="#A60606"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/PriceLayout"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Description"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_240mdp"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                app:startIconDrawable="@drawable/ic_baseline_description_24"
+                app:helperText="Required*"
+                app:helperTextTextColor="#A60606"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/LocationLayout"
+                tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/uploadedImage"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_200mdp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
+                tools:ignore="MissingConstraints"
+                android:visibility="gone"
+                />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_gravity="bottom|right"
+                app:backgroundTint="@color/gradStart"
+                android:contentDescription="Image"
+                app:rippleColor="@color/white"
+                android:text="Add Image"
+                app:layout_constraintTop_toBottomOf="@+id/Description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:icon="@drawable/ic_baseline_camera_24"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Submit"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                app:icon="@drawable/ic_baseline_playlist_add_check_24"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="#123282"
+                android:text="Submit Details"
+                android:textStyle="bold"
+                android:onClick="submitComplexDetails"
+                app:layout_constraintTop_toBottomOf="@+id/uploadedImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:elevation="2dp"
+                app:rippleColor="@color/white"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20mdp"
+                app:layout_constraintTop_toBottomOf="@+id/Submit"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="428dp"
-        android:layout_height="185dp"
-        android:outlineSpotShadowColor="#000000"
-        android:src="@drawable/ic_login_bk"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-9dp" />
+    </ScrollView>
 
-
-    />
 </androidx.constraintlayout.widget.ConstraintLayout>
