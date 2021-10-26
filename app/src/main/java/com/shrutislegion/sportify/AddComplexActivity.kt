@@ -62,7 +62,14 @@ class AddComplexActivity : AppCompatActivity() {
     fun submitComplexDetails(view: android.view.View) {
 
 //        TextUtils.isEmpty(complexName.text.toString())
-        if(TextUtils.isEmpty(complexName.text.toString()) || (typeOfSport.text!!.isEmpty()) || (totalCourts.text!!.isEmpty()) || (pricePerHour.text!!.isEmpty()) || (location.text!!.isEmpty())){
+        if(TextUtils.isEmpty(complexName.text.toString()) ||
+            (typeOfSport.text!!.isEmpty()) ||
+            (totalCourts.text!!.isEmpty()) ||
+            (pricePerHour.text!!.isEmpty()) ||
+            (location.text!!.isEmpty()) ||
+            (phoneNumber.text!!.isEmpty()) ||
+            (description.text!!.isEmpty())
+        ){
             Toast.makeText(this,"Plase enter all the required details!", Toast.LENGTH_LONG).show()
         }
         else if (uri == null){
@@ -75,6 +82,8 @@ class AddComplexActivity : AppCompatActivity() {
             val price = pricePerHour.getText().toString().toInt()
             val location = location.getText().toString()
             var uriString: String = ""
+            var phone = phoneNumber.text.toString()
+            var description = description.text.toString()
 
             val reference: StorageReference = storage.getReference().child("complex photo").child(
                 FirebaseAuth.getInstance().getUid().toString()
@@ -96,7 +105,7 @@ class AddComplexActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter all the details!", Toast.LENGTH_SHORT).show()
             }
             if (name.isNotEmpty() && type.isNotEmpty() && courts.toString()
-                    .isNotEmpty() && price.toString().isNotEmpty() && location.isNotEmpty()
+                    .isNotEmpty() && price.toString().isNotEmpty() && location.isNotEmpty() && phone.isNotEmpty() && description.isNotEmpty()
             ) {
                 val User =
                     ComplexInfo(
@@ -105,7 +114,9 @@ class AddComplexActivity : AppCompatActivity() {
                         price.toString(),
                         courts.toString(),
                         location,
-                        uriString
+                        uriString,
+                        phone,
+                        description
                     )
                 databaseref.child(FirebaseAuth.getInstance().getUid().toString()).child("Complexes")
                     .child(name).setValue(User).addOnSuccessListener {
