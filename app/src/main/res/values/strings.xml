@@ -12,4 +12,5 @@
     <string name="find_the_most_rated_nearby_sports_complex_check_avaibility_and_book_according_to_your_convinience">Find the Most Rated Nearby Sports Complex, Check Avaibility and Book According To Your Convinience!</string>
     <string name="add_your_complex">ADD YOUR COMPLEX</string>
     <string name="delete_confirmation">Are you sure you want to delete the complex?</string>
+    <string name="todo" />
 </resources>

@@ -6,62 +6,175 @@
     android:layout_height="match_parent"
     tools:context=".UserFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="com.shrutislegion.layout.MainActivity2">
 
-        <ImageView
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/UserProfilePicture"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:layout_constraintBottom_toTopOf="@+id/UserName"
+            android:layout_width="@dimen/_160mdp"
+            android:layout_height="@dimen/_160mdp"
+            android:layout_marginTop="32dp"
+            tools:srcCompat="@tools:sample/avatars"
+            android:translationZ="@dimen/_90mdp"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.149" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.github.florent37.diagonallayout.DiagonalLayout
+                android:id="@+id/diagonalLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="0dp"
+                app:diagonal_angle="15"
+                app:diagonal_direction="left"
+                app:diagonal_position="bottom"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/image111"
+                    android:layout_width="match_parent"
+                    android:layout_height="274dp"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/sss"
+                    tools:ignore="ImageContrastCheck" />
+            </com.github.florent37.diagonallayout.DiagonalLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/UserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
             android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/UserEmailId"
+            android:textColor="@color/gradStart"
+            android:textSize="32dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UserProfilePicture"
-            tools:text="UserName" />
+            app:layout_constraintTop_toBottomOf="@+id/UserProfilePicture" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/_210mdp"
+            android:layout_height="3dp"
+            android:layout_marginLeft="@dimen/_50mdp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="@dimen/_50mdp"
+            android:background="#19000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UserName"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/UserEmailId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_22mdp"
+            android:layout_marginEnd="16dp"
             android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_12mdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/UserName"
-            tools:text="UserEmailId" />
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
+        <TextView
+            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="489dp" />
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="@dimen/_22mdp"
+            android:layout_marginBottom="200dp"
+            android:text="Mail id:"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_12mdp"
+            android:textStyle="bold"
+            android:translationZ="@dimen/_22mdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/SignOutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="68dp"
             android:text="SIGN OUT"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline5"
-            app:layout_constraintVertical_bias="0.118" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/UserProfilePicture"-->
+    <!--            android:layout_width="200dp"-->
+    <!--            android:layout_height="200dp"-->
+    <!--            app:layout_constraintBottom_toTopOf="@+id/UserName"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            tools:srcCompat="@tools:sample/avatars" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/UserName"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text=""-->
+    <!--            app:layout_constraintBottom_toTopOf="@+id/UserEmailId"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.501"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/UserProfilePicture"-->
+    <!--            tools:text="UserName" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/UserEmailId"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text=""-->
+    <!--            app:layout_constraintBottom_toTopOf="@+id/guideline5"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.488"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/UserName"-->
+    <!--            tools:text="UserEmailId" />-->
+
+    <!--        <androidx.constraintlayout.widget.Guideline-->
+    <!--            android:id="@+id/guideline5"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            app:layout_constraintGuide_begin="489dp" />-->
+
 
 </RelativeLayout>

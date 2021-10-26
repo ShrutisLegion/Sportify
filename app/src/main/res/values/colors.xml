@@ -14,6 +14,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="offpink">#FFC0F5</color>
     <color name="logregbg">#123282</color>
+    <color name="gradEnd">#E667EF</color>
+    <color name="gradStart">#E91E63</color>
 
     <color name="black_30">#4D000000</color>
 </resources>
