@@ -34,7 +34,7 @@
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
                 android:hint="Complex Name"
-                app:startIconDrawable="@drawable/ic_baseline_house_24"
+                app:startIconDrawable="@drawable/ic_baseline_home_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
                 android:layout_marginTop="@dimen/_10mdp"
@@ -167,7 +167,7 @@
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/location"
+                    android:id="@+id/complexLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

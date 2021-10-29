@@ -5,10 +5,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.view.View.VISIBLE
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
@@ -16,19 +14,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.shrutislegion.sportify.databinding.ActivityMainBinding
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.activity_add_complex.*
-import com.google.firebase.storage.UploadTask
-
-import android.graphics.Bitmap
-
-import android.provider.MediaStore
-import android.widget.ProgressBar
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 @Suppress("DEPRECATION")
@@ -66,7 +53,7 @@ class AddComplexActivity : AppCompatActivity() {
             (typeOfSport.text!!.isEmpty()) ||
             (totalCourts.text!!.isEmpty()) ||
             (pricePerHour.text!!.isEmpty()) ||
-            (location.text!!.isEmpty()) ||
+            (complexLocation.text!!.isEmpty()) ||
             (phoneNumber.text!!.isEmpty()) ||
             (description.text!!.isEmpty())
         ){
@@ -80,7 +67,7 @@ class AddComplexActivity : AppCompatActivity() {
             val type = typeOfSport.getText().toString()
             val courts = totalCourts.getText().toString().toInt()
             val price = pricePerHour.getText().toString().toInt()
-            val location = location.getText().toString()
+            val location = complexLocation.getText().toString()
             var uriString: String = ""
             var phone = phoneNumber.text.toString()
             var description = description.text.toString()
