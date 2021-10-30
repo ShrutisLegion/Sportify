@@ -9,7 +9,6 @@
 
     <com.google.android.material.transformation.TransformationChildCard
         android:id="@+id/card"
-        android:onClick="sharedIntent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -41,6 +40,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/complexImage"
                 android:scaleType="centerCrop"
+                android:transitionName="image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150mdp"
                 android:src="@drawable/defaultimg"

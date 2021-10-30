@@ -21,6 +21,12 @@ import kotlinx.android.synthetic.main.activity_add_complex.*
 import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.item_complexdetails.*
 import java.net.URI.create
+import androidx.core.util.Pair
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import kotlinx.android.synthetic.main.item_complexdetails.view.*
+
 
 @Suppress("DEPRECATION")
 class LenderHomeActivity : AppCompatActivity() {
@@ -59,13 +65,5 @@ class LenderHomeActivity : AppCompatActivity() {
 
     }
 
-    fun sharedIntent(view: View) {
-        val intent = Intent(this, LenderSharedActivity::class.java)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-            this,
-            (nameOfComplex as View?)!!, "complexName"
-        )
-        startActivity(intent, options.toBundle())
-    }
 
 }

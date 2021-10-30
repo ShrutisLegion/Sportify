@@ -8,6 +8,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/complexImage"
+        android:transitionName="image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200mdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,7 @@
         android:transitionName="complexName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SNV Complex"
+        android:text=""
         app:layout_constraintTop_toBottomOf="@+id/complexImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

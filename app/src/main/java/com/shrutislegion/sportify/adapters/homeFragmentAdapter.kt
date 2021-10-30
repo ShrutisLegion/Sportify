@@ -1,7 +1,9 @@
 package com.shrutislegion.sportify.adapters
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.ContentResolver.ANY_CURSOR_ITEM_TYPE
+import android.content.Intent
 import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -23,6 +28,8 @@ import kotlin.coroutines.coroutineContext
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.shrutislegion.sportify.LenderSharedActivity
+import androidx.core.util.Pair
 
 
 class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
@@ -42,6 +49,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         var delete = itemView.findViewById<ImageView>(R.id.deleteButton)
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
         var description = itemView.findViewById<TextView>(R.id.description)
+        var card = itemView.findViewById<CardView>(R.id.card)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -61,6 +69,18 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
 
         // Glide used to load the image from the uri stored in firebase
         Glide.with(holder.image.context).load(model.imageUri).placeholder(R.drawable.loading_image).into(holder.image)
+
+        //on click on card
+        holder.card.setOnClickListener{
+            val intent = Intent(holder.name.context, LenderSharedActivity::class.java)
+
+        intent.putExtra(LenderSharedActivity.EXTRA_CONTACT, holder.name.text)
+        val p1 = Pair.create(holder.image as View, "image")
+        val p2 = Pair.create<View, String>(holder.name, "complexName")
+//        val p3 = Pair.create(tvName as View, "text")
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2)
+        holder.name.context.startActivity(intent, options.toBundle())
+        }
 
         // putting OnClickListener on delete button and creating an alert dialogbox
         holder.delete.setOnClickListener {
@@ -103,6 +123,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
                 alertDialog.show()
 
             }
+
         }
 
     }
