@@ -1,18 +1,26 @@
 package com.shrutislegion.sportify
 
+import android.app.ActivityOptions
 import android.app.Fragment
 import android.content.Intent
+import android.content.IntentFilter.create
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.core.app.ActivityOptionsCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+import com.shrutislegion.sportify.adapters.homeFragmentAdapter
+import kotlinx.android.synthetic.main.activity_add_complex.*
 import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.android.synthetic.main.item_complexdetails.*
+import java.net.URI.create
 
 @Suppress("DEPRECATION")
 class LenderHomeActivity : AppCompatActivity() {
@@ -50,4 +58,14 @@ class LenderHomeActivity : AppCompatActivity() {
 
 
     }
+
+    fun sharedIntent(view: View) {
+        val intent = Intent(this, LenderSharedActivity::class.java)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            (nameOfComplex as View?)!!, "complexName"
+        )
+        startActivity(intent, options.toBundle())
+    }
+
 }

@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    >
+    android:paddingRight="20dp">
+
     <com.google.android.material.transformation.TransformationChildCard
         android:id="@+id/card"
+        android:onClick="sharedIntent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -50,6 +51,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/nameOfComplex"
+                android:transitionName="complexName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SNV COMPLEX"

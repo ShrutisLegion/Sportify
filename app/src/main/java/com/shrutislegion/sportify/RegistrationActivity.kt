@@ -61,6 +61,7 @@ class RegistrationActivity : AppCompatActivity() {
                                 val intent = Intent(this, LanderLogActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                                 startActivity(intent)
+                                finish()
                             })
                 } else {
                     Continue.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null)

@@ -30,15 +30,17 @@ class MainActivity : AppCompatActivity() {
 //        }, 2000)
         getSupportActionBar()?.hide()
 
-//        val user = FirebaseAuth.getInstance().currentUser
-//        if(user!=null){
-//            startActivity(Intent(this, LenderHomeActivity::class.java))
-//        }
+        val user = FirebaseAuth.getInstance().currentUser
+        if(user!=null){
+            startActivity(Intent(this, LenderHomeActivity::class.java))
+            finish()
+        }
 
     }
 
     fun intentregtype(view: View) {
         val intent = Intent(this, RegistrationActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

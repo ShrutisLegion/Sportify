@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.adapters.homeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
+import kotlinx.android.synthetic.main.item_complexdetails.view.*
 import java.lang.IndexOutOfBoundsException
 
 
