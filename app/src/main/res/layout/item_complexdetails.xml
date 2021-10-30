@@ -120,6 +120,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexDescription"
                 android:background="@color/colorAccent"/>
+            <TextView
+                android:id="@+id/hourPrice"
+                android:transitionName="price"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                app:layout_constraintBottom_toTopOf="@+id/courtsCount"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/courtsCount"
+                android:transitionName="courts"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/hourPrice"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/phoneNumber"
+                android:transitionName="phoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/hourPrice"
+                tools:ignore="MissingConstraints" />
 
 
             <!--            <com.google.android.material.textview.MaterialTextView-->
@@ -177,41 +211,6 @@
 <!--        app:layout_constraintBottom_toTopOf="@+id/hourPrice"-->
 <!--        app:layout_constraintStart_toStartOf="@+id/guideline2"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />-->
-
-    <TextView
-        android:id="@+id/hourPrice"
-        android:transitionName="price"
-        android:layout_width="134dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/courtsCount"
-        android:visibility="gone"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/courtsCount"
-        android:transitionName="courts"
-        android:layout_width="134dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/hourPrice"
-        tools:ignore="MissingConstraints" />
-<!--    <TextView-->
-<!--        android:id="@+id/phoneNumber"-->
-<!--        android:transitionName="phoneNumber"-->
-<!--        android:layout_width="134dp"-->
-<!--        android:layout_height="43dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="number"-->
-<!--        android:text="Name"-->
-<!--        android:visibility="gone"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/hourPrice"-->
-<!--        tools:ignore="MissingConstraints" />-->
 
 <!--    <TextView-->
 <!--        android:id="@+id/complexLocation"-->

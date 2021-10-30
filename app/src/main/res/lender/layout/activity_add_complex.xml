@@ -73,7 +73,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phoneNumber"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

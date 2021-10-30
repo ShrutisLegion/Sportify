@@ -69,8 +69,9 @@ class AddComplexActivity : AppCompatActivity() {
             val price = pricePerHour.getText().toString().toInt()
             val location = complexLocation.getText().toString()
             var uriString: String = ""
-            var phone = phoneNumber.text.toString()
-            var description = complexDescription.text.toString()
+            val phone = phoneNumber.getText().toString()
+//            val phone = 23456
+            val description = complexDescription.text.toString()
 
             val reference: StorageReference = storage.getReference().child("complex photo").child(
                 FirebaseAuth.getInstance().getUid().toString()

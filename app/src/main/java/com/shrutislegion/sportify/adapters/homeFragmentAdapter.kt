@@ -58,6 +58,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         holder.price.setText(model.pricePerHour)
         holder.location.setText(model.location)
         holder.description.setText(model.description)
+        holder.phone.setText(model.phone)
 
         // Glide used to load the image from the uri stored in firebase
         Glide.with(holder.image.context).load(model.imageUri).placeholder(R.drawable.loading_image).into(holder.image)
@@ -65,24 +66,26 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         //on click on card
         holder.card.setOnClickListener{
             val intent = Intent(holder.name.context, LenderSharedActivity::class.java)
-            intent.putExtra(LenderSharedActivity.EXTRA_NAME, holder.name.text)
-//            intent.putExtra(LenderSharedActivity.EXTRA_PHONE, holder.phone.text)
-            intent.putExtra(LenderSharedActivity.EXTRA_SPORT, holder.type.text)
-            intent.putExtra(LenderSharedActivity.EXTRA_LOCATION, holder.location.text)
-            intent.putExtra(LenderSharedActivity.EXTRA_DESCRIPTION, holder.description.text)
-            intent.putExtra(LenderSharedActivity.EXTRA_PRICE, holder.price.text)
-            intent.putExtra(LenderSharedActivity.EXTRA_COURTS, holder.courts.text)
+
+            intent.putExtra(LenderSharedActivity.EXTRA_IMAGEURI, model.imageUri.toString())
+            intent.putExtra(LenderSharedActivity.EXTRA_NAME, holder.name.text.toString())
+            intent.putExtra(LenderSharedActivity.EXTRA_PHONE, holder.phone.text.toString())
+            intent.putExtra(LenderSharedActivity.EXTRA_SPORT, holder.type.text.toString())
+            intent.putExtra(LenderSharedActivity.EXTRA_LOCATION, holder.location.text.toString())
+            intent.putExtra(LenderSharedActivity.EXTRA_DESCRIPTION, holder.description.text.toString())
+            intent.putExtra(LenderSharedActivity.EXTRA_PRICE, holder.price.text.toString())
+            intent.putExtra(LenderSharedActivity.EXTRA_COURTS, holder.courts.text.toString())
 
 
             val p1 = Pair.create(holder.image as View, "image")
             val p2 = Pair.create<View, String>(holder.name, "complexName")
-//            val p3 = Pair.create<View, String>(holder.phone, "phoneNumber")
+            val p3 = Pair.create<View, String>(holder.phone, "phoneNumber")
             val p4 = Pair.create<View, String>(holder.type, "sportType")
             val p5 = Pair.create<View, String>(holder.location, "location")
             val p6 = Pair.create<View, String>(holder.description, "description")
             val p7 = Pair.create<View, String>(holder.price, "price")
             val p8 = Pair.create<View, String>(holder.courts, "courts")
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2, p4, p5, p6, p7, p8)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2, p3, p4, p5, p6, p7, p8)
             holder.name.context.startActivity(intent, options.toBundle())
         }
 
