@@ -40,6 +40,8 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         val location = itemView.findViewById<TextView>(R.id.complexLocation)
         var image = itemView.findViewById<ImageView>(R.id.complexImage)
         var delete = itemView.findViewById<ImageView>(R.id.deleteButton)
+        var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
+        var description = itemView.findViewById<TextView>(R.id.description)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -55,9 +57,10 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         holder.courts.setText(model.numberOfCourts)
         holder.price.setText(model.pricePerHour)
         holder.location.setText(model.location)
+        holder.description.setText(model.description)
 
         // Glide used to load the image from the uri stored in firebase
-        Glide.with(holder.image.context).load(model.imageUri).into(holder.image)
+        Glide.with(holder.image.context).load(model.imageUri).placeholder(R.drawable.loading_image).into(holder.image)
 
         // putting OnClickListener on delete button and creating an alert dialogbox
         holder.delete.setOnClickListener {
