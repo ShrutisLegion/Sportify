@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.LenderSharedActivity
 import androidx.core.util.Pair
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
@@ -63,10 +64,12 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         // Glide used to load the image from the uri stored in firebase
         Glide.with(holder.image.context).load(model.imageUri).placeholder(R.drawable.loading_image).into(holder.image)
 
-        //on click on card
+        //on click on card and start the Lender Share activity
         holder.card.setOnClickListener{
+
             val intent = Intent(holder.name.context, LenderSharedActivity::class.java)
 
+            // Transfer all the required data to the Shared activity by putExtra
             intent.putExtra(LenderSharedActivity.EXTRA_IMAGEURI, model.imageUri.toString())
             intent.putExtra(LenderSharedActivity.EXTRA_NAME, holder.name.text.toString())
             intent.putExtra(LenderSharedActivity.EXTRA_PHONE, holder.phone.text.toString())
@@ -76,7 +79,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
             intent.putExtra(LenderSharedActivity.EXTRA_PRICE, holder.price.text.toString())
             intent.putExtra(LenderSharedActivity.EXTRA_COURTS, holder.courts.text.toString())
 
-
+            // create pairs of View and String for the transition effect to take place
             val p1 = Pair.create(holder.image as View, "image")
             val p2 = Pair.create<View, String>(holder.name, "complexName")
             val p3 = Pair.create<View, String>(holder.phone, "phoneNumber")
@@ -86,13 +89,15 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
             val p7 = Pair.create<View, String>(holder.price, "price")
             val p8 = Pair.create<View, String>(holder.courts, "courts")
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2, p3, p4, p5, p6, p7, p8)
+
+            // Start the Shared activity with the transition
             holder.name.context.startActivity(intent, options.toBundle())
         }
 
         // putting OnClickListener on delete button and creating an alert dialogbox
         holder.delete.setOnClickListener {
 
-            AlertDialog.Builder(holder.name.context).also {
+            MaterialAlertDialogBuilder(holder.name.context).also {
                 // set title for dailog box
                 it.setTitle("Delete complex details")
                 // set message for dialog box
@@ -125,7 +130,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
                 }
 
                 // create the AlertDialogBox
-                val alertDialog:AlertDialog = it.create()
+                val alertDialog: androidx.appcompat.app.AlertDialog = it.create()
                 alertDialog.setCancelable(false)
                 alertDialog.show()
 

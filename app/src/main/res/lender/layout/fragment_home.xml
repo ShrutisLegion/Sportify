@@ -22,17 +22,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.449" />
 
-        <ImageView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addComplexButton"
-            android:layout_width="@dimen/_50mdp"
-            android:layout_height="@dimen/_50mdp"
-            android:src="@drawable/ic_baseline_add_circle_242"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:elevation="2dp"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_add_24"
+            android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.898"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.876" />
+            app:layout_constraintVertical_bias="0.876"
+            app:pressedTranslationZ="6dp"
+            app:rippleColor="@color/colorWhite" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,7 @@ class LenderSharedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lender_shared)
 
+        // To get the shared intent data
         var name = intent.getStringExtra(EXTRA_NAME)
         var phone = intent.getStringExtra(EXTRA_PHONE)
         var sport = intent.getStringExtra(EXTRA_SPORT)
@@ -35,6 +36,8 @@ class LenderSharedActivity : AppCompatActivity() {
         var courts = intent.getStringExtra(EXTRA_COURTS)
         var imageUri = intent.getStringExtra(EXTRA_IMAGEURI)
 
+        // To update the textViews and load image in the Shared activity
+        // Used glide library to load image from the Uri stored in Firebase Realtime database
         Glide.with(this).load(imageUri).placeholder(R.drawable.loading_image).into(complexImage)
         nameOfComplex.setText("$name")
         phoneNumber.setText("$phone")

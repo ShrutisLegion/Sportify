@@ -21,8 +21,6 @@ import kotlinx.android.synthetic.main.activity_add_complex.*
 @Suppress("DEPRECATION")
 class AddComplexActivity : AppCompatActivity() {
 
-//    lateinit var binding: ActivityMainBinding
-
     lateinit var database: FirebaseDatabase
     lateinit var databaseref: DatabaseReference
     lateinit var storage: FirebaseStorage
@@ -70,7 +68,6 @@ class AddComplexActivity : AppCompatActivity() {
             val location = complexLocation.getText().toString()
             var uriString: String = ""
             val phone = phoneNumber.getText().toString()
-//            val phone = 23456
             val description = complexDescription.text.toString()
 
             val reference: StorageReference = storage.getReference().child("complex photo").child(
@@ -117,6 +114,7 @@ class AddComplexActivity : AppCompatActivity() {
                 .show()
 
             startActivity(Intent(this, LenderHomeActivity::class.java))
+            finish()
         }
 
     }
