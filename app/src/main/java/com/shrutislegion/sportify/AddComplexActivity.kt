@@ -55,7 +55,7 @@ class AddComplexActivity : AppCompatActivity() {
             (pricePerHour.text!!.isEmpty()) ||
             (complexLocation.text!!.isEmpty()) ||
             (phoneNumber.text!!.isEmpty()) ||
-            (description.text!!.isEmpty())
+            (complexDescription.text!!.isEmpty())
         ){
             Toast.makeText(this,"Plase enter all the required details!", Toast.LENGTH_LONG).show()
         }
@@ -70,7 +70,7 @@ class AddComplexActivity : AppCompatActivity() {
             val location = complexLocation.getText().toString()
             var uriString: String = ""
             var phone = phoneNumber.text.toString()
-            var description = description.text.toString()
+            var description = complexDescription.text.toString()
 
             val reference: StorageReference = storage.getReference().child("complex photo").child(
                 FirebaseAuth.getInstance().getUid().toString()

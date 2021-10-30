@@ -2,9 +2,7 @@ package com.shrutislegion.sportify.adapters
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.ContentResolver.ANY_CURSOR_ITEM_TYPE
 import android.content.Intent
-import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,19 +11,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
-import com.shrutislegion.sportify.LenderHomeActivity
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
-import kotlin.coroutines.coroutineContext
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.LenderSharedActivity
@@ -48,7 +40,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         var image = itemView.findViewById<ImageView>(R.id.complexImage)
         var delete = itemView.findViewById<ImageView>(R.id.deleteButton)
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
-        var description = itemView.findViewById<TextView>(R.id.description)
+        var description = itemView.findViewById<TextView>(R.id.complexDescription)
         var card = itemView.findViewById<CardView>(R.id.card)
     }
 
@@ -73,13 +65,25 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         //on click on card
         holder.card.setOnClickListener{
             val intent = Intent(holder.name.context, LenderSharedActivity::class.java)
+            intent.putExtra(LenderSharedActivity.EXTRA_NAME, holder.name.text)
+//            intent.putExtra(LenderSharedActivity.EXTRA_PHONE, holder.phone.text)
+            intent.putExtra(LenderSharedActivity.EXTRA_SPORT, holder.type.text)
+            intent.putExtra(LenderSharedActivity.EXTRA_LOCATION, holder.location.text)
+            intent.putExtra(LenderSharedActivity.EXTRA_DESCRIPTION, holder.description.text)
+            intent.putExtra(LenderSharedActivity.EXTRA_PRICE, holder.price.text)
+            intent.putExtra(LenderSharedActivity.EXTRA_COURTS, holder.courts.text)
 
-        intent.putExtra(LenderSharedActivity.EXTRA_CONTACT, holder.name.text)
-        val p1 = Pair.create(holder.image as View, "image")
-        val p2 = Pair.create<View, String>(holder.name, "complexName")
-//        val p3 = Pair.create(tvName as View, "text")
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2)
-        holder.name.context.startActivity(intent, options.toBundle())
+
+            val p1 = Pair.create(holder.image as View, "image")
+            val p2 = Pair.create<View, String>(holder.name, "complexName")
+//            val p3 = Pair.create<View, String>(holder.phone, "phoneNumber")
+            val p4 = Pair.create<View, String>(holder.type, "sportType")
+            val p5 = Pair.create<View, String>(holder.location, "location")
+            val p6 = Pair.create<View, String>(holder.description, "description")
+            val p7 = Pair.create<View, String>(holder.price, "price")
+            val p8 = Pair.create<View, String>(holder.courts, "courts")
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2, p4, p5, p6, p7, p8)
+            holder.name.context.startActivity(intent, options.toBundle())
         }
 
         // putting OnClickListener on delete button and creating an alert dialogbox

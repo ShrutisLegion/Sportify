@@ -67,6 +67,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/sportType"
+                android:transitionName="sportType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -81,6 +82,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
+                android:transitionName="location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4mdp"
@@ -93,7 +95,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/sportType" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/description"
+                android:id="@+id/complexDescription"
+                android:transitionName="description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4mdp"
@@ -115,7 +118,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.429"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
                 android:background="@color/colorAccent"/>
 
 
@@ -177,6 +180,7 @@
 
     <TextView
         android:id="@+id/hourPrice"
+        android:transitionName="price"
         android:layout_width="134dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -188,6 +192,7 @@
 
     <TextView
         android:id="@+id/courtsCount"
+        android:transitionName="courts"
         android:layout_width="134dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -196,6 +201,17 @@
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/hourPrice"
         tools:ignore="MissingConstraints" />
+<!--    <TextView-->
+<!--        android:id="@+id/phoneNumber"-->
+<!--        android:transitionName="phoneNumber"-->
+<!--        android:layout_width="134dp"-->
+<!--        android:layout_height="43dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="number"-->
+<!--        android:text="Name"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/hourPrice"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
 <!--    <TextView-->
 <!--        android:id="@+id/complexLocation"-->
