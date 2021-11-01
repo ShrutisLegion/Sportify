@@ -62,7 +62,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         holder.phone.setText(model.phone)
 
         // Glide used to load the image from the uri stored in firebase
-        Glide.with(holder.image.context).load(model.imageUri).placeholder(R.drawable.loading_image).into(holder.image)
+        Glide.with(holder.image.context).load(model.imageUri).override(600,400).placeholder(R.drawable.loading_image).into(holder.image)
 
         //on click on card and start the Lender Share activity
         holder.card.setOnClickListener{

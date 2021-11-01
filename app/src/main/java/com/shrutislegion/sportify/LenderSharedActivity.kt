@@ -3,6 +3,7 @@ package com.shrutislegion.sportify
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_add_complex.*
 import kotlinx.android.synthetic.main.activity_lender_shared.*
 import kotlinx.android.synthetic.main.activity_lender_shared.complexDescription
@@ -26,6 +27,8 @@ class LenderSharedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lender_shared)
 
+        val user = FirebaseAuth.getInstance().currentUser
+
         // To get the shared intent data
         var name = intent.getStringExtra(EXTRA_NAME)
         var phone = intent.getStringExtra(EXTRA_PHONE)
@@ -44,7 +47,10 @@ class LenderSharedActivity : AppCompatActivity() {
         sportType.setText("$sport")
         complexLocation.setText("$location")
         complexDescription.setText("$description")
-        hourPrice.setText("$price")
+        hourPrice.setText("₹ $price")
         courtsCount.setText("$courts")
+        if(user!=null) {
+            emailId.setText(user.email)
+        }
     }
 }

@@ -21,26 +21,29 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/complexImage"
-                android:transitionName="image"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_200mdp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/add_complex1"
+                android:transitionName="image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="#757373"
+                app:strokeWidth="@dimen/_4mdp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/nameOfComplex"
-                android:transitionName="complexName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_extrabold"
                 android:paddingLeft="@dimen/_20mdp"
                 android:text="SNV COMPLEX"
                 android:textColor="#FFD81B60"
                 android:textSize="@dimen/_25mdp"
                 android:textStyle="bold"
+                android:transitionName="complexName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.085"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +52,6 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/sportType"
-                android:transitionName="sportType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_180mdp"
@@ -60,6 +62,9 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20mdp"
                 android:textStyle="bold"
+                android:transitionName="sportType"
+                app:chipStrokeColor="#757373"
+                app:chipStrokeWidth="@dimen/_2mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.934"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,21 +75,22 @@
                 android:id="@+id/img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20mdp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="@dimen/_16mdp"
+                android:layout_marginTop="-20dp"
                 android:src="@drawable/ic_baseline_location_on_24"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
-                android:transitionName="location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_6mdp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="-20dp"
                 android:text="Location"
                 android:textSize="@dimen/_14mdp"
+                android:transitionName="location"
+                app:layout_constraintBottom_toTopOf="@id/guideline2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/img"
@@ -94,11 +100,12 @@
                 android:id="@+id/descHead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12mdp"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:fontFamily="@font/nunito_semibold"
                 android:paddingHorizontal="@dimen/_20mdp"
                 android:text="Description"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16mdp"
+                android:textSize="@dimen/_20mdp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,88 +113,182 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexDescription"
-                android:transitionName="description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4mdp"
+                android:layout_marginTop="@dimen/_8mdp"
                 android:paddingHorizontal="@dimen/_20mdp"
                 android:text="kfdadjfkdjajdfidsjskfjldajlddjfddj fkafjkda fjdfjkdjfidsjkajkfjaijfkajfdajdfdifjjakfjiajfkadjijk jkkjkjkjkj jkj jkjij kjij kjij kjijijkjkjijijijkjijifja"
                 android:textColor="@color/black"
+                android:textSize="@dimen/_16mdp"
+                android:transitionName="description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descHead" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/priceHead"
-                android:text="Price Per Hour"
-                android:textSize="@dimen/_12mdp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:paddingHorizontal="@dimen/_20mdp"
-                android:layout_marginTop="@dimen/_20mdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                android:layout_marginTop="@dimen/_32mdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:paddingHorizontal="@dimen/_20mdp"
+                android:text="Price Per Hour"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16mdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/countHead"
-                android:text="Total Courts"
-                android:textSize="@dimen/_12mdp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:paddingHorizontal="@dimen/_20mdp"
-                android:layout_marginTop="@dimen/_20mdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/priceHead"
+                android:layout_marginTop="@dimen/_32mdp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:paddingHorizontal="@dimen/_20mdp"
+                android:text="Total Courts"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16mdp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/priceHead" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/hourPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_26mdp"
+                android:background="@drawable/price_bg"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="@dimen/_40mdp"
+                android:paddingVertical="@dimen/_6mdp"
+                android:text="111"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16mdp"
+                android:transitionName="price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/priceHead"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/courtsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_21mdp"
+                android:background="@drawable/price_bg"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="@dimen/_40mdp"
+                android:paddingVertical="@dimen/_6mdp"
+                android:text="1111"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16mdp"
+                android:transitionName="courts"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hourPrice" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/contactHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:fontFamily="@font/nunito_bold"
+                android:paddingHorizontal="@dimen/_20mdp"
+                android:text="Contact Details"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/courtsCount" />
+
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/phoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_semibolditalic"
+                android:paddingHorizontal="@dimen/_6mdp"
+                android:paddingVertical="@dimen/_4mdp"
+                android:text="7976051917"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12mdp"
                 android:transitionName="phoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="@dimen/_20mdp"
-                app:layout_constraintTop_toBottomOf="@+id/countHead"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintHorizontal_bias="0.33"
+                app:layout_constraintStart_toEndOf="@id/phoneNumberLogo"
+                app:layout_constraintTop_toBottomOf="@+id/contactHead" />
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/phoneNumberLogo"
+                android:layout_width="@dimen/_20mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/ic_baseline_phone_24"
+                app:layout_constraintTop_toTopOf="@id/phoneNumber"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="32dp"
+                android:layout_marginLeft="@dimen/_40mdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/phoneNumber"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/hourPrice"
-                android:transitionName="price"
+                android:id="@+id/emailId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="@dimen/_12mdp"
-                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_semibolditalic"
+                android:paddingHorizontal="@dimen/_6mdp"
+                android:paddingVertical="@dimen/_4mdp"
+                android:text="neerajchatterjee2301@gmail.com"
                 android:textColor="@color/black"
-                android:paddingHorizontal="@dimen/_20mdp"
-                android:layout_marginTop="@dimen/_20mdp"
-                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
-                app:layout_constraintStart_toStartOf="@+id/priceHead"
-                app:layout_constraintEnd_toEndOf="parent"/>
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/courtsCount"
                 android:textSize="@dimen/_12mdp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginTop="@dimen/_20mdp"
-                android:transitionName="courts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                app:layout_constraintTop_toBottomOf="@+id/hourPrice"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                android:transitionName="phoneNumber"
+                app:layout_constraintHorizontal_bias="0.33"
+                app:layout_constraintStart_toEndOf="@id/emailIdLogo"
+                app:layout_constraintTop_toBottomOf="@+id/phoneNumberLogo" />
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/emailIdLogo"
+                android:layout_width="@dimen/_20mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_baseline_email_24"
+                app:layout_constraintTop_toBottomOf="@id/phoneNumberLogo"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="32dp"
+                android:layout_marginLeft="@dimen/_40mdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/emailId"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailId" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="347dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="103dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
