@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.lenderactivities
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,11 +13,11 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.OptionalPendingResult
 import com.google.android.gms.common.api.ResultCallback
-import com.google.android.gms.common.api.Status
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
+import com.shrutislegion.sportify.RegistrationActivity
 import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.fragment_user.view.*
 
@@ -56,7 +56,8 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
         val view: View = inflater.inflate(R.layout.fragment_user, container, false)
 
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
-        googleApiClient = GoogleApiClient.Builder(requireContext()).enableAutoManage(LenderHomeActivity(), this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build()
+        googleApiClient = GoogleApiClient.Builder(requireContext()).enableAutoManage(
+            LenderHomeActivity(), this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build()
         mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
 
         val user = FirebaseAuth.getInstance().currentUser

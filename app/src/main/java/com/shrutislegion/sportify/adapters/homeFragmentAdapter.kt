@@ -1,7 +1,6 @@
 package com.shrutislegion.sportify.adapters
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +19,7 @@ import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.shrutislegion.sportify.LenderSharedActivity
+import com.shrutislegion.sportify.lenderactivities.LenderSharedActivity
 import androidx.core.util.Pair
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 

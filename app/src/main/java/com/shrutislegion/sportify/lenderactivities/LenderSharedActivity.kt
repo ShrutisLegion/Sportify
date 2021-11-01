@@ -1,10 +1,10 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.lenderactivities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_add_complex.*
+import com.shrutislegion.sportify.R
 import kotlinx.android.synthetic.main.activity_lender_shared.*
 import kotlinx.android.synthetic.main.activity_lender_shared.complexDescription
 import kotlinx.android.synthetic.main.activity_lender_shared.complexLocation

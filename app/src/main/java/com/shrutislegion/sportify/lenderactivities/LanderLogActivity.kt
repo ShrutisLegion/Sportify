@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.lenderactivities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.doas.landerDaos
 import com.shrutislegion.sportify.modules.lander
 import kotlinx.android.synthetic.main.activity_lander_log.*

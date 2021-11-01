@@ -11,14 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
-            android:name=".LenderSharedActivity"
+            android:name=".lenderactivities.LenderSharedActivity"
             android:exported="false" />
         <activity
-            android:name=".LanderLogActivity"
+            android:name=".lenderactivities.LanderLogActivity"
             android:label="Register Your Complex" />
-        <activity android:name=".LenderHomeActivity" />
+        <activity android:name=".lenderactivities.LenderHomeActivity" />
         <activity
-            android:name=".AddComplexActivity"
+            android:name=".lenderactivities.AddComplexActivity"
             android:label="Add Your Complex" />
         <activity
             android:name=".RegistrationActivity"

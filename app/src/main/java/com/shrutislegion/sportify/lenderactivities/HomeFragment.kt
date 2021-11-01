@@ -1,26 +1,21 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.lenderactivities
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.AttributeSet
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.homeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
-import kotlinx.android.synthetic.main.item_complexdetails.view.*
-import java.lang.IndexOutOfBoundsException
 
 
 // TODO: Rename parameter arguments, choose names that match

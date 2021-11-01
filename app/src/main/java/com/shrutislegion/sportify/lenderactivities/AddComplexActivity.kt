@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.lenderactivities
 
 import android.content.Intent
 import android.net.Uri
@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.activity_add_complex.*
 

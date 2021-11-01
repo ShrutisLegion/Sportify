@@ -1,31 +1,13 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.lenderactivities
 
-import android.app.ActivityOptions
 import android.app.Fragment
-import android.content.Intent
-import android.content.IntentFilter.create
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import androidx.core.app.ActivityOptionsCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
-import com.shrutislegion.sportify.adapters.homeFragmentAdapter
-import kotlinx.android.synthetic.main.activity_add_complex.*
-import kotlinx.android.synthetic.main.fragment_user.*
-import kotlinx.android.synthetic.main.item_complexdetails.*
-import java.net.URI.create
-import androidx.core.util.Pair
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import kotlinx.android.synthetic.main.item_complexdetails.view.*
+import com.shrutislegion.sportify.R
 
 
 @Suppress("DEPRECATION")
@@ -55,7 +37,7 @@ class LenderHomeActivity : AppCompatActivity() {
             var fragment: Fragment? = null
             when(it){
                 R.id.home -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commitAllowingStateLoss()
-                R.id.booked-> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commitAllowingStateLoss()
+                R.id.booked -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commitAllowingStateLoss()
                 R.id.chats -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ChatsFragment()).commitAllowingStateLoss()
                 R.id.user -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, UserFragment()).commitAllowingStateLoss()
             }
