@@ -8,5 +8,6 @@ data class ComplexInfo(
     var location: String? = null,
     var imageUri: String?=null,
     var phone: String?=null,
-    var description: String?=null
+    var description: String?=null,
+    var UId: String?=null
 )

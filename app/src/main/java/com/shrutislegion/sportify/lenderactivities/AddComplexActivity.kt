@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.activity_add_complex.*
 class AddComplexActivity : AppCompatActivity() {
 
     lateinit var database: FirebaseDatabase
-    lateinit var databaseref: DatabaseReference
     lateinit var storage: FirebaseStorage
     lateinit var auth: FirebaseAuth
     var uri: Uri? = null
@@ -32,7 +31,7 @@ class AddComplexActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_complex)
 
-        databaseref = FirebaseDatabase.getInstance().getReference("Lenders")
+        database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
         database = FirebaseDatabase.getInstance()
@@ -80,39 +79,40 @@ class AddComplexActivity : AppCompatActivity() {
                     Toast.makeText(this, "Image Uploaded Successfully!", Toast.LENGTH_LONG).show()
 
                     reference.getDownloadUrl().addOnSuccessListener(OnSuccessListener<Uri>() {
-                        database.getReference().child("Lenders")
-                            .child(FirebaseAuth.getInstance().getUid().toString())
-                            .child("Complexes").child(name).child("imageUri")
-                            .setValue(it.toString())
                         uriString = it.toString()
+                        Toast.makeText(this,"Image downloaded successfully", Toast.LENGTH_LONG).show()
+                        val User =
+                            ComplexInfo(
+                                name,
+                                type,
+                                price.toString(),
+                                courts.toString(),
+                                location,
+                                uriString,
+                                phone,
+                                description,
+                                FirebaseAuth.getInstance().uid.toString()
+                            )
+
+                        User.imageUri = uriString
+
+                        val complexID = FirebaseDatabase.getInstance()
+                            .getReference("Lenders")
+                            .child(FirebaseAuth.getInstance().uid.toString())
+                            .child("Complexes").push().key
+
+                        FirebaseDatabase.getInstance().
+                            getReference("Lenders").
+                            child(FirebaseAuth.getInstance().uid.toString())
+                            .child("Complexes")
+                            .child(complexID!!).setValue(User)
+
+                        FirebaseDatabase.getInstance().getReference("All Complexes").child(complexID!!).setValue(User)
                     })
                 })
             } else {
                 Toast.makeText(this, "Please enter all the details!", Toast.LENGTH_SHORT).show()
             }
-            if (name.isNotEmpty() && type.isNotEmpty() && courts.toString()
-                    .isNotEmpty() && price.toString().isNotEmpty() && location.isNotEmpty() && phone.isNotEmpty() && description.isNotEmpty()
-            ) {
-                val User =
-                    ComplexInfo(
-                        name,
-                        type,
-                        price.toString(),
-                        courts.toString(),
-                        location,
-                        uriString,
-                        phone,
-                        description
-                    )
-                databaseref.child(FirebaseAuth.getInstance().getUid().toString()).child("Complexes")
-                    .child(name).setValue(User).addOnSuccessListener {
-                        Toast.makeText(this, "Successfully inserted data!!", Toast.LENGTH_LONG)
-                            .show()
-                    }.addOnFailureListener {
-                        Toast.makeText(this, "Unsuccessful!!", Toast.LENGTH_LONG).show()
-                    }
-            } else Toast.makeText(this, "Please enter all the required details!", Toast.LENGTH_LONG)
-                .show()
 
             startActivity(Intent(this, LenderHomeActivity::class.java))
             finish()

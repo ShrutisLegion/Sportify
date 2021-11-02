@@ -104,7 +104,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
                 // set icon for dialog box
                 it.setIcon(R.drawable.ic_baseline_warning_24)
 
-                // perform positive action
+                // perform positive action which deletes details from the lender activity and player activity
                 it.setPositiveButton("YES"){
                     dialogInterface, which->
                     FirebaseDatabase.getInstance().reference
@@ -113,7 +113,21 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
                         .child("Complexes")
                         .child(getRef(position).key.toString())
                         .removeValue().addOnCompleteListener{
-                            Toast.makeText(holder.name.context, "Complex details deleted successfully !!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                holder.name.context,
+                                "Complex details deleted successfully !!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    FirebaseDatabase.getInstance()
+                        .getReference("All Complexes")
+                        .child(getRef(position).key.toString())
+                        .removeValue().addOnCompleteListener {
+                            Toast.makeText(
+                                holder.name.context,
+                                "Complex details deleted from All complexes also !!",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                 }
 
