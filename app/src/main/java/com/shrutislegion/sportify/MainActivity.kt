@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.cuberto.liquid_swipe.LiquidPager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
 
         if(user!=null){
+            Toast.makeText(this,"User in not null!",Toast.LENGTH_LONG).show()
             val userID = user.uid
             val db = Firebase.firestore
             var player = false
@@ -41,8 +43,11 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     result ->
                     for(document in result){
-                        if(document.id === userID){
+                        if(document.id == userID){
                             player = true
+                            Toast.makeText(this,"User in users!",Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this, PlayerHomeActivity::class.java))
+                            finish()
                             break
                         }
                     }
@@ -54,21 +59,24 @@ class MainActivity : AppCompatActivity() {
                     .get()
                     .addOnSuccessListener { result ->
                         for (document in result) {
-                            if (document.id === userID) {
+                            if (document.id == userID) {
+                                Toast.makeText(this,"User in Landers!",Toast.LENGTH_LONG).show()
                                 lender = true
+                                startActivity(Intent(this, LenderHomeActivity::class.java))
+                                finish()
                                 break
                             }
                         }
                     }
             }
-            if(player){
-                startActivity(Intent(this, PlayerHomeActivity::class.java))
-                finish()
-            }
-            else{
-                startActivity(Intent(this, LenderHomeActivity::class.java))
-                finish()
-            }
+//            if(player){
+//                startActivity(Intent(this, PlayerHomeActivity::class.java))
+//                finish()
+//            }
+//            else{
+//                startActivity(Intent(this, LenderHomeActivity::class.java))
+//                finish()
+//            }
 
         }
 
