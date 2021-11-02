@@ -101,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
             val user = User(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
             val usersDao = UserDao()
             usersDao.addUser(user)
-            val mainActivityIntent = Intent(this, LenderHomeActivity::class.java)
+            val mainActivityIntent = Intent(this, PlayerHomeActivity::class.java)
             startActivity(mainActivityIntent)
             finish()
         } else {

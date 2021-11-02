@@ -111,7 +111,7 @@ class AddComplexActivity : AppCompatActivity() {
                     })
                 })
             } else {
-                Toast.makeText(this, "Please enter all the details!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please upload the complex image !!", Toast.LENGTH_SHORT).show()
             }
 
             startActivity(Intent(this, LenderHomeActivity::class.java))

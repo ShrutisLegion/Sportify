@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.lenderactivities.LenderSharedActivity
 import androidx.core.util.Pair
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.storage.FirebaseStorage
 
 
 class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
@@ -128,6 +129,15 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
                                 "Complex details deleted from All complexes also !!",
                                 Toast.LENGTH_LONG
                             ).show()
+                        }
+
+                    // deletes the image stored in Firebase Storage from the Url
+                    FirebaseStorage.getInstance().getReferenceFromUrl(model.imageUri!!).delete()
+                        .addOnSuccessListener {
+                            Toast.makeText(holder.name.context,"Image deleted Successfully !!", Toast.LENGTH_LONG).show()
+                        }
+                        .addOnFailureListener{
+                            Toast.makeText(holder.name.context, "Unsuccessful", Toast.LENGTH_LONG).show()
                         }
                 }
 
