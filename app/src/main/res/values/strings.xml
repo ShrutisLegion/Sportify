@@ -13,4 +13,6 @@
     <string name="add_your_complex">ADD YOUR COMPLEX</string>
     <string name="delete_confirmation">Are you sure you want to delete the complex?</string>
     <string name="todo" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

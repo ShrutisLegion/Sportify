@@ -10,8 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.adapters.Adapter
-import com.shrutislegion.sportify.lenderactivities.LanderLogActivity
 import com.shrutislegion.sportify.lenderactivities.LenderHomeActivity
+import com.shrutislegion.sportify.playeractivities.PlayerHomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -69,14 +69,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
             }
-//            if(player){
-//                startActivity(Intent(this, PlayerHomeActivity::class.java))
-//                finish()
-//            }
-//            else{
-//                startActivity(Intent(this, LenderHomeActivity::class.java))
-//                finish()
-//            }
 
         }
 

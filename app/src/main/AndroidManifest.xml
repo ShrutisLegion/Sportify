@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
-            android:name=".PlayerHomeActivity"
+            android:name=".playeractivities.PlayerHomeActivity"
             android:exported="true" />
         <activity
             android:name=".lenderactivities.LenderSharedActivity"
