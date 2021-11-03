@@ -152,6 +152,9 @@ dependencies {
     // FOR FAB in Home Fragment
     implementation 'com.github.JediBurrell:customFloatingActionButton:-SNAPSHOT'
 
+    // For Rating Bar
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
+
 
 
 }

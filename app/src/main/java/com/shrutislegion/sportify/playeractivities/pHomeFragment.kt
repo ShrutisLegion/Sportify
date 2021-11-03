@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.shrutislegion.sportify.R
+import kotlinx.android.synthetic.main.fragment_p_home.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,6 +36,8 @@ class pHomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view: View = inflater.inflate(R.layout.fragment_p_home, container, false)
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_p_home, container, false)
     }

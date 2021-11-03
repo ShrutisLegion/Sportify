@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <com.google.android.material.transformation.TransformationChildCard
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:strokeWidth="4dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="25dp"
+        app:state_dragged="true"
+        tools:ignore="MissingConstraints"
+        android:focusable="true"
+        android:padding="@dimen/_25mdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--            android:paddingBottom="@dimen/_10mdp-->
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/complexImage"
+                android:scaleType="centerCrop"
+                android:transitionName="image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150mdp"
+                android:src="@drawable/defaultimg"
+                android:alpha=".85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/nameOfComplex"
+                android:transitionName="complexName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SNV COMPLEX"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_20mdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/complexImage"
+                app:layout_constraintEnd_toEndOf="@+id/complexImage"
+                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintStart_toStartOf="@+id/complexImage"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.893" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sportType"
+                android:transitionName="sportType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Cricket"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.049"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complexImage" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/complexLocation"
+                android:transitionName="location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4mdp"
+                android:text="Location"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sportType" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/complexDescription"
+                android:transitionName="description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4mdp"
+                android:text="Description"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.MaterialRatingBar.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="@dimen/_12mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/Share"
+                android:layout_width="32dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="@dimen/_12mdp"
+                android:src="@drawable/ic_baseline_share_24"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.849"
+                app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/hourPrice"
+                android:transitionName="price"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                app:layout_constraintBottom_toTopOf="@+id/courtsCount"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/courtsCount"
+                android:transitionName="courts"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/hourPrice"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/phoneNumber"
+                android:transitionName="phoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/hourPrice"
+                tools:ignore="MissingConstraints" />
+
+
+            <!--            <com.google.android.material.textview.MaterialTextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="Description........................."-->
+            <!--                android:layout_marginTop="@dimen/_4mdp"-->
+            <!--                android:textAppearance="?attr/textAppearanceBody2"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.082"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/description" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.transformation.TransformationChildCard>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_alignParentBottom="true" />
+    <!--    <ImageView-->
+    <!--        android:id="@+id/complexImage"-->
+    <!--        android:layout_width="159dp"-->
+    <!--        android:layout_height="199dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/complexLocation"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/nameOfComplex"-->
+    <!--        android:layout_width="134dp"-->
+    <!--        android:layout_height="43dp"-->
+    <!--        android:ems="10"-->
+    <!--        android:inputType="textPersonName"-->
+    <!--        android:text="Name"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/sportType"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline2"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/guideline3" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/sportType"-->
+    <!--        android:layout_width="134dp"-->
+    <!--        android:layout_height="43dp"-->
+    <!--        android:ems="10"-->
+    <!--        android:inputType="textPersonName"-->
+    <!--        android:text="Name"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/hourPrice"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline2"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/complexLocation"-->
+    <!--        android:layout_width="134dp"-->
+    <!--        android:layout_height="43dp"-->
+    <!--        android:ems="10"-->
+    <!--        android:inputType="textPersonName"-->
+    <!--        android:text="Name"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/guideline4" />-->
+
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+    <!--        android:id="@+id/guideline2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical"-->
+    <!--        app:layout_constraintGuide_begin="181dp" />-->
+
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+    <!--        android:id="@+id/guideline3"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintGuide_begin="14dp" />-->
+
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+    <!--        android:id="@+id/guideline4"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintGuide_begin="218dp" />-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/deleteButton"-->
+    <!--        android:layout_width="27dp"-->
+    <!--        android:layout_height="23dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline7"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/guideline4"-->
+    <!--        app:srcCompat="@drawable/ic_delete" />-->
+
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+    <!--        android:id="@+id/guideline7"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical"-->
+    <!--        app:layout_constraintGuide_begin="336dp" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
