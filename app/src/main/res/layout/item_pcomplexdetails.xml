@@ -69,13 +69,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexImage" />
 
+            <ImageView
+                android:layout_width="@dimen/_14mdp"
+                android:layout_height="@dimen/_16mdp"
+                android:src="@drawable/ic_baseline_location_on_24"
+                android:translationZ="@dimen/_4mdp"
+                app:layout_constraintBottom_toTopOf="@+id/complexDescription"
+                app:layout_constraintEnd_toStartOf="@+id/complexLocation"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sportType" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
                 android:transitionName="location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4mdp"
+                android:layout_marginLeft="@dimen/_20mdp"
                 android:text="Location"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_gravity = "center_horizontal"
+                android:maxWidth="@dimen/_250mdp"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,15 +101,21 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexDescription"
-                android:transitionName="description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_14mdp"
                 android:layout_marginTop="@dimen/_4mdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_semibold"
+                android:maxWidth="@dimen/_250mdp"
+                android:maxLines="3"
                 android:text="Description"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
+                android:transitionName="description"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintHorizontal_bias="0.023"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
 
