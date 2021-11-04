@@ -50,7 +50,7 @@ class AddComplexActivity : AppCompatActivity() {
             (typeOfSport.text!!.isEmpty()) ||
             (totalCourts.text!!.isEmpty()) ||
             (pricePerHour.text!!.isEmpty()) ||
-            (pcomplexLocation.text!!.isEmpty()) ||
+            (complexLocation.text!!.isEmpty()) ||
             (phoneNumber.text!!.isEmpty()) ||
             (complexDescription.text!!.isEmpty())
         ){
@@ -64,7 +64,7 @@ class AddComplexActivity : AppCompatActivity() {
             val type = typeOfSport.getText().toString()
             val courts = totalCourts.getText().toString().toInt()
             val price = pricePerHour.getText().toString().toInt()
-            val location = pcomplexLocation.getText().toString()
+            val location = complexLocation.getText().toString()
             var uriString: String = ""
             val phone = phoneNumber.getText().toString()
             val description = complexDescription.text.toString()
@@ -90,7 +90,8 @@ class AddComplexActivity : AppCompatActivity() {
                                 uriString,
                                 phone,
                                 description,
-                                FirebaseAuth.getInstance().uid.toString()
+                                FirebaseAuth.getInstance().uid.toString(),
+                                FirebaseAuth.getInstance().currentUser!!.email.toString()
                             )
 
                         User.imageUri = uriString

@@ -156,6 +156,9 @@ dependencies {
     // For Rating Bar
     implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
+    // for blurr view
+    implementation 'com.eightbitlab:blurview:1.6.6'
+
 
 
 }

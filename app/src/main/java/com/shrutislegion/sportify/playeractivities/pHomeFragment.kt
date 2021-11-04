@@ -1,34 +1,25 @@
 package com.shrutislegion.sportify.playeractivities
 
 import android.content.Context
-import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.AttributeSet
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import androidx.constraintlayout.widget.ConstraintSet.GONE
-import androidx.databinding.adapters.SeekBarBindingAdapter.setProgress
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.common.collect.ComparisonChain.start
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
-import io.reactivex.rxjava3.internal.schedulers.SchedulerPoolFactory.start
-import io.reactivex.rxjava3.schedulers.Schedulers.start
+import eightbitlab.com.blurview.RenderScriptBlur
 import kotlinx.android.synthetic.main.activity_lander_log.*
 import kotlinx.android.synthetic.main.fragment_p_home.*
 import kotlinx.android.synthetic.main.fragment_p_home.view.*
 import kotlinx.android.synthetic.main.item_pcomplexdetails.view.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,9 +78,10 @@ class pHomeFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_p_home, container, false)
         view.precView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
 
-
+        // Progress bar's progress is updated
         view.progressBarPHome.progress = i
         countDownTimer = object : CountDownTimer(2000, 1000) {
+
             override fun onTick(millisUntilFinished: Long) {
                 i++
                 view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))

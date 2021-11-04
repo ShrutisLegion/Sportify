@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
+            android:name=".playeractivities.PlayerSharedActivity"
+            android:exported="true" />
+        <activity
             android:name=".playeractivities.PlayerHomeActivity"
             android:exported="true" />
         <activity
