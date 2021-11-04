@@ -97,12 +97,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
 
             <me.zhanghai.android.materialratingbar.MaterialRatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/complexRatingBar"
                 style="@style/Widget.MaterialRatingBar.RatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="4dp"
+                android:isIndicator="true"
+                android:stepSize="0.5"
+                android:progressTint="#123282"
+                android:progressBackgroundTint="@color/colorAccent"
+                android:secondaryProgressTint="#123282"
                 android:layout_marginBottom="@dimen/_12mdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +125,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.849"
-                app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                app:layout_constraintStart_toEndOf="@+id/complexRatingBar"
                 app:layout_constraintTop_toBottomOf="@+id/complexDescription"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -158,6 +163,24 @@
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/hourPrice"
                 tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressBarPCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="148dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/black"
+                app:indeterminateAnimationType="disjoint"
+                app:indicatorColor="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="@+id/complexImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:visibility="visible"
+                app:trackColor="#123282" />
 
 
             <!--            <com.google.android.material.textview.MaterialTextView-->

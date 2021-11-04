@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.shrutislegion.sportify.R
 import kotlinx.android.synthetic.main.activity_lender_shared.*
 import kotlinx.android.synthetic.main.activity_lender_shared.complexDescription
-import kotlinx.android.synthetic.main.activity_lender_shared.complexLocation
+import kotlinx.android.synthetic.main.activity_lender_shared.pcomplexLocation
 import kotlinx.android.synthetic.main.activity_lender_shared.phoneNumber
 
 class LenderSharedActivity : AppCompatActivity() {
@@ -41,11 +41,11 @@ class LenderSharedActivity : AppCompatActivity() {
 
         // To update the textViews and load image in the Shared activity
         // Used glide library to load image from the Uri stored in Firebase Realtime database
-        Glide.with(this).load(imageUri).placeholder(R.drawable.loading_image).into(complexImage)
-        nameOfComplex.setText("$name")
+        Glide.with(this).load(imageUri).placeholder(R.drawable.loading_image).into(pcomplexImage)
+        pnameOfComplex.setText("$name")
         phoneNumber.setText("$phone")
-        sportType.setText("$sport")
-        complexLocation.setText("$location")
+        psportType.setText("$sport")
+        pcomplexLocation.setText("$location")
         complexDescription.setText("$description")
         hourPrice.setText("₹ $price")
         courtsCount.setText("$courts")

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -33,12 +34,12 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
     inner class myViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         // creating viewHolder and getting all the required views by their Ids
-        val name = itemView.findViewById<TextView>(R.id.nameOfComplex)
-        val type = itemView.findViewById<TextView>(R.id.sportType)
+        val name = itemView.findViewById<TextView>(R.id.pnameOfComplex)
+        val type = itemView.findViewById<TextView>(R.id.psportType)
         val courts = itemView.findViewById<TextView>(R.id.courtsCount)
         val price = itemView.findViewById<TextView>(R.id.hourPrice)
-        val location = itemView.findViewById<TextView>(R.id.complexLocation)
-        var image = itemView.findViewById<ImageView>(R.id.complexImage)
+        val location = itemView.findViewById<TextView>(R.id.pcomplexLocation)
+        var image = itemView.findViewById<ImageView>(R.id.pcomplexImage)
         var delete = itemView.findViewById<ImageView>(R.id.deleteButton)
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
         var description = itemView.findViewById<TextView>(R.id.complexDescription)

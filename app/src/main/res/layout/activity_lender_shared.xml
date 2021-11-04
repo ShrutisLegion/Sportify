@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/complexImage"
+                android:id="@+id/pcomplexImage"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_200mdp"
                 android:scaleType="centerCrop"
@@ -33,7 +33,7 @@
                 app:strokeWidth="@dimen/_4mdp" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/nameOfComplex"
+                android:id="@+id/pnameOfComplex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -47,11 +47,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.085"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexImage" />
+                app:layout_constraintTop_toBottomOf="@+id/pcomplexImage" />
 
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/sportType"
+                android:id="@+id/psportType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_180mdp"
@@ -80,10 +80,10 @@
                 android:src="@drawable/ic_baseline_location_on_24"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
+                app:layout_constraintTop_toBottomOf="@+id/pnameOfComplex" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/complexLocation"
+                android:id="@+id/pcomplexLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-20dp"
@@ -94,7 +94,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/img"
-                app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
+                app:layout_constraintTop_toBottomOf="@+id/pnameOfComplex" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/descHead"
@@ -109,7 +109,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/pcomplexLocation" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexDescription"

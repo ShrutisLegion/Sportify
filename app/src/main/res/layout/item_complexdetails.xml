@@ -30,7 +30,7 @@
                 android:layout_height="40dp"
                 android:src="@drawable/ic_baseline_delete_forever_24"
                 android:translationZ="@dimen/_4mdp"
-                app:layout_constraintBottom_toBottomOf="@+id/complexImage"
+                app:layout_constraintBottom_toBottomOf="@+id/pcomplexImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.953"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
                 app:layout_constraintVertical_bias="0.146" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/complexImage"
+                android:id="@+id/pcomplexImage"
                 android:scaleType="centerCrop"
                 android:transitionName="image"
                 android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/nameOfComplex"
+                android:id="@+id/pnameOfComplex"
                 android:transitionName="complexName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,15 +58,15 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_20mdp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/complexImage"
-                app:layout_constraintEnd_toEndOf="@+id/complexImage"
+                app:layout_constraintBottom_toBottomOf="@+id/pcomplexImage"
+                app:layout_constraintEnd_toEndOf="@+id/pcomplexImage"
                 app:layout_constraintHorizontal_bias="0.087"
-                app:layout_constraintStart_toStartOf="@+id/complexImage"
+                app:layout_constraintStart_toStartOf="@+id/pcomplexImage"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.893" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/sportType"
+                android:id="@+id/psportType"
                 android:transitionName="sportType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,10 +78,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.049"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexImage" />
+                app:layout_constraintTop_toBottomOf="@+id/pcomplexImage" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/complexLocation"
+                android:id="@+id/pcomplexLocation"
                 android:transitionName="location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.054"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sportType" />
+                app:layout_constraintTop_toBottomOf="@+id/psportType" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexDescription"
@@ -106,7 +106,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.054"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/pcomplexLocation" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/Share"

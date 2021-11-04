@@ -10,7 +10,6 @@ import android.widget.Toast
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -51,7 +50,7 @@ class AddComplexActivity : AppCompatActivity() {
             (typeOfSport.text!!.isEmpty()) ||
             (totalCourts.text!!.isEmpty()) ||
             (pricePerHour.text!!.isEmpty()) ||
-            (complexLocation.text!!.isEmpty()) ||
+            (pcomplexLocation.text!!.isEmpty()) ||
             (phoneNumber.text!!.isEmpty()) ||
             (complexDescription.text!!.isEmpty())
         ){
@@ -65,7 +64,7 @@ class AddComplexActivity : AppCompatActivity() {
             val type = typeOfSport.getText().toString()
             val courts = totalCourts.getText().toString().toInt()
             val price = pricePerHour.getText().toString().toInt()
-            val location = complexLocation.getText().toString()
+            val location = pcomplexLocation.getText().toString()
             var uriString: String = ""
             val phone = phoneNumber.getText().toString()
             val description = complexDescription.text.toString()
