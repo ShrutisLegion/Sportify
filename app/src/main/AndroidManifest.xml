@@ -12,29 +12,38 @@
         android:theme="@style/Theme.Sportify">
         <activity
             android:name=".playeractivities.PlayerSharedActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:noHistory="true" />
         <activity
             android:name=".playeractivities.PlayerHomeActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:noHistory="true"/>
         <activity
             android:name=".lenderactivities.LenderSharedActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".lenderactivities.LanderLogActivity"
+            android:noHistory="true"
             android:label="Register Your Complex" />
-        <activity android:name=".lenderactivities.LenderHomeActivity" />
+        <activity android:name=".lenderactivities.LenderHomeActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".lenderactivities.AddComplexActivity"
+            android:noHistory="true"
             android:label="Add Your Complex" />
         <activity
             android:name=".RegistrationActivity"
-            android:label="Welcome to Sportify" />
+            android:label="Welcome to Sportify"
+            android:noHistory="true"/>
         <activity
-            android:name=".LoginActivity"
-            android:label="Sign In" />
+            android:name=".playeractivities.PlayerLogActivity"
+            android:label="Sign In"
+            android:noHistory="true"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

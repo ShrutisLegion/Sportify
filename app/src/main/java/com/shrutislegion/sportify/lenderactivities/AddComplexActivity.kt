@@ -198,5 +198,10 @@ class AddComplexActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, LenderHomeActivity::class.java))
+    }
+
 
 }

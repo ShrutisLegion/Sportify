@@ -18,6 +18,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
+import com.shrutislegion.sportify.RegistrationActivity
 import com.shrutislegion.sportify.doas.landerDaos
 import com.shrutislegion.sportify.modules.lander
 import kotlinx.android.synthetic.main.activity_lander_log.*
@@ -112,5 +113,10 @@ class LanderLogActivity : AppCompatActivity() {
             progressBar.visibility = View.GONE
 //            Toast.makeText(this, "Try Again!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, RegistrationActivity::class.java))
     }
 }

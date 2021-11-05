@@ -1,5 +1,6 @@
 package com.shrutislegion.sportify.playeractivities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -47,5 +48,10 @@ class PlayerSharedActivity : AppCompatActivity() {
         hourPrice.setText("₹ $price")
         courtsCount.setText("$courts")
         emailId.setText("$email")
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, PlayerHomeActivity::class.java))
     }
 }
