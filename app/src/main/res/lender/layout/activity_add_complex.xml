@@ -16,38 +16,39 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_editor_absoluteY="0dp"
+            tools:layout_conversion_absoluteWidth="411dp"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_conversion_absoluteWidth="411dp" >
+            tools:layout_editor_absoluteY="0dp">
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageComplex"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_250mdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/add_complex1"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/complexNameLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Complex Name"
-                app:startIconDrawable="@drawable/ic_baseline_home_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
-                android:layout_marginTop="@dimen/_10mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageComplex"
+                app:startIconDrawable="@drawable/ic_baseline_home_24"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/complexName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="51dp"
                     tools:ignore="InvalidId" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -57,25 +58,25 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Phone Number"
-                app:prefixText="+91"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
-                app:startIconDrawable="@drawable/ic_baseline_phone_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
-                android:layout_marginTop="@dimen/_10mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexNameLayout"
+                app:prefixText="+91"
+                app:startIconDrawable="@drawable/ic_baseline_phone_24"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phoneNumber"
-                    android:inputType="phone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,15 +85,15 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Sport Name"
-                app:startIconDrawable="@drawable/ic_baseline_sports_volleyball_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
-                android:layout_marginTop="@dimen/_10mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PhoneNumberLayout"
+                app:startIconDrawable="@drawable/ic_baseline_sports_volleyball_24"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -107,22 +108,22 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Total Courts"
-                app:startIconDrawable="@drawable/ic_baseline_filter_none_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
-                android:layout_marginTop="@dimen/_10mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/TypeOfSportLayout"
+                app:startIconDrawable="@drawable/ic_baseline_filter_none_24"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/totalCourts"
-                    android:inputType="number"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,22 +132,22 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Price Per Hour"
-                app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
-                android:layout_marginTop="@dimen/_10mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/TotalCourtsLayout"
+                app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pricePerHour"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,15 +156,15 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Location"
-                app:startIconDrawable="@drawable/ic_baseline_house_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
-                android:layout_marginTop="@dimen/_10mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PriceLayout"
+                app:startIconDrawable="@drawable/ic_baseline_house_24"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -178,15 +179,15 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_240mdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Description"
-                app:startIconDrawable="@drawable/ic_baseline_description_24"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
-                android:layout_marginTop="@dimen/_10mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/LocationLayout"
+                app:startIconDrawable="@drawable/ic_baseline_description_24"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -201,51 +202,63 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_200mdp"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
-                tools:ignore="MissingConstraints"
-                android:visibility="gone"
-                />
+                tools:ignore="MissingConstraints" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/floatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:layout_gravity="bottom|right"
-                app:backgroundTint="@color/gradStart"
+                android:layout_margin="16dp"
                 android:contentDescription="Image"
-                app:rippleColor="@color/white"
                 android:text="Add Image"
-                app:layout_constraintTop_toBottomOf="@+id/Description"
-                app:layout_constraintStart_toStartOf="parent"
+                app:backgroundTint="@color/gradStart"
+                app:icon="@drawable/ic_baseline_camera_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:icon="@drawable/ic_baseline_camera_24"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Description"
+                app:rippleColor="@color/white" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/Submit"
                 style="@style/Widget.MaterialComponents.Button.Icon"
-                app:icon="@drawable/ic_baseline_playlist_add_check_24"
-                android:layout_marginTop="@dimen/_10mdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:backgroundTint="#123282"
+                android:layout_marginTop="@dimen/_10mdp"
+                android:elevation="2dp"
+                android:onClick="submitComplexDetails"
                 android:text="Submit Details"
                 android:textStyle="bold"
-                android:onClick="submitComplexDetails"
-                app:layout_constraintTop_toBottomOf="@+id/uploadedImage"
-                app:layout_constraintStart_toStartOf="parent"
+                app:backgroundTint="#123282"
+                app:icon="@drawable/ic_baseline_playlist_add_check_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:elevation="2dp"
-                app:rippleColor="@color/white"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/uploadedImage"
+                app:rippleColor="@color/white" />
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:visibility="gone"
+                android:id="@+id/addComplexLoading"
+                style="@style/SpinKitView.Large.FoldingCube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="672dp"
+                app:SpinKit_Color="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageComplex" />
 
             <View
+                android:id="@+id/view2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20mdp"
-                app:layout_constraintTop_toBottomOf="@+id/Submit"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/Submit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

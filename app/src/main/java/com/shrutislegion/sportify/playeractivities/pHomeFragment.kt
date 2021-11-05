@@ -79,19 +79,19 @@ class pHomeFragment : Fragment() {
         view.precView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
 
         // Progress bar's progress is updated
-        view.progressBarPHome.progress = i
+//        view.progressBarPHome.progress = i
         countDownTimer = object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                i++
-                view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))
+//                i++
+//                view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))
             }
 
             override fun onFinish() {
                 //Do what you want
-                i++
+//                i++
                 view.progressBarPHome.setVisibility(View.GONE)
-                view.progressBarPHome.setProgress(100)
+//                view.progressBarPHome.setProgress(100)
             }
         }
         countDownTimer.start()

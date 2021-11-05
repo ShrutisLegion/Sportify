@@ -159,6 +159,9 @@ dependencies {
     // for blurr view
     implementation 'com.eightbitlab:blurview:1.6.6'
 
+    // Loading Android Spin-kit
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
 
 
 }

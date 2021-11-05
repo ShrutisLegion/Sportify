@@ -3,6 +3,7 @@ package com.shrutislegion.sportify.lenderactivities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.AttributeSet
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.homeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
+import kotlinx.android.synthetic.main.fragment_p_home.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,6 +35,7 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var adapter: homeFragmentAdapter
+    lateinit var countDownTimer: CountDownTimer
 //    lateinit var recView:RecyclerView
 
     // To override LinearLayoutManager by Wrapper, as it crashes the application sometimes
@@ -79,6 +82,24 @@ class HomeFragment : Fragment() {
         view.addComplexButton.setOnClickListener{
             startActivity(Intent(context, AddComplexActivity::class.java))
         }
+
+        // Progress bar's progress is updated
+//        view.progressBarPHome.progress = i
+        countDownTimer = object : CountDownTimer(2000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+//                i++
+//                view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))
+            }
+
+            override fun onFinish() {
+                //Do what you want
+//                i++
+                view.progressBarLHome.setVisibility(View.GONE)
+//                view.progressBarPHome.setProgress(100)
+            }
+        }
+        countDownTimer.start()
 
         // Firebase recycler view is used here
         // options contains the collection of the data that has to be inserted in the recyclerVIew

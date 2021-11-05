@@ -2,10 +2,12 @@ package com.shrutislegion.sportify.adapters
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -21,6 +23,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.lenderactivities.LenderSharedActivity
 import androidx.core.util.Pair
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.storage.FirebaseStorage
 
@@ -43,6 +48,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
         var description = itemView.findViewById<TextView>(R.id.complexDescription)
         var card = itemView.findViewById<CardView>(R.id.card)
+        var progressBarLCard = itemView.findViewById<ProgressBar>(R.id.progressBarLCard)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -62,7 +68,32 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         holder.phone.setText(model.phone)
 
         // Glide used to load the image from the uri stored in firebase
-        Glide.with(holder.image.context).load(model.imageUri).override(600,400).placeholder(R.drawable.loading_image).into(holder.image)
+        Glide.with(holder.image.context).load(model.imageUri).listener(object :
+            RequestListener<Drawable> {
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable>?,
+                dataSource: com.bumptech.glide.load.DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                holder.progressBarLCard.visibility = View.GONE
+
+                return false
+            }
+
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                return false
+            }
+        })
+            .override(600,400)
+            .placeholder(R.drawable.loading_image)
+            .into(holder.image)
 
         //on click on card and start the Lender Share activity
         holder.card.setOnClickListener{
