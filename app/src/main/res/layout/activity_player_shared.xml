@@ -7,6 +7,11 @@
     tools:context=".playeractivities.PlayerSharedActivity">
 
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:layout_marginBottom="501dp"
                 android:fontFamily="@font/nunito_extrabold"
                 android:paddingLeft="@dimen/_20mdp"
                 android:text="SNV COMPLEX"
@@ -44,10 +50,11 @@
                 android:textSize="@dimen/_25mdp"
                 android:textStyle="bold"
                 android:transitionName="complexName"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.085"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexImage" />
+                app:layout_constraintTop_toBottomOf="@+id/complexRatingBar" />
 
 
             <com.google.android.material.chip.Chip
@@ -95,6 +102,22 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/img"
                 app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
+
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/complexRatingBar"
+                style="@style/Widget.MaterialRatingBar.RatingBar"
+                android:layout_width="@dimen/_100mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:background="@drawable/rating_bg"
+                android:isIndicator="true"
+                android:progressTint="#123282"
+                android:secondaryProgressTint="#123282"
+                android:stepSize="0.5"
+                android:layout_marginLeft="@dimen/_2mdp"
+                android:layout_marginBottom="@dimen/_2mdp"
+                app:layout_constraintBottom_toBottomOf="@+id/complexImage"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/descHead"
@@ -154,6 +177,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceHead" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/hourPrice"
                 android:layout_width="wrap_content"
@@ -226,14 +250,14 @@
                 android:id="@+id/phoneNumberLogo"
                 android:layout_width="@dimen/_20mdp"
                 android:layout_height="@dimen/_20mdp"
+                android:layout_marginLeft="@dimen/_40mdp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/ic_baseline_phone_24"
+                app:layout_constraintEnd_toStartOf="@+id/phoneNumber"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/phoneNumber"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="32dp"
-                android:layout_marginLeft="@dimen/_40mdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/phoneNumber"/>
+                tools:layout_editor_absoluteX="32dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/emailId"
@@ -255,17 +279,17 @@
                 android:id="@+id/emailIdLogo"
                 android:layout_width="@dimen/_20mdp"
                 android:layout_height="@dimen/_20mdp"
+                android:layout_marginLeft="@dimen/_40mdp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/ic_baseline_email_24"
+                app:layout_constraintEnd_toStartOf="@+id/emailId"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/phoneNumberLogo"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="32dp"
-                android:layout_marginLeft="@dimen/_40mdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/emailId"
-                />
+                tools:layout_editor_absoluteX="32dp" />
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20mdp"
                 app:layout_constraintEnd_toEndOf="parent"

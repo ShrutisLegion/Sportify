@@ -129,7 +129,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="@dimen/_12mdp"
                 android:isIndicator="true"
-                android:progressBackgroundTint="@color/colorAccent"
                 android:progressTint="#123282"
                 android:secondaryProgressTint="#123282"
                 android:stepSize="0.5"
@@ -139,7 +138,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/Share"
+                android:id="@+id/shareButton"
                 android:layout_width="32dp"
                 android:layout_height="27dp"
                 android:layout_marginTop="4dp"

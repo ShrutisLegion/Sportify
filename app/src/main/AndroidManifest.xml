@@ -11,35 +11,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
+            android:name=".playeractivities.PlayerRatingActivity"
+            android:exported="true" />
+        <activity
             android:name=".playeractivities.PlayerSharedActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
             android:name=".playeractivities.PlayerHomeActivity"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".lenderactivities.LenderSharedActivity"
             android:exported="false"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".lenderactivities.LanderLogActivity"
-            android:noHistory="true"
-            android:label="Register Your Complex" />
-        <activity android:name=".lenderactivities.LenderHomeActivity"
-            android:noHistory="true"/>
+            android:label="Register Your Complex"
+            android:noHistory="true" />
+        <activity
+            android:name=".lenderactivities.LenderHomeActivity"
+            android:noHistory="true" />
         <activity
             android:name=".lenderactivities.AddComplexActivity"
-            android:noHistory="true"
-            android:label="Add Your Complex" />
+            android:label="Add Your Complex"
+            android:noHistory="true" />
         <activity
             android:name=".RegistrationActivity"
             android:label="Welcome to Sportify"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".playeractivities.PlayerLogActivity"
             android:label="Sign In"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

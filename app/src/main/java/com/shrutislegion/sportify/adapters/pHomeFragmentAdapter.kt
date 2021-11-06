@@ -23,6 +23,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
+import com.shrutislegion.sportify.playeractivities.PlayerRatingActivity
 import com.shrutislegion.sportify.playeractivities.PlayerSharedActivity
 import javax.sql.DataSource
 
@@ -46,6 +47,7 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         var ratingBar = itemView.findViewById<RatingBar>(R.id.complexRatingBar)
         var progressBarPCard = itemView.findViewById<ProgressBar>(R.id.progressBarPCard)
         var email = itemView.findViewById<TextView>(R.id.emailId)
+        var share = itemView.findViewById<ImageView>(R.id.shareButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -109,6 +111,7 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
             intent.putExtra(PlayerSharedActivity.EXTRA_PRICE, holder.price.text.toString())
             intent.putExtra(PlayerSharedActivity.EXTRA_COURTS, holder.courts.text.toString())
             intent.putExtra(PlayerSharedActivity.EXTRA_EMAILID, holder.email.text.toString())
+            intent.putExtra(PlayerSharedActivity.EXTRA_RATING, holder.ratingBar.rating.toString())
 
             // create pairs of View and String for the transition effect to take place
             val p1 = Pair.create(holder.image as View, "image")
@@ -120,10 +123,16 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
             val p7 = Pair.create<View, String>(holder.price, "price")
             val p8 = Pair.create<View, String>(holder.courts, "courts")
             val p9 = Pair.create<View, String>(holder.email, "email")
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2, p3, p4, p5, p6, p7, p8, p9)
+            val p10 = Pair.create<View, String>(holder.ratingBar, "ratingBar")
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 
             // Start the Shared activity with the transition
             holder.name.context.startActivity(intent, options.toBundle())
+        }
+
+        holder.share.setOnClickListener{
+            holder.name.context.startActivity(Intent(holder.name.context, PlayerRatingActivity::class.java))
         }
 
     }
