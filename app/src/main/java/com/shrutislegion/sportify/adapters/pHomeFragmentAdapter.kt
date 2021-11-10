@@ -132,7 +132,12 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         }
 
         holder.share.setOnClickListener{
-            holder.name.context.startActivity(Intent(holder.name.context, PlayerRatingActivity::class.java))
+            val intent = Intent(holder.name.context, PlayerRatingActivity::class.java)
+
+            intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
+            intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
+
+            holder.name.context.startActivity(intent)
         }
 
     }

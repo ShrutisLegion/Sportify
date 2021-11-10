@@ -10,13 +10,14 @@
         android:id="@+id/titleHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_semibold"
+        android:fontFamily="@font/nunito_bold"
         android:textSize="@dimen/_30mdp"
         app:layout_constraintBottom_toTopOf="@+id/titleHelper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
+        android:textAllCaps="true"
         android:text="RATE US" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -77,6 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/complexRatingBar">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/complexCommentText"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_220mdp"
             android:fontFamily="@font/nunito_semibold"
