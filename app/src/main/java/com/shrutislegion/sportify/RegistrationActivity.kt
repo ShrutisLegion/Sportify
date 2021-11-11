@@ -9,6 +9,7 @@ import android.view.View
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.royrodriguez.transitionbutton.TransitionButton
 import com.shrutislegion.sportify.lenderactivities.LanderLogActivity
+import com.shrutislegion.sportify.playeractivities.PlayerLogActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
@@ -36,7 +37,7 @@ class RegistrationActivity : AppCompatActivity() {
                     Continue.stopAnimation(
                             TransitionButton.StopAnimationStyle.EXPAND,
                             TransitionButton.OnAnimationStopEndListener {
-                                val intent = Intent(this, LoginActivity::class.java)
+                                val intent = Intent(this, PlayerLogActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                                 startActivity(intent)
                             })

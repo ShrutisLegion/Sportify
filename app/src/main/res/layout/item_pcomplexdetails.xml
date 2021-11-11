@@ -28,25 +28,25 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/complexImage"
-                android:scaleType="centerCrop"
-                android:transitionName="image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150mdp"
-                android:src="@drawable/defaultimg"
                 android:alpha=".85"
+                android:scaleType="centerCrop"
+                android:src="@drawable/defaultimg"
+                android:transitionName="image"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/nameOfComplex"
-                android:transitionName="complexName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SNV COMPLEX"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_20mdp"
                 android:textStyle="bold"
+                android:transitionName="complexName"
                 app:layout_constraintBottom_toBottomOf="@+id/complexImage"
                 app:layout_constraintEnd_toEndOf="@+id/complexImage"
                 app:layout_constraintHorizontal_bias="0.087"
@@ -56,7 +56,6 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/sportType"
-                android:transitionName="sportType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -64,12 +63,14 @@
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:transitionName="sportType"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.049"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexImage" />
 
             <ImageView
+                android:id="@+id/imageView2"
                 android:layout_width="@dimen/_14mdp"
                 android:layout_height="@dimen/_16mdp"
                 android:src="@drawable/ic_baseline_location_on_24"
@@ -82,18 +83,18 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
-                android:transitionName="location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4mdp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/_20mdp"
-                android:text="Location"
-                android:maxLines="2"
+                android:layout_marginTop="@dimen/_4mdp"
                 android:ellipsize="end"
-                android:layout_gravity = "center_horizontal"
                 android:maxWidth="@dimen/_250mdp"
+                android:maxLines="2"
+                android:text="Location"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
+                android:transitionName="location"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.054"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,19 +127,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="4dp"
-                android:isIndicator="true"
-                android:stepSize="0.5"
-                android:progressTint="#123282"
-                android:progressBackgroundTint="@color/colorAccent"
-                android:secondaryProgressTint="#123282"
                 android:layout_marginBottom="@dimen/_12mdp"
+                android:isIndicator="true"
+                android:progressTint="#123282"
+                android:secondaryProgressTint="#123282"
+                android:stepSize="0.5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexDescription"
                 app:layout_constraintVertical_bias="0.0" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/Share"
+                android:id="@+id/shareButton"
                 android:layout_width="32dp"
                 android:layout_height="27dp"
                 android:layout_marginTop="4dp"
@@ -154,68 +154,67 @@
 
             <TextView
                 android:id="@+id/hourPrice"
-                android:transitionName="price"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Name"
-                app:layout_constraintBottom_toTopOf="@+id/courtsCount"
+                android:transitionName="price"
                 android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/courtsCount"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/courtsCount"
-                android:transitionName="courts"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Name"
+                android:transitionName="courts"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/hourPrice"
                 tools:ignore="MissingConstraints" />
+
             <TextView
                 android:id="@+id/phoneNumber"
-                android:transitionName="phoneNumber"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Name"
+                android:transitionName="phoneNumber"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/hourPrice"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/emailId"
-                android:transitionName="emailId"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Name"
+                android:transitionName="emailId"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/hourPrice"
                 tools:ignore="MissingConstraints" />
 
-            <com.google.android.material.progressindicator.CircularProgressIndicator
+            <com.github.ybq.android.spinkit.SpinKitView
                 android:id="@+id/progressBarPCard"
+                style="@style/SpinKitView.Large.ChasingDots"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="148dp"
-                android:indeterminate="true"
-                android:indeterminateTint="@color/black"
-                app:indeterminateAnimationType="disjoint"
-                app:indicatorColor="@color/colorAccent"
-                app:layout_constraintBottom_toBottomOf="@+id/complexImage"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.51"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
+                android:layout_gravity="center"
+                android:layout_marginBottom="11dp"
+                app:SpinKit_Color="@color/colorAccent"
+                android:padding="@dimen/_5mdp"
                 android:visibility="visible"
-                app:trackColor="#123282" />
+                app:layout_constraintBottom_toTopOf="@+id/nameOfComplex"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/complexImage"
+                app:layout_constraintVertical_bias="1.0" />
 
 
             <!--            <com.google.android.material.textview.MaterialTextView-->

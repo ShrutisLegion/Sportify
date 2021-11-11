@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.playeractivities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,9 +16,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.shrutislegion.sportify.R
+import com.shrutislegion.sportify.RegistrationActivity
 import com.shrutislegion.sportify.doas.UserDao
 import com.shrutislegion.sportify.modules.User
-import com.shrutislegion.sportify.playeractivities.PlayerHomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -27,7 +28,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 @Suppress("DEPRECATION")
-class LoginActivity : AppCompatActivity() {
+class PlayerLogActivity : AppCompatActivity() {
     private val RC_SIGN_IN: Int = 123
     private val TAG = "SignInActivity Tag"
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -109,6 +110,11 @@ class LoginActivity : AppCompatActivity() {
             progressBar.visibility = View.GONE
 //            Toast.makeText(this, "Try Again!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, RegistrationActivity::class.java))
     }
 
 }

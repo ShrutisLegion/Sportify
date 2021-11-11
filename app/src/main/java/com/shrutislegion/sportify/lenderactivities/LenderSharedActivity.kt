@@ -1,5 +1,6 @@
 package com.shrutislegion.sportify.lenderactivities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -52,5 +53,10 @@ class LenderSharedActivity : AppCompatActivity() {
         if(user!=null) {
             emailId.setText(user.email)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, LenderHomeActivity::class.java))
     }
 }

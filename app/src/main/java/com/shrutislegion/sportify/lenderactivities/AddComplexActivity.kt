@@ -1,5 +1,7 @@
 package com.shrutislegion.sportify.lenderactivities
 
+import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,13 @@ import com.google.firebase.storage.StorageReference
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.activity_add_complex.*
+import com.github.ybq.android.spinkit.style.DoubleBounce
+
+import com.github.ybq.android.spinkit.sprite.Sprite
+import android.view.View
+import android.view.View.GONE
+import android.widget.ProgressBar
+import kotlinx.android.synthetic.main.activity_lander_log.*
 
 
 @Suppress("DEPRECATION")
@@ -24,6 +33,8 @@ class AddComplexActivity : AppCompatActivity() {
     lateinit var database: FirebaseDatabase
     lateinit var storage: FirebaseStorage
     lateinit var auth: FirebaseAuth
+    lateinit var dialog: ProgressDialog
+//    lateinit var progressBar: ProgressBar
     var uri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +45,14 @@ class AddComplexActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
         database = FirebaseDatabase.getInstance()
+        dialog = ProgressDialog(this)
+//        progressBar = findViewById<View>(R.id.addComplexLoading) as ProgressBar
+
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        dialog.setTitle("Adding your complex")
+        dialog.setMessage("Please Wait")
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
 
         floatingActionButton.setOnClickListener {
             ImagePicker.with(this)
@@ -60,6 +79,7 @@ class AddComplexActivity : AppCompatActivity() {
             Toast.makeText(this,"Please upload your complex image!", Toast.LENGTH_LONG).show()
         }
         else {
+            dialog.show()
             val name = complexName.getText().toString()
             val type = typeOfSport.getText().toString()
             val courts = totalCourts.getText().toString().toInt()
@@ -105,17 +125,23 @@ class AddComplexActivity : AppCompatActivity() {
                             getReference("Lenders").
                             child(FirebaseAuth.getInstance().uid.toString())
                             .child("Complexes")
-                            .child(complexID!!).setValue(User)
+                            .child(complexID!!).setValue(User).addOnSuccessListener {
+                                dialog.dismiss()
+                                Toast.makeText(this, "Complex added successfully!!", Toast.LENGTH_LONG).show()
+                                startActivity(Intent(this, LenderHomeActivity::class.java))
+                                finish()
+                            }
 
                         FirebaseDatabase.getInstance().getReference("All Complexes").child(complexID!!).setValue(User)
+
+
                     })
                 })
             } else {
                 Toast.makeText(this, "Please upload the complex image !!", Toast.LENGTH_SHORT).show()
             }
 
-            startActivity(Intent(this, LenderHomeActivity::class.java))
-            finish()
+
         }
 
     }
@@ -170,6 +196,11 @@ class AddComplexActivity : AppCompatActivity() {
 //            }
         //
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, LenderHomeActivity::class.java))
     }
 
 

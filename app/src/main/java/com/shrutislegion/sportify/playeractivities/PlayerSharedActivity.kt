@@ -1,5 +1,6 @@
 package com.shrutislegion.sportify.playeractivities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -18,6 +19,7 @@ class PlayerSharedActivity : AppCompatActivity() {
         const val EXTRA_COURTS= "courts_extra"
         const val EXTRA_IMAGEURI = "image_extra"
         const val EXTRA_EMAILID = "email_extra"
+        const val EXTRA_RATING = "rating_extra"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,7 @@ class PlayerSharedActivity : AppCompatActivity() {
         var courts = intent.getStringExtra(PlayerSharedActivity.EXTRA_COURTS)
         var imageUri = intent.getStringExtra(PlayerSharedActivity.EXTRA_IMAGEURI)
         var email = intent.getStringExtra(PlayerSharedActivity.EXTRA_EMAILID)
+        var rating = intent.getStringExtra(PlayerSharedActivity.EXTRA_RATING)
 
         // To update the textViews and load image in the Shared activity
         // Used glide library to load image from the Uri stored in Firebase Realtime database
@@ -47,5 +50,11 @@ class PlayerSharedActivity : AppCompatActivity() {
         hourPrice.setText("₹ $price")
         courtsCount.setText("$courts")
         emailId.setText("$email")
+        complexRatingBar.setRating(rating!!.toFloat())
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, PlayerHomeActivity::class.java))
     }
 }

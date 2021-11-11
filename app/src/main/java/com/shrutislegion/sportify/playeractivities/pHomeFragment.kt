@@ -19,6 +19,10 @@ import kotlinx.android.synthetic.main.activity_lander_log.*
 import kotlinx.android.synthetic.main.fragment_p_home.*
 import kotlinx.android.synthetic.main.fragment_p_home.view.*
 import kotlinx.android.synthetic.main.item_pcomplexdetails.view.*
+import android.os.Parcelable
+
+
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,6 +41,7 @@ class pHomeFragment : Fragment() {
     private var param2: String? = null
     lateinit var adapter: pHomeFragmentAdapter
     lateinit var countDownTimer: CountDownTimer
+    private var scroll_state: Parcelable? = null
     var i = 0
 
     // To override LinearLayoutManager by Wrapper, as it crashes the application sometimes
@@ -79,19 +84,19 @@ class pHomeFragment : Fragment() {
         view.precView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
 
         // Progress bar's progress is updated
-        view.progressBarPHome.progress = i
+//        view.progressBarPHome.progress = i
         countDownTimer = object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                i++
-                view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))
+//                i++
+//                view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))
             }
 
             override fun onFinish() {
                 //Do what you want
-                i++
+//                i++
                 view.progressBarPHome.setVisibility(View.GONE)
-                view.progressBarPHome.setProgress(100)
+//                view.progressBarPHome.setProgress(100)
             }
         }
         countDownTimer.start()
@@ -104,18 +109,24 @@ class pHomeFragment : Fragment() {
 
         adapter = pHomeFragmentAdapter(options)
         view.precView.adapter = adapter
+        adapter.startListening()
 
         return view
-    }
-
-    override fun onStart() {
-        super.onStart()
-        adapter.startListening()
     }
 
     override fun onStop() {
         super.onStop()
         adapter.stopListening()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        scroll_state = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false).onSaveInstanceState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false).onRestoreInstanceState(scroll_state);
     }
 
     companion object {

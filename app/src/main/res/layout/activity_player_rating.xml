@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".playeractivities.PlayerRatingActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titleHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="@dimen/_30mdp"
+        app:layout_constraintBottom_toTopOf="@+id/titleHelper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:textAllCaps="true"
+        android:text="RATE US" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titleHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_italic"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972"
+        android:text=" Help us to get better " />
+
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:id="@+id/complexRatingBar"
+        style="@style/Widget.MaterialRatingBar.RatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressTint="#123282"
+        android:secondaryProgressTint="#123282"
+        android:stepSize="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/complexComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline5"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/showStars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="@dimen/_15mdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/complexComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/complexRatingBar"
+        app:layout_constraintVertical_bias="0.14"
+        tools:text="5 Star" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/complexComment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/_250mdp"
+        android:layout_height="wrap_content"
+        android:hint="Review"
+        app:boxStrokeColor="@color/offpink"
+        app:boxStrokeErrorColor="#FF0000"
+        app:counterEnabled="true"
+        app:counterMaxLength="300"
+        app:helperText="Required*"
+        app:helperTextTextColor="#FF0000"
+        app:layout_constraintBottom_toTopOf="@+id/submitButtton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/complexRatingBar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/complexCommentText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_220mdp"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="top"
+            android:maxLines="15"
+            android:textSize="@dimen/_15mdp"
+            tools:ignore="Deprecated" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitButtton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/complexComment"
+        app:layout_constraintVertical_bias="0.514" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="127dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

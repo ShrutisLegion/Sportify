@@ -21,21 +21,27 @@
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.2703125" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/drawable/phone_bg.xml" value="0.2703125" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/drawable/price_bg.xml" value="0.2703125" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/drawable/rating_bg.xml" value="0.2703125" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/front/layout/fragment_page_number.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/front/menu/menu_bottom.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_lander_log.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_lender_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_lender_shared.xml" value="0.264" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_player_home.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_player_shared.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_player_rating.xml" value="0.264" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_player_shared.xml" value="0.264" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/activity_registration.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/fragment_p_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/fragment_p_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/item_complexdetails.xml" value="0.264" />
-        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/item_pcomplexdetails.xml" value="0.72" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/layout/item_pcomplexdetails.xml" value="0.2" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/lender/drawable/ic_baseline_add_24.xml" value="0.2703125" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/lender/drawable/ic_baseline_location_on_24.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/lender/drawable/ic_baseline_phone_24.xml" value="0.95625" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/lender/drawable/ic_baseline_rate_review_24.xml" value="0.2361111111111111" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/lender/layout/activity_add_complex.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/lender/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/lender/layout/fragment_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Sportify/app/src/main/res/player/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Sportify/app/src/main/res/layout/activity_lander_log.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Sportify/app/src/main/res/layout/activity_lender_home.xml" value="0.25416666666666665" />

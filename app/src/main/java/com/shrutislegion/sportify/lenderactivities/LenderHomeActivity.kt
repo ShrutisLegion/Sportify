@@ -1,6 +1,7 @@
 package com.shrutislegion.sportify.lenderactivities
 
 import android.app.Fragment
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -45,6 +46,14 @@ class LenderHomeActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val a = Intent(Intent.ACTION_MAIN)
+        a.addCategory(Intent.CATEGORY_HOME)
+        a.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(a)
     }
 
 

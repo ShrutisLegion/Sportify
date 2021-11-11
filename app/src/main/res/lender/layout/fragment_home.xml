@@ -47,6 +47,19 @@
             app:rippleColor="@color/colorWhite"
             tools:ignore="MissingClass" />
 
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/progressBarLHome"
+            style="@style/SpinKitView.Large.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorAccent"
+            android:padding="@dimen/_5mdp"
+            app:layout_constraintBottom_toBottomOf="@+id/recView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/recView"
+            app:layout_constraintTop_toTopOf="@+id/recView" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
