@@ -3,13 +3,11 @@ package com.shrutislegion.sportify.adapters
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
@@ -20,7 +18,11 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.DatabaseReference
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import com.shrutislegion.sportify.playeractivities.PlayerRatingActivity
@@ -28,11 +30,11 @@ import com.shrutislegion.sportify.playeractivities.PlayerSharedActivity
 import javax.sql.DataSource
 
 class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
-    : FirebaseRecyclerAdapter<ComplexInfo, pHomeFragmentAdapter.myViewHolder>(options){
+    : FirebaseRecyclerAdapter<ComplexInfo, pHomeFragmentAdapter.myViewHolder>(options) {
 
     lateinit var databaseReference: DatabaseReference
 
-    inner class myViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class myViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         // creating viewHolder and getting all the required views by their Ids
         val name = itemView.findViewById<TextView>(R.id.nameOfComplex)
@@ -52,7 +54,8 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_pcomplexdetails, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_pcomplexdetails, parent, false)
         return myViewHolder(view)
     }
 
@@ -92,12 +95,12 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
                 return false
             }
         })
-            .override(600,400)
+            .override(600, 400)
             .placeholder(R.drawable.loading_image)
             .into(holder.image)
 
         //on click on card and start the Lender Share activity
-        holder.card.setOnClickListener{
+        holder.card.setOnClickListener {
 
             val intent = Intent(holder.name.context, PlayerSharedActivity::class.java)
 
@@ -107,7 +110,10 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
             intent.putExtra(PlayerSharedActivity.EXTRA_PHONE, holder.phone.text.toString())
             intent.putExtra(PlayerSharedActivity.EXTRA_SPORT, holder.type.text.toString())
             intent.putExtra(PlayerSharedActivity.EXTRA_LOCATION, holder.location.text.toString())
-            intent.putExtra(PlayerSharedActivity.EXTRA_DESCRIPTION, holder.description.text.toString())
+            intent.putExtra(
+                PlayerSharedActivity.EXTRA_DESCRIPTION,
+                holder.description.text.toString()
+            )
             intent.putExtra(PlayerSharedActivity.EXTRA_PRICE, holder.price.text.toString())
             intent.putExtra(PlayerSharedActivity.EXTRA_COURTS, holder.courts.text.toString())
             intent.putExtra(PlayerSharedActivity.EXTRA_EMAILID, holder.email.text.toString())
@@ -125,19 +131,117 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
             val p9 = Pair.create<View, String>(holder.email, "email")
             val p10 = Pair.create<View, String>(holder.ratingBar, "ratingBar")
 
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.name.context as Activity, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                holder.name.context as Activity,
+                p1,
+                p2,
+                p3,
+                p4,
+                p5,
+                p6,
+                p7,
+                p8,
+                p9,
+                p10
+            )
 
             // Start the Shared activity with the transition
             holder.name.context.startActivity(intent, options.toBundle())
         }
 
-        holder.share.setOnClickListener{
-            val intent = Intent(holder.name.context, PlayerRatingActivity::class.java)
+        // if user has already reviewed the complex then a toast should appear
 
-            intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
-            intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
+        holder.share.setOnClickListener {
 
-            holder.name.context.startActivity(intent)
+            // Ratings -> complexUid -> userUid -> snapshot -> rating exists
+            val ref = FirebaseDatabase.getInstance().reference
+                .child("Ratings")
+                .child(getRef(position).key.toString())
+                .child(FirebaseAuth.getInstance().currentUser!!.uid.toString())
+
+//            if(ref === null){
+//                holder.name.context.startActivity(
+//                    Intent(
+//                        holder.name.context,
+//                        PlayerRatingActivity::class.java
+//                    )
+//                )
+//            }
+
+
+            ref.get().addOnSuccessListener {
+
+                var previt = it
+                if (it.child("complexName").getValue() === null
+                    || it.child("rating").getValue() === null
+                    || it.child("review").getValue() === null
+                ) {
+                    var intent =
+                        Intent(holder.name.context, PlayerRatingActivity::class.java)
+                    intent.putExtra(
+                        PlayerRatingActivity.EXTRA_RATING,
+                        "0"
+                    )
+                    intent.putExtra(
+                        PlayerRatingActivity.EXTRA_REVIEW,
+                        ""
+                    )
+                    intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
+                    intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
+                    holder.name.context.startActivity(
+                        intent
+                    )
+                } else {
+                    MaterialAlertDialogBuilder(holder.name.context).also {
+                        // set title for dailog box
+                        it.setTitle("You have already reviewed the complex")
+                        // set message for dialog box
+                        it.setMessage("Are you sure you want to edit your previous review?")
+                        // set icon for dialog box
+                        it.setIcon(R.drawable.ic_baseline_warning_24)
+
+                        // perform positive action which shares some info and starts the PlayerRatingActivity
+                        it.setPositiveButton("YES") { dialogInterface, which ->
+
+                            var intent =
+                                Intent(holder.name.context, PlayerRatingActivity::class.java)
+                            intent.putExtra(
+                                PlayerRatingActivity.EXTRA_RATING,
+                                previt.child("rating").getValue().toString()
+                            )
+                            intent.putExtra(
+                                PlayerRatingActivity.EXTRA_REVIEW,
+                                previt.child("review").getValue().toString()
+                            )
+                            intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
+                            intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
+
+                            holder.name.context.startActivity(intent)
+                        }
+
+                        // performs neutral action
+                        it.setNeutralButton("CANCEL") { dialogInterface, which ->
+                        }
+
+                        // performs negative/NO action
+                        it.setNegativeButton("NO") { dialogInterface, which ->
+                            Toast.makeText(
+                                holder.name.context,
+                                "Process cancelled !!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                        // create the AlertDialogBox
+                        val alertDialog: androidx.appcompat.app.AlertDialog = it.create()
+                        alertDialog.setCancelable(false)
+                        alertDialog.show()
+                    }
+
+                }
+
+            }
+
         }
 
     }

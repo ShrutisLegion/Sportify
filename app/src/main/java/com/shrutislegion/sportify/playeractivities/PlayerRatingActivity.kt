@@ -19,6 +19,8 @@ class PlayerRatingActivity : AppCompatActivity() {
     companion object{
         const val EXTRA_NAME= "name_extra"
         const val EXTRA_KEYID = "keyid_extra"
+        const val EXTRA_RATING = "rating_extra"
+        const val EXTRA_REVIEW = "review_extra"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +30,24 @@ class PlayerRatingActivity : AppCompatActivity() {
         // To get the shared intent data
         var name = intent.getStringExtra(PlayerRatingActivity.EXTRA_NAME)
         var keyid = intent.getStringExtra(PlayerRatingActivity.EXTRA_KEYID)
+        var rating = intent.getStringExtra(PlayerRatingActivity.EXTRA_RATING)
+        var review = intent.getStringExtra(PlayerRatingActivity.EXTRA_REVIEW)
 
         // set the values to fields
         titleHeading.setText("$name")
-        complexCommentText.setText("$keyid")
 
+        if(rating!="0" && review!=""){
+            Toast.makeText(this, "Previous rating shown !!", Toast.LENGTH_LONG).show()
+            complexRatingBar.rating = parseFloat(rating)
+            complexCommentText.setText("$review")
+            showStars.visibility = View.VISIBLE
+            var stars = complexRatingBar.rating
+            showStars.setText("$stars STAR")
+        }
+        else{
+            showStars.visibility = View.VISIBLE
+            showStars.setText("Please give your rating")
+        }
 
         complexRatingBar.setOnRatingBarChangeListener { ratingBar, rating, p2 ->
 
@@ -47,26 +62,34 @@ class PlayerRatingActivity : AppCompatActivity() {
 
         }
 
-        submitButtton.setOnClickListener{
+        submitButtton.setOnClickListener {
 
             var complexName = "$name"
 
-            val User = ComplexRating(
-                complexRatingBar.rating.toString(),
-                complexCommentText.text.toString(),
-                complexName
+            if (complexRatingBar.rating === parseFloat("0")) {
+                Toast.makeText(this, "Please give your rating !", Toast.LENGTH_LONG).show()
+            } else if (complexCommentText.text!!.isEmpty()) {
+                Toast.makeText(this, "Please give your review !", Toast.LENGTH_LONG).show()
+            } else {
 
-            )
-            FirebaseDatabase.getInstance().getReference("Ratings")
-                .child("$keyid")
-                .child(FirebaseAuth.getInstance().currentUser!!.uid.toString())
-                .setValue(User).addOnSuccessListener {
-                    Toast.makeText(this, "Complex rating added !!", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this, PlayerHomeActivity::class.java))
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Complex rating unable to add !!", Toast.LENGTH_LONG).show()
-                }
+                val User = ComplexRating(
+                    complexRatingBar.rating.toString(),
+                    complexCommentText.text.toString(),
+                    complexName
+
+                )
+                FirebaseDatabase.getInstance().getReference("Ratings")
+                    .child("$keyid")
+                    .child(FirebaseAuth.getInstance().currentUser!!.uid.toString())
+                    .setValue(User).addOnSuccessListener {
+                        Toast.makeText(this, "Complex rating added !!", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, PlayerHomeActivity::class.java))
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Complex rating unable to add !!", Toast.LENGTH_LONG)
+                            .show()
+                    }
+            }
         }
 
     }
