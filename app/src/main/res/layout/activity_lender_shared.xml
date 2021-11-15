@@ -10,6 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,26 +76,24 @@
                 android:id="@+id/img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16mdp"
-                android:layout_marginTop="-20dp"
+                android:layout_marginStart="@dimen/_20mdp"
                 android:src="@drawable/ic_baseline_location_on_24"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
+                app:layout_constraintTop_toBottomOf="@+id/nameOfComplex"
+                tools:layout_editor_absoluteY="324dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
+                android:layout_marginStart="16dp"
+                android:paddingLeft="@dimen/_35mdp"
                 android:text="Location"
                 android:textSize="@dimen/_14mdp"
                 android:transitionName="location"
-                app:layout_constraintBottom_toTopOf="@id/guideline2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/nameOfComplex"
                 app:layout_constraintStart_toEndOf="@+id/img"
-                app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
+                tools:layout_editor_absoluteY="328dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/descHead"
@@ -154,6 +153,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceHead" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/hourPrice"
                 android:layout_width="wrap_content"
@@ -226,14 +226,14 @@
                 android:id="@+id/phoneNumberLogo"
                 android:layout_width="@dimen/_20mdp"
                 android:layout_height="@dimen/_20mdp"
+                android:layout_marginLeft="@dimen/_40mdp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/ic_baseline_phone_24"
+                app:layout_constraintEnd_toStartOf="@+id/phoneNumber"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/phoneNumber"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="32dp"
-                android:layout_marginLeft="@dimen/_40mdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/phoneNumber"/>
+                tools:layout_editor_absoluteX="32dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/emailId"
@@ -255,15 +255,14 @@
                 android:id="@+id/emailIdLogo"
                 android:layout_width="@dimen/_20mdp"
                 android:layout_height="@dimen/_20mdp"
+                android:layout_marginLeft="@dimen/_40mdp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/ic_baseline_email_24"
+                app:layout_constraintEnd_toStartOf="@+id/emailId"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/phoneNumberLogo"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="32dp"
-                android:layout_marginLeft="@dimen/_40mdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/emailId"
-                />
+                tools:layout_editor_absoluteX="32dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -273,12 +272,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/emailId" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="347dp" />
+            <!--            <androidx.constraintlayout.widget.Guideline-->
+            <!--                android:id="@+id/guideline2"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                app:layout_constraintGuide_begin="380dp" />-->
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"
