@@ -3,15 +3,15 @@ package com.shrutislegion.sportify.adapters
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -28,6 +28,17 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.storage.FirebaseStorage
+import androidx.core.content.ContextCompat.startActivity
+
+import com.google.firebase.dynamiclinks.ShortDynamicLink
+
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
+
+import com.google.firebase.dynamiclinks.DynamicLink
+import com.google.firebase.dynamiclinks.DynamicLink.AndroidParameters
 
 
 class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
@@ -49,6 +60,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         var description = itemView.findViewById<TextView>(R.id.complexDescription)
         var card = itemView.findViewById<CardView>(R.id.card)
         var progressBarLCard = itemView.findViewById<ProgressBar>(R.id.progressBarLCard)
+        var shareButton = itemView.findViewById<Button>(R.id.shareButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -124,6 +136,62 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
             // Start the Shared activity with the transition
             holder.name.context.startActivity(intent, options.toBundle())
         }
+        holder.shareButton.setOnClickListener {
+
+            Toast.makeText(holder.name.context, "create link ", Toast.LENGTH_LONG).show()
+            val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
+                .setLink(Uri.parse("https://www.example.com/"))
+                .setDynamicLinkDomain("shrutislegion.page.link") // Open links with this app on Android
+                .setAndroidParameters(
+                    AndroidParameters.Builder().build()
+                ) // Open links with com.example.ios on iOS
+                //.setIosParameters(new DynamicLink.IosParameters.Builder("com.example.ios").build())
+                .buildDynamicLink()
+
+            val dynamicLinkUri: Uri = dynamicLink.uri
+            Toast.makeText(holder.name.context, "  Long refer " + dynamicLink.uri, Toast.LENGTH_LONG).show()
+            //   https://referearnpro.page.link?apn=blueappsoftware.referearnpro&link=https%3A%2F%2Fwww.blueappsoftware.com%2F
+            // apn  ibi link
+            // manuall link
+            //   https://referearnpro.page.link?apn=blueappsoftware.referearnpro&link=https%3A%2F%2Fwww.blueappsoftware.com%2F
+            // apn  ibi link
+            // manuall link
+            val sharelinktext = "https://shrutislegion.page.link/?" +
+                    "link=http://www.Sportify.com/mycomplex.php?comid="+getRef(position).key.toString() +
+                    "&st="+"Let's get Sportified"+
+                    "&sd="+"Join me!!!"+
+                    "&si="+"model.imageUri.toString()";
+
+            val shortLinkTask: Task<ShortDynamicLink> = FirebaseDynamicLinks.getInstance()
+                .createDynamicLink() //.setLongLink(dynamicLink.getUri())
+                .setLongLink(Uri.parse(sharelinktext)) // manually
+                .buildShortDynamicLink()
+                .addOnCompleteListener{ task ->
+                        if (task.isSuccessful) {
+                            // Short link created
+                            val shortLink: Uri? = task.result.shortLink
+                            val flowchartLink: Uri? = task.result.previewLink
+                            Toast.makeText(holder.name.context, "short link " + shortLink.toString(), Toast.LENGTH_SHORT).show()
+                            // share app dialog
+                            val intent = Intent()
+                            intent.action = Intent.ACTION_SEND
+                            intent.putExtra(Intent.EXTRA_TEXT, "Let's get Sportified!!\nJoin me at this cool Sport Complex.\n"+shortLink.toString())
+                            intent.type = "text/plain"
+                            holder.name.context.startActivity(Intent.createChooser(intent, "Share to : "))
+                        } else {
+                            // Error
+                            // ...
+                            Toast.makeText(holder.name.context, " error " + task.exception, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+//            val intent = Intent()
+//            intent.action = Intent.ACTION_SEND
+//            intent.putExtra(Intent.EXTRA_TEXT, )
+//            intent.type = "text/plain"
+//            holder.name.context.startActivity(Intent.createChooser(intent, "Share to : "))
+        }
+
+
 
         // putting OnClickListener on delete button and creating an alert dialogbox
         holder.delete.setOnClickListener {

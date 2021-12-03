@@ -11,6 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
+            android:name=".linked"
+            android:exported="false">
+            <intent-filter android:autoVerify="true">
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="www.sportify.com"
+                    android:scheme="http" />
+                <data
+                    android:host="www.sportify.com"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".playeractivities.PlayerRatingActivity"
             android:exported="true" />
         <activity
@@ -52,6 +67,14 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data   android:scheme="http" />
+                <data   android:scheme="https" />
+                <data android:host=".shrutislegion.page.link" />
             </intent-filter>
         </activity>
     </application>

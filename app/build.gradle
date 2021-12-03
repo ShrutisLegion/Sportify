@@ -162,6 +162,11 @@ dependencies {
     // Loading Android Spin-kit
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
+    // For Dynamic Links
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-invites:17.0.0'
+
 
 
 }
