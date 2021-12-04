@@ -3,7 +3,6 @@ package com.shrutislegion.sportify.adapters
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,13 +20,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
+import com.shrutislegion.sportify.playeractivities.PlayerBookDateActivity
 import com.shrutislegion.sportify.playeractivities.PlayerRatingActivity
 import com.shrutislegion.sportify.playeractivities.PlayerSharedActivity
-import javax.sql.DataSource
 
 class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
     : FirebaseRecyclerAdapter<ComplexInfo, pHomeFragmentAdapter.myViewHolder>(options) {
@@ -50,6 +47,7 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         var progressBarPCard = itemView.findViewById<ProgressBar>(R.id.progressBarPCard)
         var email = itemView.findViewById<TextView>(R.id.emailId)
         var share = itemView.findViewById<ImageView>(R.id.shareButton)
+        var bookCourt = itemView.findViewById<Button>(R.id.bookCourtButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -242,6 +240,35 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
 
             }
 
+        }
+
+        holder.bookCourt.setOnClickListener {
+
+            // if already rated by the user then the button should be not clickable with text = Booked
+            FirebaseDatabase.getInstance().reference
+                .child("Booked Complexes")
+                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                .child("")
+
+            var intent = Intent(holder.name.context, PlayerBookDateActivity::class.java)
+
+            // Transfer all the required data to the PlayerBookCourt Activity by putExtra
+            intent.putExtra(PlayerBookDateActivity.EXTRA_IMAGEURI, model.imageUri.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_NAME, holder.name.text.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_PHONE, holder.phone.text.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_SPORT, holder.type.text.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_LOCATION, holder.location.text.toString())
+            intent.putExtra(
+                PlayerBookDateActivity.EXTRA_DESCRIPTION,
+                holder.description.text.toString()
+            )
+            intent.putExtra(PlayerBookDateActivity.EXTRA_PRICE, holder.price.text.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_COURTS, holder.courts.text.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_EMAILID, holder.email.text.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_RATING, holder.ratingBar.rating.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_KEYID, getRef(position).key.toString())
+
+            holder.name.context.startActivity(intent)
         }
 
     }

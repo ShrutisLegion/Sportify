@@ -137,6 +137,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/complexDescription"
                 app:layout_constraintVertical_bias="0.0" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bookCourtButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="BOOk"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintLeft_toRightOf="@+id/complexRatingBar"
+                app:layout_constraintRight_toLeftOf="@+id/shareButton" />
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/shareButton"
                 android:layout_width="32dp"

@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
+            android:name=".playeractivities.PlayerBookDateActivity"
+            android:exported="true" />
+        <activity
             android:name=".playeractivities.PlayerRatingActivity"
             android:exported="true" />
         <activity

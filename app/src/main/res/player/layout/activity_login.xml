@@ -8,6 +8,7 @@
     tools:context=".playeractivities.PlayerLogActivity">
 
     <ImageView
+        android:id="@+id/playerLogImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/pngegg"
@@ -36,13 +37,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/playerLogSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-light"
         android:letterSpacing="-0.01"
         android:lineSpacingExtra="4sp"
-        android:text="Let's get Sportified"
+        android:text="Let's get Sportified "
         android:textColor="#b5b5b5"
         android:textSize="16sp"
         android:textStyle="bold|italic"

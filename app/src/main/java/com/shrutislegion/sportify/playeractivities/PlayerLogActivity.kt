@@ -87,6 +87,10 @@ class PlayerLogActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         signInButton.visibility = View.GONE
         progressBar.visibility = View.VISIBLE
+        playerLogImage.visibility = View.GONE
+        textView.visibility = View.GONE
+        playerLogSubTitle.visibility = View.GONE
+        signInButton.visibility = View.GONE
 
         GlobalScope.launch(Dispatchers.IO) {
             val auth = auth.signInWithCredential(credential).await()
