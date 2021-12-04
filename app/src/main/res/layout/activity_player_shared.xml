@@ -50,7 +50,6 @@
                 android:textSize="@dimen/_25mdp"
                 android:textStyle="bold"
                 android:transitionName="complexName"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.085"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,48 +81,44 @@
                 android:id="@+id/img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16mdp"
-                android:layout_marginTop="-20dp"
                 android:src="@drawable/ic_baseline_location_on_24"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
+                android:layout_marginStart="@dimen/_20mdp"
+                app:layout_constraintTop_toTopOf="@+id/complexLocation" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
                 android:text="Location"
+                android:paddingStart="@dimen/_40mdp"
                 android:textSize="@dimen/_14mdp"
                 android:transitionName="location"
-                app:layout_constraintBottom_toTopOf="@id/guideline2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toEndOf="@+id/img"
                 app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
-
 
             <me.zhanghai.android.materialratingbar.MaterialRatingBar
                 android:id="@+id/complexRatingBar"
                 style="@style/Widget.MaterialRatingBar.RatingBar"
                 android:layout_width="@dimen/_100mdp"
                 android:layout_height="@dimen/_20mdp"
+                android:layout_marginLeft="@dimen/_2mdp"
+                android:layout_marginBottom="@dimen/_2mdp"
                 android:background="@drawable/rating_bg"
                 android:isIndicator="true"
                 android:progressTint="#123282"
                 android:secondaryProgressTint="#123282"
                 android:stepSize="0.5"
-                android:layout_marginLeft="@dimen/_2mdp"
-                android:layout_marginBottom="@dimen/_2mdp"
                 app:layout_constraintBottom_toBottomOf="@+id/complexImage"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/descHead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16mdp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/nunito_semibold"
                 android:paddingHorizontal="@dimen/_20mdp"
                 android:text="Description"
@@ -131,6 +126,7 @@
                 android:textSize="@dimen/_20mdp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
 
@@ -297,12 +293,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/emailId" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="347dp" />
+            <!--            <androidx.constraintlayout.widget.Guideline-->
+            <!--                android:id="@+id/guideline2"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                app:layout_constraintGuide_begin="400dp" />-->
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"
