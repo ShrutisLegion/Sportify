@@ -89,21 +89,330 @@ class PlayerBookDateActivity : AppCompatActivity(), View.OnClickListener {
         datePicker.addOnPositiveButtonClickListener {
             // Respond to positive button click.
 
+            // store both-> headerText and selection
             bookingDate.text = datePicker.headerText
             confirmBookingButton.visibility = VISIBLE
             bookingDate.visibility = VISIBLE
 
-            // store both-> headerText and selection
+            //Count the number of selected hours and store the selected hours
+//            var cnt = 0;
+            var storeHours: MutableSet<Int> = mutableSetOf<Int>();
+
+            // onClickListener on all the time buttons
             button1.setOnClickListener {
                 if (button1.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
                     button1.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button1.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(0);
                 }
-                else{
+                else {
                     button1.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button1.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(0);
                 }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
+            button2.setOnClickListener {
+                if (button2.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button2.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(1);
+                }
+                else{
+                    button2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button2.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(1);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button3.setOnClickListener {
+                if (button3.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button3.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button3.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(2);
+                }
+                else{
+                    button3.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button3.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(2);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button4.setOnClickListener {
+                if (button4.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button4.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(3);
+                }
+                else{
+                    button4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button4.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(3);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button5.setOnClickListener {
+                if (button5.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button5.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button5.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(4);
+                }
+                else{
+                    button5.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button5.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(4);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button6.setOnClickListener {
+                if (button6.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button6.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button6.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(5);
+                }
+                else{
+                    button6.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button6.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(5);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button7.setOnClickListener {
+                if (button7.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button7.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button7.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(6);
+                }
+                else{
+                    button7.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button7.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(6);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button8.setOnClickListener {
+                if (button8.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button8.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button8.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(7);
+                }
+                else{
+                    button8.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button8.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(7);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button9.setOnClickListener {
+                if (button9.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button9.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button9.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(8);
+                }
+                else{
+                    button9.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button9.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(8);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button10.setOnClickListener {
+                if (button10.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button10.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button10.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(9);
+                }
+                else{
+                    button10.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button10.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(9);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button11.setOnClickListener {
+                if (button11.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button11.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button11.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(10);
+                }
+                else{
+                    button11.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button11.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(10);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button12.setOnClickListener {
+                if (button12.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button12.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button12.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(11);
+                }
+                else{
+                    button12.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button12.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(11);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button13.setOnClickListener {
+                if (button13.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button13.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button13.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(12);
+                }
+                else{
+                    button13.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button13.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(12);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button14.setOnClickListener {
+                if (button14.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button14.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button14.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(13);
+                }
+                else{
+                    button14.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button14.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(13);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button15.setOnClickListener {
+                if (button15.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button15.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button15.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(14);
+                }
+                else{
+                    button15.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button15.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(14);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button16.setOnClickListener {
+                if (button16.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button16.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button16.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(15);
+                }
+                else{
+                    button16.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button16.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(15);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button17.setOnClickListener {
+                if (button17.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button17.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button17.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(16);
+                }
+                else{
+                    button17.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button17.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(16);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button18.setOnClickListener {
+                if (button18.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button18.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button18.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(17);
+                }
+                else{
+                    button18.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button18.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(17);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button19.setOnClickListener {
+                if (button19.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button19.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button19.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(18);
+                }
+                else{
+                    button19.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button19.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(18);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button20.setOnClickListener {
+                if (button20.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button20.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button20.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(19);
+                }
+                else{
+                    button20.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button20.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(19);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button21.setOnClickListener {
+                if (button21.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button21.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button21.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(20);
+                }
+                else{
+                    button21.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button21.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(20);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button22.setOnClickListener {
+                if (button22.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button22.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button22.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(21);
+                }
+                else{
+                    button22.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button22.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(21);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button23.setOnClickListener {
+                if (button23.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button23.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button23.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(22);
+                }
+                else{
+                    button23.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button23.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(22);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+            button24.setOnClickListener {
+                if (button24.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                    button24.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button24.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+                    storeHours.add(23);
+                }
+                else{
+                    button24.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+                    button24.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+                    storeHours.remove(23);
+                }
+                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
+            }
+
+
 
         }
 
