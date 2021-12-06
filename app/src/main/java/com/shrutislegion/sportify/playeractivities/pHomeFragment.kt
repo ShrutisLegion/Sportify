@@ -20,9 +20,7 @@ import kotlinx.android.synthetic.main.fragment_p_home.*
 import kotlinx.android.synthetic.main.fragment_p_home.view.*
 import kotlinx.android.synthetic.main.item_pcomplexdetails.view.*
 import android.os.Parcelable
-
-
-
+import android.view.View.VISIBLE
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -95,6 +93,7 @@ class pHomeFragment : Fragment() {
             override fun onFinish() {
                 //Do what you want
 //                i++
+                precView.visibility = VISIBLE
                 view.progressBarPHome.setVisibility(View.GONE)
 //                view.progressBarPHome.setProgress(100)
             }
