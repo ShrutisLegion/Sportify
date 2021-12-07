@@ -1,6 +1,5 @@
 package com.shrutislegion.sportify.lenderactivities
 
-import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
@@ -18,13 +17,6 @@ import com.google.firebase.storage.StorageReference
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.activity_add_complex.*
-import com.github.ybq.android.spinkit.style.DoubleBounce
-
-import com.github.ybq.android.spinkit.sprite.Sprite
-import android.view.View
-import android.view.View.GONE
-import android.widget.ProgressBar
-import kotlinx.android.synthetic.main.activity_lander_log.*
 
 
 @Suppress("DEPRECATION")
@@ -71,7 +63,7 @@ class AddComplexActivity : AppCompatActivity() {
             (pricePerHour.text!!.isEmpty()) ||
             (complexLocation.text!!.isEmpty()) ||
             (phoneNumber.text!!.isEmpty()) ||
-            (complexDescription.text!!.isEmpty())
+            (hoursBookedInfo.text!!.isEmpty())
         ){
             Toast.makeText(this,"Plase enter all the required details!", Toast.LENGTH_LONG).show()
         }
@@ -87,7 +79,7 @@ class AddComplexActivity : AppCompatActivity() {
             val location = complexLocation.getText().toString()
             var uriString: String = ""
             val phone = phoneNumber.getText().toString()
-            val description = complexDescription.text.toString()
+            val description = hoursBookedInfo.text.toString()
 
             val reference: StorageReference = storage.getReference().child("complex photo").child(
                 FirebaseAuth.getInstance().getUid().toString()

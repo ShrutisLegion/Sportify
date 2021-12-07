@@ -1,11 +1,30 @@
 package com.shrutislegion.sportify.playeractivities
 
+import android.content.Context
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Parcelable
+import android.util.AttributeSet
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
+import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
+import com.shrutislegion.sportify.adapters.pSearchFragmentAdapter
+import com.shrutislegion.sportify.modules.BookedComplexInfo
+import com.shrutislegion.sportify.modules.ComplexInfo
+import kotlinx.android.synthetic.main.fragment_p_home.*
+import kotlinx.android.synthetic.main.fragment_p_home.precView
+import kotlinx.android.synthetic.main.fragment_p_home.view.*
+import kotlinx.android.synthetic.main.fragment_p_home.view.precView
+import kotlinx.android.synthetic.main.fragment_p_home.view.progressBarPHome
+import kotlinx.android.synthetic.main.fragment_p_search.*
+import kotlinx.android.synthetic.main.fragment_p_search.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +40,33 @@ class pSearchFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var adapter: pSearchFragmentAdapter
+    lateinit var countDownTimer: CountDownTimer
+    private var scroll_state: Parcelable? = null
+    var i = 0
+
+    // To override LinearLayoutManager by Wrapper, as it crashes the application sometimes
+    inner class LinearLayoutManagerWrapper : LinearLayoutManager {
+        constructor(context: Context?) : super(context) {}
+        constructor(context: Context?, orientation: Int, reverseLayout: Boolean) : super(
+            context,
+            orientation,
+            reverseLayout
+        ) {
+        }
+
+        constructor(
+            context: Context?,
+            attrs: AttributeSet?,
+            defStyleAttr: Int,
+            defStyleRes: Int
+        ) : super(context, attrs, defStyleAttr, defStyleRes) {
+        }
+
+        override fun supportsPredictiveItemAnimations(): Boolean {
+            return false
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +81,50 @@ class pSearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_p_search, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_p_search, container, false)
+        view.pBRecView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
+
+        // Progress bar's progress is updated
+//        view.progressBarPHome.progress = i
+        countDownTimer = object : CountDownTimer(2000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+            }
+
+            override fun onFinish() {
+                pBRecView.visibility = View.VISIBLE
+                view.progressBarPHome.setVisibility(View.GONE)
+//                view.progressBarPHome.setProgress(100)
+            }
+        }
+        countDownTimer.start()
+
+        // Firebase recycler view is used here
+        // options contains the collection of the data that has to be inserted in the recyclerVIew
+        val options: FirebaseRecyclerOptions<BookedComplexInfo> = FirebaseRecyclerOptions.Builder<BookedComplexInfo>()
+            .setQuery(FirebaseDatabase.getInstance().getReference("Booked Complexes").child(FirebaseAuth.getInstance().currentUser!!.uid), BookedComplexInfo::class.java)
+            .build()
+
+        adapter = pSearchFragmentAdapter(options)
+        view.pBRecView.adapter = adapter
+        adapter.startListening()
+
+        return view
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.stopListening()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        scroll_state = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false).onSaveInstanceState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false).onRestoreInstanceState(scroll_state);
     }
 
     companion object {

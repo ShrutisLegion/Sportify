@@ -10,8 +10,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -28,16 +26,13 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.storage.FirebaseStorage
-import androidx.core.content.ContextCompat.startActivity
 
 import com.google.firebase.dynamiclinks.ShortDynamicLink
 
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 
-import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.DynamicLink.AndroidParameters
 
 
@@ -57,7 +52,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         var image = itemView.findViewById<ImageView>(R.id.complexImage)
         var delete = itemView.findViewById<ImageView>(R.id.deleteButton)
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
-        var description = itemView.findViewById<TextView>(R.id.complexDescription)
+        var description = itemView.findViewById<TextView>(R.id.hoursBookedInfo)
         var card = itemView.findViewById<CardView>(R.id.card)
         var progressBarLCard = itemView.findViewById<ProgressBar>(R.id.progressBarLCard)
         var shareButton = itemView.findViewById<Button>(R.id.shareButton)

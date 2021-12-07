@@ -32,10 +32,10 @@
             android:layout_gravity="center"
             android:padding="@dimen/_5mdp"
             app:SpinKit_Color="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="@+id/precView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/precView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!--        android:indeterminateTint="@color/colorAccent"-->
         <!--        android:progressTint="@color/colorAccent"-->

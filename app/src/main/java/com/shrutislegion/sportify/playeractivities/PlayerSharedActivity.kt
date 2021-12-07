@@ -46,7 +46,7 @@ class PlayerSharedActivity : AppCompatActivity() {
         phoneNumber.setText("$phone")
         sportType.setText("$sport")
         complexLocation.setText("$location")
-        complexDescription.setText("$description")
+        hoursBookedInfo.setText("$description")
         hourPrice.setText("₹ $price")
         courtsCount.setText("$courts")
         emailId.setText("$email")

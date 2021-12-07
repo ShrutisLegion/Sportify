@@ -75,7 +75,7 @@
                 android:layout_height="@dimen/_16mdp"
                 android:src="@drawable/ic_baseline_location_on_24"
                 android:translationZ="@dimen/_4mdp"
-                app:layout_constraintBottom_toTopOf="@+id/complexDescription"
+                app:layout_constraintBottom_toTopOf="@+id/hoursBookedInfo"
                 app:layout_constraintEnd_toStartOf="@+id/complexLocation"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/sportType" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/complexDescription"
+                android:id="@+id/hoursBookedInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -134,7 +134,7 @@
                 android:stepSize="0.5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                app:layout_constraintTop_toBottomOf="@+id/hoursBookedInfo"
                 app:layout_constraintVertical_bias="0.0" />
 
             <com.google.android.material.button.MaterialButton
@@ -160,7 +160,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.849"
                 app:layout_constraintStart_toEndOf="@+id/complexRatingBar"
-                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                app:layout_constraintTop_toBottomOf="@+id/hoursBookedInfo"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView

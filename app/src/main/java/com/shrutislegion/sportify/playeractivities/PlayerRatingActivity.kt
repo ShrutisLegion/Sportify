@@ -97,5 +97,6 @@ class PlayerRatingActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, PlayerHomeActivity::class.java))
+//        supportFragmentManager.beginTransaction().replace(R.id.fragment_ratingContainer, pSearchFragment()).commitAllowingStateLoss()
     }
 }
