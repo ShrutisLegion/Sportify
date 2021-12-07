@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.ktx.Firebase
-import com.google.android.gms.appinvite.AppInvite
+//import com.google.android.gms.appinvite.AppInvite
 
 import com.google.android.gms.common.api.GoogleApiClient
 
