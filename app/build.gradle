@@ -168,6 +168,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-invites:17.0.0'
 
+    // For Lottie Animations
+    implementation 'com.airbnb.android:lottie:4.2.2'
+
 
 
 }
