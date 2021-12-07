@@ -92,7 +92,7 @@ class pSearchFragment : Fragment() {
             }
 
             override fun onFinish() {
-                pBRecView.visibility = View.VISIBLE
+                view.pBRecView.visibility = View.VISIBLE
                 view.progressBarPHome.setVisibility(View.GONE)
 //                view.progressBarPHome.setProgress(100)
             }

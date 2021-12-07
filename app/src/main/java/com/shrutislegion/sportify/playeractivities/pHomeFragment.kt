@@ -93,7 +93,7 @@ class pHomeFragment : Fragment() {
             override fun onFinish() {
                 //Do what you want
 //                i++
-                precView.visibility = VISIBLE
+                view.precView.visibility = VISIBLE
                 view.progressBarPHome.setVisibility(View.GONE)
 //                view.progressBarPHome.setProgress(100)
             }
