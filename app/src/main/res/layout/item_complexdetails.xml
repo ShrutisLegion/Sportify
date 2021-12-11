@@ -96,7 +96,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/sportType" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/hoursBookedInfo"
+                android:id="@+id/complexDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4mdp"
@@ -122,7 +122,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.429"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hoursBookedInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription" />
 
             <TextView
                 android:id="@+id/hourPrice"

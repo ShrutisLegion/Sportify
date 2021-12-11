@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.shrutislegion.sportify.R
 import kotlinx.android.synthetic.main.activity_lender_shared.*
-import kotlinx.android.synthetic.main.activity_lender_shared.hoursBookedInfo
+import kotlinx.android.synthetic.main.activity_lender_shared.complexDescription
 import kotlinx.android.synthetic.main.activity_lender_shared.complexLocation
 import kotlinx.android.synthetic.main.activity_lender_shared.phoneNumber
 
@@ -47,7 +47,7 @@ class LenderSharedActivity : AppCompatActivity() {
         phoneNumber.setText("$phone")
         sportType.setText("$sport")
         complexLocation.setText("$location")
-        hoursBookedInfo.setText("$description")
+        complexDescription.setText("$description")
         hourPrice.setText("₹ $price")
         courtsCount.setText("$courts")
         if(user!=null) {

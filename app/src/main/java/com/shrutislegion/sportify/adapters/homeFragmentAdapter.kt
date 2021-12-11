@@ -52,7 +52,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         var image = itemView.findViewById<ImageView>(R.id.complexImage)
         var delete = itemView.findViewById<ImageView>(R.id.deleteButton)
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
-        var description = itemView.findViewById<TextView>(R.id.hoursBookedInfo)
+        var description = itemView.findViewById<TextView>(R.id.complexDescription)
         var card = itemView.findViewById<CardView>(R.id.card)
         var progressBarLCard = itemView.findViewById<ProgressBar>(R.id.progressBarLCard)
         var shareButton = itemView.findViewById<Button>(R.id.shareButton)

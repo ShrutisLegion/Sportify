@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var regObject = RegistrationActivity()
+
         val viewPager = findViewById<ViewPager>(R.id.pager)
 
         val pager = findViewById<LiquidPager>(R.id.pager)
@@ -39,6 +41,15 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.hide()
 
         val user = FirebaseAuth.getInstance().currentUser
+
+//        if(regObject.lenderLogged){
+//            Toast.makeText(this,"User in Landers!",Toast.LENGTH_LONG).show()
+//            startActivity(Intent(this, LenderHomeActivity::class.java))
+//        }
+//        else{
+//            Toast.makeText(this,"User in users!",Toast.LENGTH_LONG).show()
+//            startActivity(Intent(this, PlayerHomeActivity::class.java))
+//        }
 
         if(user!=null){
             Toast.makeText(this,"User in not null!",Toast.LENGTH_LONG).show()
@@ -124,4 +135,22 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+//    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+//        super.onSaveInstanceState(savedInstanceState)
+//        // Save UI state changes to the savedInstanceState.
+//        // This bundle will be passed to onCreate if the process is
+//        // killed and restarted.
+//        savedInstanceState.putBoolean("playerLogged", true)
+//        savedInstanceState.putBoolean("lenderLogged", false)
+//        // etc.
+//    }
+//
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//        // Restore UI state from the savedInstanceState.
+//        // This bundle has also been passed to onCreate.
+//        val playerLogged = savedInstanceState.getBoolean("playerLogged")
+//        val lenderLogged = savedInstanceState.getBoolean("lenderLogged")
+//    }
 }

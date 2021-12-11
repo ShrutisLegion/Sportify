@@ -16,10 +16,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.BookedComplexInfo
 import com.shrutislegion.sportify.playeractivities.PlayerRatingActivity
@@ -44,6 +41,8 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
         var progressBarPCard = itemView.findViewById<ProgressBar>(R.id.progressBarPCard)
         var email = itemView.findViewById<TextView>(R.id.emailId)
         var ratingButton = itemView.findViewById<ImageView>(R.id.ratingButton)
+        var noRating = itemView.findViewById<TextView>(R.id.noRatingView)
+        var progressBarRating = itemView.findViewById<ProgressBar>(R.id.progressBarRating)
     }
 
     override fun onCreateViewHolder(
@@ -66,8 +65,38 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
 //        holder.price.setText(model.pricePerHour)
         holder.location.setText(model.location)
 
-        // rounds off to 3 if isIndicator is true
-        holder.ratingBar.setRating(2.5f)
+        // Calculate the average of rating
+        val ratingRef = FirebaseDatabase.getInstance().reference
+            .child("Ratings")
+        var storeRatings: MutableList<Float> = mutableListOf<Float>()
+
+        ratingRef.get().addOnSuccessListener {
+            if(!it.child(getRef(position).key.toString()).exists()){
+                holder.ratingBar.visibility = View.INVISIBLE
+                holder.noRating.visibility = View.VISIBLE
+                holder.progressBarRating.visibility = View.GONE
+                holder.noRating.setText("New Complex")
+            }
+            else{
+                var snapshot = it.child(getRef(position).key.toString())
+                for(dss in snapshot.children){
+                    val rate = dss.child("rating").getValue().toString()
+                    storeRatings.add(rate.toFloat())
+                }
+                var averageRating = 0.0
+                var sum = 0.0
+
+                for(i in storeRatings){
+                    sum += i
+                }
+
+                averageRating = sum/storeRatings.size
+                holder.ratingBar.rating = averageRating.toFloat()
+                holder.ratingBar.visibility = View.VISIBLE
+                holder.noRating.visibility = View.INVISIBLE
+                holder.progressBarRating.visibility = View.GONE
+            }
+        }
 
         // Glide used to load the image from the uri stored in firebase and progress bar added
         Glide.with(holder.image.context).load(model.imageUri).listener(object :
