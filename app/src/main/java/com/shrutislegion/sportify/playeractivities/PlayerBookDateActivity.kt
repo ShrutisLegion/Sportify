@@ -5,10 +5,14 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -61,6 +65,9 @@ class PlayerBookDateActivity: AppCompatActivity(){
         var imageUri = intent.getStringExtra(PlayerBookDateActivity.EXTRA_IMAGEURI)
         var email = intent.getStringExtra(PlayerBookDateActivity.EXTRA_EMAILID)
         var key = intent.getStringExtra(PlayerBookDateActivity.EXTRA_KEYID)
+        val animationView = findViewById<LottieAnimationView>(R.id.progressBarBookCourt)
+
+
 
         // Makes only dates from today forward selectable.
         val constraintsBuilder =
@@ -78,14 +85,24 @@ class PlayerBookDateActivity: AppCompatActivity(){
 
 //        MaterialDatePicker.Builder.datePicker().setCalendarConstraints(constraintsBuilder.build())
 
-        datePicker.show(supportFragmentManager, "DATE_PICKER")
+        val calendaranimation = findViewById<LottieAnimationView>(R.id.calendaranimation)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            calendaranimation.visibility = GONE
+            datePicker.show(supportFragmentManager, "DATE_PICKER")
+        },3000)
 
         datePicker.addOnPositiveButtonClickListener {
             // Respond to positive button click
 
-            countDownTimer = object : CountDownTimer(2000, 1000) {
+            countDownTimer = object : CountDownTimer(2000, 2000) {
 
                 override fun onTick(millisUntilFinished: Long) {
+
+                    // show loader time wala
+                    animationView.visibility = VISIBLE
+                    animationView.playAnimation()
+
                     val ref = FirebaseDatabase.getInstance().reference
                         .child("Booked Complexes")
                         .child(FirebaseAuth.getInstance().currentUser!!.uid)
@@ -231,7 +248,8 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 }
 
                 override fun onFinish() {
-                    progressBarBookCourt.visibility = View.GONE
+                    // hide loader
+                    animationView.visibility = View.GONE
                     scrollView.visibility = VISIBLE
                 }
             }

@@ -9,6 +9,9 @@
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.2526041666666667" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/drawable/ic_baseline_play_circle_filled_24.xml" value="0.2526041666666667" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/activity_player_book_court.xml" value="0.2044776119402985" />
+        <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/fragment_p_chat.xml" value="0.23645833333333333" />
+        <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/fragment_p_home.xml" value="0.1361111111111111" />
+        <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/fragment_p_user.xml" value="0.1361111111111111" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/item_book_time.xml" value="0.225" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/item_complexdetails.xml" value="0.264" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/lender/drawable/ic_baseline_delete_forever_24.xml" value="0.2526041666666667" />
