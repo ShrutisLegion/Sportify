@@ -3,8 +3,10 @@ package com.shrutislegion.sportify.adapters
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.*
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
@@ -17,13 +19,12 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
+import com.shrutislegion.sportify.modules.ComplexRating
 import com.shrutislegion.sportify.playeractivities.PlayerBookDateActivity
-import com.shrutislegion.sportify.playeractivities.PlayerRatingActivity
 import com.shrutislegion.sportify.playeractivities.PlayerSharedActivity
 
 class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
@@ -41,13 +42,14 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         val location = itemView.findViewById<TextView>(R.id.complexLocation)
         var image = itemView.findViewById<ImageView>(R.id.complexImage)
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
-        var description = itemView.findViewById<TextView>(R.id.hoursBookedInfo)
+        var description = itemView.findViewById<TextView>(R.id.complexDescription)
         var card = itemView.findViewById<CardView>(R.id.card)
         var ratingBar = itemView.findViewById<RatingBar>(R.id.complexRatingBar)
         var progressBarPCard = itemView.findViewById<ProgressBar>(R.id.progressBarPCard)
         var email = itemView.findViewById<TextView>(R.id.emailId)
-        var share = itemView.findViewById<ImageView>(R.id.shareButton)
         var bookCourt = itemView.findViewById<Button>(R.id.bookCourtButton)
+        var noRating = itemView.findViewById<TextView>(R.id.noRatingView)
+        var progressBarRating = itemView.findViewById<ProgressBar>(R.id.progressBarRating)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -66,10 +68,42 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         holder.location.setText(model.location)
         holder.description.setText(model.description)
         holder.phone.setText(model.phone)
+        holder.email.setText(model.emailId)
 
         // rounds off to 3 if isIndicator is true
-        holder.ratingBar.setRating(2.5f)
-        holder.email.setText(model.emailId)
+//        holder.ratingBar.setRating(2.5f)
+        // Calculate the average of rating
+        val ratingRef = FirebaseDatabase.getInstance().reference
+            .child("Ratings")
+        var storeRatings: MutableList<Float> = mutableListOf<Float>()
+
+        ratingRef.get().addOnSuccessListener {
+            if(!it.child(getRef(position).key.toString()).exists()){
+                holder.ratingBar.visibility = INVISIBLE
+                holder.noRating.visibility = VISIBLE
+                holder.progressBarRating.visibility = GONE
+                holder.noRating.setText("New Complex")
+            }
+            else{
+                var snapshot = it.child(getRef(position).key.toString())
+                for(dss in snapshot.children){
+                    val rate = dss.child("rating").getValue().toString()
+                    storeRatings.add(rate.toFloat())
+                }
+                var averageRating = 0.0
+                var sum = 0.0
+
+                for(i in storeRatings){
+                    sum += i
+                }
+
+                averageRating = sum/storeRatings.size
+                holder.ratingBar.rating = averageRating.toFloat()
+                holder.ratingBar.visibility = VISIBLE
+                holder.noRating.visibility = INVISIBLE
+                holder.progressBarRating.visibility = GONE
+            }
+        }
 
         // Glide used to load the image from the uri stored in firebase and progress bar added
         Glide.with(holder.image.context).load(model.imageUri).listener(object :
@@ -147,101 +181,6 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
 
             // Start the Shared activity with the transition
             holder.name.context.startActivity(intent, options.toBundle())
-        }
-
-        // if user has already reviewed the complex then a toast should appear
-
-        holder.share.setOnClickListener {
-
-            // Ratings -> complexUid -> userUid -> snapshot -> rating exists
-            val ref = FirebaseDatabase.getInstance().reference
-                .child("Ratings")
-                .child(getRef(position).key.toString())
-                .child(FirebaseAuth.getInstance().currentUser!!.uid.toString())
-
-//            if(ref === null){
-//                holder.name.context.startActivity(
-//                    Intent(
-//                        holder.name.context,
-//                        PlayerRatingActivity::class.java
-//                    )
-//                )
-//            }
-
-
-            ref.get().addOnSuccessListener {
-
-                var previt = it
-                if (it.child("complexName").getValue() === null
-                    || it.child("rating").getValue() === null
-                    || it.child("review").getValue() === null
-                ) {
-                    var intent =
-                        Intent(holder.name.context, PlayerRatingActivity::class.java)
-                    intent.putExtra(
-                        PlayerRatingActivity.EXTRA_RATING,
-                        "0"
-                    )
-                    intent.putExtra(
-                        PlayerRatingActivity.EXTRA_REVIEW,
-                        ""
-                    )
-                    intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
-                    intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
-                    holder.name.context.startActivity(
-                        intent
-                    )
-                } else {
-                    MaterialAlertDialogBuilder(holder.name.context).also {
-                        // set title for dailog box
-                        it.setTitle("You have already reviewed the complex")
-                        // set message for dialog box
-                        it.setMessage("Are you sure you want to edit your previous review?")
-                        // set icon for dialog box
-                        it.setIcon(R.drawable.ic_baseline_warning_24)
-
-                        // perform positive action which shares some info and starts the PlayerRatingActivity
-                        it.setPositiveButton("YES") { dialogInterface, which ->
-
-                            var intent =
-                                Intent(holder.name.context, PlayerRatingActivity::class.java)
-                            intent.putExtra(
-                                PlayerRatingActivity.EXTRA_RATING,
-                                previt.child("rating").getValue().toString()
-                            )
-                            intent.putExtra(
-                                PlayerRatingActivity.EXTRA_REVIEW,
-                                previt.child("review").getValue().toString()
-                            )
-                            intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
-                            intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
-
-                            holder.name.context.startActivity(intent)
-                        }
-
-                        // performs neutral action
-                        it.setNeutralButton("CANCEL") { dialogInterface, which ->
-                        }
-
-                        // performs negative/NO action
-                        it.setNegativeButton("NO") { dialogInterface, which ->
-                            Toast.makeText(
-                                holder.name.context,
-                                "Process cancelled !!",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-
-                        // create the AlertDialogBox
-                        val alertDialog: androidx.appcompat.app.AlertDialog = it.create()
-                        alertDialog.setCancelable(false)
-                        alertDialog.show()
-                    }
-
-                }
-
-            }
-
         }
 
         holder.bookCourt.setOnClickListener {

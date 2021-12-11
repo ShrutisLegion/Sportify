@@ -27,6 +27,10 @@ class PlayerHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_home)
 
+        var regObj = RegistrationActivity()
+        regObj.playerLogged = true
+        regObj.lenderLogged = false
+
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
         mGoogleSignInClient= GoogleSignIn.getClient(this,gso)
         bottomNav = findViewById(R.id.bottom_nav)

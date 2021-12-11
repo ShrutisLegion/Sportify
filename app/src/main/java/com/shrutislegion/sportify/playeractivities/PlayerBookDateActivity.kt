@@ -10,6 +10,7 @@ import android.os.Looper
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
@@ -75,7 +76,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 .setValidator(DateValidatorPointForward.now())
 
         // Allows user to select date for the booking   x
-        val datePicker =
+        var datePicker =
             MaterialDatePicker.Builder.datePicker()
                 .setTitleText("SELECT DATE OF BOOKING")
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
@@ -99,7 +100,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
 
                 override fun onTick(millisUntilFinished: Long) {
 
-                    // show loader time wala
+                    // show loader
                     animationView.visibility = VISIBLE
                     animationView.playAnimation()
 

@@ -12,9 +12,11 @@ import com.shrutislegion.sportify.lenderactivities.LanderLogActivity
 import com.shrutislegion.sportify.playeractivities.PlayerLogActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
-class RegistrationActivity : AppCompatActivity() {
+open class RegistrationActivity : AppCompatActivity() {
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
+    var playerLogged: Boolean = false
+    var lenderLogged: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +57,8 @@ class RegistrationActivity : AppCompatActivity() {
                     Continue.stopAnimation(
                             TransitionButton.StopAnimationStyle.EXPAND,
                             TransitionButton.OnAnimationStopEndListener {
+                                lenderLogged = true
+                                playerLogged = false
                                 val intent = Intent(this, LanderLogActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                                 startActivity(intent)

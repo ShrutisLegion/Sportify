@@ -150,6 +150,8 @@ dependencies {
 
     // Material ui
     implementation 'com.google.android.material:material:1.4.0'
+    implementation("androidx.compose.material3:material3:1.0.0-alpha02")
+
 
     // FOR FAB in Home Fragment
     implementation 'com.github.JediBurrell:customFloatingActionButton:-SNAPSHOT'

@@ -3,28 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/_15mdp"
-    android:paddingRight="@dimen/_15mdp"
-    android:paddingTop="@dimen/_15mdp">
+    android:layout_height="wrap_content">
 
-    <com.google.android.material.transformation.TransformationChildCard
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:strokeWidth="4dp"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="25dp"
-        app:state_dragged="true"
-        tools:ignore="MissingConstraints"
         android:focusable="true"
-        android:padding="@dimen/_25mdp">
+        android:layout_margin="@dimen/_8mdp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="@dimen/_5mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:state_dragged="true"
+        tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!--            android:paddingBottom="@dimen/_10mdp-->
+            android:layout_height="wrap_content">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/complexImage"
@@ -49,10 +47,10 @@
                 android:transitionName="complexName"
                 app:layout_constraintBottom_toBottomOf="@+id/complexImage"
                 app:layout_constraintEnd_toEndOf="@+id/complexImage"
-                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintHorizontal_bias="0.075"
                 app:layout_constraintStart_toStartOf="@+id/complexImage"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.893" />
+                app:layout_constraintVertical_bias="0.956" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/sportType"
@@ -75,7 +73,7 @@
                 android:layout_height="@dimen/_16mdp"
                 android:src="@drawable/ic_baseline_location_on_24"
                 android:translationZ="@dimen/_4mdp"
-                app:layout_constraintBottom_toTopOf="@+id/hoursBookedInfo"
+                app:layout_constraintBottom_toTopOf="@+id/complexDescription"
                 app:layout_constraintEnd_toStartOf="@+id/complexLocation"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,12 +99,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/sportType" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/hoursBookedInfo"
+                android:id="@+id/complexDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/_14mdp"
                 android:layout_marginTop="@dimen/_4mdp"
+                android:layout_marginBottom="@dimen/_5mdp"
                 android:ellipsize="end"
                 android:fontFamily="@font/nunito_semibold"
                 android:maxWidth="@dimen/_250mdp"
@@ -118,50 +117,65 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.023"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/complexLocation"
+                app:layout_constraintBottom_toTopOf="@id/complexRatingBar"/>
 
             <me.zhanghai.android.materialratingbar.MaterialRatingBar
                 android:id="@+id/complexRatingBar"
                 style="@style/Widget.MaterialRatingBar.RatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_width="@dimen/_100mdp"
+                android:layout_height="@dimen/_20mdp"
                 android:layout_marginTop="4dp"
+                android:visibility="invisible"
                 android:layout_marginBottom="@dimen/_12mdp"
                 android:isIndicator="true"
                 android:progressTint="#123282"
                 android:secondaryProgressTint="#123282"
                 android:stepSize="0.5"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/bookCourtButton"
+                app:layout_constraintHorizontal_bias="0.126"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hoursBookedInfo"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <com.google.android.material.button.MaterialButton
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/noRatingView"
+                android:visibility="invisible"
+                android:textColor="@color/colorAccent"
+                android:layout_width="@dimen/_100mdp"
+                android:layout_height="@dimen/_20mdp"
+                android:layout_marginTop="@dimen/_16mdp"
+                app:fontFamily="@font/nunito_semibolditalic"
+                android:layout_marginBottom="@dimen/_12mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/bookCourtButton"
+                app:layout_constraintHorizontal_bias="0.126"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                app:layout_constraintVertical_bias="0.0"
+                app:textAllCaps="true"
+                android:text="New Complex"/>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/bookCourtButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="@dimen/_190mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                android:layout_marginBottom="@dimen/_8mdp"
                 android:text="BOOk"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.523"
-                app:layout_constraintLeft_toRightOf="@+id/complexRatingBar"
-                app:layout_constraintRight_toLeftOf="@+id/shareButton" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/shareButton"
-                android:layout_width="32dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="@dimen/_12mdp"
-                android:src="@drawable/ic_baseline_share_24"
-                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@color/colorAccent"
+                app:icon="@drawable/book_icon"
+                app:iconTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.849"
-                app:layout_constraintStart_toEndOf="@+id/complexRatingBar"
-                app:layout_constraintTop_toBottomOf="@+id/hoursBookedInfo"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                app:layout_constraintVertical_bias="0.0"
+                app:rippleColor="@color/white" />
 
             <TextView
                 android:id="@+id/hourPrice"
@@ -169,7 +183,7 @@
                 android:layout_height="0dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:text="Nam"
                 android:transitionName="price"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/courtsCount"
@@ -218,14 +232,28 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="11dp"
-                app:SpinKit_Color="@color/colorAccent"
                 android:padding="@dimen/_5mdp"
                 android:visibility="visible"
+                app:SpinKit_Color="@color/colorAccent"
                 app:layout_constraintBottom_toTopOf="@+id/nameOfComplex"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/complexImage"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/progressBarRating"
+                style="@style/SpinKitView.Large.ThreeBounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:SpinKit_Color="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/bookCourtButton"
+                app:layout_constraintHorizontal_bias="0.251"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complexDescription"
+                app:layout_constraintVertical_bias="0.0" />
 
 
             <!--            <com.google.android.material.textview.MaterialTextView-->
@@ -242,16 +270,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.transformation.TransformationChildCard>
+    </com.google.android.material.card.MaterialCardView>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/_25mdp"
+        android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_alignParentBottom="true" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card" />
     <!--    <ImageView-->
     <!--        android:id="@+id/complexImage"-->
     <!--        android:layout_width="159dp"-->
