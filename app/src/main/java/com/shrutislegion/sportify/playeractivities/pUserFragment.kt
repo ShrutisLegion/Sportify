@@ -6,14 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.*
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.common.api.OptionalPendingResult
+import com.google.android.gms.common.api.ResultCallback
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
+import com.shrutislegion.sportify.lenderactivities.LenderHomeActivity
 import kotlinx.android.synthetic.main.fragment_p_user.view.*
+import kotlinx.android.synthetic.main.fragment_p_user.view.UserEmailId
+import kotlinx.android.synthetic.main.fragment_p_user.view.UserName
+import kotlinx.android.synthetic.main.fragment_p_user.view.UserProfilePicture
+import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.android.synthetic.main.fragment_user.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,8 +37,10 @@ private const val ARG_PARAM2 = "param2"
  * Use the [pUserFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class pUserFragment : Fragment() {
+@Suppress("DEPRECATION")
+class pUserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
+    lateinit var googleApiClient: GoogleApiClient
     lateinit var gso: GoogleSignInOptions
     lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -50,7 +64,17 @@ class pUserFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_p_user, container, false)
 
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        googleApiClient = GoogleApiClient.Builder(requireContext()).enableAutoManage(
+            PlayerHomeActivity(), this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build()
         mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        // check if the user is already signed in
+        if (user != null) {
+            view.UserName.setText(user.displayName)
+            view.UserEmailId.setText(user.email)
+            Glide.with(this).load(user.photoUrl).into(view.UserProfilePicture)
+        }
 
         view.playerSignOut.setOnClickListener {
             mGoogleSignInClient.signOut().addOnCompleteListener{
@@ -60,6 +84,40 @@ class pUserFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onConnectionFailed(p0: ConnectionResult) {
+        Toast.makeText(context,"Connection Failed!", Toast.LENGTH_LONG).show()
+    }
+
+    private fun handleSignInResult(result: GoogleSignInResult){
+        if(result.isSuccess){
+            val account: GoogleSignInAccount = result.signInAccount!!
+            UserName.setText(account.displayName)
+            UserEmailId.setText(account.email)
+
+            Glide.with(this).load(account.photoUrl).into(UserProfilePicture)
+        }
+        else{
+            startActivity(Intent(context, RegistrationActivity::class.java))
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val opr: OptionalPendingResult<GoogleSignInResult> = Auth.GoogleSignInApi.silentSignIn(googleApiClient)
+
+        if(opr.isDone) run {
+            val result: GoogleSignInResult = opr.get()
+            handleSignInResult(result)
+        }
+        else{
+            opr.setResultCallback(ResultCallback<GoogleSignInResult>() {
+                handleSignInResult(it)
+            })
+        }
+
     }
 
     companion object {

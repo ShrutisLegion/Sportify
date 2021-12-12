@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lenderactivities.UserFragment">
+    tools:context=".playeractivities.pUserFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.shrutislegion.layout.MainActivity2">
-
+        android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/UserProfilePicture"
@@ -26,46 +26,48 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.149" />
 
+        <!--            tools:srcCompat="@tools:sample/avatars"-->
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/linearLayout"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="horizontal"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent">-->
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <!--                <com.github.florent37.diagonallayout.DiagonalLayout-->
+        <!--                    android:id="@+id/diagonalLayout"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:elevation="0dp"-->
+        <!--                    app:diagonal_angle="15"-->
+        <!--                    app:diagonal_direction="left"-->
+        <!--                    app:diagonal_position="bottom"-->
+        <!--                    tools:ignore="MissingConstraints">-->
 
-            <com.github.florent37.diagonallayout.DiagonalLayout
-                android:id="@+id/diagonalLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:elevation="0dp"
-                app:diagonal_angle="15"
-                app:diagonal_direction="left"
-                app:diagonal_position="bottom"
-                tools:ignore="MissingConstraints">
-
-                <ImageView
-                    android:id="@+id/image111"
-                    android:layout_width="match_parent"
-                    android:layout_height="274dp"
-                    android:contentDescription="@string/todo"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/sss"
-                    tools:ignore="ImageContrastCheck" />
-            </com.github.florent37.diagonallayout.DiagonalLayout>
-        </LinearLayout>
+        <!--                    <ImageView-->
+        <!--                        android:id="@+id/image111"-->
+        <!--                        android:layout_width="match_parent"-->
+        <!--                        android:layout_height="274dp"-->
+        <!--                        android:contentDescription="@string/todo"-->
+        <!--                        app:srcCompat="@drawable/sss"-->
+        <!--                        android:scaleType="centerCrop"-->
+        <!--                        android:background="@color/white"-->
+        <!--                        tools:ignore="ImageContrastCheck" />-->
+        <!--                </com.github.florent37.diagonallayout.DiagonalLayout>-->
+        <!--            </LinearLayout>-->
 
         <TextView
             android:id="@+id/UserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text=""
+            android:text="Shruti Bhateja"
+            android:fontFamily="@font/nunito_extrabold"
             android:textColor="@color/gradStart"
             android:textSize="32dp"
             android:textStyle="bold"
@@ -79,7 +81,7 @@
             android:layout_width="@dimen/_210mdp"
             android:layout_height="3dp"
             android:layout_marginLeft="@dimen/_50mdp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="@dimen/_50mdp"
             android:background="#19000000"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,93 +90,104 @@
             app:layout_constraintTop_toBottomOf="@+id/UserName"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/UserEmailId"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_22mdp"
-            android:layout_marginEnd="16dp"
-            android:text=""
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_12mdp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.28"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            app:layout_constraintVertical_bias="0.0" />
+            app:cardCornerRadius="@dimen/_12mdp"
+            android:layout_margin="@dimen/_18mdp">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="@dimen/_22mdp"
-            android:layout_marginBottom="200dp"
-            android:text="Mail id:"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_12mdp"
-            android:textStyle="bold"
-            android:translationZ="@dimen/_22mdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view"
-            app:layout_constraintVertical_bias="0.0" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient"/>
 
-        <Button
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="@dimen/_30mdp"
+                android:layout_marginRight="@dimen/_50mdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/UserName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Info"
+                android:fontFamily="@font/nunito_extrabold"
+                android:textSize="@dimen/_12mdp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/_12mdp"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/_30mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:src="@drawable/ic_baseline_mail_outline_24"
+                android:layout_marginTop="@dimen/_37mdp"
+                android:layout_marginStart="@dimen/_12mdp"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EMAIL"
+                android:fontFamily="@font/nunito_light"
+                android:textColor="#ffffff"
+                android:layout_marginStart="@dimen/_48mdp"
+                android:layout_marginTop="@dimen/_37mdp"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/UserEmailId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="shrutibhateja1803@gmail.com"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/_48mdp"
+                android:layout_marginTop="@dimen/_48mdp"
+                android:layout_marginBottom="@dimen/_5mdp"/>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/SignOutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="68dp"
+            android:layout_marginTop="@dimen/_23mdp"
+            android:layout_marginBottom="@dimen/_100mdp"
+            android:backgroundTint="@color/white"
             android:text="SIGN OUT"
+            android:textColor="@color/black"
+            app:cornerRadius="@dimen/_12mdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card"
+            app:layout_constraintVertical_bias="0.0" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Player Home Activity"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
+        <!--        <Button-->
+        <!--            android:id="@+id/playerSignOut"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="204dp"-->
+        <!--            android:text="Button"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--        <ImageView-->
-    <!--            android:id="@+id/UserProfilePicture"-->
-    <!--            android:layout_width="200dp"-->
-    <!--            android:layout_height="200dp"-->
-    <!--            app:layout_constraintBottom_toTopOf="@+id/UserName"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent"-->
-    <!--            tools:srcCompat="@tools:sample/avatars" />-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/UserName"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text=""-->
-    <!--            app:layout_constraintBottom_toTopOf="@+id/UserEmailId"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintHorizontal_bias="0.501"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/UserProfilePicture"-->
-    <!--            tools:text="UserName" />-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/UserEmailId"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text=""-->
-    <!--            app:layout_constraintBottom_toTopOf="@+id/guideline5"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintHorizontal_bias="0.488"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/UserName"-->
-    <!--            tools:text="UserEmailId" />-->
-
-    <!--        <androidx.constraintlayout.widget.Guideline-->
-    <!--            android:id="@+id/guideline5"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:orientation="horizontal"-->
-    <!--            app:layout_constraintGuide_begin="489dp" />-->
-
-
-</RelativeLayout>
+</FrameLayout>
