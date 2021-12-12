@@ -227,8 +227,8 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
-                    holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_24)
-                    holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_24
+                    holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_red_24)
+                    holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_red_24
                 }
                 else{
                     holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
@@ -252,8 +252,8 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
                 }
                 else{
                     ref.setValue(model).addOnSuccessListener {
-                            holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_24)
-                            holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_24
+                            holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_red_24)
+                            holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_red_24
                             Toast.makeText(holder.name.context, "Favorite added!", Toast.LENGTH_SHORT).show()
                         }
                 }
