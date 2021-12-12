@@ -87,6 +87,7 @@
                 android:fontFamily="@font/nunito_bold"
                 android:text="02:00-03:00"
                 android:textColor="@color/black"
+                android:focusable = "false"
                 app:layout_constraintHorizontal_bias="0.947"
                 app:layout_constraintStart_toEndOf="@id/button2"
                 android:layout_marginTop="@dimen/_20mdp"
