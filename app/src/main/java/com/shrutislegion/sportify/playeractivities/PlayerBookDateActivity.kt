@@ -46,6 +46,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
         const val EXTRA_EMAILID = "email_extra"
         const val EXTRA_RATING = "rating_extra"
         const val EXTRA_KEYID = "keyed_extra"
+        const val EXTRA_UID = "uid_extra"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +67,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
         var imageUri = intent.getStringExtra(PlayerBookDateActivity.EXTRA_IMAGEURI)
         var email = intent.getStringExtra(PlayerBookDateActivity.EXTRA_EMAILID)
         var key = intent.getStringExtra(PlayerBookDateActivity.EXTRA_KEYID)
+        var complexUserId = intent.getStringExtra(PlayerBookDateActivity.EXTRA_UID)
         val animationView = findViewById<LottieAnimationView>(R.id.progressBarBookCourt)
 
 
@@ -272,8 +274,9 @@ class PlayerBookDateActivity: AppCompatActivity(){
 
             // onClickListener on all the time buttons
             // if displayLists contains 0, then no onClicklistener on that button and the background color of that changes
+
             button1.setOnClickListener {
-                if (button1.backgroundTintList === ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(0)) {
                     button1.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button1.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(0);
@@ -287,7 +290,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button2.setOnClickListener {
-                if (button2.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(1)) {
                     button2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button2.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(1);
@@ -301,7 +304,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button3.setOnClickListener {
-                if (button3.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(2)) {
                     button3.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button3.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(2);
@@ -315,7 +318,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button4.setOnClickListener {
-                if (button4.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(3)) {
                     button4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button4.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(3);
@@ -329,7 +332,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button5.setOnClickListener {
-                if (button5.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(4)) {
                     button5.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button5.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(4);
@@ -343,7 +346,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button6.setOnClickListener {
-                if (button6.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(5)) {
                     button6.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button6.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(5);
@@ -357,7 +360,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button7.setOnClickListener {
-                if (button7.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(6)) {
                     button7.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button7.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(6);
@@ -371,7 +374,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button8.setOnClickListener {
-                if (button8.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(7)) {
                     button8.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button8.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(7);
@@ -385,7 +388,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button9.setOnClickListener {
-                if (button9.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(8)) {
                     button9.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button9.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(8);
@@ -399,7 +402,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button10.setOnClickListener {
-                if (button10.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(9)) {
                     button10.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button10.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(9);
@@ -413,7 +416,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button11.setOnClickListener {
-                if (button11.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(10)) {
                     button11.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button11.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(10);
@@ -427,7 +430,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button12.setOnClickListener {
-                if (button12.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(11)) {
                     button12.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button12.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(11);
@@ -441,7 +444,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button13.setOnClickListener {
-                if (button13.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(12)) {
                     button13.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button13.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(12);
@@ -455,7 +458,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button14.setOnClickListener {
-                if (button14.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(13)) {
                     button14.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button14.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(13);
@@ -469,7 +472,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button15.setOnClickListener {
-                if (button15.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(14)) {
                     button15.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button15.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(14);
@@ -483,7 +486,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button16.setOnClickListener {
-                if (button16.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(15)) {
                     button16.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button16.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(15);
@@ -497,7 +500,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button17.setOnClickListener {
-                if (button17.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(16)) {
                     button17.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button17.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(16);
@@ -511,7 +514,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button18.setOnClickListener {
-                if (button18.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(17)) {
                     button18.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button18.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(17);
@@ -525,7 +528,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button19.setOnClickListener {
-                if (button19.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(18)) {
                     button19.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button19.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(18);
@@ -539,7 +542,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button20.setOnClickListener {
-                if (button20.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(19)) {
                     button20.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button20.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(19);
@@ -553,7 +556,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button21.setOnClickListener {
-                if (button21.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(20)) {
                     button21.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button21.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(20);
@@ -567,7 +570,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button22.setOnClickListener {
-                if (button22.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(21)) {
                     button22.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button22.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(21);
@@ -581,7 +584,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button23.setOnClickListener {
-                if (button23.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(22)) {
                     button23.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button23.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(22);
@@ -595,7 +598,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
                 Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button24.setOnClickListener {
-                if (button24.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
+                if (!storeHours.contains(23)) {
                     button24.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
                     button24.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(23);
@@ -645,7 +648,44 @@ class PlayerBookDateActivity: AppCompatActivity(){
                                 storeHoursList.add(x)
                             }
 
+                            // To get the boked complexes by a user in the Player Activity, this node is created
+
                             var BookedInfo = BookedComplexInfo(
+                                name,
+                                sport,
+                                price,
+                                courts,
+                                location,
+                                imageUri,
+                                phone,
+                                description,
+                                complexUserId.toString(),
+                                email,
+                                storeHoursList
+                            )
+
+                            FirebaseDatabase.getInstance().reference
+                                .child("Booked Complexes")
+                                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                                .child(key.toString())
+                                .setValue(BookedInfo).addOnSuccessListener {
+                                    Toast.makeText(
+                                        this,
+                                        "Complex Pbooking successful !!",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }.addOnFailureListener {
+                                    Toast.makeText(
+                                        this,
+                                        "Complex booking failed !!",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
+
+
+                            // To get the booked complexes in the Lender Activity this node is created
+
+                            var BookedInfoForLender = BookedComplexInfo(
                                 name,
                                 sport,
                                 price,
@@ -660,22 +700,24 @@ class PlayerBookDateActivity: AppCompatActivity(){
                             )
 
                             FirebaseDatabase.getInstance().reference
-                                .child("Booked Complexes")
-                                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                                .child("Booked Complexes Lender")
+                                .child(complexUserId.toString())
                                 .child(key.toString())
-                                .setValue(BookedInfo).addOnSuccessListener {
+                                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                                .setValue(BookedInfoForLender).addOnSuccessListener {
                                     Toast.makeText(
                                         this,
-                                        "Complex booking successful !!",
+                                        "Complex Lbooking successful !!",
                                         Toast.LENGTH_LONG
                                     ).show()
-                                }.addOnFailureListener {
+                                }.addOnFailureListener{
                                     Toast.makeText(
                                         this,
-                                        "Complex booking failed !!",
+                                        "Complex Lbooking failed !!",
                                         Toast.LENGTH_LONG
                                     ).show()
                                 }
+
                         }
 
                         // performs neutral action

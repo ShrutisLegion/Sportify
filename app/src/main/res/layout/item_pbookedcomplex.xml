@@ -123,6 +123,7 @@
                 android:id="@+id/complexRatingBar"
                 style="@style/Widget.MaterialRatingBar.RatingBar"
                 android:layout_width="@dimen/_100mdp"
+                android:visibility="invisible"
                 android:layout_height="@dimen/_20mdp"
                 android:layout_marginBottom="@dimen/_18mdp"
                 android:isIndicator="true"
@@ -248,6 +249,8 @@
                 app:layout_constraintTop_toTopOf="@+id/complexImage"
                 app:layout_constraintVertical_bias="1.0" />
 
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -262,5 +265,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

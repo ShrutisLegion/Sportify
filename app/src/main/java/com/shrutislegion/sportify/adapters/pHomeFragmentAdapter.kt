@@ -215,6 +215,7 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
             intent.putExtra(PlayerBookDateActivity.EXTRA_EMAILID, holder.email.text.toString())
             intent.putExtra(PlayerBookDateActivity.EXTRA_RATING, holder.ratingBar.rating.toString())
             intent.putExtra(PlayerBookDateActivity.EXTRA_KEYID, getRef(position).key.toString())
+            intent.putExtra(PlayerBookDateActivity.EXTRA_UID, model.UId.toString())
 
             holder.name.context.startActivity(intent)
         }

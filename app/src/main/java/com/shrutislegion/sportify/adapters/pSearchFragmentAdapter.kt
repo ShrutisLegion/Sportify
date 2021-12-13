@@ -14,9 +14,13 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.BookedComplexInfo
 import com.shrutislegion.sportify.playeractivities.PlayerRatingActivity
@@ -43,6 +47,7 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
         var ratingButton = itemView.findViewById<ImageView>(R.id.ratingButton)
         var noRating = itemView.findViewById<TextView>(R.id.noRatingView)
         var progressBarRating = itemView.findViewById<ProgressBar>(R.id.progressBarRating)
+//        var bottomBookedSheet = itemView.findViewById<FrameLayout>(R.id.bottomBookedSheet)
     }
 
     override fun onCreateViewHolder(
@@ -64,6 +69,11 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
         holder.type.setText(model.typeOfSport)
 //        holder.price.setText(model.pricePerHour)
         holder.location.setText(model.location)
+
+//        BottomSheetBehavior.from(holder.bottomBookedSheet).apply {
+//            peekHeight = 200
+//            this.state = BottomSheetBehavior.STATE_COLLAPSED
+//        }
 
         // Calculate the average of rating
         val ratingRef = FirebaseDatabase.getInstance().reference
@@ -127,17 +137,42 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
             .into(holder.image)
 
         var displayList: MutableList<Int>? = model.bookedHours
-        var displaySet: MutableSet<Int> = mutableSetOf<Int>()
-
-        for(i in displayList!!){
-            displaySet.add(i)
-        }
-
+        var displaySet: MutableSet<Int>? = mutableSetOf<Int>()
         var displaymsg = ""
-        for(i in displaySet){
-            displaymsg = displaymsg + i.toString() + " "
+
+        if(displayList!!.size == 0){
+            displaymsg = ""
+            holder.hoursBooked.setText(displaymsg)
         }
-        holder.hoursBooked.setText(displaymsg)
+        else{
+            val ref = FirebaseDatabase.getInstance().reference
+                .child("Booked Complexes")
+                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                .child(getRef(position).key.toString())
+                .child("bookedHours")
+
+            ref.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (dss in snapshot.children) {
+                            val timeName = dss.getValue().toString()
+                            displaySet!!.add(timeName.toInt())
+                        }
+                        for(i in displaySet!!){
+                            displaymsg = displaymsg + i.toString() + " "
+                        }
+                        holder.hoursBooked.setText(displaymsg)
+                    }
+                    else{
+                        displaymsg = "No Booked Hours"
+                        holder.hoursBooked.setText(displaymsg)
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
+        }
+
 
         holder.ratingButton.setOnClickListener{
             // rate and review court
@@ -222,6 +257,7 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
             }
 
         }
+
 
     }
 }
