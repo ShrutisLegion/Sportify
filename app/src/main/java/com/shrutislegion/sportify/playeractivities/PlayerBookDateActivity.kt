@@ -265,7 +265,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             // if displayLists contains 0, then no onClicklistener on that button and the background color of that changes
             button1.setOnClickListener {
                 if (button1.backgroundTintList === ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button1.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button1.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button1.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(0);
                 }
@@ -279,7 +279,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button2.setOnClickListener {
                 if (button2.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button2.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(1);
                 }
@@ -293,7 +293,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button3.setOnClickListener {
                 if (button3.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button3.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button3.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button3.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(2);
                 }
@@ -307,7 +307,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button4.setOnClickListener {
                 if (button4.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button4.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(3);
                 }
@@ -321,7 +321,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button5.setOnClickListener {
                 if (button5.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button5.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button5.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button5.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(4);
                 }
@@ -335,7 +335,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button6.setOnClickListener {
                 if (button6.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button6.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button6.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button6.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(5);
                 }
@@ -349,7 +349,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button7.setOnClickListener {
                 if (button7.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button7.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button7.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button7.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(6);
                 }
@@ -363,7 +363,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button8.setOnClickListener {
                 if (button8.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button8.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button8.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button8.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(7);
                 }
@@ -377,7 +377,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button9.setOnClickListener {
                 if (button9.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button9.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button9.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button9.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(8);
                 }
@@ -391,7 +391,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button10.setOnClickListener {
                 if (button10.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button10.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button10.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button10.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(9);
                 }
@@ -405,7 +405,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button11.setOnClickListener {
                 if (button11.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button11.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button11.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button11.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(10);
                 }
@@ -419,7 +419,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button12.setOnClickListener {
                 if (button12.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button12.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button12.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button12.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(11);
                 }
@@ -433,7 +433,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button13.setOnClickListener {
                 if (button13.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button13.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button13.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button13.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(12);
                 }
@@ -447,7 +447,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button14.setOnClickListener {
                 if (button14.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button14.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button14.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button14.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(13);
                 }
@@ -461,7 +461,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button15.setOnClickListener {
                 if (button15.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button15.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button15.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button15.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(14);
                 }
@@ -475,7 +475,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button16.setOnClickListener {
                 if (button16.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button16.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button16.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button16.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(15);
                 }
@@ -489,7 +489,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button17.setOnClickListener {
                 if (button17.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button17.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button17.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button17.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(16);
                 }
@@ -503,7 +503,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button18.setOnClickListener {
                 if (button18.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button18.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button18.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button18.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(17);
                 }
@@ -517,7 +517,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button19.setOnClickListener {
                 if (button19.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button19.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button19.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button19.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(18);
                 }
@@ -531,7 +531,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button20.setOnClickListener {
                 if (button20.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button20.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button20.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button20.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(19);
                 }
@@ -545,7 +545,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button21.setOnClickListener {
                 if (button21.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button21.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button21.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button21.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(20);
                 }
@@ -559,7 +559,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button22.setOnClickListener {
                 if (button22.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button22.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button22.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button22.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(21);
                 }
@@ -573,7 +573,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button23.setOnClickListener {
                 if (button23.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button23.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button23.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button23.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(22);
                 }
@@ -587,7 +587,7 @@ class PlayerBookDateActivity: AppCompatActivity(){
             }
             button24.setOnClickListener {
                 if (button24.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#FFFFFF"))) {
-                    button24.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+                    button24.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button24.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(23);
                 }
