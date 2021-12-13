@@ -52,9 +52,9 @@
         android:fontFamily="mo"
         android:includeFontPadding="false"
         android:letterSpacing="-0.01"
-        android:text="@string/find_the_best"
+        android:text="Find The Best"
         android:textStyle="bold"
-        android:textColor="#99ff5a85"
+        android:textColor="@color/colorAccent"
         android:textSize="41sp" />
 
     <TextView
