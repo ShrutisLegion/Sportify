@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".playeractivities.PlayerFavoriteActivity"
+            android:exported="true" />
+        <activity
             android:name=".playeractivities.PlayerBookDateActivity"
             android:exported="true" />
         <activity
