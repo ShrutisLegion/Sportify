@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/drawable-hdpi/ic_baseline_camera_24.xml" value="0.2526041666666667" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/drawable-hdpi/ic_baseline_home_24.xml" value="0.2526041666666667" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/drawable-hdpi/ic_baseline_phone_24.xml" value="0.2526041666666667" />
@@ -17,6 +16,7 @@
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/front/layout/second_page.xml" value="0.225" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/front/layout/third_page.xml" value="0.225" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/activity_player_book_court.xml" value="0.2044776119402985" />
+        <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/activity_splash_screen.xml" value="0.23645833333333333" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/fragment_p_chat.xml" value="0.23645833333333333" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/fragment_p_home.xml" value="0.1361111111111111" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/layout/fragment_p_user.xml" value="0.1361111111111111" />
@@ -83,14 +83,13 @@
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Sportify/app/src/main/res/lender/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Sportify/app/src/main/res/lender/layout/fragment_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Sportify/app/src/main/res/player/layout/activity_login.xml" value="0.25416666666666665" />
-=======
-        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/activity_player_book_court.xml" value="0.17037037037037037" />
-        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/item_pcomplexdetails.xml" value="0.2" />
-        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/lender/drawable/ic_baseline_favorite_red_24.xml" value="0.20925925925925926" />
->>>>>>> main
       </map>
     </option>
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
 </project>
