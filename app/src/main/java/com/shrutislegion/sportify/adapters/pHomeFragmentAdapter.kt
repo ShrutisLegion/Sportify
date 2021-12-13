@@ -2,6 +2,8 @@ package com.shrutislegion.sportify.adapters
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -19,6 +21,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.shrutislegion.sportify.R
@@ -50,6 +53,7 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         var bookCourt = itemView.findViewById<Button>(R.id.bookCourtButton)
         var noRating = itemView.findViewById<TextView>(R.id.noRatingView)
         var progressBarRating = itemView.findViewById<ProgressBar>(R.id.progressBarRating)
+        var bookmarkButton = itemView.findViewById<ShapeableImageView>(R.id.bookmarkButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -69,9 +73,9 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         holder.description.setText(model.description)
         holder.phone.setText(model.phone)
         holder.email.setText(model.emailId)
-
-        // rounds off to 3 if isIndicator is true
-//        holder.ratingBar.setRating(2.5f)
+        holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+        holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_border_24
+        
         // Calculate the average of rating
         val ratingRef = FirebaseDatabase.getInstance().reference
             .child("Ratings")
@@ -132,6 +136,9 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
             .override(600, 400)
             .placeholder(R.drawable.loading_image)
             .into(holder.image)
+
+        // favorites image check--> if snapshot exists then red heart else white border heart
+
 
         //on click on card and start the Lender Share activity
         holder.card.setOnClickListener {
@@ -211,6 +218,73 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
 
             holder.name.context.startActivity(intent)
         }
+
+        var ref = FirebaseDatabase.getInstance().reference
+            .child("Favorite Complexes")
+            .child(FirebaseAuth.getInstance().currentUser!!.uid)
+            .child(getRef(position).key.toString())
+
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_red_24)
+                    holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_red_24
+                }
+                else{
+                    holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                    holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_border_24
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+
+        holder.bookmarkButton.setOnClickListener {
+            ref.get().addOnSuccessListener {
+                if(it.exists()){
+                    ref.removeValue().addOnCompleteListener {
+                            holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                            holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_border_24
+                            Toast.makeText(holder.name.context, "Favorite removed!", Toast.LENGTH_SHORT).show()
+                        }
+                }
+                else{
+                    ref.setValue(model).addOnSuccessListener {
+                            holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_red_24)
+                            holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_red_24
+                            Toast.makeText(holder.name.context, "Favorite added!", Toast.LENGTH_SHORT).show()
+                        }
+                }
+            }
+        }
+
+//        holder.bookmarkButton.setOnClickListener {
+//            if(holder.bookmarkButton.tag == R.drawable.ic_baseline_favorite_border_24) {
+////                holder.bookmarkButton.strokeWidth = 2F
+////                holder.bookmarkButton.strokeColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+//
+//                ref.child(FirebaseAuth.getInstance().currentUser!!.uid)
+//                    .child(getRef(position).key.toString())
+//                    .setValue(model).addOnSuccessListener {
+//                        holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+//                        holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_24
+//                        Toast.makeText(holder.name.context, "Favorite added!", Toast.LENGTH_SHORT).show()
+//                    }
+//
+//            }
+//            else{
+//
+//                ref.child(FirebaseAuth.getInstance().currentUser!!.uid)
+//                    .child(getRef(position).key.toString())
+//                    .removeValue().addOnCompleteListener {
+//                        holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+//                        holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_border_24
+//
+//                    }
+//            }
+//        }
 
     }
 

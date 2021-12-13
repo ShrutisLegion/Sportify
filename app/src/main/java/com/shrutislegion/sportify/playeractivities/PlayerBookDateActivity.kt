@@ -88,15 +88,24 @@ class PlayerBookDateActivity: AppCompatActivity(){
 
         val calendaranimation = findViewById<LottieAnimationView>(R.id.calendaranimation)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            calendaranimation.visibility = GONE
-            datePicker.show(supportFragmentManager, "DATE_PICKER")
-        },3000)
+        countDownTimer = object : CountDownTimer(3000, 3000){
+            override fun onTick(p0: Long) {
+                calendaranimation.visibility = VISIBLE
+                calendaranimation.playAnimation()
+            }
+
+            override fun onFinish() {
+                calendaranimation.visibility = GONE
+                datePicker.show(supportFragmentManager, "DATE_PICKER")
+            }
+
+        }
+        countDownTimer.start()
 
         datePicker.addOnPositiveButtonClickListener {
             // Respond to positive button click
 
-            countDownTimer = object : CountDownTimer(2000, 2000) {
+            countDownTimer = object : CountDownTimer(3000, 2900) {
 
                 override fun onTick(millisUntilFinished: Long) {
 

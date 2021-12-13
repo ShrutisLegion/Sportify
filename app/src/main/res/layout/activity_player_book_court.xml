@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollView"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -102,6 +102,7 @@
                 android:text="02:00-03:00"
                 android:textColor="@color/black"
                 app:backgroundTint="@color/white"
+                android:focusable = "false"
                 app:layout_constraintHorizontal_bias="0.947"
                 app:layout_constraintStart_toEndOf="@id/button2"
                 android:layout_marginTop="@dimen/_25mdp"
