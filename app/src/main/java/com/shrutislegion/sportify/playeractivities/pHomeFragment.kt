@@ -15,7 +15,6 @@ import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
 import eightbitlab.com.blurview.RenderScriptBlur
-import kotlinx.android.synthetic.main.activity_lander_log.*
 import kotlinx.android.synthetic.main.fragment_p_home.*
 import kotlinx.android.synthetic.main.fragment_p_home.view.*
 import kotlinx.android.synthetic.main.item_pcomplexdetails.view.*

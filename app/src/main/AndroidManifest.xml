@@ -11,8 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
+            android:name=".PLSignInActivity"
+            android:exported="true" />
+        <activity
             android:name=".SplashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +25,7 @@
         <activity
             android:name=".playeractivities.PlayerFavoriteActivity"
             android:exported="false"
-            android:noHistory="true"
-            />
+            android:noHistory="true" />
         <activity
             android:name=".playeractivities.PlayerBookDateActivity"
             android:exported="false"
@@ -81,7 +83,6 @@
             android:name=".MainActivity"
             android:exported="true"
             android:noHistory="true">
-
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 

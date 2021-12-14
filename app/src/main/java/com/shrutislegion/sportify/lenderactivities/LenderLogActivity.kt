@@ -4,21 +4,28 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.airbnb.lottie.LottieAnimationView
+import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
@@ -38,6 +45,8 @@ class LenderLogActivity : AppCompatActivity() {
     private val TAG = "RegActivity Tag"
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
+    lateinit var googleApiClient: GoogleApiClient
+    lateinit var gso: GoogleSignInOptions
 
     @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,7 +121,7 @@ class LenderLogActivity : AppCompatActivity() {
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         signInButton.visibility = View.GONE
-        progressBar.visibility = View.VISIBLE
+        progressBarSignIn.visibility = View.VISIBLE
 
         GlobalScope.launch(Dispatchers.IO) {
             val auth = auth.signInWithCredential(credential).await()
@@ -124,16 +133,64 @@ class LenderLogActivity : AppCompatActivity() {
     }
 
     private fun updateUI(firebaseUser: FirebaseUser?) {
+
         if (firebaseUser!=null){
-            val lander = lander(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
-            val landersDao = lenderDaos()
-            landersDao.addUser(lander)
-            val mainActivityIntent = Intent(this, LenderHomeActivity::class.java)
-            startActivity(mainActivityIntent)
-            finish()
+
+            val checkId = firebaseUser.uid
+            var check: Boolean = false
+            var check1: Boolean = false
+            var check2: Boolean = false
+
+            Firebase.firestore.collection("Landers")
+                .get().addOnSuccessListener { result->
+                    for(document in result){
+                        check1 = true
+                        if(document.id == checkId){
+                            check = true
+                            Toast.makeText(this,"Please Sign In Lender", Toast.LENGTH_SHORT).show()
+                            googleSignInClient.signOut().addOnCompleteListener{
+                                Firebase.auth.signOut()
+                            }
+                            startActivity(Intent(this, RegistrationActivity::class.java))
+                            break
+                        }
+                    }
+                }
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(!check) {
+                    Firebase.firestore.collection("users")
+                        .get().addOnSuccessListener { result ->
+                            for (document in result) {
+                                check2 = true
+                                if (document.id == checkId) {
+                                    check = true
+                                    Toast.makeText(this,"Please Sign In Player", Toast.LENGTH_SHORT).show()
+                                    googleSignInClient.signOut().addOnCompleteListener{
+                                        Firebase.auth.signOut()
+                                    }
+                                    startActivity(Intent(this, RegistrationActivity::class.java))
+                                    break
+                                }
+                            }
+                            Toast.makeText(this,"$check + $check1 + $check2", Toast.LENGTH_LONG).show()
+                            if(check1 && check2 && !check){
+                                val lander = lander(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
+                                val landersDao = lenderDaos()
+                                landersDao.addUser(lander)
+                                progressBarSignIn.visibility = View.GONE
+                                val mainActivityIntent = Intent(this, LenderHomeActivity::class.java)
+                                startActivity(mainActivityIntent)
+                                finish()
+                            }
+                        }
+                }
+            },1000)
+
+
         } else {
             signInButton.visibility = View.VISIBLE
-            progressBar.visibility = View.GONE
+            progressBarSignIn.visibility = View.GONE
 //            Toast.makeText(this, "Try Again!", Toast.LENGTH_LONG).show()
         }
     }
