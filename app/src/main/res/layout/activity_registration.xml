@@ -8,117 +8,95 @@
     android:background="@color/white"
     >
 
-<!--    <ImageView-->
-<!--        android:id="@+id/logologo"-->
-<!--        android:layout_width="@dimen/_40mdp"-->
-<!--        android:layout_height="@dimen/_40mdp"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:src="@drawable/logologo"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/textView"-->
-<!--        app:layout_constraintRight_toLeftOf="@id/textView"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="1.0" />-->
-
-<!--    -->
-
-<!--    <View-->
-<!--        android:id="@+id/view"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="3dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:background="#DA222121"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
-<!--        tools:layout_editor_absoluteX="0dp"-->
-<!--        tools:ignore="MissingConstraints" />-->
-
-    <!--    <com.royrodriguez.transitionbutton.TransitionButton-->
-<!--        android:id="@+id/Continue"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="60dp"-->
-<!--        android:layout_marginBottom="260dp"-->
-<!--        android:onClick="Click"-->
-<!--        android:text="Continue"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textStyle="bold"-->
-<!--        app:defaultColor="#CC0E4E"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/playerButton"-->
-<!--        app:loaderColor="@android:color/white"-->
-<!--        tools:ignore="MissingConstraints,OnClick" />-->
-
-    <ImageView
-        android:id="@+id/imageView"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/registeranim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logorreg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="@dimen/_10mdp"
+        app:lottie_rawRes="@raw/complex"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
 
-    <com.royrodriguez.transitionbutton.TransitionButton
-        android:id="@+id/Continue"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/landerButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="60dp"
-        android:layout_marginBottom="48dp"
-        android:onClick="Click"
-        android:text="Continue"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:defaultColor="#CC0E4E"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_50mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:padding="@dimen/_5mdp"
+        android:text="Register as\nComplex Owner"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/_10mdp"
+        android:backgroundTint="@color/logregbg"
+        app:layout_constraintStart_toEndOf="@+id/registeranim"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="lander"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/playeranim"
+        android:layout_width="@dimen/_200mdp"
+        android:layout_height="@dimen/_200mdp"
+        android:layout_marginTop="@dimen/_150mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/player" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/playerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/registeranim"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Register as \nPlayer"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_65mdp"
+        app:cornerRadius="@dimen/_10mdp"
+        android:onClick="player"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/useranim"
+        android:layout_width="@dimen/_200mdp"
+        android:layout_height="@dimen/_200mdp"
+        android:layout_marginTop="@dimen/_60mdp"
+        app:lottie_rawRes="@raw/user"
+        app:layout_goneMarginTop="@dimen/_10mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerbutton"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signin"
+        android:layout_width="@dimen/_100mdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/useranim"
+        app:layout_constraintTop_toBottomOf="@+id/playeranim"
+        android:text="Already a user? Sign-in."
+        android:layout_marginTop="@dimen/_35mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="@dimen/_15mdp"
+        android:textColor="#FF5722"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10mdp"
+        app:lottie_rawRes="@raw/olympicathlete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:loaderColor="@android:color/white"
-        tools:ignore="MissingConstraints,OnClick" />
+        android:visibility="gone"
+        />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/Continue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.247">
 
-        <RadioButton
-            android:id="@+id/landerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Proceed As Complex Owner"
-            android:textColor="@color/colorAccent"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            tools:ignore="MissingConstraints"
-            android:layout_marginBottom="5dp"/>
 
-        <RadioButton
-            android:id="@+id/playerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Proceed as Player"
-            android:layout_marginLeft="55dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/Continue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/landerButton"
-            app:layout_constraintVertical_bias="0.432"
-            tools:ignore="MissingConstraints" />
-    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

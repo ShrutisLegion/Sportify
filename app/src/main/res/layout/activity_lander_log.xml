@@ -6,17 +6,112 @@
     android:layout_height="match_parent"
     tools:context=".lenderactivities.LanderLogActivity">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/investoranim"
+            android:layout_width="235dp"
+            android:layout_height="181dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/businessinvestor" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/grow"
+            android:layout_width="81dp"
+            android:layout_height="103dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="88dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Grow Your \nBusiness"
+            android:textColor="@color/logregbg"
+            android:textSize="@dimen/_15mdp"
+            app:layout_constraintStart_toEndOf="@+id/investoranim"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/chat"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_height="@dimen/_150mdp"
+            android:layout_marginTop="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/chat" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/chattext"
+            android:layout_width="@dimen/_100mdp"
+            android:layout_height="wrap_content"
+            android:text="Interact with customers via chat!"
+            android:layout_marginTop="@dimen/_20mdp"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="@dimen/_15mdp"
+            app:layout_constraintEnd_toStartOf="@+id/chat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/investoranim" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/feedback"
+            android:layout_width="@dimen/_150mdp"
+            android:layout_height="@dimen/_150mdp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chattext"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/feedback" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/feedbacktext"
+            android:layout_width="@dimen/_100mdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Get Ratings and Reviews from Players!"
+            android:textSize="@dimen/_15mdp"
+            android:textColor="@color/teal_700"
+            app:layout_constraintStart_toEndOf="@+id/feedback"
+            app:layout_constraintTop_toBottomOf="@id/chat" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/feedback"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="All You Need is a Google Sign-in.\nLet your innings begin!!"
+            android:layout_marginStart="@dimen/_20mdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="@dimen/_15mdp"
+            android:textColor="#FF5722"
+            />
+
         <com.google.android.gms.common.SignInButton
             android:id="@+id/signInButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginStart="@dimen/_40mdp"
+            android:layout_marginTop="@dimen/_2mdp"
+            android:layout_marginEnd="@dimen/_40mdp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="visible"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/text"
+            app:layout_constraintVertical_bias="0.185" />
 
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/progressBar"

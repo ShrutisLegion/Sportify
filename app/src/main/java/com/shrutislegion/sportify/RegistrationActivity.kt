@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.royrodriguez.transitionbutton.TransitionButton
 import com.shrutislegion.sportify.lenderactivities.LanderLogActivity
@@ -22,53 +25,50 @@ open class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
+        val anim = findViewById<LottieAnimationView>(R.id.anim)
+        val registeranim = findViewById<LottieAnimationView>(R.id.registeranim)
+        val playeranim = findViewById<LottieAnimationView>(R.id.playeranim)
+        val useranim = findViewById<LottieAnimationView>(R.id.useranim)
+
 //        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
 //        mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
 
     }
 
-    fun Click(view: View) {
-        if(playerButton.isChecked){
-            landerButton.isEnabled = false
-            Continue.startAnimation();
-            Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                val isSuccessful = true
+    fun lander(view: View){
+        anim.visibility = VISIBLE
+        anim.playAnimation()
+        landerButton.visibility = GONE
+        playerbutton.visibility = GONE
+        signin.visibility = GONE
+        registeranim.visibility = GONE
+        playeranim.visibility = GONE
+        useranim.visibility = GONE
 
-                // Choose a stop animation if your call was succesful or not
-                if (isSuccessful) {
-                    Continue.stopAnimation(
-                            TransitionButton.StopAnimationStyle.EXPAND,
-                            TransitionButton.OnAnimationStopEndListener {
-                                val intent = Intent(this, PlayerLogActivity::class.java)
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                                startActivity(intent)
-                            })
-                } else {
-                    Continue.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null)
-                }
-            }, 2000)
-        } else if(landerButton.isChecked){
-            Continue.startAnimation();
-            Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                val isSuccessful = true
-
-                // Choose a stop animation if your call was succesful or not
-                if (isSuccessful) {
-                    Continue.stopAnimation(
-                            TransitionButton.StopAnimationStyle.EXPAND,
-                            TransitionButton.OnAnimationStopEndListener {
-                                lenderLogged = true
-                                playerLogged = false
-                                val intent = Intent(this, LanderLogActivity::class.java)
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                                startActivity(intent)
-                                finish()
-                            })
-                } else {
-                    Continue.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null)
-                }
-            }, 2000)
-
-        }
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, LanderLogActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }, 4000)
     }
+
+    fun player(view: View){
+        anim.visibility = VISIBLE
+        anim.playAnimation()
+        landerButton.visibility = GONE
+        playerbutton.visibility = GONE
+        signin.visibility = GONE
+        registeranim.visibility = GONE
+        playeranim.visibility = GONE
+        useranim.visibility = GONE
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, PlayerLogActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }, 4000)
+    }
+
 }
