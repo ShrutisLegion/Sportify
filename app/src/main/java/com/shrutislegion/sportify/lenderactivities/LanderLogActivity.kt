@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.widget.TextView
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -40,6 +43,25 @@ class LanderLogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lander_log)
+
+        val leftanim = AnimationUtils.loadAnimation(this, R.anim.leftanim)
+        val rightanim = AnimationUtils.loadAnimation(this, R.anim.rightanim)
+        val bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottomanimation)
+        val inverstoranim = findViewById<LottieAnimationView>(R.id.investoranim)
+        val chat = findViewById<LottieAnimationView>(R.id.chat)
+        val feedback = findViewById<LottieAnimationView>(R.id.feedback)
+        val grow = findViewById<TextView>(R.id.grow)
+        val chattext = findViewById<TextView>(R.id.chattext)
+        val feedbacktext = findViewById<TextView>(R.id.feedbacktext)
+        val text = findViewById<TextView>(R.id.text)
+        grow.setAnimation(rightanim)
+        inverstoranim.setAnimation(leftanim)
+        chat.setAnimation(rightanim)
+        feedback.setAnimation(leftanim)
+        chattext.setAnimation(leftanim)
+        feedbacktext.setAnimation(rightanim)
+        text.setAnimation(leftanim)
+        signInButton.setAnimation(bottomAnim)
 
         //google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
