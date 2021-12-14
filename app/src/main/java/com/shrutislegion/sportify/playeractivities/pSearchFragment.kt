@@ -86,9 +86,19 @@ class pSearchFragment : Fragment() {
 
         // Progress bar's progress is updated
 //        view.progressBarPHome.progress = i
-        countDownTimer = object : CountDownTimer(2000, 1000) {
+        countDownTimer = object : CountDownTimer(2000, 1900) {
 
             override fun onTick(millisUntilFinished: Long) {
+
+                // Firebase recycler view is used here
+                // options contains the collection of the data that has to be inserted in the recyclerVIew
+                val options: FirebaseRecyclerOptions<BookedComplexInfo> = FirebaseRecyclerOptions.Builder<BookedComplexInfo>()
+                    .setQuery(FirebaseDatabase.getInstance().getReference("Booked Complexes").child(FirebaseAuth.getInstance().currentUser!!.uid), BookedComplexInfo::class.java)
+                    .build()
+
+                adapter = pSearchFragmentAdapter(options)
+                view.pBRecView.adapter = adapter
+                adapter.startListening()
             }
 
             override fun onFinish() {
@@ -98,16 +108,6 @@ class pSearchFragment : Fragment() {
             }
         }
         countDownTimer.start()
-
-        // Firebase recycler view is used here
-        // options contains the collection of the data that has to be inserted in the recyclerVIew
-        val options: FirebaseRecyclerOptions<BookedComplexInfo> = FirebaseRecyclerOptions.Builder<BookedComplexInfo>()
-            .setQuery(FirebaseDatabase.getInstance().getReference("Booked Complexes").child(FirebaseAuth.getInstance().currentUser!!.uid), BookedComplexInfo::class.java)
-            .build()
-
-        adapter = pSearchFragmentAdapter(options)
-        view.pBRecView.adapter = adapter
-        adapter.startListening()
 
         return view
     }

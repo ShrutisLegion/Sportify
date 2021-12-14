@@ -539,50 +539,50 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="1 2 3 4 5"/>
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/testView"
+                app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Cut"
                 app:layout_constraintStart_toStartOf="parent"
-                app:cardCornerRadius="@dimen/_25mdp">
+                app:layout_constraintTop_toBottomOf="@id/testView">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_cloud_done_24"
                     android:layout_marginLeft="@dimen/_12mdp"
-                    android:layout_marginTop="@dimen/_20mdp"/>
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:src="@drawable/ic_baseline_cloud_done_24" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Seleted Hours:"
-                    android:textSize="@dimen/_14mdp"
                     android:layout_marginLeft="@dimen/_38mdp"
-                    android:layout_marginTop="@dimen/_20mdp"/>
+                    android:layout_marginTop="@dimen/_20mdp"
+                    android:text="Seleted Hours:"
+                    android:textSize="@dimen/_14mdp" />
 
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_36mdp">
+
                     <com.google.android.material.button.MaterialButton
-                        android:clickable="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12:00"
                         android:layout_margin="@dimen/_12mdp"
-                        />
+                        android:clickable="false"
+                        android:text="12:00" />
                 </HorizontalScrollView>
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Price:"
-                    android:textSize="@dimen/_10mdp"
                     android:layout_marginLeft="@dimen/_12mdp"
                     android:layout_marginTop="@dimen/_100mdp"
-                    />
+                    android:text="Price:"
+                    android:textSize="@dimen/_10mdp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/totalPriceView"
@@ -590,10 +590,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_12mdp"
                     android:layout_marginTop="@dimen/_112mdp"
+                    android:layout_marginBottom="@dimen/_15mdp"
                     android:fontFamily="@font/nunito_bold"
                     android:paddingEnd="@dimen/_12mdp"
                     android:text="Rs.5600"
-                    android:layout_marginBottom="@dimen/_15mdp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_20mdp" />
 
@@ -603,12 +603,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_60mdp"
                     android:layout_marginLeft="@dimen/_170mdp"
-                    android:text="CONFIRM BOOKING"
-                    android:fontFamily="@font/nunito_bold"
-                    android:visibility="visible"
-                    android:background="@drawable/shape"
                     android:layout_marginTop="@dimen/_95mdp"
-                    />
+                    android:background="@drawable/shape"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="CONFIRM BOOKING"
+                    android:visibility="visible" />
 
 
             </com.google.android.material.card.MaterialCardView>

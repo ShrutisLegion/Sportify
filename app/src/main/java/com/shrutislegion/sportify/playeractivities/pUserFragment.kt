@@ -83,6 +83,10 @@ class pUserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
             }
         }
 
+        view.bookmarkedComplexesButton.setOnClickListener {
+            startActivity(Intent(context, PlayerFavoriteActivity::class.java))
+        }
+
         return view
     }
 

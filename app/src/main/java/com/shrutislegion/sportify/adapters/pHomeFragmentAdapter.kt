@@ -24,6 +24,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import com.shrutislegion.sportify.modules.ComplexRating
@@ -79,35 +80,48 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         // Calculate the average of rating
         val ratingRef = FirebaseDatabase.getInstance().reference
             .child("Ratings")
+            .child(getRef(position).key.toString())
         var storeRatings: MutableList<Float> = mutableListOf<Float>()
 
-        ratingRef.get().addOnSuccessListener {
-            if(!it.child(getRef(position).key.toString()).exists()){
-                holder.ratingBar.visibility = INVISIBLE
-                holder.noRating.visibility = VISIBLE
-                holder.progressBarRating.visibility = GONE
-                holder.noRating.setText("New Complex")
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+
+                val info = dataSnapshot.getValue()
+
+                if(info == null){
+                    holder.ratingBar.visibility = INVISIBLE
+                    holder.noRating.visibility = VISIBLE
+                    holder.progressBarRating.visibility = GONE
+                    holder.noRating.setText("New Complex")
+                }
+                else{
+                    for(i in dataSnapshot.children){
+                        val compinfo: ComplexRating = i.getValue<ComplexRating>()!!
+                        storeRatings.add(compinfo.rating!!.toFloat())
+                    }
+                    var averageRating = 0.0
+                    var sum = 0.0
+
+                    for(i in storeRatings){
+                        sum += i
+                    }
+
+                    averageRating = sum/storeRatings.size
+                    holder.ratingBar.rating = averageRating.toFloat()
+                    holder.ratingBar.visibility = VISIBLE
+                    holder.noRating.visibility = INVISIBLE
+                    holder.progressBarRating.visibility = GONE
+                }
+
             }
-            else{
-                var snapshot = it.child(getRef(position).key.toString())
-                for(dss in snapshot.children){
-                    val rate = dss.child("rating").getValue().toString()
-                    storeRatings.add(rate.toFloat())
-                }
-                var averageRating = 0.0
-                var sum = 0.0
 
-                for(i in storeRatings){
-                    sum += i
-                }
-
-                averageRating = sum/storeRatings.size
-                holder.ratingBar.rating = averageRating.toFloat()
-                holder.ratingBar.visibility = VISIBLE
-                holder.noRating.visibility = INVISIBLE
-                holder.progressBarRating.visibility = GONE
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
             }
         }
+        ratingRef.addValueEventListener(postListener)
+
 
         // Glide used to load the image from the uri stored in firebase and progress bar added
         Glide.with(holder.image.context).load(model.imageUri).listener(object :

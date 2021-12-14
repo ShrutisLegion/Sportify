@@ -94,7 +94,6 @@ class PlayerBookDateActivity: AppCompatActivity(){
             override fun onTick(p0: Long) {
                 calendaranimation.visibility = VISIBLE
                 calendaranimation.playAnimation()
-
             }
 
             override fun onFinish() {
