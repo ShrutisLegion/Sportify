@@ -7,63 +7,107 @@
     android:background="@color/white"
     tools:context=".playeractivities.PlayerLogActivity">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/playerLogImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/pngegg"
+        android:layout_marginTop="@dimen/_1mdp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="172dp"
         android:fontFamily="sans-serif-condensed"
         android:includeFontPadding="false"
         android:letterSpacing="-0.01"
-        android:text="SPORTIFY "
+        android:text="Bring Your Squad "
         android:textColor="@color/colorAccent"
-        android:textSize="56sp"
+        android:textSize="@dimen/_20mdp"
+        android:translationZ="@dimen/_200mdp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/playerLogSubTitle"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/reviewtext"
+        android:layout_width="@dimen/_100mdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/playerLogImage"
+        app:layout_constraintEnd_toStartOf="@+id/reviewanim"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Check Reviews and Ratings to choose the best of all."
+        android:textSize="@dimen/_15mdp"
+        android:layout_marginTop="@dimen/_20mdp"
+        android:layout_marginStart="@dimen/_15mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="@color/logregbg"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/reviewanim"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="@dimen/_200mdp"
+        android:layout_height="@dimen/_200mdp"
+        app:lottie_rawRes="@raw/review"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/homeanim"
+        android:layout_marginTop="@dimen/_20mdp"
+        app:layout_constraintTop_toBottomOf="@+id/reviewtext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/hometext"
+        android:layout_width="@dimen/_180mdp"
+        android:layout_height="@dimen/_180mdp"
+        app:lottie_rawRes="@raw/home"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hometext"
+        android:layout_width="@dimen/_100mdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_50mdp"
+        app:layout_constraintTop_toBottomOf="@id/reviewanim"
+        android:text="Pre-book your time slot from Home!"
+        android:textColor="@color/teal_700"
+        android:textSize="@dimen/_15mdp"
+        android:fontFamily="@font/nunito_bold"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif-light"
-        android:letterSpacing="-0.01"
-        android:lineSpacingExtra="4sp"
-        android:text="Let's get Sportified "
-        android:textColor="#b5b5b5"
-        android:textSize="16sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintTop_toBottomOf="@+id/homeanim"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:text="All You Need is a Google Sign-Up.\nLet your innings begin!!"
+        android:layout_marginStart="@dimen/_20mdp"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="@dimen/_10mdp"
+        android:textColor="#FF5722"
+        />
+
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/signInButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progressBar"

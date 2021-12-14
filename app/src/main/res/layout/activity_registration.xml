@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10mdp"
         app:lottie_rawRes="@raw/complex"
+        android:layout_marginStart="@dimen/_10mdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
@@ -33,6 +34,7 @@
         android:backgroundTint="@color/logregbg"
         app:layout_constraintStart_toEndOf="@+id/registeranim"
         app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/white"
         android:onClick="lender"/>
 
     <com.airbnb.lottie.LottieAnimationView
@@ -40,6 +42,7 @@
         android:layout_width="@dimen/_200mdp"
         android:layout_height="@dimen/_200mdp"
         android:layout_marginTop="@dimen/_150mdp"
+        app:layout_constraintStart_toEndOf="@id/playerbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
@@ -52,17 +55,20 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/registeranim"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/nunito_bold"
         android:text="Register as \nPlayer"
         android:layout_marginStart="@dimen/_10mdp"
         android:layout_marginTop="@dimen/_65mdp"
         app:cornerRadius="@dimen/_10mdp"
+        app:rippleColor="@color/white"
         android:onClick="player"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/useranim"
-        android:layout_width="@dimen/_200mdp"
-        android:layout_height="@dimen/_200mdp"
-        android:layout_marginTop="@dimen/_60mdp"
+        android:layout_width="@dimen/_180mdp"
+        android:layout_height="@dimen/_180mdp"
+        android:layout_marginTop="@dimen/_70mdp"
+        android:layout_marginStart="@dimen/_10mdp"
         app:lottie_rawRes="@raw/user"
         app:layout_goneMarginTop="@dimen/_10mdp"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +82,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/useranim"
         app:layout_constraintTop_toBottomOf="@+id/playeranim"
-        android:text="Already a user? Sign-in."
+        android:text="Already a user? \nSign-in."
         android:layout_marginTop="@dimen/_35mdp"
         android:fontFamily="@font/nunito_bold"
         android:textSize="@dimen/_15mdp"

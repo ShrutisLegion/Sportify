@@ -8,10 +8,12 @@ import android.os.Looper
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.animation.AnimationUtils
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.shrutislegion.sportify.lenderactivities.LenderLogActivity
 import com.shrutislegion.sportify.playeractivities.PlayerLogActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
 
 open class RegistrationActivity : AppCompatActivity() {
@@ -24,10 +26,19 @@ open class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
+        val leftanim = AnimationUtils.loadAnimation(this, R.anim.leftanim)
+        val rightanim = AnimationUtils.loadAnimation(this, R.anim.rightanim)
         val anim = findViewById<LottieAnimationView>(R.id.anim)
         val registeranim = findViewById<LottieAnimationView>(R.id.registeranim)
         val playeranim = findViewById<LottieAnimationView>(R.id.playeranim)
         val useranim = findViewById<LottieAnimationView>(R.id.useranim)
+
+        registeranim.setAnimation(leftanim)
+        lenderButton.setAnimation(leftanim)
+        playeranim.setAnimation(rightanim)
+        playerbutton.setAnimation(rightanim)
+        useranim.setAnimation(leftanim)
+        signin.setAnimation(leftanim)
 
 //        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
 //        mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
