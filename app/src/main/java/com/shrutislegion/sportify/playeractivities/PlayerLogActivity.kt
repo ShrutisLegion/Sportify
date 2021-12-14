@@ -8,6 +8,8 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import android.view.animation.AnimationUtils
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -30,6 +32,10 @@ import com.shrutislegion.sportify.modules.lander
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.progressBar
 import kotlinx.android.synthetic.main.activity_login.signInButton
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.progressBar
+import kotlinx.android.synthetic.main.activity_login.signInButton
+import kotlinx.android.synthetic.main.activity_login.text
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -46,6 +52,20 @@ class PlayerLogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        val leftanim = AnimationUtils.loadAnimation(this, R.anim.leftanim)
+        val rightanim = AnimationUtils.loadAnimation(this, R.anim.rightanim)
+        val bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottomanimation)
+        val reviewanim = findViewById<LottieAnimationView>(R.id.reviewanim)
+        val homeanim = findViewById<LottieAnimationView>(R.id.homeanim)
+
+        playerLogImage.setAnimation(rightanim)
+        textView.setAnimation(leftanim)
+        reviewanim.setAnimation(rightanim)
+        reviewtext.setAnimation(leftanim)
+        homeanim.setAnimation(leftanim)
+        hometext.setAnimation(rightanim)
+        text.setAnimation(leftanim)
+        signInButton.setAnimation(bottomAnim)
 
 
         //google Sign In
