@@ -59,7 +59,7 @@
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name=".lenderactivities.LanderLogActivity"
+            android:name=".lenderactivities.LenderLogActivity"
             android:label="Register Your Complex"
             android:noHistory="true" />
         <activity

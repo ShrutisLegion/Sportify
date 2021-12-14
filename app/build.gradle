@@ -173,6 +173,7 @@ dependencies {
     // For Lottie Animations
     implementation 'com.airbnb.android:lottie:4.2.2'
 
-
+    // custom google Sign In button
+    implementation 'com.shobhitpuri.custombuttons:google-signin:1.1.0'
 
 }

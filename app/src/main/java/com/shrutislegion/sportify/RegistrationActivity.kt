@@ -10,8 +10,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.royrodriguez.transitionbutton.TransitionButton
-import com.shrutislegion.sportify.lenderactivities.LanderLogActivity
+import com.shrutislegion.sportify.lenderactivities.LenderLogActivity
 import com.shrutislegion.sportify.playeractivities.PlayerLogActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
@@ -35,10 +34,10 @@ open class RegistrationActivity : AppCompatActivity() {
 
     }
 
-    fun lander(view: View){
+    fun lender(view: View){
         anim.visibility = VISIBLE
         anim.playAnimation()
-        landerButton.visibility = GONE
+        lenderButton.visibility = GONE
         playerbutton.visibility = GONE
         signin.visibility = GONE
         registeranim.visibility = GONE
@@ -46,7 +45,7 @@ open class RegistrationActivity : AppCompatActivity() {
         useranim.visibility = GONE
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LanderLogActivity::class.java)
+            val intent = Intent(this, LenderLogActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
@@ -56,7 +55,7 @@ open class RegistrationActivity : AppCompatActivity() {
     fun player(view: View){
         anim.visibility = VISIBLE
         anim.playAnimation()
-        landerButton.visibility = GONE
+        lenderButton.visibility = GONE
         playerbutton.visibility = GONE
         signin.visibility = GONE
         registeranim.visibility = GONE

@@ -22,9 +22,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
-import com.shrutislegion.sportify.doas.landerDaos
+import com.shrutislegion.sportify.doas.lenderDaos
 import com.shrutislegion.sportify.modules.lander
-import kotlinx.android.synthetic.main.activity_lander_log.*
+import kotlinx.android.synthetic.main.activity_lender_log.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -32,7 +32,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 @Suppress("DEPRECATION")
-class LanderLogActivity : AppCompatActivity() {
+class LenderLogActivity : AppCompatActivity() {
 
     private val RC_SIGN_IN: Int = 123
     private val TAG = "RegActivity Tag"
@@ -42,7 +42,7 @@ class LanderLogActivity : AppCompatActivity() {
     @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lander_log)
+        setContentView(R.layout.activity_lender_log)
 
         val leftanim = AnimationUtils.loadAnimation(this, R.anim.leftanim)
         val rightanim = AnimationUtils.loadAnimation(this, R.anim.rightanim)
@@ -54,6 +54,7 @@ class LanderLogActivity : AppCompatActivity() {
         val chattext = findViewById<TextView>(R.id.chattext)
         val feedbacktext = findViewById<TextView>(R.id.feedbacktext)
         val text = findViewById<TextView>(R.id.text)
+
         grow.setAnimation(rightanim)
         inverstoranim.setAnimation(leftanim)
         chat.setAnimation(rightanim)
@@ -125,7 +126,7 @@ class LanderLogActivity : AppCompatActivity() {
     private fun updateUI(firebaseUser: FirebaseUser?) {
         if (firebaseUser!=null){
             val lander = lander(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
-            val landersDao = landerDaos()
+            val landersDao = lenderDaos()
             landersDao.addUser(lander)
             val mainActivityIntent = Intent(this, LenderHomeActivity::class.java)
             startActivity(mainActivityIntent)

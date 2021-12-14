@@ -20,7 +20,7 @@
         app:lottie_loop="true"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/landerButton"
+        android:id="@+id/lenderButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10mdp"
@@ -33,7 +33,7 @@
         android:backgroundTint="@color/logregbg"
         app:layout_constraintStart_toEndOf="@+id/registeranim"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="lander"/>
+        android:onClick="lender"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/playeranim"

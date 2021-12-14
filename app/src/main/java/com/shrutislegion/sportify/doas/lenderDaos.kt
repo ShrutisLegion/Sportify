@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class landerDaos {
+class lenderDaos {
 
     private val db = FirebaseFirestore.getInstance()
     private val landerCollection = db.collection("Landers")

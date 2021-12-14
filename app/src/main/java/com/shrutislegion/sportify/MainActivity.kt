@@ -23,6 +23,10 @@ import com.shrutislegion.sportify.playeractivities.PlayerHomeActivity
 
 class MainActivity : AppCompatActivity() {
 
+    companion object{
+        const val EXTRA_LOGINTYPE= "logintype_extra"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         val pager = findViewById<LiquidPager>(R.id.pager)
         pager.adapter = Adapter(supportFragmentManager)
+        viewPager.visibility = View.GONE
 
 //        Handler(Looper.getMainLooper()).postDelayed({
 //            val intent = Intent(this, TypeRegActivity::class.java)
@@ -42,55 +47,19 @@ class MainActivity : AppCompatActivity() {
 
         val user = FirebaseAuth.getInstance().currentUser
 
-//        if(regObject.lenderLogged){
-//            Toast.makeText(this,"User in Landers!",Toast.LENGTH_LONG).show()
-//            startActivity(Intent(this, LenderHomeActivity::class.java))
-//        }
-//        else{
-//            Toast.makeText(this,"User in users!",Toast.LENGTH_LONG).show()
-//            startActivity(Intent(this, PlayerHomeActivity::class.java))
-//        }
+        val loginType = intent.getStringExtra(MainActivity.EXTRA_LOGINTYPE)
 
-        if(user!=null){
-            Toast.makeText(this,"User in not null!",Toast.LENGTH_LONG).show()
-            val userID = user.uid
-            val db = Firebase.firestore
-            var player = false
-            var lender = false
-
-            // search if the account is registered as Player
-            db.collection("users")
-                .get()
-                .addOnSuccessListener {
-                    result ->
-                    for(document in result){
-                        if(document.id == userID){
-                            player = true
-                            Toast.makeText(this,"User in users!",Toast.LENGTH_LONG).show()
-                            startActivity(Intent(this, PlayerHomeActivity::class.java))
-                            finish()
-                            break
-                        }
-                    }
-                }
-
-            // search if the account is registered as Lender
-            if(!player) {
-                db.collection("Landers")
-                    .get()
-                    .addOnSuccessListener { result ->
-                        for (document in result) {
-                            if (document.id == userID) {
-                                Toast.makeText(this,"User in Landers!",Toast.LENGTH_LONG).show()
-                                lender = true
-                                startActivity(Intent(this, LenderHomeActivity::class.java))
-                                finish()
-                                break
-                            }
-                        }
-                    }
+        if(user != null) {
+            if (loginType == "true") {
+                Toast.makeText(this, "User in users!", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, PlayerHomeActivity::class.java))
+            } else {
+                Toast.makeText(this, "User in Landers!", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, LenderHomeActivity::class.java))
             }
-
+        }
+        else{
+            viewPager.visibility = View.VISIBLE
         }
 
         FirebaseDynamicLinks.getInstance().getDynamicLink(getIntent()).addOnSuccessListener(OnSuccessListener<PendingDynamicLinkData>(){

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lenderactivities.LanderLogActivity">
+    tools:context=".lenderactivities.LenderLogActivity">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/investoranim"
@@ -91,21 +91,23 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/feedback"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="All You Need is a Google Sign-in.\nLet your innings begin!!"
+            android:text="All You Need is a Google Sign-Up.\nLet your innings begin!!"
             android:layout_marginStart="@dimen/_20mdp"
             android:fontFamily="@font/nunito_bold"
             android:textSize="@dimen/_15mdp"
             android:textColor="#FF5722"
             />
 
-        <com.google.android.gms.common.SignInButton
+        <com.shobhitpuri.custombuttons.GoogleSignInButton
             android:id="@+id/signInButton"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/_200mdp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_40mdp"
+            android:layout_marginStart="@dimen/_60mdp"
             android:layout_marginTop="@dimen/_2mdp"
             android:layout_marginEnd="@dimen/_40mdp"
             android:visibility="visible"
+            android:text="Register with Google"
+            app:isDarkTheme="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
