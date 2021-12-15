@@ -13,7 +13,6 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.shrutislegion.sportify.lenderactivities.LenderLogActivity
 import com.shrutislegion.sportify.playeractivities.PlayerLogActivity
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
 
 open class RegistrationActivity : AppCompatActivity() {
@@ -38,10 +37,17 @@ open class RegistrationActivity : AppCompatActivity() {
         playeranim.setAnimation(rightanim)
         playerbutton.setAnimation(rightanim)
         useranim.setAnimation(leftanim)
-        signin.setAnimation(leftanim)
+        signinView.setAnimation(leftanim)
 
 //        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
 //        mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
+
+        regProceedButton.setOnClickListener {
+
+            // animation of 4seconds and then startActivity
+            startActivity(Intent(this, PLSignInActivity::class.java))
+
+        }
 
     }
 
@@ -50,10 +56,11 @@ open class RegistrationActivity : AppCompatActivity() {
         anim.playAnimation()
         lenderButton.visibility = GONE
         playerbutton.visibility = GONE
-        signin.visibility = GONE
+        signinView.visibility = GONE
         registeranim.visibility = GONE
         playeranim.visibility = GONE
         useranim.visibility = GONE
+        regProceedButton.visibility = GONE
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, LenderLogActivity::class.java)
@@ -68,10 +75,11 @@ open class RegistrationActivity : AppCompatActivity() {
         anim.playAnimation()
         lenderButton.visibility = GONE
         playerbutton.visibility = GONE
-        signin.visibility = GONE
+        signinView.visibility = GONE
         registeranim.visibility = GONE
         playeranim.visibility = GONE
         useranim.visibility = GONE
+        regProceedButton.visibility = GONE
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, PlayerLogActivity::class.java)

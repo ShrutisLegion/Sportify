@@ -8,11 +8,24 @@
 
     <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/PLSignInButton"
-        android:layout_width="@dimen/_150mdp"
+        android:layout_width="@dimen/_200mdp"
         android:layout_height="wrap_content"
+        android:text="Sign In using Google"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/PLprogressBarSignIn"
+        style="@style/SpinKitView.Large.ThreeBounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:SpinKit_Color="@color/colorAccent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

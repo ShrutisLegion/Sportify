@@ -8,6 +8,8 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
@@ -21,17 +23,21 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.tasks.Task
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.shrutislegion.sportify.PLSignInActivity
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
 import com.shrutislegion.sportify.doas.lenderDaos
 import com.shrutislegion.sportify.modules.lander
 import kotlinx.android.synthetic.main.activity_lender_log.*
+import kotlinx.android.synthetic.main.activity_plsign_in.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -147,12 +153,56 @@ class LenderLogActivity : AppCompatActivity() {
                         check1 = true
                         if(document.id == checkId){
                             check = true
-                            Toast.makeText(this,"Please Sign In Lender", Toast.LENGTH_SHORT).show()
-                            googleSignInClient.signOut().addOnCompleteListener{
-                                Firebase.auth.signOut()
+
+                            MaterialAlertDialogBuilder(this).also {
+                                // set title for dailog box
+                                it.setTitle("Account already exists")
+                                // set message for dialog box
+                                it.setMessage("Proceed to Login?")
+                                // set icon for dialog box
+                                it.setIcon(R.drawable.ic_baseline_account_box_24)
+
+                                // perform positive action which deletes details from the lender activity and player activity
+                                it.setPositiveButton("CONTINUE") { dialogInterface, which ->
+
+                                    googleSignInClient.signOut().addOnCompleteListener{
+                                        Firebase.auth.signOut()
+                                    }
+                                    startActivity(Intent(this, PLSignInActivity::class.java))
+                                    finish()
+
+                                }
+
+                                // performs neutral action
+                                it.setNeutralButton("CANCEL"){
+                                        dialogInterface, which->
+
+                                    googleSignInClient.signOut().addOnCompleteListener{
+                                        Firebase.auth.signOut()
+                                    }
+                                    signInButton.visibility = VISIBLE
+                                    progressBarSignIn.visibility = GONE
+                                }
+
+                                // performs negative/NO action
+                                it.setNegativeButton("NO"){
+                                        dialogInterface, which->
+
+                                    googleSignInClient.signOut().addOnCompleteListener{
+                                        Firebase.auth.signOut()
+                                    }
+                                    Toast.makeText(this, "Please use different account to register", Toast.LENGTH_SHORT).show()
+                                    signInButton.visibility = VISIBLE
+                                    progressBarSignIn.visibility = GONE
+                                }
+
+                                // create the AlertDialogBox
+                                val alertDialog: androidx.appcompat.app.AlertDialog = it.create()
+                                alertDialog.setCancelable(false)
+                                alertDialog.show()
+
                             }
-                            startActivity(Intent(this, RegistrationActivity::class.java))
-                            break
+
                         }
                     }
                 }
@@ -165,15 +215,59 @@ class LenderLogActivity : AppCompatActivity() {
                                 check2 = true
                                 if (document.id == checkId) {
                                     check = true
-                                    Toast.makeText(this,"Please Sign In Player", Toast.LENGTH_SHORT).show()
-                                    googleSignInClient.signOut().addOnCompleteListener{
-                                        Firebase.auth.signOut()
+
+                                    MaterialAlertDialogBuilder(this).also {
+                                        // set title for dailog box
+                                        it.setTitle("Account already exists")
+                                        // set message for dialog box
+                                        it.setMessage("Proceed to Login?")
+                                        // set icon for dialog box
+                                        it.setIcon(R.drawable.ic_baseline_account_box_24)
+
+                                        // perform positive action which deletes details from the lender activity and player activity
+                                        it.setPositiveButton("CONTINUE") { dialogInterface, which ->
+
+                                            googleSignInClient.signOut().addOnCompleteListener{
+                                                Firebase.auth.signOut()
+                                            }
+                                            startActivity(Intent(this, PLSignInActivity::class.java))
+                                            finish()
+
+                                        }
+
+                                        // performs neutral action
+                                        it.setNeutralButton("CANCEL"){
+                                                dialogInterface, which->
+
+                                            googleSignInClient.signOut().addOnCompleteListener{
+                                                Firebase.auth.signOut()
+                                            }
+                                            signInButton.visibility = VISIBLE
+                                            progressBarSignIn.visibility = GONE
+                                        }
+
+                                        // performs negative/NO action
+                                        it.setNegativeButton("NO"){
+                                                dialogInterface, which->
+
+                                            googleSignInClient.signOut().addOnCompleteListener{
+                                                Firebase.auth.signOut()
+                                            }
+                                            Toast.makeText(this, "Please use different account to register", Toast.LENGTH_SHORT).show()
+                                            signInButton.visibility = VISIBLE
+                                            progressBarSignIn.visibility = GONE
+                                        }
+
+                                        // create the AlertDialogBox
+                                        val alertDialog: androidx.appcompat.app.AlertDialog = it.create()
+                                        alertDialog.setCancelable(false)
+                                        alertDialog.show()
+
                                     }
-                                    startActivity(Intent(this, RegistrationActivity::class.java))
-                                    break
+
                                 }
                             }
-                            Toast.makeText(this,"$check + $check1 + $check2", Toast.LENGTH_LONG).show()
+//                            Toast.makeText(this,"$check + $check1 + $check2", Toast.LENGTH_LONG).show()
                             if(check1 && check2 && !check){
                                 val lander = lander(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
                                 val landersDao = lenderDaos()

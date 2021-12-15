@@ -98,16 +98,18 @@
         />
 
 
-    <com.google.android.gms.common.SignInButton
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/signInButton"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/_200mdp"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Register using Google"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        app:layout_constraintVertical_bias="0.407" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progressBar"
@@ -134,6 +136,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

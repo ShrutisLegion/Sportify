@@ -77,16 +77,37 @@
         app:lottie_loop="true"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/signin"
+        android:id="@+id/signinView"
         android:layout_width="@dimen/_100mdp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/useranim"
         app:layout_constraintTop_toBottomOf="@+id/playeranim"
-        android:text="Already a user? \nSign-in."
+        android:text="Already an existing user?"
         android:layout_marginTop="@dimen/_35mdp"
         android:fontFamily="@font/nunito_bold"
         android:textSize="@dimen/_15mdp"
         android:textColor="#FF5722"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/regProceedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="PROCEED"
+        android:textSize="@dimen/_10mdp"
+        app:icon="@drawable/ic_baseline_keyboard_arrow_right_24"
+        app:iconPadding="0dp"
+        app:iconTint="@color/white"
+        android:textColor="#FFFFFF"
+        app:rippleColor="@color/white"
+        app:backgroundTint="#FF5772"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/useranim"
+        app:layout_constraintTop_toBottomOf="@id/signinView" />
+
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anim"

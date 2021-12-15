@@ -106,7 +106,7 @@
             android:layout_marginTop="@dimen/_2mdp"
             android:layout_marginEnd="@dimen/_40mdp"
             android:visibility="visible"
-            android:text="Register with Google"
+            android:text="Register using Google"
             app:isDarkTheme="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
