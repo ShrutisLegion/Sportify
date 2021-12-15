@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.lenderactivities
+package com.shrutislegion.sportify.lender_activities.fragments
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.util.AttributeSet
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -16,8 +18,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.homeFragmentAdapter
+import com.shrutislegion.sportify.lender_activities.AddComplexActivity
 import com.shrutislegion.sportify.modules.ComplexInfo
-import kotlinx.android.synthetic.main.fragment_p_home.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -83,20 +85,15 @@ class HomeFragment : Fragment() {
             startActivity(Intent(context, AddComplexActivity::class.java))
         }
 
-        // Progress bar's progress is updated
-//        view.progressBarPHome.progress = i
         countDownTimer = object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-//                i++
-//                view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))
             }
 
             override fun onFinish() {
-                //Do what you want
-//                i++
-                view.progressBarLHome.setVisibility(View.GONE)
-//                view.progressBarPHome.setProgress(100)
+                view.addComplexButton.visibility = VISIBLE
+                view.recView.visibility = VISIBLE
+                view.progressBarLHome.visibility = GONE
             }
         }
         countDownTimer.start()

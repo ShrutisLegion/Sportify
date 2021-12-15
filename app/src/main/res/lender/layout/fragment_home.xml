@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lenderactivities.HomeFragment">
+    tools:context=".lender_activities.fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +16,7 @@
             android:id="@+id/recView"
             android:layout_width="409dp"
             android:layout_height="582dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +25,7 @@
 
         <com.jediburrell.customfab.FloatingActionButton
             android:id="@+id/addComplexButton"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
@@ -55,10 +57,10 @@
             android:layout_gravity="center"
             app:SpinKit_Color="@color/colorAccent"
             android:padding="@dimen/_5mdp"
-            app:layout_constraintBottom_toBottomOf="@+id/recView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/recView"
-            app:layout_constraintTop_toTopOf="@+id/recView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

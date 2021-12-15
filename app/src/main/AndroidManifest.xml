@@ -23,11 +23,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".playeractivities.PlayerFavoriteActivity"
+            android:name=".player_activities.PlayerFavoriteActivity"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name=".playeractivities.PlayerBookDateActivity"
+            android:name=".player_activities.PlayerBookDateActivity"
             android:exported="false"
             android:noHistory="true" />
         <activity
@@ -46,37 +46,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".playeractivities.PlayerRatingActivity"
+            android:name=".player_activities.PlayerRatingActivity"
             android:exported="true" />
         <activity
-            android:name=".playeractivities.PlayerSharedActivity"
+            android:name=".player_activities.PlayerSharedActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".playeractivities.PlayerHomeActivity"
+            android:name=".player_activities.PlayerHomeActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".lenderactivities.LenderSharedActivity"
+            android:name=".lender_activities.LenderSharedActivity"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name=".lenderactivities.LenderLogActivity"
+            android:name=".lender_activities.LenderLogActivity"
             android:label="Register Your Complex"
             android:noHistory="true" />
         <activity
-            android:name=".lenderactivities.LenderHomeActivity"
+            android:name=".lender_activities.LenderHomeActivity"
             android:noHistory="true" />
         <activity
-            android:name=".lenderactivities.AddComplexActivity"
+            android:name=".lender_activities.AddComplexActivity"
             android:label="Add Your Complex"
-            android:noHistory="true" />
+            android:exported="true"
+            android:noHistory="false" />
         <activity
             android:name=".RegistrationActivity"
             android:label="Welcome to Sportify"
             android:noHistory="true" />
         <activity
-            android:name=".playeractivities.PlayerLogActivity"
+            android:name=".player_activities.PlayerLogActivity"
             android:label="Sign In"
             android:noHistory="true" />
         <activity

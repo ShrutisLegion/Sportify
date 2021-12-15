@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -14,10 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
-import eightbitlab.com.blurview.RenderScriptBlur
-import kotlinx.android.synthetic.main.fragment_p_home.*
 import kotlinx.android.synthetic.main.fragment_p_home.view.*
-import kotlinx.android.synthetic.main.item_pcomplexdetails.view.*
 import android.os.Parcelable
 import android.view.View.VISIBLE
 
@@ -85,13 +82,9 @@ class pHomeFragment : Fragment() {
         countDownTimer = object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-//                i++
-//                view.progressBarPHome.setProgress(i * 100 / (2000 / 1000))
             }
 
             override fun onFinish() {
-                //Do what you want
-//                i++
                 view.precView.visibility = VISIBLE
                 view.progressBarPHome.setVisibility(View.GONE)
 //                view.progressBarPHome.setProgress(100)

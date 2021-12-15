@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities
 
 import android.content.Context
 import android.content.Intent
@@ -7,24 +7,16 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
-import android.view.View.inflate
-import androidx.core.content.res.ColorStateListInflaterCompat.inflate
-import androidx.core.graphics.drawable.DrawableCompat.inflate
-import androidx.databinding.DataBindingUtil.inflate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.pFavoriteActivityAdapter
-import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
-import com.shrutislegion.sportify.databinding.ActivityAddComplexBinding.inflate
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.activity_player_favorite.*
-import kotlinx.android.synthetic.main.fragment_p_home.view.*
 
 class PlayerFavoriteActivity : AppCompatActivity() {
 

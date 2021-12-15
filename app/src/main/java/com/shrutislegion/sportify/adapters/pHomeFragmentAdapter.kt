@@ -2,10 +2,7 @@ package com.shrutislegion.sportify.adapters
 
 import android.app.Activity
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.*
@@ -28,8 +25,8 @@ import com.google.firebase.database.ktx.getValue
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import com.shrutislegion.sportify.modules.ComplexRating
-import com.shrutislegion.sportify.playeractivities.PlayerBookDateActivity
-import com.shrutislegion.sportify.playeractivities.PlayerSharedActivity
+import com.shrutislegion.sportify.player_activities.PlayerBookDateActivity
+import com.shrutislegion.sportify.player_activities.PlayerSharedActivity
 
 class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
     : FirebaseRecyclerAdapter<ComplexInfo, pHomeFragmentAdapter.myViewHolder>(options) {
@@ -274,32 +271,6 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
                 }
             }
         }
-
-//        holder.bookmarkButton.setOnClickListener {
-//            if(holder.bookmarkButton.tag == R.drawable.ic_baseline_favorite_border_24) {
-////                holder.bookmarkButton.strokeWidth = 2F
-////                holder.bookmarkButton.strokeColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
-//
-//                ref.child(FirebaseAuth.getInstance().currentUser!!.uid)
-//                    .child(getRef(position).key.toString())
-//                    .setValue(model).addOnSuccessListener {
-//                        holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_24)
-//                        holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_24
-//                        Toast.makeText(holder.name.context, "Favorite added!", Toast.LENGTH_SHORT).show()
-//                    }
-//
-//            }
-//            else{
-//
-//                ref.child(FirebaseAuth.getInstance().currentUser!!.uid)
-//                    .child(getRef(position).key.toString())
-//                    .removeValue().addOnCompleteListener {
-//                        holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-//                        holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_border_24
-//
-//                    }
-//            }
-//        }
 
     }
 

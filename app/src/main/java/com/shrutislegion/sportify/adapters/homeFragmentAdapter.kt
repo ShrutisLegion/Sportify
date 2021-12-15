@@ -19,7 +19,7 @@ import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.shrutislegion.sportify.lenderactivities.LenderSharedActivity
+import com.shrutislegion.sportify.lender_activities.LenderSharedActivity
 import androidx.core.util.Pair
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener

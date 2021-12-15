@@ -1,11 +1,9 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities
 
 import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.RatingBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase

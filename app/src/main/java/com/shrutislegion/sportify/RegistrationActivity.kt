@@ -11,8 +11,8 @@ import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.shrutislegion.sportify.lenderactivities.LenderLogActivity
-import com.shrutislegion.sportify.playeractivities.PlayerLogActivity
+import com.shrutislegion.sportify.lender_activities.LenderLogActivity
+import com.shrutislegion.sportify.player_activities.PlayerLogActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
 open class RegistrationActivity : AppCompatActivity() {
@@ -33,11 +33,11 @@ open class RegistrationActivity : AppCompatActivity() {
         val useranim = findViewById<LottieAnimationView>(R.id.useranim)
 
         registeranim.setAnimation(leftanim)
-        lenderButton.setAnimation(leftanim)
+        lenderButton.setAnimation(rightanim)
         playeranim.setAnimation(rightanim)
-        playerbutton.setAnimation(rightanim)
+        playerbutton.setAnimation(leftanim)
         useranim.setAnimation(leftanim)
-        signinView.setAnimation(leftanim)
+        signinView.setAnimation(rightanim)
         regProceedButton.setAnimation(rightanim)
 
         regProceedButton.setOnClickListener {

@@ -14,7 +14,6 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -25,7 +24,7 @@ import com.google.firebase.database.ktx.getValue
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.BookedComplexInfo
 import com.shrutislegion.sportify.modules.ComplexRating
-import com.shrutislegion.sportify.playeractivities.PlayerRatingActivity
+import com.shrutislegion.sportify.player_activities.PlayerRatingActivity
 
 class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>)
     : FirebaseRecyclerAdapter<BookedComplexInfo, pSearchFragmentAdapter.myViewHolder>(options){

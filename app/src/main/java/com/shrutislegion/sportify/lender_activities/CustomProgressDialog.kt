@@ -1,9 +1,8 @@
-package com.shrutislegion.sportify.lenderactivities
+package com.shrutislegion.sportify.lender_activities
 
 import android.app.Dialog
 import android.content.Context
 //import netscape.javascript.*
-import android.view.WindowManager
 import androidx.annotation.NonNull
 
 

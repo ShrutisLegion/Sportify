@@ -1,7 +1,6 @@
 package com.shrutislegion.sportify
 
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -11,12 +10,9 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.shrutislegion.sportify.lenderactivities.LenderHomeActivity
-import com.shrutislegion.sportify.playeractivities.PlayerHomeActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

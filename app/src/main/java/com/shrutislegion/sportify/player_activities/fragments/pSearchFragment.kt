@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -14,16 +14,9 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
-import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
 import com.shrutislegion.sportify.adapters.pSearchFragmentAdapter
 import com.shrutislegion.sportify.modules.BookedComplexInfo
-import com.shrutislegion.sportify.modules.ComplexInfo
-import kotlinx.android.synthetic.main.fragment_p_home.*
-import kotlinx.android.synthetic.main.fragment_p_home.precView
-import kotlinx.android.synthetic.main.fragment_p_home.view.*
-import kotlinx.android.synthetic.main.fragment_p_home.view.precView
 import kotlinx.android.synthetic.main.fragment_p_home.view.progressBarPHome
-import kotlinx.android.synthetic.main.fragment_p_search.*
 import kotlinx.android.synthetic.main.fragment_p_search.view.*
 
 // TODO: Rename parameter arguments, choose names that match

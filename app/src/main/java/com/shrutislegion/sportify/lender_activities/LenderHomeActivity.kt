@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.lenderactivities
+package com.shrutislegion.sportify.lender_activities
 
 import android.app.Fragment
 import android.content.Intent
@@ -9,6 +9,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.shrutislegion.sportify.R
+import com.shrutislegion.sportify.lender_activities.fragments.ChatsFragment
+import com.shrutislegion.sportify.lender_activities.fragments.HomeFragment
+import com.shrutislegion.sportify.lender_activities.fragments.SearchFragment
+import com.shrutislegion.sportify.lender_activities.fragments.UserFragment
 
 
 @Suppress("DEPRECATION")

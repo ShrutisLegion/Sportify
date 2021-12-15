@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.lenderactivities
+package com.shrutislegion.sportify.lender_activities.fragments
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,6 +18,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
+import com.shrutislegion.sportify.lender_activities.LenderHomeActivity
 import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.fragment_user.view.*
 

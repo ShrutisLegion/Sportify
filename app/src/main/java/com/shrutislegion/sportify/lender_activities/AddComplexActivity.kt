@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.lenderactivities
+package com.shrutislegion.sportify.lender_activities
 
 import android.app.ProgressDialog
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.lenderactivities
+package com.shrutislegion.sportify.lender_activities.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

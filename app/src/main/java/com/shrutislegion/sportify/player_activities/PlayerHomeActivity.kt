@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities
 
 import android.app.Fragment
 import android.content.Intent
@@ -7,11 +7,13 @@ import android.os.Bundle
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
+import com.shrutislegion.sportify.player_activities.fragments.pChatFragment
+import com.shrutislegion.sportify.player_activities.fragments.pHomeFragment
+import com.shrutislegion.sportify.player_activities.fragments.pSearchFragment
+import com.shrutislegion.sportify.player_activities.fragments.pUserFragment
 
 @Suppress("DEPRECATION")
 class PlayerHomeActivity : AppCompatActivity() {

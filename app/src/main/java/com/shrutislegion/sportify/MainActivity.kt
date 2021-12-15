@@ -15,11 +15,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.adapters.Adapter
-import com.shrutislegion.sportify.lenderactivities.LenderHomeActivity
-import com.shrutislegion.sportify.playeractivities.PlayerHomeActivity
+import com.shrutislegion.sportify.lender_activities.LenderHomeActivity
+import com.shrutislegion.sportify.player_activities.PlayerHomeActivity
 
 class MainActivity : AppCompatActivity() {
 

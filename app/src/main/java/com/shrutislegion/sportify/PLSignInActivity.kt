@@ -21,12 +21,8 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.shrutislegion.sportify.doas.lenderDaos
-import com.shrutislegion.sportify.lenderactivities.LenderHomeActivity
-import com.shrutislegion.sportify.lenderactivities.LenderLogActivity
-import com.shrutislegion.sportify.modules.lander
-import com.shrutislegion.sportify.playeractivities.PlayerHomeActivity
-import com.shrutislegion.sportify.playeractivities.PlayerLogActivity
+import com.shrutislegion.sportify.lender_activities.LenderHomeActivity
+import com.shrutislegion.sportify.player_activities.PlayerHomeActivity
 import kotlinx.android.synthetic.main.activity_plsign_in.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

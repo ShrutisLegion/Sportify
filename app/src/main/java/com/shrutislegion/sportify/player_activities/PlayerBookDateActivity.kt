@@ -1,16 +1,13 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities
 
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
@@ -26,8 +23,6 @@ import com.google.firebase.database.ValueEventListener
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.BookedComplexInfo
 import kotlinx.android.synthetic.main.activity_player_book_court.*
-import kotlinx.android.synthetic.main.activity_player_rating.*
-import kotlinx.android.synthetic.main.fragment_p_home.view.*
 
 
 class PlayerBookDateActivity: AppCompatActivity(){

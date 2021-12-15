@@ -1,4 +1,4 @@
-package com.shrutislegion.sportify.playeractivities
+package com.shrutislegion.sportify.player_activities.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,13 +19,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
-import com.shrutislegion.sportify.lenderactivities.LenderHomeActivity
+import com.shrutislegion.sportify.player_activities.PlayerFavoriteActivity
+import com.shrutislegion.sportify.player_activities.PlayerHomeActivity
 import kotlinx.android.synthetic.main.fragment_p_user.view.*
 import kotlinx.android.synthetic.main.fragment_p_user.view.UserEmailId
 import kotlinx.android.synthetic.main.fragment_p_user.view.UserName
 import kotlinx.android.synthetic.main.fragment_p_user.view.UserProfilePicture
 import kotlinx.android.synthetic.main.fragment_user.*
-import kotlinx.android.synthetic.main.fragment_user.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
