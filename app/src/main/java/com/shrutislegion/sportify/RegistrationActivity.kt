@@ -38,9 +38,7 @@ open class RegistrationActivity : AppCompatActivity() {
         playerbutton.setAnimation(rightanim)
         useranim.setAnimation(leftanim)
         signinView.setAnimation(leftanim)
-
-//        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
-//        mGoogleSignInClient= GoogleSignIn.getClient(context,gso)
+        regProceedButton.setAnimation(rightanim)
 
         regProceedButton.setOnClickListener {
 

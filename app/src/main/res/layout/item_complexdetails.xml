@@ -3,33 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:layout_height="wrap_content">
 
-    <com.google.android.material.transformation.TransformationChildCard
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_290mdp"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:strokeWidth="4dp"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="25dp"
-        app:state_dragged="true"
-        tools:ignore="MissingConstraints"
         android:focusable="true"
-        android:padding="@dimen/_25mdp">
+        android:layout_margin="@dimen/_8mdp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="@dimen/_5mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:state_dragged="true"
+        tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!--            android:paddingBottom="@dimen/_10mdp-->
+            android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/deleteButton"
-                android:layout_width="29dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_30mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:translationZ="6dp"
                 android:src="@drawable/ic_baseline_delete_forever_24"
-                android:translationZ="@dimen/_4mdp"
                 app:layout_constraintBottom_toBottomOf="@+id/complexImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.953"
@@ -45,7 +45,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/defaultimg"
                 android:transitionName="image"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,11 +80,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexImage" />
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/_14mdp"
+                android:layout_height="@dimen/_16mdp"
+                android:src="@drawable/ic_baseline_location_on_24"
+                android:translationZ="@dimen/_4mdp"
+                app:layout_constraintBottom_toTopOf="@+id/complexDescription"
+                app:layout_constraintEnd_toStartOf="@+id/complexLocation"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sportType" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_20mdp"
                 android:layout_marginTop="@dimen/_4mdp"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/_250mdp"
+                android:maxLines="2"
                 android:text="Location"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
@@ -99,15 +115,23 @@
                 android:id="@+id/complexDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/_14mdp"
                 android:layout_marginTop="@dimen/_4mdp"
+                android:layout_marginBottom="@dimen/_5mdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_semibold"
+                android:maxWidth="@dimen/_250mdp"
+                android:maxLines="3"
                 android:text="Description"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
                 android:transitionName="description"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintHorizontal_bias="0.023"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/complexLocation"
+                app:layout_constraintBottom_toTopOf="@id/shareButton"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/shareButton"
@@ -124,7 +148,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexDescription" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/hourPrice"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -136,7 +160,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/courtsCount"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/courtsCount"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -148,7 +172,7 @@
                 app:layout_constraintTop_toBottomOf="@id/hourPrice"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/phoneNumber"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -178,22 +202,10 @@
                 app:layout_constraintTop_toTopOf="@+id/complexImage"
                 app:layout_constraintVertical_bias="1.0" />
 
-
-            <!--            <com.google.android.material.textview.MaterialTextView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Description........................."-->
-            <!--                android:layout_marginTop="@dimen/_4mdp"-->
-            <!--                android:textAppearance="?attr/textAppearanceBody2"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintHorizontal_bias="0.082"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/description" />-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.transformation.TransformationChildCard>
+    </com.google.android.material.card.MaterialCardView>
 
     <View
         android:layout_width="match_parent"
@@ -203,86 +215,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_alignParentBottom="true" />
-    <!--    <ImageView-->
-<!--        android:id="@+id/complexImage"-->
-<!--        android:layout_width="159dp"-->
-<!--        android:layout_height="199dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/complexLocation"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:srcCompat="@tools:sample/avatars" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/nameOfComplex"-->
-<!--        android:layout_width="134dp"-->
-<!--        android:layout_height="43dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:text="Name"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/sportType"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline2"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/guideline3" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/sportType"-->
-<!--        android:layout_width="134dp"-->
-<!--        android:layout_height="43dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:text="Name"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/hourPrice"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline2"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/complexLocation"-->
-<!--        android:layout_width="134dp"-->
-<!--        android:layout_height="43dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:text="Name"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/guideline2"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/guideline4" />-->
-
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:id="@+id/guideline2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintGuide_begin="181dp" />-->
-
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:id="@+id/guideline3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintGuide_begin="14dp" />-->
-
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:id="@+id/guideline4"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintGuide_begin="218dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/deleteButton"-->
-<!--        android:layout_width="27dp"-->
-<!--        android:layout_height="23dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline7"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/guideline4"-->
-<!--        app:srcCompat="@drawable/ic_delete" />-->
-
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:id="@+id/guideline7"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintGuide_begin="336dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

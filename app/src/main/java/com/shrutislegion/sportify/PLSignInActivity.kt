@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -144,11 +145,57 @@ class PLSignInActivity : AppCompatActivity() {
                             }
 //                            Toast.makeText(this,"$check + $check1 + $check2", Toast.LENGTH_LONG).show()
                             if(check1 && check2 && !check){
-                                Toast.makeText(this,"Please Register", Toast.LENGTH_SHORT).show()
-                                PLprogressBarSignIn.visibility = View.GONE
-                                val mainActivityIntent = Intent(this, RegistrationActivity::class.java)
-                                startActivity(mainActivityIntent)
-                                finish()
+
+                                MaterialAlertDialogBuilder(this).also {
+                                    // set title for dailog box
+                                    it.setTitle("Account doesn't exists")
+                                    // set message for dialog box
+                                    it.setMessage("Want to Register as Complex owner or Player?")
+                                    // set icon for dialog box
+                                    it.setIcon(R.drawable.ic_baseline_account_box_24)
+
+                                    // perform positive action which deletes details from the lender activity and player activity
+                                    it.setPositiveButton("CONTINUE") { dialogInterface, which ->
+
+                                        googleSignInClient.signOut().addOnCompleteListener{
+                                            Firebase.auth.signOut()
+                                        }
+                                        startActivity(Intent(this, RegistrationActivity::class.java))
+                                        finish()
+
+                                    }
+
+                                    // performs neutral action
+                                    it.setNeutralButton("CANCEL"){
+                                            dialogInterface, which->
+
+                                        googleSignInClient.signOut().addOnCompleteListener{
+                                            Firebase.auth.signOut()
+                                        }
+                                        PLSignInButton.visibility = View.VISIBLE
+                                        PLprogressBarSignIn.visibility = View.GONE
+
+                                    }
+
+                                    // performs negative/NO action
+                                    it.setNegativeButton("NO"){
+                                            dialogInterface, which->
+
+                                        googleSignInClient.signOut().addOnCompleteListener{
+                                            Firebase.auth.signOut()
+                                        }
+                                        Toast.makeText(this, "Please use a different account to login", Toast.LENGTH_SHORT).show()
+                                        PLSignInButton.visibility = View.VISIBLE
+                                        PLprogressBarSignIn.visibility = View.GONE
+
+                                    }
+
+                                    // create the AlertDialogBox
+                                    val alertDialog: androidx.appcompat.app.AlertDialog = it.create()
+                                    alertDialog.setCancelable(false)
+                                    alertDialog.show()
+
+                                }
                             }
                         }
                 }
