@@ -55,7 +55,9 @@
         <activity
             android:name=".player_activities.PlayerHomeActivity"
             android:exported="true"
-            android:noHistory="true" />
+            android:noHistory="true"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".lender_activities.LenderSharedActivity"
             android:exported="false"

@@ -10,13 +10,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.FirebaseDatabase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.fragment_p_home.view.*
 import android.os.Parcelable
 import android.view.View.VISIBLE
+import android.widget.SearchView
+import com.firebase.ui.firestore.paging.FirestorePagingOptions
+import com.google.firebase.database.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,6 +38,7 @@ class pHomeFragment : Fragment() {
     lateinit var adapter: pHomeFragmentAdapter
     lateinit var countDownTimer: CountDownTimer
     private var scroll_state: Parcelable? = null
+    var storeComplex: MutableList<ComplexInfo> = mutableListOf<ComplexInfo>()
     var i = 0
 
     // To override LinearLayoutManager by Wrapper, as it crashes the application sometimes
@@ -75,7 +78,11 @@ class pHomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_p_home, container, false)
-        view.precView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
+
+        var linearLayoutManager = LinearLayoutManagerWrapper(context, LinearLayoutManager.VERTICAL, true)
+        linearLayoutManager.stackFromEnd = true
+
+        view.precView.layoutManager = linearLayoutManager
 
         // Progress bar's progress is updated
 //        view.progressBarPHome.progress = i
@@ -92,17 +99,75 @@ class pHomeFragment : Fragment() {
         }
         countDownTimer.start()
 
+        var ref = FirebaseDatabase.getInstance().reference
+            .child("All Complexes")
+
+        if(ref != null){
+
+            // Firebase recycler view is used here
+            // options contains the collection of the data that has to be inserted in the recyclerVIew
+            val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+                .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes"), ComplexInfo::class.java)
+                .build()
+
+            adapter = pHomeFragmentAdapter(options)
+            view.precView.adapter = adapter
+            adapter.startListening()
+
+        }
+
+        if(view.pHomeSearchBarLayout != null){
+
+            view.pHomeSearchBarLayout.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(p0: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(p0: String?): Boolean {
+
+                    complexSearch(p0)
+
+                    return true
+                }
+
+            })
+
+        }
+        view.pHomeSearchBarLayout.setOnCloseListener {
+
+            // Firebase recycler view is used here
+            // options contains the collection of the data that has to be inserted in the recyclerVIew
+            val options: FirebaseRecyclerOptions<ComplexInfo> =
+                FirebaseRecyclerOptions.Builder<ComplexInfo>()
+                    .setQuery(
+                        FirebaseDatabase.getInstance().getReference("All Complexes"),
+                        ComplexInfo::class.java
+                    )
+                    .build()
+
+            adapter = pHomeFragmentAdapter(options)
+            view.precView.adapter = adapter
+            adapter.startListening()
+
+            false
+        }
+
+        return view
+    }
+
+    private fun complexSearch(str: String?) {
+
         // Firebase recycler view is used here
         // options contains the collection of the data that has to be inserted in the recyclerVIew
         val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
-            .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes"), ComplexInfo::class.java)
+            .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes")
+                .orderByChild("complexName")
+                .startAt(str).endAt(str+"\uf8ff"), ComplexInfo::class.java)
             .build()
-
         adapter = pHomeFragmentAdapter(options)
-        view.precView.adapter = adapter
+        requireView().precView.adapter = adapter
         adapter.startListening()
 
-        return view
     }
 
     override fun onStop() {
@@ -112,12 +177,12 @@ class pHomeFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        scroll_state = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false).onSaveInstanceState()
+        scroll_state = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, true).onSaveInstanceState()
     }
 
     override fun onResume() {
         super.onResume()
-        LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false).onRestoreInstanceState(scroll_state);
+        LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, true).onRestoreInstanceState(scroll_state);
     }
 
     companion object {

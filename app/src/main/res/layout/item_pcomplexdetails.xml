@@ -47,6 +47,20 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/imageLoadFailedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="COMPLEX UNAVAILABLE"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20mdp"
+                app:fontFamily="@font/nunito_extrabold"
+                app:layout_constraintBottom_toBottomOf="@id/complexImage"
+                app:layout_constraintEnd_toEndOf="@id/complexImage"
+                app:layout_constraintStart_toStartOf="@id/complexImage"
+                app:layout_constraintTop_toTopOf="@id/complexImage" />
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/nameOfComplex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

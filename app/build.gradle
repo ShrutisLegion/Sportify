@@ -136,6 +136,8 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:8.0.0'
     // FirebaseUI for Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:8.0.0'
+    // Firebase Pagination
+    implementation"androidx.paging:paging-runtime-ktx:3.1.0"
 
     // recycler view
     implementation "androidx.recyclerview:recyclerview:1.2.1"
@@ -175,5 +177,9 @@ dependencies {
 
     // custom google Sign In button
     implementation 'com.shobhitpuri.custombuttons:google-signin:1.1.0'
+
+    // Search Material UI
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
+    implementation 'com.github.Ferfalk:SimpleSearchView:0.2.0'
 
 }

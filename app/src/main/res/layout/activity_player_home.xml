@@ -21,7 +21,6 @@
         android:background="@drawable/rounded"
         android:elevation="16dp"
         android:padding="8dp"
-        app:cnb_menuResource="@menu/pmenu_bottom"
-        />
+        app:cnb_menuResource="@menu/pmenu_bottom" />
 
 </RelativeLayout>

@@ -27,6 +27,15 @@ import com.shrutislegion.sportify.modules.ComplexInfo
 import com.shrutislegion.sportify.modules.ComplexRating
 import com.shrutislegion.sportify.player_activities.PlayerBookDateActivity
 import com.shrutislegion.sportify.player_activities.PlayerSharedActivity
+import com.google.firebase.database.DatabaseError
+
+import com.google.firebase.database.DataSnapshot
+
+import com.google.firebase.database.ValueEventListener
+
+import android.R.string.no
+import androidx.core.view.marginBottom
+
 
 class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
     : FirebaseRecyclerAdapter<ComplexInfo, pHomeFragmentAdapter.myViewHolder>(options) {
@@ -52,6 +61,8 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         var noRating = itemView.findViewById<TextView>(R.id.noRatingView)
         var progressBarRating = itemView.findViewById<ProgressBar>(R.id.progressBarRating)
         var bookmarkButton = itemView.findViewById<ShapeableImageView>(R.id.bookmarkButton)
+        var pRecEndView = itemView.findViewById<View>(R.id.pRecEndView)
+        var imageLoadFailedText = itemView.findViewById<TextView>(R.id.imageLoadFailedText)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
@@ -73,6 +84,7 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         holder.email.setText(model.emailId)
         holder.bookmarkButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
         holder.bookmarkButton.tag = R.drawable.ic_baseline_favorite_border_24
+
         
         // Calculate the average of rating
         val ratingRef = FirebaseDatabase.getInstance().reference
@@ -141,10 +153,14 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
                 target: Target<Drawable>?,
                 isFirstResource: Boolean
             ): Boolean {
+
+                holder.progressBarPCard.visibility = GONE
+
                 return false
             }
         })
             .override(600, 400)
+            .error(R.drawable.ic_baseline_image_not_supported_24)
             .placeholder(R.drawable.loading_image)
             .into(holder.image)
 
