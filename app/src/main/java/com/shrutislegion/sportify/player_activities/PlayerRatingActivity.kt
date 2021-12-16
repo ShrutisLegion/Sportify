@@ -3,10 +3,17 @@ package com.shrutislegion.sportify.player_activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexRating
 import kotlinx.android.synthetic.main.activity_player_rating.*
@@ -87,6 +94,59 @@ class PlayerRatingActivity : AppCompatActivity() {
                         Toast.makeText(this, "Complex rating unable to add !!", Toast.LENGTH_LONG)
                             .show()
                     }
+
+                Handler(Looper.getMainLooper())
+                    .postDelayed({
+
+                        // Calculate the average of rating
+                        val ratingRef = FirebaseDatabase.getInstance().reference
+                            .child("Ratings")
+                            .child("$keyid")
+
+                        var storeRatings: MutableList<Float> = mutableListOf<Float>()
+
+                        val postListener = object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                // Get Post object and use the values to update the UI
+
+                                val info = dataSnapshot.getValue()
+
+                                if(info == null){
+                                }
+                                else{
+                                    for(i in dataSnapshot.children){
+                                        val compinfo: ComplexRating = i.getValue<ComplexRating>()!!
+                                        storeRatings.add(compinfo.rating!!.toFloat())
+                                    }
+                                    var averageRating = 0F
+                                    var sum = 0.0
+
+                                    for(i in storeRatings){
+                                        sum += i
+                                    }
+
+                                    averageRating = (sum/storeRatings.size).toFloat()
+
+                                    FirebaseDatabase.getInstance().reference
+                                        .child("All Complexes")
+                                        .child("$keyid")
+                                        .child("complexRating")
+                                        .setValue(averageRating)
+
+                                }
+
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {
+                                // Getting Post failed, log a message
+                            }
+                        }
+                        ratingRef.addValueEventListener(postListener)
+
+
+                    },2000)
+
+
             }
         }
 

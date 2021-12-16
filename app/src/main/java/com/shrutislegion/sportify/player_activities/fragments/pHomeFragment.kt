@@ -1,6 +1,8 @@
 package com.shrutislegion.sportify.player_activities.fragments
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.AttributeSet
@@ -37,6 +39,7 @@ class pHomeFragment : Fragment() {
     private var param2: String? = null
     lateinit var adapter: pHomeFragmentAdapter
     lateinit var countDownTimer: CountDownTimer
+    var isSorted = false
     private var scroll_state: Parcelable? = null
     var storeComplex: MutableList<ComplexInfo> = mutableListOf<ComplexInfo>()
     var i = 0
@@ -83,6 +86,13 @@ class pHomeFragment : Fragment() {
         linearLayoutManager.stackFromEnd = true
 
         view.precView.layoutManager = linearLayoutManager
+
+        isSorted = false
+
+        FirebaseDatabase.getInstance().reference
+            .child("Current states")
+            .child("pHomeFragmentIsSorted")
+            .setValue(isSorted)
 
         // Progress bar's progress is updated
 //        view.progressBarPHome.progress = i
@@ -152,7 +162,71 @@ class pHomeFragment : Fragment() {
             false
         }
 
+        view.sortComplexRatingButton.setOnClickListener {
+
+            FirebaseDatabase.getInstance().reference
+                .child("Current states")
+                .child("pHomeFragmentIsSorted")
+                .get().addOnSuccessListener {
+
+                    if(it.value as Boolean){
+
+                        FirebaseDatabase.getInstance().reference
+                            .child("Current states")
+                            .child("pHomeFragmentIsSorted")
+                            .setValue(false)
+
+                        view.sortComplexRatingButton.backgroundTintList = ColorStateList.valueOf(
+                            Color.parseColor("#FFFFFF"))
+                        view.sortComplexRatingButton.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+
+                        // Firebase recycler view is used here
+                        // options contains the collection of the data that has to be inserted in the recyclerVIew
+                        val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes"), ComplexInfo::class.java)
+                            .build()
+
+                        adapter = pHomeFragmentAdapter(options)
+                        view.precView.adapter = adapter
+                        adapter.startListening()
+
+                    }
+                    else{
+
+                        FirebaseDatabase.getInstance().reference
+                            .child("Current states")
+                            .child("pHomeFragmentIsSorted")
+                            .setValue(true)
+
+                        view.sortComplexRatingButton.backgroundTintList = ColorStateList.valueOf(
+                            Color.parseColor("#D81B60"))
+                        view.sortComplexRatingButton.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+
+                        complexSortByRating()
+
+                    }
+
+                }
+
+        }
+
+
         return view
+    }
+
+    private fun complexSortByRating() {
+
+        // Firebase recycler view is used here
+        // options contains the collection of the data that has to be inserted in the recyclerVIew
+        val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+            .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes")
+                .orderByChild("complexRating"), ComplexInfo::class.java)
+            .build()
+
+        adapter = pHomeFragmentAdapter(options)
+        requireView().precView.adapter = adapter
+        adapter.startListening()
+
     }
 
     private fun complexSearch(str: String?) {
@@ -164,9 +238,22 @@ class pHomeFragment : Fragment() {
                 .orderByChild("complexName")
                 .startAt(str).endAt(str+"\uf8ff"), ComplexInfo::class.java)
             .build()
+
         adapter = pHomeFragmentAdapter(options)
         requireView().precView.adapter = adapter
         adapter.startListening()
+
+        // <-----Search by Sport Type----->
+
+//        val options2: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+//            .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes")
+//                .orderByChild("typeOfSport")
+//                .startAt(str).endAt(str+"\uf8ff"), ComplexInfo::class.java)
+//            .build()
+//
+//        adapter = pHomeFragmentAdapter(options)
+//        requireView().precView.adapter = adapter
+//        adapter.startListening()
 
     }
 

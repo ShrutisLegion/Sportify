@@ -16,8 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_10mdp"
-            android:layout_marginTop="@dimen/_10mdp"
-            android:layout_marginRight="@dimen/_10mdp"
+            android:layout_marginRight="@dimen/_100mdp"
             android:layout_marginBottom="0dp"
             app:boxCornerRadiusBottomEnd="@dimen/_40mdp"
             app:boxCornerRadiusBottomStart="@dimen/_40mdp"
@@ -28,6 +27,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:queryHint="Search by complex name" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sortComplexRatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:text="SORT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pHomeSearchBarLayout"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!--        <com.google.android.material.textfield.TextInputLayout-->
         <!--            android:id="@+id/pHomeSearchBarLayout"-->
@@ -65,7 +75,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/precView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_525mdp"
+            android:layout_height="@dimen/_540mdp"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/_50mdp"
             android:visibility="gone"

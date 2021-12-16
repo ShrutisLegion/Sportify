@@ -17,6 +17,7 @@ import com.google.firebase.storage.StorageReference
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.activity_add_complex.*
+import java.util.*
 
 
 @Suppress("DEPRECATION")
@@ -81,9 +82,10 @@ class AddComplexActivity : AppCompatActivity() {
             val phone = phoneNumber.getText().toString()
             val description = complexDescription.text.toString()
 
-            val reference: StorageReference = storage.getReference().child("complex photo").child(
-                FirebaseAuth.getInstance().getUid().toString()
-            ).child(name)
+            val reference: StorageReference = storage.getReference().child("complexes_image")
+                .child(FirebaseAuth.getInstance().getUid().toString())
+                .child(Date().time.toString() + "")
+
 
             if (uri != null) {
                 reference.putFile(uri!!).addOnSuccessListener(OnSuccessListener {
@@ -94,16 +96,18 @@ class AddComplexActivity : AppCompatActivity() {
                         Toast.makeText(this,"Image downloaded successfully", Toast.LENGTH_LONG).show()
                         val User =
                             ComplexInfo(
-                                name,
-                                type,
-                                price.toString(),
-                                courts.toString(),
-                                location,
-                                uriString,
-                                phone,
-                                description,
-                                FirebaseAuth.getInstance().uid.toString(),
-                                FirebaseAuth.getInstance().currentUser!!.email.toString()
+                                name+"",
+                                type+"",
+                                price,
+                                courts.toString()+"",
+                                location+"",
+                                uriString+"",
+                                phone+"",
+                                description+"",
+                                FirebaseAuth.getInstance().uid.toString()+"",
+                                FirebaseAuth.getInstance().currentUser!!.email.toString()+"",
+                                0F,
+                                Date().time.toString() + ""
                             )
 
                         User.imageUri = uriString

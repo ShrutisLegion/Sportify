@@ -713,6 +713,8 @@ class PlayerBookDateActivity: AppCompatActivity(){
                                     ).show()
                                 }
 
+                            startActivity(Intent(this, PlayerHomeActivity::class.java))
+
                         }
 
                         // performs neutral action

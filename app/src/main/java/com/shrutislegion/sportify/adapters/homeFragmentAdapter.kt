@@ -66,10 +66,11 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
     override fun onBindViewHolder(holder: myViewHolder, position: Int, model: ComplexInfo) {
 
         // setting the text fields with the values obtained from the firebase in the recyclerView
+        var p = model.pricePerHour
         holder.name.setText(model.complexName)
         holder.type.setText(model.typeOfSport)
         holder.courts.setText(model.numberOfCourts)
-        holder.price.setText(model.pricePerHour)
+        holder.price.setText(p.toString())
         holder.location.setText(model.location)
         holder.description.setText(model.description)
         holder.phone.setText(model.phone)

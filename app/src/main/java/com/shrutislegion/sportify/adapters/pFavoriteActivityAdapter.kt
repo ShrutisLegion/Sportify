@@ -50,12 +50,14 @@ class pFavoriteActivityAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int, model: ComplexInfo) {
 
+        var  p = model.pricePerHour
+
         holder.name.setText(model.complexName)
         holder.type.setText(model.typeOfSport)
         holder.location.setText(model.location)
         holder.description.setText(model.description)
 
-        holder.pricePerHourInfo.setText("Rs.${model.pricePerHour} per hour")
+        holder.pricePerHourInfo.setText("Rs." + "p" + "per hour")
 
         // Glide used to load the image from the uri stored in firebase and progress bar added
         Glide.with(holder.image.context).load(model.imageUri).listener(object :
