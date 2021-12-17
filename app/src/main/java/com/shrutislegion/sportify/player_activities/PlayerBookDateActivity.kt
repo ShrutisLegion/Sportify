@@ -1,15 +1,18 @@
 package com.shrutislegion.sportify.player_activities
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.AttributeSet
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -21,6 +24,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.shrutislegion.sportify.R
+import com.shrutislegion.sportify.adapters.pBookedHoursAdapter
 import com.shrutislegion.sportify.modules.BookedComplexInfo
 import kotlinx.android.synthetic.main.activity_player_book_court.*
 
@@ -28,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_player_book_court.*
 class PlayerBookDateActivity: AppCompatActivity(){
 
     lateinit var countDownTimer: CountDownTimer
+    lateinit var adapter: pBookedHoursAdapter
 
     companion object {
         const val EXTRA_NAME = "name_extra"
@@ -42,6 +47,29 @@ class PlayerBookDateActivity: AppCompatActivity(){
         const val EXTRA_RATING = "rating_extra"
         const val EXTRA_KEYID = "keyed_extra"
         const val EXTRA_UID = "uid_extra"
+    }
+
+    // To override LinearLayoutManager by Wrapper, as it crashes the application sometimes
+    inner class LinearLayoutManagerWrapper : LinearLayoutManager {
+        constructor(context: Context?) : super(context) {}
+        constructor(context: Context?, orientation: Int, reverseLayout: Boolean) : super(
+            context,
+            orientation,
+            reverseLayout
+        ) {
+        }
+
+        constructor(
+            context: Context?,
+            attrs: AttributeSet?,
+            defStyleAttr: Int,
+            defStyleRes: Int
+        ) : super(context, attrs, defStyleAttr, defStyleRes) {
+        }
+
+        override fun supportsPredictiveItemAnimations(): Boolean {
+            return false
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -266,345 +294,619 @@ class PlayerBookDateActivity: AppCompatActivity(){
             bookingDate.text = datePicker.headerText
             totalPriceView.setText("Rs.0")
 
+            var linearLayoutManager = LinearLayoutManagerWrapper(this, LinearLayoutManager.HORIZONTAL, true)
+            linearLayoutManager.stackFromEnd = true
+            selectedHoursRecView.layoutManager = linearLayoutManager
+
 
             // onClickListener on all the time buttons
             // if displayLists contains 0, then no onClicklistener on that button and the background color of that changes
+
+            var cBookedRef = FirebaseDatabase.getInstance().reference
+                .child("Currently Selected Hours")
+                .child(FirebaseAuth.getInstance().currentUser!!.uid)
+
+            var cBookedHoursList: MutableList<Int> = mutableListOf<Int>()
 
             button1.setOnClickListener {
                 if (!storeHours.contains(0)) {
                     button1.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button1.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(0);
+                    cBookedHoursList.add(0)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else {
                     button1.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button1.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(0);
+                    cBookedHoursList.remove(0)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button2.setOnClickListener {
                 if (!storeHours.contains(1)) {
                     button2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button2.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(1);
+                    cBookedHoursList.add(1)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button2.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button2.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(1);
+                    cBookedHoursList.remove(1)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button3.setOnClickListener {
                 if (!storeHours.contains(2)) {
                     button3.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button3.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(2);
+                    cBookedHoursList.add(2)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button3.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button3.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(2);
+                    cBookedHoursList.remove(2)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button4.setOnClickListener {
                 if (!storeHours.contains(3)) {
                     button4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button4.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(3);
+                    cBookedHoursList.add(3)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button4.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button4.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(3);
+                    cBookedHoursList.remove(3)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button5.setOnClickListener {
                 if (!storeHours.contains(4)) {
                     button5.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button5.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(4);
+                    cBookedHoursList.add(4)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button5.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button5.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(4);
+                    cBookedHoursList.remove(4)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button6.setOnClickListener {
                 if (!storeHours.contains(5)) {
                     button6.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button6.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(5);
+                    cBookedHoursList.add(5)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button6.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button6.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
-                    storeHours.remove(5);
+                    storeHours.remove(5)
+                    cBookedHoursList.remove(5)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button7.setOnClickListener {
                 if (!storeHours.contains(6)) {
                     button7.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button7.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(6);
+                    cBookedHoursList.add(6)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button7.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button7.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(6);
+                    cBookedHoursList.remove(6)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button8.setOnClickListener {
                 if (!storeHours.contains(7)) {
                     button8.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button8.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(7);
+                    cBookedHoursList.add(7)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button8.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button8.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(7);
+                    cBookedHoursList.remove(7)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button9.setOnClickListener {
                 if (!storeHours.contains(8)) {
                     button9.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button9.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(8);
+                    cBookedHoursList.add(8)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button9.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button9.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(8);
+                    cBookedHoursList.remove(8)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button10.setOnClickListener {
                 if (!storeHours.contains(9)) {
                     button10.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button10.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(9);
+                    cBookedHoursList.add(9)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button10.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button10.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(9);
+                    cBookedHoursList.remove(9)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button11.setOnClickListener {
                 if (!storeHours.contains(10)) {
                     button11.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button11.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(10);
+                    cBookedHoursList.add(10)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button11.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button11.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(10);
+                    cBookedHoursList.remove(10)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button12.setOnClickListener {
                 if (!storeHours.contains(11)) {
                     button12.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button12.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(11);
+                    cBookedHoursList.add(11)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button12.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button12.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(11);
+                    cBookedHoursList.remove(11)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button13.setOnClickListener {
                 if (!storeHours.contains(12)) {
                     button13.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button13.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(12);
+                    cBookedHoursList.add(12)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button13.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button13.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(12);
+                    cBookedHoursList.remove(12)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button14.setOnClickListener {
                 if (!storeHours.contains(13)) {
                     button14.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button14.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(13);
+                    cBookedHoursList.add(13)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button14.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button14.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(13);
+                    cBookedHoursList.remove(13)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button15.setOnClickListener {
                 if (!storeHours.contains(14)) {
                     button15.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button15.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(14);
+                    cBookedHoursList.add(14)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button15.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button15.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(14);
+                    cBookedHoursList.remove(14)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button16.setOnClickListener {
                 if (!storeHours.contains(15)) {
                     button16.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button16.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(15);
+                    cBookedHoursList.add(15)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button16.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button16.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(15);
+                    cBookedHoursList.remove(15)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button17.setOnClickListener {
                 if (!storeHours.contains(16)) {
                     button17.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button17.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(16);
+                    cBookedHoursList.add(16)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button17.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button17.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(16);
+                    cBookedHoursList.remove(16)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button18.setOnClickListener {
                 if (!storeHours.contains(17)) {
                     button18.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button18.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(17);
+                    cBookedHoursList.add(17)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button18.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button18.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(17);
+                    cBookedHoursList.remove(17)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button19.setOnClickListener {
                 if (!storeHours.contains(18)) {
                     button19.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button19.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(18);
+                    cBookedHoursList.add(18)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button19.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button19.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(18);
+                    cBookedHoursList.remove(18)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button20.setOnClickListener {
                 if (!storeHours.contains(19)) {
                     button20.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button20.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(19);
+                    cBookedHoursList.add(19)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button20.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button20.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(19);
+                    cBookedHoursList.remove(19)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button21.setOnClickListener {
                 if (!storeHours.contains(20)) {
                     button21.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button21.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(20);
+                    cBookedHoursList.add(20)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button21.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button21.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(20);
+                    cBookedHoursList.remove(20)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button22.setOnClickListener {
                 if (!storeHours.contains(21)) {
                     button22.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button22.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(21);
+                    cBookedHoursList.add(21)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button22.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button22.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(21);
+                    cBookedHoursList.remove(21)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button23.setOnClickListener {
                 if (!storeHours.contains(22)) {
                     button23.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button23.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(22);
+                    cBookedHoursList.add(22)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button23.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button23.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(22);
+                    cBookedHoursList.remove(22)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
             button24.setOnClickListener {
                 if (!storeHours.contains(23)) {
                     button24.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D81B60"))
                     button24.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
                     storeHours.add(23);
+                    cBookedHoursList.add(23)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 else{
                     button24.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
                     button24.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
                     storeHours.remove(23);
+                    cBookedHoursList.remove(23)
+                    cBookedRef.setValue(cBookedHoursList)
+
+                    adapter = pBookedHoursAdapter(cBookedHoursList, this)
+                    selectedHoursRecView.adapter = adapter
+                    adapter.notifyDataSetChanged()
                 }
                 totalPriceView.setText("Rs.${storeHours.size * price!!.toInt()}")
-                Toast.makeText(this, "There are ${storeHours.size} selections", Toast.LENGTH_LONG).show()
             }
 
 
@@ -664,6 +966,10 @@ class PlayerBookDateActivity: AppCompatActivity(){
                                 .child(FirebaseAuth.getInstance().currentUser!!.uid)
                                 .child(key.toString())
                                 .setValue(BookedInfo).addOnSuccessListener {
+
+                                    // Removes the currently stored booking hours from the Firebase Realtime Database
+                                    cBookedRef.removeValue()
+
                                     Toast.makeText(
                                         this,
                                         "Complex Pbooking successful !!",

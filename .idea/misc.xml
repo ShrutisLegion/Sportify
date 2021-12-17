@@ -36,6 +36,7 @@
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/lender/layout/fragment_user.xml" value="0.12777777777777777" />
         <entry key="..\:/Android Dev/Sportify/app/src/main/res/player/layout/activity_login.xml" value="0.225" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/drawable-hdpi/ic_baseline_description_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/drawable/shape.xml" value="0.2703125" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/front/layout/first_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/front/layout/second_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/front/menu/menu_bottom.xml" value="0.25416666666666665" />
@@ -53,6 +54,7 @@
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/item_book_time.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/item_complexdetails.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/item_pbookedcomplex.xml" value="0.2" />
+        <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/item_pbookedhours_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/item_pcomplexdetails.xml" value="0.264" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/layout/item_pfavoritecomplex.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Neeraj/AndroidStudioProjects/Original/Original New/Sportify/app/src/main/res/lender/drawable/ic_baseline_account_box_24.xml" value="0.2703125" />
