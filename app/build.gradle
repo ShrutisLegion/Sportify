@@ -182,4 +182,8 @@ dependencies {
     implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
     implementation 'com.github.Ferfalk:SimpleSearchView:0.2.0'
 
+    // Kotlin
+    // Fragment
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
+
 }

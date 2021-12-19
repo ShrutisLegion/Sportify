@@ -11,30 +11,17 @@
         android:layout_height="match_parent">
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/bookmarkedComplexesHeading"
-            android:layout_width="wrap_content"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/_20mdp"
-            app:fontFamily="@font/nunito_bold"
-            app:layout_constraintBottom_toTopOf="@+id/pFavRecView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Your Bookmarked Complexes" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/pFavRecView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_500mdp"
+            android:layout_height="match_parent"
             android:visibility="gone"
+            android:paddingBottom="@dimen/_25mdp"
+            android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.github.ybq.android.spinkit.SpinKitView
             android:id="@+id/progressBarPHome"

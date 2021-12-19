@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.view.Menu
 import android.view.View
 import android.view.View.VISIBLE
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -60,8 +62,7 @@ class PlayerFavoriteActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 pFavRecView.visibility = View.VISIBLE
-                bookmarkedComplexesHeading.visibility = VISIBLE
-                progressBarPHome.setVisibility(View.GONE)
+                progressBarPHome.visibility = View.GONE
             }
         }
         countDownTimer.start()
@@ -77,6 +78,50 @@ class PlayerFavoriteActivity : AppCompatActivity() {
         adapter.startListening()
 
     }
+
+        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.pfav_menu, menu)
+
+        val menuitem = menu!!.findItem(R.id.action_pfav_search)
+        val searchView: SearchView = menuitem.actionView as SearchView
+        searchView.queryHint = "Search by Complex Name"
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                // Firebase recycler view is used here
+                // options contains the collection of the data that has to be inserted in the recyclerVIew
+                val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+                    .setQuery(
+                        FirebaseDatabase.getInstance().getReference("Favorite Complexes")
+                            .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                        .orderByChild("complexName")
+                        .startAt(newText).endAt(newText+"\uf8ff"), ComplexInfo::class.java)
+                    .build()
+
+                adapter = pFavoriteActivityAdapter(options)
+                pFavRecView.adapter = adapter
+                adapter.startListening()
+
+
+                return true
+            }
+
+        })
+
+        searchView.setOnCloseListener {
+
+            false
+        }
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
 
     override fun onStop() {
         super.onStop()

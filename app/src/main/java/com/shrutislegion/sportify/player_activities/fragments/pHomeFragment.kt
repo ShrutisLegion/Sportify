@@ -17,10 +17,14 @@ import com.shrutislegion.sportify.adapters.pHomeFragmentAdapter
 import com.shrutislegion.sportify.modules.ComplexInfo
 import kotlinx.android.synthetic.main.fragment_p_home.view.*
 import android.os.Parcelable
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.google.firebase.database.*
+import com.shrutislegion.sportify.interfaces.pHomeFragmentInterface
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,13 +37,16 @@ private const val ARG_PARAM2 = "param2"
  * Use the [pHomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class pHomeFragment : Fragment() {
+
+
+class pHomeFragment : Fragment(), pHomeFragmentInterface  {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     lateinit var adapter: pHomeFragmentAdapter
     lateinit var countDownTimer: CountDownTimer
-    var isSorted = false
+    var isSorted_rating = false
+    var isSorted_price = false
     private var scroll_state: Parcelable? = null
     var storeComplex: MutableList<ComplexInfo> = mutableListOf<ComplexInfo>()
     var i = 0
@@ -73,6 +80,7 @@ class pHomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+//        (activity as AppCompatActivity).supportActionBar!!.hide()
     }
 
     override fun onCreateView(
@@ -86,13 +94,21 @@ class pHomeFragment : Fragment() {
         linearLayoutManager.stackFromEnd = true
 
         view.precView.layoutManager = linearLayoutManager
+        view.precView.isNestedScrollingEnabled = false
 
-        isSorted = false
+        isSorted_rating = false
+        isSorted_price = false
 
         FirebaseDatabase.getInstance().reference
             .child("Current states")
-            .child("pHomeFragmentIsSorted")
-            .setValue(isSorted)
+            .child("pHomeFragmentIsSorted_rating")
+            .setValue(isSorted_rating)
+
+        FirebaseDatabase.getInstance().reference
+            .child("Current states")
+            .child("pHomeFragmentIsSorted_price")
+            .setValue(isSorted_price)
+
 
         // Progress bar's progress is updated
 //        view.progressBarPHome.progress = i
@@ -102,9 +118,8 @@ class pHomeFragment : Fragment() {
             }
 
             override fun onFinish() {
-                view.precView.visibility = VISIBLE
-                view.progressBarPHome.setVisibility(View.GONE)
-//                view.progressBarPHome.setProgress(100)
+               view.pHomeNestedScrollView.visibility = VISIBLE
+                view.progressBarPHome.visibility = GONE
             }
         }
         countDownTimer.start()
@@ -162,18 +177,19 @@ class pHomeFragment : Fragment() {
             false
         }
 
+        val sortRef = FirebaseDatabase.getInstance().reference
+            .child("Current states")
+
         view.sortComplexRatingButton.setOnClickListener {
 
-            FirebaseDatabase.getInstance().reference
-                .child("Current states")
-                .child("pHomeFragmentIsSorted")
+
+                sortRef.child("pHomeFragmentIsSorted_rating")
                 .get().addOnSuccessListener {
 
                     if(it.value as Boolean){
 
-                        FirebaseDatabase.getInstance().reference
-                            .child("Current states")
-                            .child("pHomeFragmentIsSorted")
+                        sortRef
+                            .child("pHomeFragmentIsSorted_rating")
                             .setValue(false)
 
                         view.sortComplexRatingButton.backgroundTintList = ColorStateList.valueOf(
@@ -193,14 +209,21 @@ class pHomeFragment : Fragment() {
                     }
                     else{
 
-                        FirebaseDatabase.getInstance().reference
-                            .child("Current states")
-                            .child("pHomeFragmentIsSorted")
+                        sortRef
+                            .child("pHomeFragmentIsSorted_price")
+                            .setValue(false)
+
+                        sortRef
+                            .child("pHomeFragmentIsSorted_rating")
                             .setValue(true)
 
                         view.sortComplexRatingButton.backgroundTintList = ColorStateList.valueOf(
                             Color.parseColor("#D81B60"))
                         view.sortComplexRatingButton.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+
+                        view.sortComplexPriceButton.backgroundTintList = ColorStateList.valueOf(
+                            Color.parseColor("#FFFFFF"))
+                        view.sortComplexPriceButton.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
 
                         complexSortByRating()
 
@@ -210,8 +233,75 @@ class pHomeFragment : Fragment() {
 
         }
 
+        view.sortComplexPriceButton.setOnClickListener {
+
+            sortRef.child("pHomeFragmentIsSorted_price")
+                .get().addOnSuccessListener {
+
+                    if(it.value as Boolean){
+
+                        sortRef
+                            .child("pHomeFragmentIsSorted_price")
+                            .setValue(false)
+
+                        view.sortComplexPriceButton.backgroundTintList = ColorStateList.valueOf(
+                            Color.parseColor("#FFFFFF"))
+                        view.sortComplexPriceButton.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+
+                        // Firebase recycler view is used here
+                        // options contains the collection of the data that has to be inserted in the recyclerVIew
+                        val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes"), ComplexInfo::class.java)
+                            .build()
+
+                        adapter = pHomeFragmentAdapter(options)
+                        view.precView.adapter = adapter
+                        adapter.startListening()
+
+                    }
+                    else{
+
+                        sortRef
+                            .child("pHomeFragmentIsSorted_rating")
+                            .setValue(false)
+
+                        sortRef
+                            .child("pHomeFragmentIsSorted_price")
+                            .setValue(true)
+
+                        view.sortComplexPriceButton.backgroundTintList = ColorStateList.valueOf(
+                            Color.parseColor("#D81B60"))
+                        view.sortComplexPriceButton.setTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")))
+
+                        view.sortComplexRatingButton.backgroundTintList = ColorStateList.valueOf(
+                            Color.parseColor("#FFFFFF"))
+                        view.sortComplexRatingButton.setTextColor(ColorStateList.valueOf(Color.parseColor("#000000")))
+
+                        complexSortByPrice()
+
+                    }
+
+                }
+
+        }
+
 
         return view
+    }
+
+    private fun complexSortByPrice() {
+
+        // Firebase recycler view is used here
+        // options contains the collection of the data that has to be inserted in the recyclerVIew
+        val options: FirebaseRecyclerOptions<ComplexInfo> = FirebaseRecyclerOptions.Builder<ComplexInfo>()
+            .setQuery(FirebaseDatabase.getInstance().getReference("All Complexes")
+                .orderByChild("pricePerHour"), ComplexInfo::class.java)
+            .build()
+
+        adapter = pHomeFragmentAdapter(options)
+        requireView().precView.adapter = adapter
+        adapter.startListening()
+
     }
 
     private fun complexSortByRating() {
@@ -229,7 +319,7 @@ class pHomeFragment : Fragment() {
 
     }
 
-    private fun complexSearch(str: String?) {
+    fun complexSearch(str: String?) {
 
         // Firebase recycler view is used here
         // options contains the collection of the data that has to be inserted in the recyclerVIew
@@ -238,6 +328,8 @@ class pHomeFragment : Fragment() {
                 .orderByChild("complexName")
                 .startAt(str).endAt(str+"\uf8ff"), ComplexInfo::class.java)
             .build()
+
+        Toast.makeText(context,str, Toast.LENGTH_SHORT).show()
 
         adapter = pHomeFragmentAdapter(options)
         requireView().precView.adapter = adapter

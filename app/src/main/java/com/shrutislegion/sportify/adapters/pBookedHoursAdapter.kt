@@ -29,76 +29,76 @@ class pBookedHoursAdapter(var cBookedHoursList: MutableList<Int>, val context: C
         var model = cBookedHoursList[position]
 
         if(model == 0){
-            holder.showHourButton.text = "00:00"
+            holder.showHourButton.text = "00:00-01:00"
         }
         if(model == 1){
-            holder.showHourButton.text = "01:00"
+            holder.showHourButton.text = "01:00-02:00"
         }
         if(model == 2){
-            holder.showHourButton.text = "02:00"
+            holder.showHourButton.text = "02:00-03:00"
         }
         if(model == 3){
-            holder.showHourButton.text = "03:00"
+            holder.showHourButton.text = "03:00-04:00"
         }
         if(model == 4){
-            holder.showHourButton.text = "04:00"
+            holder.showHourButton.text = "04:00-05:00"
         }
         if(model == 5){
-            holder.showHourButton.text = "05:00"
+            holder.showHourButton.text = "05:00-06:00"
         }
         if(model == 6){
-            holder.showHourButton.text = "06:00"
+            holder.showHourButton.text = "06:00-07:00"
         }
         if(model == 7){
-            holder.showHourButton.text = "07:00"
+            holder.showHourButton.text = "07:00-08:00"
         }
         if(model == 8){
-            holder.showHourButton.text = "08:00"
+            holder.showHourButton.text = "08:00-09:00"
         }
         if(model == 9){
-            holder.showHourButton.text = "09:00"
+            holder.showHourButton.text = "09:00-10:00"
         }
         if(model == 10){
-            holder.showHourButton.text = "10:00"
+            holder.showHourButton.text = "10:00-11:00"
         }
         if(model == 11){
-            holder.showHourButton.text = "11:00"
+            holder.showHourButton.text = "11:00-12:00"
         }
         if(model == 12){
-            holder.showHourButton.text = "12:00"
+            holder.showHourButton.text = "12:00-13:00"
         }
         if(model == 13){
-            holder.showHourButton.text = "13:00"
+            holder.showHourButton.text = "13:00-14:00"
         }
         if(model == 14){
-            holder.showHourButton.text = "14:00"
+            holder.showHourButton.text = "14:00-15:00"
         }
         if(model == 15){
-            holder.showHourButton.text = "15:00"
+            holder.showHourButton.text = "15:00-16:00"
         }
         if(model == 16){
-            holder.showHourButton.text = "16:00"
+            holder.showHourButton.text = "16:00-17:00"
         }
         if(model == 17){
-            holder.showHourButton.text = "17:00"
+            holder.showHourButton.text = "17:00-18:00"
         }
         if(model == 18){
-            holder.showHourButton.text = "18:00"
+            holder.showHourButton.text = "18:00-19:00"
         }
         if(model == 19){
-            holder.showHourButton.text = "19:00"
+            holder.showHourButton.text = "19:00-20:00"
         }
         if(model == 20){
-            holder.showHourButton.text = "20:00"
+            holder.showHourButton.text = "20:00-21:00"
         }
         if(model == 21){
-            holder.showHourButton.text = "21:00"
+            holder.showHourButton.text = "21:00-22:00"
         }
         if(model == 22){
-            holder.showHourButton.text = "22:00"
+            holder.showHourButton.text = "22:00-23:00"
         }
         if(model == 23){
-            holder.showHourButton.text = "23:00"
+            holder.showHourButton.text = "23:00-00:00"
         }
     }
 

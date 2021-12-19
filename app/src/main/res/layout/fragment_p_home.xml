@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,111 +7,127 @@
     tools:context=".player_activities.fragments.pHomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/pHomeNestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:scrollbars="none">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/pHomeSearchBarLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10mdp"
-            android:layout_marginRight="@dimen/_100mdp"
-            android:layout_marginBottom="0dp"
-            app:boxCornerRadiusBottomEnd="@dimen/_40mdp"
-            app:boxCornerRadiusBottomStart="@dimen/_40mdp"
-            app:boxCornerRadiusTopEnd="@dimen/_40mdp"
-            app:boxCornerRadiusTopStart="@dimen/_40mdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:queryHint="Search by complex name" />
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/sortComplexRatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:text="SORT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/pHomeSearchBarLayout"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/pHomeSearchBarLayout"
+                android:layout_width="match_parent"
+                android:background="@drawable/searchview_bg"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                android:layout_marginTop="@dimen/_4mdp"
+                app:iconifiedByDefault="false"
+                android:layout_marginBottom="0dp"
+                app:boxCornerRadiusBottomEnd="@dimen/_40mdp"
+                app:boxCornerRadiusBottomStart="@dimen/_40mdp"
+                app:boxCornerRadiusTopEnd="@dimen/_40mdp"
+                app:boxCornerRadiusTopStart="@dimen/_40mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryHint="Search by complex name" />
 
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:id="@+id/pHomeSearchBarLayout"-->
-        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="@dimen/_10mdp"-->
-        <!--            android:layout_marginLeft="@dimen/_10mdp"-->
-        <!--            android:layout_marginRight="@dimen/_10mdp"-->
-        <!--            android:layout_marginBottom="0dp"-->
-        <!--            app:hintAnimationEnabled="true"-->
-        <!--            android:hint="Search"-->
-        <!--            android:padding="0dp"-->
-        <!--            app:expandedHintEnabled="true"-->
-        <!--            app:placeholderText="Search by complex name"-->
-        <!--            app:boxCornerRadiusBottomEnd="@dimen/_40mdp"-->
-        <!--            app:boxCornerRadiusBottomStart="@dimen/_40mdp"-->
-        <!--            app:boxCornerRadiusTopEnd="@dimen/_40mdp"-->
-        <!--            app:boxCornerRadiusTopStart="@dimen/_40mdp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintHorizontal_bias="0.496"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:startIconDrawable="@drawable/ic_baseline_search_24"-->
-        <!--            tools:ignore="MissingConstraints">-->
+            <!--        <com.google.android.material.textfield.TextInputLayout-->
+            <!--            android:id="@+id/pHomeSearchBarLayout"-->
+            <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginTop="@dimen/_10mdp"-->
+            <!--            android:layout_marginLeft="@dimen/_10mdp"-->
+            <!--            android:layout_marginRight="@dimen/_10mdp"-->
+            <!--            android:layout_marginBottom="0dp"-->
+            <!--            app:hintAnimationEnabled="true"-->
+            <!--            android:hint="Search"-->
+            <!--            android:padding="0dp"-->
+            <!--            app:expandedHintEnabled="true"-->
+            <!--            app:placeholderText="Search by complex name"-->
+            <!--            app:boxCornerRadiusBottomEnd="@dimen/_40mdp"-->
+            <!--            app:boxCornerRadiusBottomStart="@dimen/_40mdp"-->
+            <!--            app:boxCornerRadiusTopEnd="@dimen/_40mdp"-->
+            <!--            app:boxCornerRadiusTopStart="@dimen/_40mdp"-->
+            <!--            app:layout_constraintEnd_toEndOf="parent"-->
+            <!--            app:layout_constraintHorizontal_bias="0.496"-->
+            <!--            app:layout_constraintStart_toStartOf="parent"-->
+            <!--            app:layout_constraintTop_toTopOf="parent"-->
+            <!--            app:startIconDrawable="@drawable/ic_baseline_search_24"-->
+            <!--            tools:ignore="MissingConstraints">-->
 
-        <!--            <com.google.android.material.textfield.TextInputEditText-->
-        <!--                android:id="@+id/pHomeSearchBar"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                tools:ignore="InvalidId" />-->
+            <!--            <com.google.android.material.textfield.TextInputEditText-->
+            <!--                android:id="@+id/pHomeSearchBar"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                tools:ignore="InvalidId" />-->
 
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+            <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/precView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_540mdp"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/_50mdp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pHomeSearchBarLayout"
-            app:layout_constraintVertical_bias="1.0" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sortComplexRatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28mdp"
+                android:text="SORT BY RATING"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10mdp"
+                app:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.177"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pHomeSearchBarLayout" />
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/progressBarPHome"
-            style="@style/SpinKitView.Large.DoubleBounce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/_5mdp"
-            app:SpinKit_Color="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sortComplexPriceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_28mdp"
+                android:text="SORT BY PRICE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10mdp"
+                app:backgroundTint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.781"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pHomeSearchBarLayout" />
 
-        <View
-            android:id="@+id/pRecEndView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50mdp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/precView" />
-
-        <!--        android:indeterminateTint="@color/colorAccent"-->
-        <!--        android:progressTint="@color/colorAccent"-->
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/precView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_50mdp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sortComplexRatingButton" />
 
 
-</RelativeLayout>
+            <!--        android:indeterminateTint="@color/colorAccent"-->
+            <!--        android:progressTint="@color/colorAccent"-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progressBarPHome"
+        style="@style/SpinKitView.Large.DoubleBounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/_5mdp"
+        app:SpinKit_Color="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

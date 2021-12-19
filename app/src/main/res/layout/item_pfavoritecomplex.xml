@@ -101,9 +101,8 @@
                 android:textColor="@color/black_30"
                 android:transitionName="sportType"
                 android:textSize="@dimen/_14mdp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.049"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/nameOfComplex"
                 app:layout_constraintTop_toBottomOf="@+id/nameOfComplex" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -124,36 +123,33 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="@dimen/_14mdp"
-                android:layout_height="@dimen/_16mdp"
-                android:layout_marginTop="@dimen/_4mdp"
+                android:layout_width="@dimen/_16mdp"
+                android:layout_height="@dimen/_14mdp"
                 android:src="@drawable/ic_baseline_location_on_24"
                 android:translationZ="@dimen/_4mdp"
                 app:layout_constraintBottom_toTopOf="@+id/complexDescription"
-                app:layout_constraintEnd_toStartOf="@+id/complexLocation"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sportType" />
+                app:layout_constraintStart_toStartOf="@id/sportType"
+                app:layout_constraintTop_toBottomOf="@+id/sportType"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="@dimen/_20mdp"
+                android:layout_marginLeft="@dimen/_8mdp"
                 android:layout_marginTop="@dimen/_8mdp"
                 android:textSize="@dimen/_12mdp"
                 app:fontFamily="@font/nunito_bold"
                 android:ellipsize="end"
-                android:maxWidth="@dimen/_250mdp"
+                android:maxWidth="@dimen/_200mdp"
                 android:maxLines="2"
                 android:text="Location"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black_30"
                 android:transitionName="location"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/pricePerHourInfo"
                 app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/nameOfComplex"
                 app:layout_constraintTop_toBottomOf="@+id/sportType" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -161,22 +157,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="@dimen/_14mdp"
                 android:layout_marginTop="@dimen/_8mdp"
                 android:layout_marginBottom="@dimen/_16mdp"
                 android:textSize="@dimen/_14mdp"
+                tools:text="Description"
                 android:ellipsize="end"
+                android:maxWidth="@dimen/_275mdp"
                 android:fontFamily="@font/nunito_semibold"
-                android:maxWidth="@dimen/_250mdp"
                 android:maxLines="3"
-                android:text="Description"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black_30"
                 android:transitionName="description"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.023"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/nameOfComplex"
+                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/pricePerHourInfo"
                 app:layout_constraintTop_toBottomOf="@+id/complexLocation" />
 
             <TextView
