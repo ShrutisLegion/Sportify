@@ -151,6 +151,40 @@
                 android:layout_marginTop="@dimen/_48mdp"
                 android:layout_marginBottom="@dimen/_5mdp"/>
 
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="@dimen/_70mdp"
+                android:layout_marginRight="@dimen/_50mdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/UserName" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/_30mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:src="@drawable/ic_baseline_star_rate_24"
+                android:layout_marginTop="@dimen/_80mdp"
+                android:layout_marginStart="@dimen/_12mdp"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lenderRatingsReviewsButton"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:backgroundTint="@color/white"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nunito_bold"
+                android:layout_marginBottom="@dimen/_15mdp"
+                android:text="Ratings and reviews"
+                android:layout_marginTop="@dimen/_85mdp"
+                android:textSize="@dimen/_16mdp"
+                android:layout_marginStart="@dimen/_48mdp"
+                />
+
 
         </com.google.android.material.card.MaterialCardView>
 

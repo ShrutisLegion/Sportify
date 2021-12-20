@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
+            android:name=".lender_activities.LenderRateReviewActivity"
+            android:exported="true"
+            android:label="Ratings and Reviews"/>
+        <activity
             android:name=".PLSignInActivity"
             android:exported="true" />
         <activity
@@ -24,8 +28,8 @@
         </activity>
         <activity
             android:name=".player_activities.PlayerFavoriteActivity"
-            android:label="Bookmarked Complexes"
             android:exported="false"
+            android:label="Bookmarked Complexes"
             android:noHistory="true" />
         <activity
             android:name=".player_activities.PlayerBookDateActivity"
@@ -57,8 +61,7 @@
             android:name=".player_activities.PlayerHomeActivity"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="adjustPan"
-            />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".lender_activities.LenderSharedActivity"
             android:exported="false"
@@ -72,8 +75,8 @@
             android:noHistory="true" />
         <activity
             android:name=".lender_activities.AddComplexActivity"
-            android:label="Add Your Complex"
             android:exported="true"
+            android:label="Add Your Complex"
             android:noHistory="false" />
         <activity
             android:name=".RegistrationActivity"

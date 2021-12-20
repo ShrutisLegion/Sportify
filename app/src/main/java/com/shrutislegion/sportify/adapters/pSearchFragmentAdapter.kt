@@ -216,6 +216,7 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
                     )
                     intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
                     intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
+                    intent.putExtra(PlayerRatingActivity.EXTRA_SPORT, model.typeOfSport.toString())
                     holder.name.context.startActivity(
                         intent
                     )
@@ -243,6 +244,7 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
                             )
                             intent.putExtra(PlayerRatingActivity.EXTRA_NAME, holder.name.text.toString())
                             intent.putExtra(PlayerRatingActivity.EXTRA_KEYID, getRef(position).key.toString())
+                            intent.putExtra(PlayerRatingActivity.EXTRA_SPORT, model.typeOfSport.toString())
 
                             holder.name.context.startActivity(intent)
                         }

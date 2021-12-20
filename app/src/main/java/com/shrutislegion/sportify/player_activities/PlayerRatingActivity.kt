@@ -7,7 +7,9 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthSettings
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -26,6 +28,7 @@ class PlayerRatingActivity : AppCompatActivity() {
         const val EXTRA_KEYID = "keyid_extra"
         const val EXTRA_RATING = "rating_extra"
         const val EXTRA_REVIEW = "review_extra"
+        const val EXTRA_SPORT = "sport_extra"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +40,15 @@ class PlayerRatingActivity : AppCompatActivity() {
         var keyid = intent.getStringExtra(PlayerRatingActivity.EXTRA_KEYID)
         var rating = intent.getStringExtra(PlayerRatingActivity.EXTRA_RATING)
         var review = intent.getStringExtra(PlayerRatingActivity.EXTRA_REVIEW)
+        var sport = intent.getStringExtra(PlayerRatingActivity.EXTRA_SPORT)
+
+        var lenderId = ""
+        FirebaseDatabase.getInstance().reference.child("All Complexes")
+            .child("$keyid").child("uid").get().addOnSuccessListener {
+
+                lenderId = it.getValue().toString()
+
+            }
 
         // set the values to fields
         titleHeading.setText("$name")
@@ -78,11 +90,17 @@ class PlayerRatingActivity : AppCompatActivity() {
             } else {
 
                 val User = ComplexRating(
-                    complexRatingBar.rating.toString(),
-                    complexCommentText.text.toString(),
-                    complexName
+                    complexRatingBar.rating.toString()+"",
+                    complexCommentText.text.toString()+"",
+                    complexName+"",
+                    FirebaseAuth.getInstance().currentUser!!.displayName+"",
+                    FirebaseAuth.getInstance().currentUser!!.photoUrl.toString()+"",
+                    FirebaseAuth.getInstance().currentUser!!.email+"",
+                    lenderId.toString(),
+                    sport+""
 
                 )
+
                 FirebaseDatabase.getInstance().getReference("Ratings")
                     .child("$keyid")
                     .child(FirebaseAuth.getInstance().currentUser!!.uid.toString())
