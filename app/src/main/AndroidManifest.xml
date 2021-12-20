@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shrutislegion.sportify">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:exported="true"
@@ -10,6 +14,12 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBDzuBvy_8HIs74Q69z9Cjjp-IUudxlCaE"/>
+
+        <activity
+            android:name=".lender_activities.LocationActivity"
+            android:exported="false" />
         <activity
             android:name=".PLSignInActivity"
             android:exported="true" />
@@ -56,8 +66,7 @@
             android:name=".player_activities.PlayerHomeActivity"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="adjustPan"
-            />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".lender_activities.LenderSharedActivity"
             android:exported="false"
@@ -71,8 +80,8 @@
             android:noHistory="true" />
         <activity
             android:name=".lender_activities.AddComplexActivity"
-            android:label="Add Your Complex"
             android:exported="true"
+            android:label="Add Your Complex"
             android:noHistory="false" />
         <activity
             android:name=".RegistrationActivity"

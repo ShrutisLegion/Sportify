@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.view.View.VISIBLE
 import android.widget.Toast
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -197,6 +198,11 @@ class AddComplexActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, LenderHomeActivity::class.java))
+    }
+
+    fun loc(view: View) {
+        val intent = Intent(this, LocationActivity::class.java)
+        startActivity(intent)
     }
 
 
