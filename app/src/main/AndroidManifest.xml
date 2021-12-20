@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shrutislegion.sportify">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:exported="true"
@@ -10,6 +14,12 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBDzuBvy_8HIs74Q69z9Cjjp-IUudxlCaE"/>
+
+        <activity
+            android:name=".lender_activities.LocationActivity"
+            android:exported="false" />
         <activity
             android:name=".lender_activities.LenderRateReviewActivity"
             android:exported="true"

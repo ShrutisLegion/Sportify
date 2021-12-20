@@ -182,6 +182,12 @@ dependencies {
     implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
     implementation 'com.github.Ferfalk:SimpleSearchView:0.2.0'
 
+    // Google Maps
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.libraries.places:places:2.1.0'
+
+    implementation 'com.karumi:dexter:6.2.1'
     // Kotlin
     // Fragment
     implementation "androidx.fragment:fragment-ktx:1.4.0"
