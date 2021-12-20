@@ -57,7 +57,7 @@ class pFavoriteActivityAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         holder.location.setText(model.location)
         holder.description.setText(model.description)
 
-        holder.pricePerHourInfo.setText("Rs." + "p" + "per hour")
+        holder.pricePerHourInfo.setText("Rs.$p per hour")
 
         // Glide used to load the image from the uri stored in firebase and progress bar added
         Glide.with(holder.image.context).load(model.imageUri).listener(object :

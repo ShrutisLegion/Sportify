@@ -429,7 +429,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/nunito_bold"
-                android:text="23:00-24:00"
+                android:text="23:00-00:00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_9mdp"
                 app:layout_constraintHorizontal_bias="0.435"
@@ -595,6 +595,7 @@
                     android:layout_marginTop="@dimen/_95mdp"
                     android:background="@drawable/shape"
                     android:fontFamily="@font/nunito_bold"
+                    app:rippleColor="@color/white"
                     android:text="CONFIRM BOOKING"
                     android:visibility="visible" />
 

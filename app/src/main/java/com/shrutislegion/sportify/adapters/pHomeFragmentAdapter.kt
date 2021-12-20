@@ -61,7 +61,7 @@ class pHomeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>)
         var noRating = itemView.findViewById<TextView>(R.id.noRatingView)
         var progressBarRating = itemView.findViewById<ProgressBar>(R.id.progressBarRating)
         var bookmarkButton = itemView.findViewById<ShapeableImageView>(R.id.bookmarkButton)
-        var pRecEndView = itemView.findViewById<View>(R.id.pRecEndView)
+//        var pRecEndView = itemView.findViewById<View>(R.id.pRecEndView)
         var imageLoadFailedText = itemView.findViewById<TextView>(R.id.imageLoadFailedText)
     }
 
