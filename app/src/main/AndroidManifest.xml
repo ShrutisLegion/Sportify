@@ -14,8 +14,13 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
+        <activity
+            android:name=".ChatDetailsActivity"
+            android:exported="true" />
 
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBDzuBvy_8HIs74Q69z9Cjjp-IUudxlCaE"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBDzuBvy_8HIs74Q69z9Cjjp-IUudxlCaE" />
 
         <activity
             android:name=".lender_activities.LocationActivity"
@@ -23,7 +28,7 @@
         <activity
             android:name=".lender_activities.LenderRateReviewActivity"
             android:exported="true"
-            android:label="Ratings and Reviews"/>
+            android:label="Ratings and Reviews" />
         <activity
             android:name=".PLSignInActivity"
             android:exported="true" />

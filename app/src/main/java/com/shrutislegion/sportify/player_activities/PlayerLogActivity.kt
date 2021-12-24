@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.PLSignInActivity
@@ -28,6 +29,7 @@ import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
 import com.shrutislegion.sportify.doas.UserDao
 import com.shrutislegion.sportify.modules.User
+import com.shrutislegion.sportify.modules.LoggedInUserInfo
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.signInButton
 import kotlinx.android.synthetic.main.activity_login.progressBarSignIn
@@ -261,6 +263,17 @@ class PlayerLogActivity : AppCompatActivity() {
                                 val user = User(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
                                 val usersDao = UserDao()
                                 usersDao.addUser(user)
+
+                                val model: LoggedInUserInfo = LoggedInUserInfo(firebaseUser.displayName, firebaseUser.email,
+                                        firebaseUser.uid, firebaseUser.photoUrl!!.toString(), ""
+                                    )
+
+                                FirebaseDatabase.getInstance().reference
+                                    .child("Logged in users")
+                                    .child("players")
+                                    .child(firebaseUser.uid)
+                                    .setValue(model)
+
                                 progressBarSignIn.visibility = View.GONE
                                 val mainActivityIntent = Intent(this, PlayerHomeActivity::class.java)
                                 startActivity(mainActivityIntent)

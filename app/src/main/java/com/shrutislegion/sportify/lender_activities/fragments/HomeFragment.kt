@@ -80,7 +80,14 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
-        view.recView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
+
+        var linearLayoutManager = LinearLayoutManagerWrapper(context, LinearLayoutManager.VERTICAL, true)
+        linearLayoutManager.stackFromEnd = true
+
+        view.recView.layoutManager = linearLayoutManager
+        view.recView.isNestedScrollingEnabled = false
+
+
         view.addComplexButton.setOnClickListener{
             startActivity(Intent(context, AddComplexActivity::class.java))
         }
@@ -91,8 +98,8 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFinish() {
+                view.homeNestedScrollView.visibility = VISIBLE
                 view.addComplexButton.visibility = VISIBLE
-                view.recView.visibility = VISIBLE
                 view.progressBarLHome.visibility = GONE
             }
         }

@@ -19,9 +19,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.lender_activities.LenderHomeActivity
+import com.shrutislegion.sportify.modules.LoggedInUserInfo
 import com.shrutislegion.sportify.player_activities.PlayerHomeActivity
 import kotlinx.android.synthetic.main.activity_plsign_in.*
 import kotlinx.coroutines.Dispatchers
@@ -110,6 +112,7 @@ class PLSignInActivity : AppCompatActivity() {
             var check: Boolean = false
             var check1: Boolean = false
             var check2: Boolean = false
+            val user = FirebaseAuth.getInstance().currentUser
 
             Firebase.firestore.collection("Landers")
                 .get().addOnSuccessListener { result->
@@ -117,6 +120,17 @@ class PLSignInActivity : AppCompatActivity() {
                         check1 = true
                         if(document.id == checkId){
                             check = true
+
+                            val model: LoggedInUserInfo = LoggedInUserInfo(user?.displayName, user?.email,
+                                user?.uid, user?.photoUrl!!.toString(), ""
+                            )
+
+                            FirebaseDatabase.getInstance().reference
+                                .child("Logged in users")
+                                .child("lenders")
+                                .child(user.uid)
+                                .setValue(model)
+
                             Toast.makeText(this,"Logged in as Lender", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this, LenderHomeActivity::class.java))
                             finish()
@@ -134,6 +148,17 @@ class PLSignInActivity : AppCompatActivity() {
                                 if (document.id == checkId) {
                                     check = true
                                     Toast.makeText(this,"Logged in as Player", Toast.LENGTH_SHORT).show()
+
+                                    val model: LoggedInUserInfo = LoggedInUserInfo(user?.displayName, user?.email,
+                                        user?.uid, user?.photoUrl!!.toString(), ""
+                                    )
+
+                                    FirebaseDatabase.getInstance().reference
+                                        .child("Logged in users")
+                                        .child("players")
+                                        .child(user.uid)
+                                        .setValue(model)
+
                                     startActivity(Intent(this, PlayerHomeActivity::class.java))
                                     finish()
                                     break
