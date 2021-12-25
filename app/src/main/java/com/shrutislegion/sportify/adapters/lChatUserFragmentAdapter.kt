@@ -15,12 +15,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.shrutislegion.sportify.player_activities.ChatDetailsActivity
 import com.shrutislegion.sportify.R
+import com.shrutislegion.sportify.lender_activities.LenderChatDetailsActivity
 import com.shrutislegion.sportify.modules.LoggedInUserInfo
 
-class pChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val context: Context):
-    RecyclerView.Adapter<pChatUserFragmentAdapter.viewHolder>(){
+class lChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val context: Context):
+    RecyclerView.Adapter<lChatUserFragmentAdapter.viewHolder>(){
 
     class viewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
@@ -74,26 +74,21 @@ class pChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
 
             })
 
-
-
-
         holder.pChatCardView.setOnClickListener {
 
-            val intent = Intent(holder.pChatCardView.context, ChatDetailsActivity::class.java)
+            val intent = Intent(holder.pChatCardView.context, LenderChatDetailsActivity::class.java)
 
-            intent.putExtra(ChatDetailsActivity.EXTRA_USERNAME, model.userName.toString())
-            intent.putExtra(ChatDetailsActivity.EXTRA_USEREMAIL, model.userEmail.toString())
-            intent.putExtra(ChatDetailsActivity.EXTRA_USERLASTMSG, model.lastMessage.toString())
-            intent.putExtra(ChatDetailsActivity.EXTRA_USERIMGURL, model.photoUrl.toString())
-            intent.putExtra(ChatDetailsActivity.EXTRA_RECEIVERID, model.userId.toString())
+            intent.putExtra(LenderChatDetailsActivity.EXTRA_USERNAME, model.userName.toString())
+            intent.putExtra(LenderChatDetailsActivity.EXTRA_USEREMAIL, model.userEmail.toString())
+            intent.putExtra(LenderChatDetailsActivity.EXTRA_USERLASTMSG, model.lastMessage.toString())
+            intent.putExtra(LenderChatDetailsActivity.EXTRA_USERIMGURL, model.photoUrl.toString())
+            intent.putExtra(LenderChatDetailsActivity.EXTRA_RECEIVERID, model.userId.toString())
 
 
             holder.pChatCardView.context.startActivity(intent)
 
         }
-
     }
-
     override fun getItemCount(): Int {
         return storeUsers.size
     }

@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportify">
         <activity
-            android:name=".ChatDetailsActivity"
+            android:name=".lender_activities.LenderChatDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".player_activities.ChatDetailsActivity"
             android:exported="true" />
 
         <meta-data

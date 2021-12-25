@@ -1,38 +1,28 @@
-package com.shrutislegion.sportify
+package com.shrutislegion.sportify.lender_activities
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.Toast
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_chat_details.*
-import kotlinx.android.synthetic.main.fragment_p_home.*
-import com.shrutislegion.sportify.R
-import androidx.fragment.app.FragmentManager
-import com.shrutislegion.sportify.player_activities.fragments.pChatFragment
-import android.app.Fragment
 import android.content.Context
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import android.util.AttributeSet
-import android.view.View.GONE
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
+import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.chatDetailsAdapter
 import com.shrutislegion.sportify.modules.ChatMessageInfo
-import com.shrutislegion.sportify.player_activities.PlayerHomeActivity
+import kotlinx.android.synthetic.main.activity_lender_chat_details.*
+import kotlinx.android.synthetic.main.activity_lender_log.*
 import java.util.*
 import kotlin.collections.ArrayList
 
+class LenderChatDetailsActivity : AppCompatActivity() {
 
-class ChatDetailsActivity : AppCompatActivity() {
-
-//    lateinit var binding: ActivityChatDetailsBinding
     var receiverId: String? = null
     var storeMessage: ArrayList<ChatMessageInfo> = ArrayList<ChatMessageInfo>()
     lateinit var adapter: chatDetailsAdapter
@@ -71,18 +61,16 @@ class ChatDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_lender_chat_details)
 
         supportActionBar?.hide()
-//        binding = ActivityChatDetailsBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-        setContentView(R.layout.activity_chat_details)
 
         // To get the shared intent data
-        var userName = intent.getStringExtra(ChatDetailsActivity.EXTRA_USERNAME)
-        var userEmail = intent.getStringExtra(ChatDetailsActivity.EXTRA_USEREMAIL)
-        var userLastMsg = intent.getStringExtra(ChatDetailsActivity.EXTRA_USERLASTMSG)
-        var userImgUrl = intent.getStringExtra(ChatDetailsActivity.EXTRA_USERIMGURL)
-        receiverId = intent.getStringExtra(ChatDetailsActivity.EXTRA_RECEIVERID)
+        var userName = intent.getStringExtra(LenderChatDetailsActivity.EXTRA_USERNAME)
+        var userEmail = intent.getStringExtra(LenderChatDetailsActivity.EXTRA_USEREMAIL)
+        var userLastMsg = intent.getStringExtra(LenderChatDetailsActivity.EXTRA_USERLASTMSG)
+        var userImgUrl = intent.getStringExtra(LenderChatDetailsActivity.EXTRA_USERIMGURL)
+        receiverId = intent.getStringExtra(LenderChatDetailsActivity.EXTRA_RECEIVERID)
 
         Glide.with(this)
             .load(userImgUrl)
@@ -94,12 +82,10 @@ class ChatDetailsActivity : AppCompatActivity() {
 
         backArrowButton.setOnClickListener {
 
-            val intent: Intent = Intent(this, PlayerHomeActivity::class.java)
-
-            intent.putExtra(PlayerHomeActivity.EXTRA_FRAGMENT, "2")
+            val intent: Intent = Intent(this, LenderHomeActivity::class.java)
+            intent.putExtra(LenderHomeActivity.EXTRA_FRAGMENT, "2")
 
             startActivity(intent)
-
         }
 
         adapter = chatDetailsAdapter(storeMessage, this)
@@ -161,34 +147,16 @@ class ChatDetailsActivity : AppCompatActivity() {
                 }
 
         }
-
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
 
-        val intent: Intent = Intent(this, PlayerHomeActivity::class.java)
+        val intent: Intent = Intent(this, LenderHomeActivity::class.java)
 
-        intent.putExtra(PlayerHomeActivity.EXTRA_FRAGMENT, "2")
+        intent.putExtra(LenderHomeActivity.EXTRA_FRAGMENT, "2")
 
         startActivity(intent)
+
     }
 }
-
-
-
-//            val fragment = pChatFragment()
-//
-//            val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-//
-//            transaction.replace(R.id.fragment_containerChat, fragment).commit()
-//
-//            chatDetailsRV.visibility = GONE
-//            chatDetailsLL.visibility = GONE
-//            chatDetailsToolbar.visibility = GONE
-//            supportActionBar?.show()
-
-//            val fm: FragmentManager = supportFragmentManager
-//            val fragment = pChatFragment()
-//            fm.beginTransaction().add(R.id.fragment_containerChat, fragment).commit()
-//            finish()

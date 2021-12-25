@@ -1,7 +1,6 @@
 package com.shrutislegion.sportify.player_activities.fragments
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -19,14 +18,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-import com.shrutislegion.sportify.ChatDetailsActivity
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.adapters.pChatUserFragmentAdapter
 import com.shrutislegion.sportify.modules.LoggedInUserInfo
-import kotlinx.android.synthetic.main.fragment_p_chat.*
 import kotlinx.android.synthetic.main.fragment_p_chat.view.*
-import kotlinx.android.synthetic.main.fragment_p_home.view.*
-import kotlinx.android.synthetic.main.item_chatdetails_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -119,7 +114,7 @@ class pChatFragment : Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            adapter = pChatUserFragmentAdapter(storeUsers, context!!)
+            adapter = pChatUserFragmentAdapter(storeUsers, container!!.context)
             view.pChatRV.adapter = adapter
 
             adapter.notifyDataSetChanged()
