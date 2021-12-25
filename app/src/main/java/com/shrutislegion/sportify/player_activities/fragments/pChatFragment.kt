@@ -13,6 +13,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -101,7 +102,9 @@ class pChatFragment : Fragment() {
                 else{
                     for(i in snapshot.children){
                         val user:LoggedInUserInfo = i.getValue<LoggedInUserInfo>()!!
-                        storeUsers.add(user)
+                        if(!user.userId.equals(FirebaseAuth.getInstance().currentUser!!.uid)) {
+                            storeUsers.add(user)
+                        }
                     }
                 }
 

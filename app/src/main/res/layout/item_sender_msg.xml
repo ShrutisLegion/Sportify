@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_4mdp"
+        android:layout_marginTop="@dimen/_6mdp"
+        android:layout_marginEnd="@dimen/_4mdp"
+        android:background="@drawable/sender_msg_bg"
+        android:maxWidth="@dimen/_250mdp"
+        android:maxHeight="@dimen/_350mdp"
+        android:minHeight="@dimen/_25mdp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/senderMsgDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6mdp"
+            android:layout_marginBottom="@dimen/_3mdp"
+            android:layout_marginHorizontal="@dimen/_16mdp"
+            android:maxWidth="@dimen/_200mdp"
+            android:minWidth="@dimen/_40mdp"
+            android:text="Oyee"
+            app:layout_constraintBottom_toTopOf="@+id/senderTimeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/senderTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_16mdp"
+            android:layout_marginBottom="@dimen/_3mdp"
+            android:text="10:40PM"
+            android:textSize="@dimen/_8mdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

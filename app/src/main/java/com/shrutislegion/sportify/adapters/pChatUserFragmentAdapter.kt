@@ -10,6 +10,11 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.shrutislegion.sportify.ChatDetailsActivity
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.modules.LoggedInUserInfo
@@ -47,7 +52,31 @@ class pChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
             .into(holder.chatUserProfileImage)
 
         holder.chatUserName.text = model.userName.toString()
-        holder.chatUserLastMessage.text = model.lastMessage.toString()
+
+        FirebaseDatabase.getInstance().reference
+            .child("Chats")
+            .child(FirebaseAuth.getInstance().currentUser!!.uid + model.userId)
+            .orderByChild("messageTime")
+            .limitToLast(1)
+            .addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if(snapshot.hasChildren()){
+
+                        for(i in snapshot.children){
+                            holder.chatUserLastMessage.text = i.child("message").getValue().toString()
+                        }
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
+
+
+
 
         holder.pChatCardView.setOnClickListener {
 
@@ -57,7 +86,7 @@ class pChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
             intent.putExtra(ChatDetailsActivity.EXTRA_USEREMAIL, model.userEmail.toString())
             intent.putExtra(ChatDetailsActivity.EXTRA_USERLASTMSG, model.lastMessage.toString())
             intent.putExtra(ChatDetailsActivity.EXTRA_USERIMGURL, model.photoUrl.toString())
-            intent.putExtra(ChatDetailsActivity.EXTRA_USERID, model.userId.toString())
+            intent.putExtra(ChatDetailsActivity.EXTRA_RECEIVERID, model.userId.toString())
 
 
             holder.pChatCardView.context.startActivity(intent)

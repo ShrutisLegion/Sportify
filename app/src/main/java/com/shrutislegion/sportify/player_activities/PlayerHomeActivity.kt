@@ -32,6 +32,10 @@ class PlayerHomeActivity : AppCompatActivity() {
 //    lateinit var adapter: pHomeFragmentAdapter
     lateinit var listener: pHomeFragmentInterface
 
+    companion object {
+        const val EXTRA_FRAGMENT = "name_extra"
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,8 +52,14 @@ class PlayerHomeActivity : AppCompatActivity() {
         mGoogleSignInClient= GoogleSignIn.getClient(this,gso)
         bottomNav = findViewById(R.id.bottom_nav)
 
+        var frag = intent.getStringExtra(PlayerHomeActivity.EXTRA_FRAGMENT)
+
+        if(frag == "2"){
+            bottomNav.setItemSelected(R.id.chats,true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pChatFragment()).commitAllowingStateLoss()
+        }
         // By default the home page should be selected on opening the app
-        if(savedInstanceState==null){
+        else if(savedInstanceState==null){
             bottomNav.setItemSelected(R.id.home,true)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pHomeFragment()).commitAllowingStateLoss()
         }

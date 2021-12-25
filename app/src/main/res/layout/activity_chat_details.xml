@@ -31,7 +31,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/chatDetailsMessageLayout"
+            android:id="@+id/chatDetailsMessage"
             android:layout_width="@dimen/_250mdp"
             android:layout_height="@dimen/_40mdp"
             android:layout_marginStart="@dimen/_5mdp"
