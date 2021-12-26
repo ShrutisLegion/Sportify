@@ -23,13 +23,9 @@ courts, hourly court price as information.
 6) Book a court in advance.
 7) Player’s booking history.
 8) Add complexes to favorites.
-
-## Features to be Implemented
-1) Search a sports complex by its name and by a specific sport.
-2) Chat facility where users and sports complex authority can communicate.
-3) Sort the list based on distance and rating
-4) Customers should be able to view nearby sports complexes.
-5) Notification prior to the time of booking (reminder).
+9) Search a sports complex by its name and by a specific sport.
+10) Chat facility where users and sports complex authority can communicate.
+11) Sort the list based on price and rating.
 
 ## Libraries and APIs Used
 1) Glide Library: To fetch an image and load it to the image view.
@@ -40,6 +36,8 @@ courts, hourly court price as information.
 6) Spin-kit: The Library provides loading animations thatlook appealing.
 7) Android-KTX: Library made Android API more pleasant to use.It provided a coroutine feature.
 8) Google Maps API: API was used to get the location of the users.
+9) Material Search Bar: API used to implement search view.
+10) JediBurrell-customFloatingActionButton: Used to design floating action button.
 
 
 ## Team Name - _We Are Groot!!_
