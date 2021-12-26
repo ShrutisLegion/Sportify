@@ -54,14 +54,26 @@ class PlayerHomeActivity : AppCompatActivity() {
 
         var frag = intent.getStringExtra(PlayerHomeActivity.EXTRA_FRAGMENT)
 
-        if(frag == "2"){
+        if(frag == "1"){
+            bottomNav.setItemSelected(R.id.booked, true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pSearchFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Your Bookings"
+        }
+        else if(frag == "2"){
             bottomNav.setItemSelected(R.id.chats,true)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pChatFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Chats"
+        }
+        else if(frag == "3"){
+            bottomNav.setItemSelected(R.id.user, true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pUserFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Profile"
         }
         // By default the home page should be selected on opening the app
         else if(savedInstanceState==null){
             bottomNav.setItemSelected(R.id.home,true)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pHomeFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "All Complexes"
         }
 
         // Listener on the bottomNav, and selecting the fragment according to their ids
@@ -70,10 +82,20 @@ class PlayerHomeActivity : AppCompatActivity() {
             when(it){
                 R.id.home ->{
                     supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pHomeFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "All Complexes"
                 }
-                R.id.booked -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pSearchFragment()).commitAllowingStateLoss()
-                R.id.chats -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pChatFragment()).commitAllowingStateLoss()
-                R.id.user -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pUserFragment()).commitAllowingStateLoss()
+                R.id.booked -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pSearchFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "Your Bookings"
+                }
+                R.id.chats -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pChatFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "Chats"
+                }
+                R.id.user -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, pUserFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "Profile"
+                }
             }
 
         }

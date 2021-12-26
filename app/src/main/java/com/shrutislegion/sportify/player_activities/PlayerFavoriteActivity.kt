@@ -140,7 +140,11 @@ class PlayerFavoriteActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         adapter.stopListening()
-        startActivity(Intent(this, PlayerHomeActivity::class.java))
+        val intent: Intent = Intent(this, PlayerHomeActivity::class.java)
+
+        intent.putExtra(PlayerHomeActivity.EXTRA_FRAGMENT, "3")
+
+        startActivity(intent)
     }
 
 }

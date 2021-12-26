@@ -38,25 +38,54 @@ class LenderHomeActivity : AppCompatActivity() {
 
         var frag = intent.getStringExtra(LenderHomeActivity.EXTRA_FRAGMENT)
 
-        if(frag == "2") {
+        if(frag == "0"){
+            bottomNav.setItemSelected(R.id.home, true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Your Complexes"
+        }
+        else if(frag == "1"){
+            bottomNav.setItemSelected(R.id.booked, true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Booked Complexes"
+        }
+        else if(frag == "2") {
             bottomNav.setItemSelected(R.id.chats, true)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ChatsFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Chats"
+        }
+        else if(frag == "3"){
+            bottomNav.setItemSelected(R.id.user, true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, UserFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Profile"
         }
 
         // By default the home page should be selected on opening the app
         else if(savedInstanceState==null){
             bottomNav.setItemSelected(R.id.home,true)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commitAllowingStateLoss()
+            supportActionBar!!.title = "Your Complexes"
         }
 
         // Listener on the bottomNav, and selecting the fragment according to their ids
         bottomNav.setOnItemSelectedListener {
             var fragment: Fragment? = null
             when(it){
-                R.id.home -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commitAllowingStateLoss()
-                R.id.booked -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commitAllowingStateLoss()
-                R.id.chats -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ChatsFragment()).commitAllowingStateLoss()
-                R.id.user -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, UserFragment()).commitAllowingStateLoss()
+                R.id.home -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "Your Complexes"
+                }
+                R.id.booked -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SearchFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "Booked Complexes"
+                }
+                R.id.chats -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ChatsFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "Chats"
+                }
+                R.id.user -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, UserFragment()).commitAllowingStateLoss()
+                    supportActionBar!!.title = "Profile"
+                }
             }
 
         }

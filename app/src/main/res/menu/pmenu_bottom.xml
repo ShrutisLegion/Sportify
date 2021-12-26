@@ -12,7 +12,7 @@
         />
     <item
         android:id="@+id/booked"
-        android:title="Search"
+        android:title="Bookings"
         android:icon="@drawable/ic_baseline_content_paste_search_24"
         app:cnb_backgroundColor = "#ff785b"
         app:cnb_iconColor = "#000000"

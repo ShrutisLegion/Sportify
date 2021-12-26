@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_200mdp"
         android:layout_marginTop="@dimen/_450mdp"
-        android:text="Confirm"/>
+        android:text="CONFIRM" />
 
 </RelativeLayout>

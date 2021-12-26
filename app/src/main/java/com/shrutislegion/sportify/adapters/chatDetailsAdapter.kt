@@ -1,3 +1,6 @@
+// Adapter used for the Player Chat Fragment
+// This is used to show all the users and their last message with the current user
+
 package com.shrutislegion.sportify.adapters
 
 import android.content.Context
@@ -16,10 +19,12 @@ import kotlin.collections.ArrayList
 
 class chatDetailsAdapter(var storeMessage: ArrayList<ChatMessageInfo>, val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    // These are used to identify the type of the user, i.e., Sender/Receiver and then change the layout accordingly
     var SENDER_VIEW_TYPE: Int = 1
     var RECEIVER_VIEW_TYPE:Int = 2
 
 
+    // Sender ViewHolder used to bind the sender messages
     class SenderViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
         var senderMsgDetailText = itemView.findViewById<TextView>(R.id.senderMsgDetailText)
@@ -27,6 +32,7 @@ class chatDetailsAdapter(var storeMessage: ArrayList<ChatMessageInfo>, val conte
 
     }
 
+    // Receiver ViewHolder used to bind the receiver messages
     class ReceiverViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
         var receiverMsgDetailText = itemView.findViewById<TextView>(R.id.receiverMsgDetailText)
@@ -34,6 +40,7 @@ class chatDetailsAdapter(var storeMessage: ArrayList<ChatMessageInfo>, val conte
 
     }
 
+    // Conditions to inflate the layout according to the viewType
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         if(viewType == SENDER_VIEW_TYPE){
@@ -53,6 +60,7 @@ class chatDetailsAdapter(var storeMessage: ArrayList<ChatMessageInfo>, val conte
 
     }
 
+    // Get the Item ViewType and return whether the current user is a sender/receiver
     override fun getItemViewType(position: Int): Int {
 
         if(storeMessage[position].senderId.equals(FirebaseAuth.getInstance().currentUser!!.uid)){
@@ -68,6 +76,7 @@ class chatDetailsAdapter(var storeMessage: ArrayList<ChatMessageInfo>, val conte
 
     }
 
+    // Set the fields with the suitable values and set the time by using SimpleDateFormat
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         var messageInfo:ChatMessageInfo = storeMessage[position]
@@ -89,6 +98,7 @@ class chatDetailsAdapter(var storeMessage: ArrayList<ChatMessageInfo>, val conte
 
     }
 
+    // Returns the  size of the message
     override fun getItemCount(): Int {
         return  storeMessage.size
     }

@@ -99,25 +99,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sportType" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/hoursBookedInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/hoursBookedInfo"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
                 android:layout_marginLeft="@dimen/_14mdp"
                 android:layout_marginTop="@dimen/_4mdp"
-                android:ellipsize="end"
-                android:fontFamily="@font/nunito_semibold"
-                android:maxWidth="@dimen/_250mdp"
-                android:maxLines="3"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="@color/black"
-                android:transitionName="description"
+<!--                android:ellipsize="end"-->
+<!--                android:fontFamily="@font/nunito_semibold"-->
+<!--                android:maxWidth="@dimen/_250mdp"-->
+<!--                android:maxLines="3"-->
+<!--                android:textAppearance="?attr/textAppearanceBody2"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:transitionName="description"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.023"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/complexLocation"-->
+<!--                tools:text="Hours Booked: 1 2 3 4 5" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hoursBookedInfo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35mdp"
+                android:layout_marginStart="@dimen/_2mdp"
+                android:layout_marginEnd="@dimen/_14mdp"
+                android:layout_marginTop="@dimen/_4mdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.023"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexLocation"
-                tools:text="Hours Booked: 1 2 3 4 5" />
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_pbookedhours_view" />
 
             <me.zhanghai.android.materialratingbar.MaterialRatingBar
                 android:id="@+id/complexRatingBar"

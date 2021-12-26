@@ -77,6 +77,8 @@ class pSearchFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_p_search, container, false)
         view.pBRecView.layoutManager = LinearLayoutManagerWrapper(context,LinearLayoutManager.VERTICAL, false)
 
+        view.pBRecView.isNestedScrollingEnabled = false
+
         // Progress bar's progress is updated
 //        view.progressBarPHome.progress = i
         countDownTimer = object : CountDownTimer(2000, 1900) {

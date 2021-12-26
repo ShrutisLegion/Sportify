@@ -602,8 +602,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/selectedHoursRecView"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_60mdp"
-                    android:layout_marginTop="@dimen/_40mdp"
+                    android:layout_height="@dimen/_40mdp"
+                    android:layout_marginTop="@dimen/_50mdp"
                     android:orientation="horizontal"
                     tools:listitem="@layout/item_pbookedhours_view" />
 

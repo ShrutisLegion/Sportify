@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_chat_details.*
 import com.shrutislegion.sportify.R
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -150,6 +151,14 @@ class ChatDetailsActivity : AppCompatActivity() {
                         }
 
                 }
+
+        }
+
+        chatUserPhoneCall.setOnClickListener {
+
+            val callIntent = Intent(Intent.ACTION_DIAL)
+            callIntent.data = Uri.parse("tel:0123456789")
+            startActivity(callIntent)
 
         }
 

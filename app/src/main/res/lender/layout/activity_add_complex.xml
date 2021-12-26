@@ -8,9 +8,11 @@
     tools:context=".lender_activities.AddComplexActivity">
 
     <ScrollView
+        android:id="@+id/scrollView4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView4">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-117dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -63,8 +65,8 @@
                 android:hint="Phone Number"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
-                app:helperText="Required*"
                 app:errorEnabled="true"
+                app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
@@ -156,14 +158,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/LocationLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="@dimen/_240mdp"
+                android:layout_width="@dimen/_200mdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10mdp"
                 android:hint="Location"
                 app:helperText="Required*"
                 app:helperTextTextColor="#A60606"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintHorizontal_bias="0.33"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/PriceLayout"
                 app:startIconDrawable="@drawable/ic_baseline_house_24"
@@ -243,13 +245,13 @@
                 app:rippleColor="@color/white" />
 
             <com.github.ybq.android.spinkit.SpinKitView
-                android:visibility="gone"
                 android:id="@+id/addComplexLoading"
                 style="@style/SpinKitView.Large.FoldingCube"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="672dp"
+                android:visibility="gone"
                 app:SpinKit_Color="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -262,16 +264,20 @@
                 android:layout_height="@dimen/_20mdp"
                 app:layout_constraintTop_toBottomOf="@+id/Submit" />
 
-            <Button
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="location"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:layout_marginEnd="@dimen/_32mdp"
+                app:fabSize="mini"
                 android:onClick="loc"
-                app:layout_constraintTop_toBottomOf="@id/view2"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:src="@drawable/ic_baseline_location_on_24"
+                app:backgroundTint="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/LocationLayout"
+                app:layout_constraintTop_toBottomOf="@id/PriceLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </ScrollView>
