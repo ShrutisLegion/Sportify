@@ -88,18 +88,17 @@
                 android:transitionName="sportType"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.049"
+                android:layout_marginLeft="@dimen/_3mdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complexImage" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView2"
                 android:layout_width="@dimen/_14mdp"
-                android:layout_height="@dimen/_16mdp"
+                android:layout_height="@dimen/_14mdp"
                 android:src="@drawable/ic_baseline_location_on_24"
-                android:translationZ="@dimen/_4mdp"
+                android:layout_marginLeft="@dimen/_10mdp"
                 app:layout_constraintBottom_toTopOf="@+id/complexDescription"
-                app:layout_constraintEnd_toStartOf="@+id/complexLocation"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sportType" />
 
@@ -108,19 +107,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="@dimen/_20mdp"
-                android:layout_marginTop="@dimen/_4mdp"
+                android:padding="@dimen/_2mdp"
                 android:ellipsize="end"
                 android:maxWidth="@dimen/_250mdp"
-                android:maxLines="2"
+                android:maxLines="1"
                 android:text="Location"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
                 android:transitionName="location"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sportType" />
+                app:layout_constraintTop_toBottomOf="@id/sportType"
+                app:layout_constraintStart_toEndOf="@id/imageView2"
+                android:layout_marginTop="12dp"
+                />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/complexDescription"

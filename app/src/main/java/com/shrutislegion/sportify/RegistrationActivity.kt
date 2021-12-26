@@ -1,3 +1,5 @@
+// This Activity is used to commute to multiple registration and login options.
+
 package com.shrutislegion.sportify
 
 import android.content.Intent
@@ -32,6 +34,7 @@ open class RegistrationActivity : AppCompatActivity() {
         val playeranim = findViewById<LottieAnimationView>(R.id.playeranim)
         val useranim = findViewById<LottieAnimationView>(R.id.useranim)
 
+        // Setting Animations
         registeranim.setAnimation(leftanim)
         lenderButton.setAnimation(rightanim)
         playeranim.setAnimation(rightanim)
@@ -60,6 +63,7 @@ open class RegistrationActivity : AppCompatActivity() {
         useranim.visibility = GONE
         regProceedButton.visibility = GONE
 
+        // Starting Lender Login Activity
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, LenderLogActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -79,6 +83,7 @@ open class RegistrationActivity : AppCompatActivity() {
         useranim.visibility = GONE
         regProceedButton.visibility = GONE
 
+        // Starting Player Login Activity
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, PlayerLogActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)

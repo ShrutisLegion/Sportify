@@ -108,6 +108,8 @@ class PLSignInActivity : AppCompatActivity() {
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         PLSignInButton.visibility = View.GONE
+        signinanim.visibility = View.GONE
+        textwelcome.visibility = View.GONE
         PLprogressBarSignIn.visibility = View.VISIBLE
 
         GlobalScope.launch(Dispatchers.IO) {
