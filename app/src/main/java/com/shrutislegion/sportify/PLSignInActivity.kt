@@ -7,7 +7,10 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
+import com.airbnb.lottie.Lottie
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -41,6 +44,15 @@ class PLSignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plsign_in)
+
+        val Signinanim = findViewById<LottieAnimationView>(R.id.signinanim)
+        val leftanim = AnimationUtils.loadAnimation(this, R.anim.leftanim)
+        val rightanim = AnimationUtils.loadAnimation(this, R.anim.rightanim)
+        val bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottomanimation)
+
+        textwelcome.setAnimation(leftanim)
+        Signinanim.setAnimation(bottomAnim)
+        PLSignInButton.setAnimation(bottomAnim)
 
         //google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -169,6 +181,7 @@ class PLSignInActivity : AppCompatActivity() {
                                             Firebase.auth.signOut()
                                         }
                                         PLSignInButton.visibility = View.VISIBLE
+                                        signinanim.visibility = View.VISIBLE
                                         PLprogressBarSignIn.visibility = View.GONE
 
                                     }

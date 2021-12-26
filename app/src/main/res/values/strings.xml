@@ -1,18 +1,35 @@
 <resources>
-    <string name="app_name">Sportify</string>
-    <string name="gamecoin" />
-    <string name="skip" />
-    <string name="online">Online</string>
-    <string name="gambling">GAMBLING</string>
-    <string name="temporibus_autem_aut_officiis_debitis_aut_rerum_necessitatibus">Temporibus autem aut\nofficiis debitis aut rerum\nnecessitatibus</string>
-    <string name="forr">For</string>
-    <string name="gamers" />
-    <string name="excepteur_sint_occaecat_cupidatat_non_proident_sunt_in_culpa_qui_officia" />
-    <string name="find_the_best">Find The Best</string>
-    <string name="find_the_most_rated_nearby_sports_complex_check_avaibility_and_book_according_to_your_convinience">Find the Most Rated Nearby Sports Complex, Check Avaibility and Book According To Your Convinience!</string>
+    <string name="app_name" translatable="false">Sportify</string>
+<!--    <string name="forr">For</string>-->
+    <string name="find_the_most_rated_nearby_sports_complex_check_avaibility_and_book_according_to_your_convinience">Find the Most Rated Nearby Sports Complex, Check Availability and Book According To Your Convenience!</string>
     <string name="add_your_complex">ADD YOUR COMPLEX</string>
     <string name="delete_confirmation">Are you sure you want to delete the complex?</string>
     <string name="todo" />
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_s_get_sportified">Let\'s get Sportified</string>
+    <string name="sportify">SPORTIFY</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="find_the_best">Find The Best</string>
+    <string name="check_ratings_and_reviews_to_choose_the_best_of_all">Check Ratings and Reviews to choose the best of all.</string>
+    <string name="bring_your_squad">Bring Your Squad</string>
+    <string name="check_slots_avaibility_and_book_prior_to_arrival_for_avoiding_last_minute_hassle">Check Slots Availability and Book prior to arrival for avoiding last-minute hassle!!</string>
+    <string name="complex_name">Complex Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sport_name">Sport Name</string>
+    <string name="total_courts">Total Courts</string>
+    <string name="price_per_hour">Price Per Hour</string>
+    <string name="location">Location</string>
+    <string name="description">Description</string>
+    <string name="add_image">Add Image</string>
+    <string name="submit_details">Submit Details</string>
+    <string name="grow_your_nbusiness">Grow Your \nBusiness</string>
+    <string name="interact_with_customers_via_chat">Interact with customers via chat!</string>
+    <string name="get_ratings_and_reviews_from_players">Get Ratings and Reviews from Players!</string>
+    <string name="all_you_need_is_a_google_sign_up_nlet_your_innings_begin">All You Need is a Google Sign-Up.\nLet your innings begin!!</string>
+    <string name="register_using_google">Register using Google</string>
+    <string name="confirm">Confirm</string>
+    <string name="info">Info</string>
+    <string name="email">EMAIL</string>
+    <string name="languages">Languages</string>
 </resources>

@@ -13,27 +13,6 @@
         android:paddingStart="45dp"
         android:paddingEnd="45dp">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:text="@string/gamecoin"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:letterSpacing="0.13"
-            android:text="@string/skip"
-            android:textColor="#ff5a85"
-            android:textSize="12sp"
-            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -52,23 +31,11 @@
         android:fontFamily="mo"
         android:includeFontPadding="false"
         android:letterSpacing="-0.01"
-        android:text="Find The Best"
+        android:text="@string/find_the_best"
         android:textStyle="bold"
         android:textColor="@color/colorAccent"
         android:textSize="41sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:layout_marginStart="45dp"
-        android:fontFamily="sans-serif-condensed"
-        android:includeFontPadding="false"
-        android:letterSpacing="-0.01"
-        android:text="@string/gamers"
-        android:textAllCaps="true"
-        android:textColor="#ff5a85"
-        android:textSize="56sp"
-        android:textStyle="bold" />
 
     <TextView
         android:layout_width="215dp"
@@ -78,7 +45,7 @@
         android:fontFamily="sans-serif-light"
         android:letterSpacing="-0.01"
         android:lineSpacingExtra="4sp"
-        android:text="Check Ratings and Reviews to choose the best of all."
+        android:text="@string/check_ratings_and_reviews_to_choose_the_best_of_all"
         android:textColor="@color/black"
         android:textSize="14sp" />
 

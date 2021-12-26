@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10mdp"
         app:lottie_rawRes="@raw/complex"
-        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginStart="@dimen/_15mdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"

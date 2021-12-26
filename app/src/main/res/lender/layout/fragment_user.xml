@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".player_activities.pUserFragment">
+    tools:context=".lender_activities.fragments.UserFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -101,7 +101,8 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/gradient"/>
+                android:background="@drawable/gradient">
+            </FrameLayout>
 
             <View
                 android:id="@+id/view1"
@@ -118,7 +119,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Info"
+                android:text="@string/info"
                 android:fontFamily="@font/nunito_extrabold"
                 android:textSize="@dimen/_12mdp"
                 android:textStyle="bold"
@@ -135,7 +136,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="EMAIL"
+                android:text="@string/email"
                 android:fontFamily="@font/nunito_light"
                 android:textColor="#ffffff"
                 android:layout_marginStart="@dimen/_48mdp"
@@ -151,6 +152,91 @@
                 android:layout_marginTop="@dimen/_48mdp"
                 android:layout_marginBottom="@dimen/_5mdp"/>
 
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="@dimen/_98mdp"
+                android:layout_marginRight="@dimen/_50mdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/UserName" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinner"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_105mdp"
+                android:outlineSpotShadowColor="@color/white"
+                app:startIconDrawable="@drawable/ic_baseline_language_24"
+                android:backgroundTint="@color/white"
+                app:startIconTint="@color/white"
+                android:backgroundTintMode="add"
+                android:fontFamily="@font/nunito_bold"
+                android:hint="@string/languages"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
+                app:expandedHintEnabled="true"
+                app:boxStrokeColor="@color/white"
+                android:textSize="@dimen/_12mdp"
+                android:layout_marginStart="@dimen/_12mdp"
+                android:layout_marginEnd="@dimen/_12mdp"
+                android:layout_marginLeft="@dimen/_12mdp"
+                android:textColor="@color/white">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/white"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/_80mdp"-->
+<!--                android:text="@string/languages"-->
+<!--                android:fontFamily="@font/nunito_bold"-->
+<!--                android:textSize="@dimen/_12mdp"-->
+<!--                android:layout_marginLeft="@dimen/_12mdp"-->
+<!--                android:textColor="@color/white"/>-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/hindi"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Hindi"-->
+<!--                android:fontFamily="@font/nunito_light"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:layout_marginStart="@dimen/_48mdp"-->
+<!--                android:layout_marginTop="@dimen/_105mdp"/>-->
+
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="EMAIL"-->
+<!--                android:fontFamily="@font/nunito_light"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:layout_marginStart="@dimen/_48mdp"-->
+<!--                android:layout_marginTop="@dimen/_37mdp"/>-->
+<!--            <com.google.android.material.textview.MaterialTextView-->
+<!--                android:id="@+id/UserEmailId"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/nunito_bold"-->
+<!--                android:text="shrutibhateja1803@gmail.com"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_marginStart="@dimen/_48mdp"-->
+<!--                android:layout_marginTop="@dimen/_48mdp"-->
+<!--                android:layout_marginBottom="@dimen/_5mdp"/>-->
 
         </com.google.android.material.card.MaterialCardView>
 

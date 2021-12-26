@@ -17,33 +17,8 @@
             android:paddingEnd="45dp"
             android:id="@+id/linearLayout">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="@string/gamecoin"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:layout_conversion_absoluteHeight="21dp"
-                tools:layout_editor_absoluteY="48dp"
-                tools:layout_editor_absoluteX="45dp"
-                tools:layout_conversion_absoluteWidth="161dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:letterSpacing="0.13"
-                android:text="@string/skip"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                tools:layout_conversion_absoluteHeight="16dp"
-                tools:layout_editor_absoluteY="50dp"
-                tools:layout_editor_absoluteX="206dp"
-                tools:layout_conversion_absoluteWidth="161dp" />
-        </LinearLayout>
+            </LinearLayout>
 
 
     <ImageView

@@ -1,11 +1,13 @@
 package com.shrutislegion.sportify.player_activities.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.Auth
@@ -17,6 +19,8 @@ import com.google.android.gms.common.api.ResultCallback
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.shrutislegion.sportify.LangPreferences
+import com.shrutislegion.sportify.MainActivity
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
 import com.shrutislegion.sportify.player_activities.PlayerFavoriteActivity
@@ -38,11 +42,15 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 @Suppress("DEPRECATION")
-class pUserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
+class pUserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener{
 
     lateinit var googleApiClient: GoogleApiClient
     lateinit var gso: GoogleSignInOptions
     lateinit var mGoogleSignInClient: GoogleSignInClient
+    lateinit var LangPreference: LangPreferences
+//    lateinit var context: Context
+
+    val languageList = arrayOf("en","hi")
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -86,6 +94,22 @@ class pUserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
         view.bookmarkedComplexesButton.setOnClickListener {
             startActivity(Intent(context, PlayerFavoriteActivity::class.java))
         }
+
+        LangPreference = LangPreferences(context)
+//
+//        spinner.adapter = ArrayAdapter(context!!,android.R.layout.simple_list_item_1,languageList)
+//
+//        val lang = LangPreferences().getLoginCount()
+//        val index = languageList.indexOf(lang)
+//        if(index >= 0){
+//            spinner.setSelection(index)
+//        }
+
+//        button.setOnClickListener {
+//            LangPreferences.setLoginCount(languageList[spinner.selectedItemPosition])
+//            startActivity(Intent(context, MainActivity::class.java))
+//            finish()
+//        }
 
         return view
     }

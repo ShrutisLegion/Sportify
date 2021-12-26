@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sportify</string>
+    <string name="find_the_most_rated_nearby_sports_complex_check_avaibility_and_book_according_to_your_convinience">आस-पास के सबसे अधिक रेटिंग वाले स्पोर्ट्स कॉम्प्लेक्स का पता लगाएं, उपलब्धता की जांच करें और अपनी सुविधा के अनुसार बुक करें!</string>
+    <string name="add_your_complex">अपना परिसर जोड़ें</string>
+    <string name="delete_confirmation">क्या आप वाकई परिसर को हटाना चाहते हैं?</string>
+    <string name="todo" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_s_get_sportified">आइए स्पोर्टीफाइड हो जाएं</string>
+    <string name="sportify">SPORTIFY</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="find_the_best">सर्वश्रेष्ठ खोजें</string>
+    <string name="check_ratings_and_reviews_to_choose_the_best_of_all">सभी में से सर्वश्रेष्ठ चुनने के लिए रेटिंग और समीक्षाएं देखें।</string>
+    <string name="bring_your_squad">अपना दस्ता लाओ</string>
+    <string name="check_slots_avaibility_and_book_prior_to_arrival_for_avoiding_last_minute_hassle">अंतिम समय की परेशानी से बचने के लिए स्लॉट उपलब्धता की जाँच करें और आगमन से पहले बुक करें !!</string>
+    <string name="complex_name">परिसर का नाम</string>
+    <string name="phone_number">फ़ोन नंबर</string>
+    <string name="sport_name">खेल का नाम</string>
+    <string name="total_courts">कुल न्यायालय</string>
+    <string name="price_per_hour">मूल्य प्रति घंटा</string>
+    <string name="location">स्थान</string>
+    <string name="description">विवरण</string>
+    <string name="add_image">छवि जोड़ें</string>
+    <string name="submit_details">विवरण जमा करें</string>
+    <string name="grow_your_nbusiness">Grow Your \nBusiness</string>
+    <string name="interact_with_customers_via_chat">Interact with customers via chat!</string>
+    <string name="get_ratings_and_reviews_from_players">Get Ratings and Reviews from Players!</string>
+    <string name="all_you_need_is_a_google_sign_up_nlet_your_innings_begin">All You Need is a Google Sign-Up.\nLet your innings begin!!</string>
+    <string name="register_using_google">Register using Google</string>
+    <string name="confirm">Confirm</string>
+    <string name="info">Info</string>
+    <string name="email">EMAIL</string>
+    <string name="languages">भाषा</string>
+</resources>

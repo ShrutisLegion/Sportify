@@ -6,15 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".PLSignInActivity">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textwelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10mdp"
+        android:text="Welcome Back!"
+        android:textSize="@dimen/_30mdp"
+        android:textColor="#123282"
+        android:fontFamily="@font/nunito_semibolditalic"
+        android:layout_marginTop="@dimen/_24mdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/signinanim"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_450mdp"
+        android:layout_marginTop="@dimen/_20mdp"
+        android:layout_marginStart="@dimen/_10mdp"
+        android:layout_marginEnd="@dimen/_10mdp"
+        app:lottie_rawRes="@raw/signin"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/PLSignInButton"
         android:layout_width="@dimen/_200mdp"
         android:layout_height="wrap_content"
         android:text="Sign In using Google"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signinanim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/_38mdp"/>
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/PLprogressBarSignIn"
