@@ -1,3 +1,6 @@
+// Activity used to add complexes
+// It contains fields which are necessary to be filled, with an image that needs to be uploaded.
+
 package com.shrutislegion.sportify.lender_activities
 
 import android.app.ProgressDialog
@@ -28,7 +31,6 @@ class AddComplexActivity : AppCompatActivity() {
     lateinit var storage: FirebaseStorage
     lateinit var auth: FirebaseAuth
     lateinit var dialog: ProgressDialog
-//    lateinit var progressBar: ProgressBar
     var uri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,14 +42,15 @@ class AddComplexActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         database = FirebaseDatabase.getInstance()
         dialog = ProgressDialog(this)
-//        progressBar = findViewById<View>(R.id.addComplexLoading) as ProgressBar
 
+        // Creating a dialog while the complex is being added to the Firebase storage
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
         dialog.setTitle("Adding your complex")
         dialog.setMessage("Please Wait")
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
 
+        // Opening the imagePicker and selecting an complexiomage from the gallery
         floatingActionButton.setOnClickListener {
             ImagePicker.with(this)
                 .crop()
@@ -58,7 +61,8 @@ class AddComplexActivity : AppCompatActivity() {
 
     fun submitComplexDetails(view: android.view.View) {
 
-//        TextUtils.isEmpty(complexName.text.toString())
+
+        // If any of the field is empty then Toast to fill all the details
         if(TextUtils.isEmpty(complexName.text.toString()) ||
             (typeOfSport.text!!.isEmpty()) ||
             (totalCourts.text!!.isEmpty()) ||
@@ -69,6 +73,7 @@ class AddComplexActivity : AppCompatActivity() {
         ){
             Toast.makeText(this,"Plase enter all the required details!", Toast.LENGTH_LONG).show()
         }
+        // Uploading an image is also compulsory
         else if (uri == null){
             Toast.makeText(this,"Please upload your complex image!", Toast.LENGTH_LONG).show()
         }
@@ -83,11 +88,13 @@ class AddComplexActivity : AppCompatActivity() {
             val phone = phoneNumber.getText().toString()
             val description = complexDescription.text.toString()
 
+            // getting the reference of the Firebase Realtime Database
             val reference: StorageReference = storage.getReference().child("complexes_image")
                 .child(FirebaseAuth.getInstance().getUid().toString())
                 .child(Date().time.toString() + "")
 
 
+            // Uploading the image and getting a firebase url
             if (uri != null) {
                 reference.putFile(uri!!).addOnSuccessListener(OnSuccessListener {
                     Toast.makeText(this, "Image Uploaded Successfully!", Toast.LENGTH_LONG).show()
@@ -95,6 +102,8 @@ class AddComplexActivity : AppCompatActivity() {
                     reference.getDownloadUrl().addOnSuccessListener(OnSuccessListener<Uri>() {
                         uriString = it.toString()
                         Toast.makeText(this,"Image downloaded successfully", Toast.LENGTH_LONG).show()
+
+                        //Creating a model and setting it with the suitable fields
                         val User =
                             ComplexInfo(
                                 name+"",
@@ -118,6 +127,7 @@ class AddComplexActivity : AppCompatActivity() {
                             .child(FirebaseAuth.getInstance().uid.toString())
                             .child("Complexes").push().key
 
+                        // Uploading the data to the firebase
                         FirebaseDatabase.getInstance().
                             getReference("Lenders").
                             child(FirebaseAuth.getInstance().uid.toString())
@@ -155,44 +165,6 @@ class AddComplexActivity : AppCompatActivity() {
             uploadedImage.visibility = VISIBLE
         }
 
-        // compress the image
-//            var bmp: Bitmap? = null
-//            try {
-//                bmp = MediaStore.Images.Media.getBitmap(contentResolver, uri)
-//            } catch (e: IOException) {
-//                e.printStackTrace()
-//            }
-//            val baos = ByteArrayOutputStream()
-//
-//            //here you can choose quality factor in third parameter(ex. i choosen 25)
-//
-//            //here you can choose quality factor in third parameter(ex. i choosen 25)
-//            bmp!!.compress(Bitmap.CompressFormat.JPEG, 25, baos)
-//            val fileInBytes: ByteArray = baos.toByteArray()
-//
-//            val photoref: StorageReference =
-//                storage.reference.child(uri!!.getLastPathSegment().toString())
-//
-//            //here i am uploading
-//
-//            //here i am uploading
-//            photoref.putBytes(fileInBytes).addOnSuccessListener(
-//                this
-//            ) { taskSnapshot -> // When the image has successfully uploaded, we get its download URL
-//                val downloadUrl: Uri = taskSnapshot.getDownloadUrl()
-//                val id: String? = databaseref.push().getKey()
-//                val time: String =
-//                    SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime())
-//
-//                // Set the download URL to the message box, so that the user can send it to the database
-//                val friendlyMessage =
-//                    FriendlyMessageModel(id, null, userId, downloadUrl.toString(), time)
-//                if (id != null) {
-//                    databaseref.child(id).setValue(friendlyMessage)
-//                }
-//            }
-        //
-
     }
 
     override fun onBackPressed() {
@@ -200,6 +172,7 @@ class AddComplexActivity : AppCompatActivity() {
         startActivity(Intent(this, LenderHomeActivity::class.java))
     }
 
+    // getting the  location from the Google API
     fun loc(view: View) {
         val intent = Intent(this, LocationActivity::class.java)
         startActivity(intent)

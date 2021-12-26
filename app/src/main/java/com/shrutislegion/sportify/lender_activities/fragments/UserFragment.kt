@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.Auth
@@ -16,6 +17,7 @@ import com.google.android.gms.common.api.ResultCallback
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.shrutislegion.sportify.LangPreferences
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
 import com.shrutislegion.sportify.lender_activities.LenderHomeActivity
@@ -42,7 +44,6 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
     lateinit var googleApiClient: GoogleApiClient
     lateinit var gso: GoogleSignInOptions
     lateinit var mGoogleSignInClient:GoogleSignInClient
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

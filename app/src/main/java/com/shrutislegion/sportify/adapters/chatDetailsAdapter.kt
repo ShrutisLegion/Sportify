@@ -1,5 +1,5 @@
-// Adapter used for the Player Chat Fragment
-// This is used to show all the users and their last message with the current user
+// Adapter used for the Player/Lender Chat Details
+// Player/Lender can make a call or chat with the player, which helps in arranging required facilities
 
 package com.shrutislegion.sportify.adapters
 
