@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8E8E8"
+    tools:context=".lender_activities.LenderChatDetailsActivity">
+
+    <FrameLayout
+        android:id="@+id/fragment_containerChat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatDetailsRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/chatDetailsLL"
+        android:layout_below="@+id/chatDetailsToolbar" />
+
+    <LinearLayout
+        android:id="@+id/chatDetailsLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/chatDetailsMessage"
+            android:layout_width="@dimen/_250mdp"
+            android:layout_height="@dimen/_40mdp"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:layout_marginEnd="@dimen/_5mdp"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:paddingLeft="@dimen/_12mdp"
+            android:hint="Type a message..."
+            android:textSize="@dimen/_16mdp"
+            android:background="@drawable/chatdetails_message_bg"
+            />
+
+        <com.jediburrell.customfab.FloatingActionButton
+            android:id="@+id/chatDetailsSendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5mdp"
+            android:clickable="true"
+            android:tint="@color/white"
+            app:fabColor="@color/colorAccent"
+            app:fabIcon="@drawable/ic_send_svgrepo_com"
+            app:fabType="custom"
+            app:rippleColor="@color/colorWhite"
+            tools:ignore="MissingClass" />
+
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chatDetailsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/backArrowButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5mdp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/chatUserProfileImage"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_40mdp"
+                android:layout_marginLeft="@dimen/_8mdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_account"
+                android:transitionName="image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/backArrowButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chatUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                android:textSize="@dimen/_16mdp"
+                app:fontFamily="@font/nunito_bold"
+                app:layout_constraintStart_toEndOf="@+id/chatUserProfileImage"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Neeraj Chatterjee" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/chatUserPhoneCall"
+                android:layout_width="@dimen/_28mdp"
+                android:layout_height="@dimen/_28mdp"
+                android:layout_marginRight="@dimen/_8mdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fui_ic_phone_white_24dp"
+                android:transitionName="image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.533" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</RelativeLayout>

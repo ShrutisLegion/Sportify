@@ -26,13 +26,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.PLSignInActivity
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
-import com.shrutislegion.sportify.doas.lenderDaos
-import com.shrutislegion.sportify.modules.lander
+import com.shrutislegion.sportify.doas.LenderDaos
+import com.shrutislegion.sportify.modules.Lender
+import com.shrutislegion.sportify.modules.LoggedInUserInfo
 import kotlinx.android.synthetic.main.activity_lender_log.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -265,9 +267,20 @@ class LenderLogActivity : AppCompatActivity() {
                             }
 //                            Toast.makeText(this,"$check + $check1 + $check2", Toast.LENGTH_LONG).show()
                             if(check1 && check2 && !check){
-                                val lander = lander(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
-                                val landersDao = lenderDaos()
-                                landersDao.addUser(lander)
+                                val lander = Lender(firebaseUser.uid, firebaseUser.displayName, firebaseUser.photoUrl.toString())
+                                val lendersDao = LenderDaos()
+                                lendersDao.addUser(lander)
+
+                                val model: LoggedInUserInfo = LoggedInUserInfo(firebaseUser.displayName, firebaseUser.email,
+                                    firebaseUser.uid, firebaseUser.photoUrl!!.toString(), ""
+                                )
+
+                                FirebaseDatabase.getInstance().reference
+                                    .child("Logged in users")
+                                    .child("lenders")
+                                    .child(firebaseUser.uid)
+                                    .setValue(model)
+
                                 progressBarSignIn.visibility = View.GONE
                                 val mainActivityIntent = Intent(this, LenderHomeActivity::class.java)
                                 startActivity(mainActivityIntent)

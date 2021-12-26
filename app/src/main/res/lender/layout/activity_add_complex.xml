@@ -64,6 +64,7 @@
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
                 app:helperText="Required*"
+                app:errorEnabled="true"
                 app:helperTextTextColor="#A60606"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"

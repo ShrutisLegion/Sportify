@@ -23,6 +23,11 @@ class LenderHomeActivity : AppCompatActivity() {
     lateinit var mGoogleSignInClient: GoogleSignInClient
 //    val homeFragment: HomeFragment = HomeFragment.newInstance()
 
+    companion object {
+        const val EXTRA_FRAGMENT = "name_extra"
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lender_home)
@@ -31,8 +36,15 @@ class LenderHomeActivity : AppCompatActivity() {
         mGoogleSignInClient= GoogleSignIn.getClient(this,gso)
         bottomNav = findViewById(R.id.bottom_nav)
 
+        var frag = intent.getStringExtra(LenderHomeActivity.EXTRA_FRAGMENT)
+
+        if(frag == "2") {
+            bottomNav.setItemSelected(R.id.chats, true)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ChatsFragment()).commitAllowingStateLoss()
+        }
+
         // By default the home page should be selected on opening the app
-        if(savedInstanceState==null){
+        else if(savedInstanceState==null){
             bottomNav.setItemSelected(R.id.home,true)
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commitAllowingStateLoss()
         }

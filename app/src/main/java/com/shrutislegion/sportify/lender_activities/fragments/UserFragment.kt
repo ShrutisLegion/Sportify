@@ -21,6 +21,7 @@ import com.shrutislegion.sportify.LangPreferences
 import com.shrutislegion.sportify.R
 import com.shrutislegion.sportify.RegistrationActivity
 import com.shrutislegion.sportify.lender_activities.LenderHomeActivity
+import com.shrutislegion.sportify.lender_activities.LenderRateReviewActivity
 import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.fragment_user.view.*
 
@@ -77,6 +78,12 @@ class UserFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
                 startActivity(Intent(context, RegistrationActivity::class.java))
             }
         })
+
+        view.lenderRatingsReviewsButton.setOnClickListener {
+
+            startActivity(Intent(context, LenderRateReviewActivity::class.java))
+
+        }
 
         return view
     }

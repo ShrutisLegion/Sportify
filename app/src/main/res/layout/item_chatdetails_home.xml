@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/pChatCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_margin="@dimen/_8mdp"
+        app:cardElevation="@dimen/_5mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:state_dragged="true"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/chatUserProfileImage"
+                android:layout_width="@dimen/_48mdp"
+                android:layout_height="@dimen/_48mdp"
+                android:layout_marginHorizontal="@dimen/_16mdp"
+                android:layout_marginVertical="@dimen/_8mdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_account"
+                android:transitionName="image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chatUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/chatUserProfileImage"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/_8mdp"
+                android:layout_marginStart="@dimen/_16mdp"
+                app:fontFamily="@font/nunito_bold"
+                android:textSize="@dimen/_16mdp"
+                tools:text="Neeraj Chatterjee"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chatUserLastMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/chatUserName"
+                app:layout_constraintStart_toEndOf="@+id/chatUserProfileImage"
+                app:layout_constraintBottom_toBottomOf="@+id/chatUserProfileImage"
+                android:layout_marginStart="@dimen/_16mdp"
+                android:maxWidth="@dimen/_200mdp"
+                tools:text="Neerajeadffffffffffffffffffffffffffffffffffffffffffadddddddddddddddddd"
+                android:ellipsize="end"
+                android:maxLines="1"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pChatCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_alignParentBottom="true" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

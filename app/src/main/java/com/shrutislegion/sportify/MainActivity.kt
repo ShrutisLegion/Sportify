@@ -12,12 +12,14 @@ import androidx.viewpager.widget.ViewPager
 import com.cuberto.liquid_swipe.LiquidPager
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.ktx.Firebase
 import com.shrutislegion.sportify.adapters.Adapter
 import com.shrutislegion.sportify.lender_activities.LenderHomeActivity
+import com.shrutislegion.sportify.modules.LoggedInUserInfo
 import com.shrutislegion.sportify.player_activities.PlayerHomeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -50,9 +52,31 @@ class MainActivity : AppCompatActivity() {
 
         if(user != null) {
             if (loginType == "true") {
+
+                val model: LoggedInUserInfo = LoggedInUserInfo(user.displayName, user.email,
+                    user.uid, user.photoUrl!!.toString(), ""
+                )
+
+                FirebaseDatabase.getInstance().reference
+                    .child("Logged in users")
+                    .child("players")
+                    .child(user.uid)
+                    .setValue(model)
+
                 Toast.makeText(this, "User in users!", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, PlayerHomeActivity::class.java))
             } else {
+
+                val model: LoggedInUserInfo = LoggedInUserInfo(user.displayName, user.email,
+                    user.uid, user.photoUrl!!.toString(), ""
+                )
+
+                FirebaseDatabase.getInstance().reference
+                    .child("Logged in users")
+                    .child("lenders")
+                    .child(user.uid)
+                    .setValue(model)
+
                 Toast.makeText(this, "User in Landers!", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, LenderHomeActivity::class.java))
             }

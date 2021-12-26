@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,63 +7,72 @@
     tools:context=".lender_activities.fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/homeNestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recView"
-            android:layout_width="409dp"
-            android:layout_height="582dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.436" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_50mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:clipToPadding="true"/>
 
-        <com.jediburrell.customfab.FloatingActionButton
-            android:id="@+id/addComplexButton"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:clickable="true"
-            android:elevation="2dp"
-            android:focusable="true"
-            android:src="@drawable/ic_baseline_add_24"
-            android:tint="@color/white"
-            app:fabColor="@color/colorAccent"
-            app:fabIcon="@drawable/ic_add_24dp"
-            app:fabShape="@drawable/fab_teardrop"
-            app:fabType="custom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.929"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.89"
-            app:pressedTranslationZ="6dp"
-            app:rippleColor="@color/colorWhite"
-            tools:ignore="MissingClass" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/progressBarLHome"
-            style="@style/SpinKitView.Large.DoubleBounce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:SpinKit_Color="@color/colorAccent"
-            android:padding="@dimen/_5mdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.core.widget.NestedScrollView>
+
+    <com.jediburrell.customfab.FloatingActionButton
+        android:id="@+id/addComplexButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:visibility="gone"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:elevation="2dp"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:tint="@color/white"
+        app:fabColor="@color/colorAccent"
+        app:fabIcon="@drawable/ic_add_24dp"
+        app:fabShape="@drawable/fab_teardrop"
+        app:fabType="custom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.89"
+        app:pressedTranslationZ="6dp"
+        app:rippleColor="@color/colorWhite"
+        tools:ignore="MissingClass" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/progressBarLHome"
+        style="@style/SpinKitView.Large.DoubleBounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/colorAccent"
+        android:padding="@dimen/_5mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

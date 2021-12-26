@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/lenderRateReviewCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8mdp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="@dimen/_5mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:state_dragged="true"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/constraintLayoutRR"
+            android:animateLayoutChanges="true">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@id/complexName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8mdp"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                app:fontFamily="@font/nunito_bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/_14mdp"
+                tools:text="Let's see complex"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@id/sportType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                app:fontFamily="@font/nunito_semibolditalic"
+                app:layout_constraintTop_toBottomOf="@+id/complexName"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/_12mdp"
+                tools:text="Football"
+                />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/playerProfilePicture"
+                android:layout_width="@dimen/_28mdp"
+                android:layout_height="@dimen/_28mdp"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                android:alpha=".85"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_account"
+                android:transitionName="image"
+                app:layout_constraintBottom_toTopOf="@id/playerRating"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sportType" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/playerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_12mdp"
+                app:layout_constraintBottom_toTopOf="@id/playerRating"
+                app:layout_constraintStart_toEndOf="@+id/playerProfilePicture"
+                app:layout_constraintTop_toBottomOf="@+id/sportType"
+                tools:text="Neeraj" />
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/playerRating"
+                style="@style/Widget.MaterialRatingBar.RatingBar"
+                android:layout_width="@dimen/_66mdp"
+                android:layout_height="@dimen/_16mdp"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                android:layout_marginTop="@dimen/_4mdp"
+                android:layout_marginBottom="@dimen/_8mdp"
+                app:layout_constraintBottom_toTopOf="@+id/playerReview"
+                android:isIndicator="true"
+                android:progressTint="#123282"
+                android:secondaryProgressTint="#123282"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/playerProfilePicture" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/playerReview"
+                android:layout_width="@dimen/_250mdp"
+                app:fontFamily="@font/nunito_bold"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_4mdp"
+                android:layout_marginBottom="@dimen/_8mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/playerRating"
+                tools:text="Akaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadsfffffffffc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
