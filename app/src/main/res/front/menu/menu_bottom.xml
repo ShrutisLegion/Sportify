@@ -13,7 +13,7 @@
         />
     <item
         android:id="@+id/booked"
-        android:title="Booked Courts"
+        android:title="Bookings"
         android:icon="@drawable/ic_booked"
         app:cnb_backgroundColor = "#ff785b"
         app:cnb_iconColor = "#000000"

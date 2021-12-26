@@ -1,3 +1,5 @@
+// Adapter used in the Main activity to change the liquid swipe
+
 @file:Suppress("DEPRECATION")
 
 package com.shrutislegion.sportify.adapters

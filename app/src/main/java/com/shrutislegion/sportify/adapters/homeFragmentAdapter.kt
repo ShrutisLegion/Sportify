@@ -1,3 +1,5 @@
+// Adapter is used in the Lender Home Fragment which shows all complexes added by the complex owner
+
 package com.shrutislegion.sportify.adapters
 
 import android.app.Activity
@@ -41,6 +43,7 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
 
     lateinit var databaseReference: DatabaseReference
 
+    // ViewHolder to hold the fields from the item_complexdetails xml
     inner class myViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         // creating viewHolder and getting all the required views by their Ids
@@ -58,11 +61,13 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
         var shareButton = itemView.findViewById<Button>(R.id.shareButton)
     }
 
+    // Inflates the layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val view =LayoutInflater.from(parent.context).inflate(R.layout.item_complexdetails, parent, false)
         return myViewHolder(view)
     }
 
+    // Binds the fields with the values taken from the FirebaseDatabase
     override fun onBindViewHolder(holder: myViewHolder, position: Int, model: ComplexInfo) {
 
         // setting the text fields with the values obtained from the firebase in the recyclerView
@@ -132,6 +137,8 @@ class homeFragmentAdapter(options: FirebaseRecyclerOptions<ComplexInfo>) :
             // Start the Shared activity with the transition
             holder.name.context.startActivity(intent, options.toBundle())
         }
+
+        // Create dynamic links which redirects to a particular screen
         holder.shareButton.setOnClickListener {
 
             Toast.makeText(holder.name.context, "create link ", Toast.LENGTH_LONG).show()

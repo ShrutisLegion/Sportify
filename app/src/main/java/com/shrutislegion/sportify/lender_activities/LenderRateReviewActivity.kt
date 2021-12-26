@@ -110,7 +110,12 @@ class LenderRateReviewActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, LenderHomeActivity::class.java))
+        val intent: Intent = Intent(this, LenderHomeActivity::class.java)
+
+        intent.putExtra(LenderHomeActivity.EXTRA_FRAGMENT, "3")
+
+        startActivity(intent)
+
     }
 
 }

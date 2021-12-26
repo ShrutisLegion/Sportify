@@ -1,3 +1,6 @@
+// Adapter used in the Lender Chat Fragment
+// This is used to show all the players and their last message with the current owner
+
 package com.shrutislegion.sportify.adapters
 
 import android.content.Context
@@ -22,6 +25,7 @@ import com.shrutislegion.sportify.modules.LoggedInUserInfo
 class lChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val context: Context):
     RecyclerView.Adapter<lChatUserFragmentAdapter.viewHolder>(){
 
+    // ViewHolder to hold the fields
     class viewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
         var chatUserProfileImage = itemView.findViewById<ImageView>(R.id.chatUserProfileImage)
@@ -31,6 +35,7 @@ class lChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
 
     }
 
+    // Inflates the layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
 
         val view = LayoutInflater.from(context)
@@ -40,6 +45,7 @@ class lChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
 
     }
 
+    // Binds the fields with the values taken from the FirebaseDatabase
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
 
         var model = storeUsers[position]
@@ -52,6 +58,7 @@ class lChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
 
         holder.chatUserName.text = model.userName.toString()
 
+        // Getting the last message from the Database using the orderByChild() and limitToLast()
         FirebaseDatabase.getInstance().reference
             .child("Chats")
             .child(FirebaseAuth.getInstance().currentUser!!.uid + model.userId)
@@ -74,6 +81,7 @@ class lChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
 
             })
 
+        // Go to the LenderChatDetailsActivity and passing the strings to the next intent
         holder.pChatCardView.setOnClickListener {
 
             val intent = Intent(holder.pChatCardView.context, LenderChatDetailsActivity::class.java)
@@ -89,6 +97,7 @@ class lChatUserFragmentAdapter(var storeUsers: ArrayList<LoggedInUserInfo>, val 
 
         }
     }
+    // returns the size
     override fun getItemCount(): Int {
         return storeUsers.size
     }

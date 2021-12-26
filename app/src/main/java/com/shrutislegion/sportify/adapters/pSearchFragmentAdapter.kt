@@ -1,12 +1,15 @@
 package com.shrutislegion.sportify.adapters
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
@@ -29,6 +32,30 @@ import com.shrutislegion.sportify.player_activities.PlayerRatingActivity
 class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>)
     : FirebaseRecyclerAdapter<BookedComplexInfo, pSearchFragmentAdapter.myViewHolder>(options){
 
+    lateinit var adapter: pBookedHoursAdapter
+
+    // To override LinearLayoutManager by Wrapper, as it crashes the application sometimes
+    inner class LinearLayoutManagerWrapper : LinearLayoutManager {
+        constructor(context: Context?) : super(context) {}
+        constructor(context: Context?, orientation: Int, reverseLayout: Boolean) : super(
+            context,
+            orientation,
+            reverseLayout
+        ) {
+        }
+
+        constructor(
+            context: Context?,
+            attrs: AttributeSet?,
+            defStyleAttr: Int,
+            defStyleRes: Int
+        ) : super(context, attrs, defStyleAttr, defStyleRes) {
+        }
+
+        override fun supportsPredictiveItemAnimations(): Boolean {
+            return false
+        }
+    }
 
     inner class myViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
@@ -40,7 +67,7 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
         val location = itemView.findViewById<TextView>(R.id.complexLocation)
         var image = itemView.findViewById<ImageView>(R.id.complexImage)
         var phone = itemView.findViewById<TextView>(R.id.phoneNumber)
-        var hoursBooked = itemView.findViewById<TextView>(R.id.hoursBookedInfo)
+        var hoursBooked = itemView.findViewById<RecyclerView>(R.id.hoursBookedInfo)
         var card = itemView.findViewById<CardView>(R.id.card)
         var ratingBar = itemView.findViewById<RatingBar>(R.id.complexRatingBar)
         var progressBarPCard = itemView.findViewById<ProgressBar>(R.id.progressBarPCard)
@@ -68,8 +95,10 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
     ) {
         holder.name.setText(model.complexName)
         holder.type.setText(model.typeOfSport)
-//        holder.price.setText(model.pricePerHour)
         holder.location.setText(model.location)
+        var linearLayoutManager = LinearLayoutManagerWrapper(holder.name.context, LinearLayoutManager.HORIZONTAL, true)
+        linearLayoutManager.stackFromEnd = true
+        holder.hoursBooked.layoutManager = linearLayoutManager
 
 //        BottomSheetBehavior.from(holder.bottomBookedSheet).apply {
 //            peekHeight = 200
@@ -155,8 +184,7 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
         var displaymsg = ""
 
         if(displayList!!.size == 0){
-            displaymsg = ""
-            holder.hoursBooked.setText(displaymsg)
+
         }
         else{
             val ref = FirebaseDatabase.getInstance().reference
@@ -168,18 +196,19 @@ class pSearchFragmentAdapter(options: FirebaseRecyclerOptions<BookedComplexInfo>
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
+                        displayList.clear()
                         for (dss in snapshot.children) {
                             val timeName = dss.getValue().toString()
                             displaySet!!.add(timeName.toInt())
+                            displayList.add(timeName.toInt())
                         }
-                        for(i in displaySet!!){
-                            displaymsg = displaymsg + i.toString() + " "
-                        }
-                        holder.hoursBooked.setText(displaymsg)
+
+                        adapter = pBookedHoursAdapter(displayList, holder.name.context)
+                        holder.hoursBooked.adapter = adapter
+                        adapter.notifyDataSetChanged()
                     }
                     else{
-                        displaymsg = "No Booked Hours"
-                        holder.hoursBooked.setText(displaymsg)
+
                     }
                 }
 

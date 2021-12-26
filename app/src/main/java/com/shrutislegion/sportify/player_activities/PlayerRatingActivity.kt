@@ -106,7 +106,13 @@ class PlayerRatingActivity : AppCompatActivity() {
                     .child(FirebaseAuth.getInstance().currentUser!!.uid.toString())
                     .setValue(User).addOnSuccessListener {
                         Toast.makeText(this, "Complex rating added !!", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this, PlayerHomeActivity::class.java))
+
+                        val intent: Intent = Intent(this, PlayerHomeActivity::class.java)
+
+                        intent.putExtra(PlayerHomeActivity.EXTRA_FRAGMENT, "1")
+
+                        startActivity(intent)
+
                     }
                     .addOnFailureListener {
                         Toast.makeText(this, "Complex rating unable to add !!", Toast.LENGTH_LONG)

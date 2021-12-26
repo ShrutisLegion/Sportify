@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
@@ -17,10 +18,12 @@
         android:theme="@style/Theme.Sportify">
         <activity
             android:name=".lender_activities.LenderChatDetailsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:noHistory="true" />
         <activity
             android:name=".player_activities.ChatDetailsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:noHistory="true" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -71,7 +74,8 @@
         </activity>
         <activity
             android:name=".player_activities.PlayerRatingActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:noHistory="true" />
         <activity
             android:name=".player_activities.PlayerSharedActivity"
             android:exported="true"

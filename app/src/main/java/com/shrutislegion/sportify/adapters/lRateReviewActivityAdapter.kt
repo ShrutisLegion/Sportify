@@ -1,3 +1,6 @@
+// Adapter is used in the Rate and Review Activity
+// Lender can go through the ratings that the players gave, which helps in improving the facilities
+
 package com.shrutislegion.sportify.adapters
 
 import android.animation.LayoutTransition
@@ -25,6 +28,8 @@ import org.w3c.dom.Text
 
 class lRateReviewActivityAdapter(var storeRR: ArrayList<ComplexRating>, val context: Context) :
     RecyclerView.Adapter<lRateReviewActivityAdapter.viewHolder>(){
+
+    // Creating a viewHolder which takes the fields from the xml layout
     class viewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
         var playerProfilePicture = itemView.findViewById<ImageView>(R.id.playerProfilePicture)
@@ -64,6 +69,7 @@ class lRateReviewActivityAdapter(var storeRR: ArrayList<ComplexRating>, val cont
 
         holder.constraintLayoutRR.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
+        // Transition which makes the cardView expandable on clicking it
         holder.lenderRateReviewCardView.setOnClickListener {
 
             if(holder.playerReview.visibility == View.GONE){
@@ -85,6 +91,7 @@ class lRateReviewActivityAdapter(var storeRR: ArrayList<ComplexRating>, val cont
 
     }
 
+    // returns the size
     override fun getItemCount(): Int {
         return  storeRR.size
     }
