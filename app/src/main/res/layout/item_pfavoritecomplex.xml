@@ -142,7 +142,7 @@
                 app:fontFamily="@font/nunito_bold"
                 android:ellipsize="end"
                 android:maxWidth="@dimen/_200mdp"
-                android:maxLines="2"
+                android:maxLines="1"
                 android:text="Location"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black_30"

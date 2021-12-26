@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                     .child(user.uid)
                     .setValue(model)
 
-                Toast.makeText(this, "User in users!", Toast.LENGTH_LONG).show()
+//                Toast.makeText(this, "User in users!", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, PlayerHomeActivity::class.java))
             } else {
 
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                     .child(user.uid)
                     .setValue(model)
 
-                Toast.makeText(this, "User in Landers!", Toast.LENGTH_LONG).show()
+//                Toast.makeText(this, "User in Landers!", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, LenderHomeActivity::class.java))
             }
         }

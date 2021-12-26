@@ -40,7 +40,7 @@ class SplashScreen : AppCompatActivity() {
 
         // Checks the user and update the boolean value accordingly
         if(user!=null){
-            Toast.makeText(this,"User in not null!", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this,"User in not null!", Toast.LENGTH_LONG).show()
             val userID = user.uid
             val db = Firebase.firestore
             // search if the account is registered as Player
