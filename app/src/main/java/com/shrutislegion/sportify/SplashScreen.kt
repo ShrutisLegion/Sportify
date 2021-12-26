@@ -1,3 +1,5 @@
+// Splash Screen which is shown everytime when the app starts
+
 package com.shrutislegion.sportify
 
 import android.content.Intent
@@ -25,6 +27,7 @@ class SplashScreen : AppCompatActivity() {
         val image = findViewById<ImageView>(R.id.logo)
         val user = FirebaseAuth.getInstance().currentUser
 
+        // setting the animations
         image.setAnimation(topanim)
         getSupportActionBar()?.hide()
         Handler(Looper.getMainLooper()).postDelayed({
@@ -35,6 +38,7 @@ class SplashScreen : AppCompatActivity() {
         var player = false
         var lender = false
 
+        // Checks the user and update the boolean value accordingly
         if(user!=null){
             Toast.makeText(this,"User in not null!", Toast.LENGTH_LONG).show()
             val userID = user.uid

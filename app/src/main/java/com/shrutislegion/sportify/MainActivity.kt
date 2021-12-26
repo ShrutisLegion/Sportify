@@ -1,3 +1,6 @@
+// Main activity in which we checks whether the user is Lender or Player by LOGIN_TYPE
+// Creating Dynamic links
+
 package com.shrutislegion.sportify
 
 import android.content.ContentValues
@@ -40,10 +43,6 @@ class MainActivity : AppCompatActivity() {
         pager.adapter = Adapter(supportFragmentManager)
         viewPager.visibility = View.GONE
 
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            val intent = Intent(this, TypeRegActivity::class.java)
-//            startActivity(intent)
-//        }, 2000)
         getSupportActionBar()?.hide()
 
         val user = FirebaseAuth.getInstance().currentUser
@@ -57,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                     user.uid, user.photoUrl!!.toString(), ""
                 )
 
+                // If the user logged in is player
                 FirebaseDatabase.getInstance().reference
                     .child("Logged in users")
                     .child("players")
@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                     user.uid, user.photoUrl!!.toString(), ""
                 )
 
+                // If the user logged in is lender
                 FirebaseDatabase.getInstance().reference
                     .child("Logged in users")
                     .child("lenders")
@@ -127,22 +128,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-//    override fun onSaveInstanceState(savedInstanceState: Bundle) {
-//        super.onSaveInstanceState(savedInstanceState)
-//        // Save UI state changes to the savedInstanceState.
-//        // This bundle will be passed to onCreate if the process is
-//        // killed and restarted.
-//        savedInstanceState.putBoolean("playerLogged", true)
-//        savedInstanceState.putBoolean("lenderLogged", false)
-//        // etc.
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        // Restore UI state from the savedInstanceState.
-//        // This bundle has also been passed to onCreate.
-//        val playerLogged = savedInstanceState.getBoolean("playerLogged")
-//        val lenderLogged = savedInstanceState.getBoolean("lenderLogged")
-//    }
 }

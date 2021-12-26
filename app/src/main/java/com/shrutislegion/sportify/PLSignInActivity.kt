@@ -1,3 +1,6 @@
+// Activity used to signIn both the Player and Lender
+// Already existing user can login through this activity and go to the Player/Lender depending on the type of registration
+
 package com.shrutislegion.sportify
 
 import android.content.Intent
@@ -116,8 +119,10 @@ class PLSignInActivity : AppCompatActivity() {
         }
     }
 
+    // Updated the UI after the successful login
     private fun updateUI(firebaseUser: FirebaseUser?) {
 
+        // If the current firebaseUser is not null
         if (firebaseUser!=null){
 
             val checkId = firebaseUser.uid
@@ -126,6 +131,7 @@ class PLSignInActivity : AppCompatActivity() {
             var check2: Boolean = false
             val user = FirebaseAuth.getInstance().currentUser
 
+            // check the collection and search for the current userId
             Firebase.firestore.collection("Landers")
                 .get().addOnSuccessListener { result->
                     for(document in result){
@@ -151,6 +157,7 @@ class PLSignInActivity : AppCompatActivity() {
                     }
                 }
 
+            // Delay of 2 seconds and then search to the other collection
             Handler(Looper.getMainLooper()).postDelayed({
                 if(!check) {
                     Firebase.firestore.collection("users")
